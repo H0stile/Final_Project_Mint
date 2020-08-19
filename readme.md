@@ -3,7 +3,7 @@
 #### Devs : 
     - Anna Khitko
     - Charles Wilmart
-    - Dorra Hbaieb
+    - Dorra Habaieb
     - Jeyashree Radhika
     - Matthieu Barbié
 
