@@ -17,6 +17,8 @@ class CreateMessagesTable extends Migration
 
             $table->id();
             $table->string('message', 500);
+            $table->unsignedBigInteger('writer_id');
+            $table->unsignedBigInteger('target_id');
             $table->foreign('writer_id')->references('id')->on('users');
             $table->foreign('target_id')->references('id')->on('users');
             $table->dateTime('time_msg');
