@@ -29,7 +29,7 @@ class UserSeeder extends Seeder
                 'linkedin' => 'https://www.linkedin.com/in/john-doe',
                 'mentor_status' => $mentorStatus[rand(0,1)],
                 'profile_image' => 'defaultProfileLogo.png',
-                'pitch' => $faker->paragraph($nbSentences = 3, $variableNbSentences = true),
+                'pitch' => $faker->paragraph($nbSentences = 1, $variableNbSentences = true),
                 'availability' => array_rand($availability),
             ]);
         }
