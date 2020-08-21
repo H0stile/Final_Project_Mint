@@ -7,6 +7,8 @@ use App\User;
 use App\Message;
 use App\Collaboration;
 use App\Language;
+use App\Skill;
+use App\Rating;
 
 class TestController extends Controller
 {
@@ -17,10 +19,10 @@ class TestController extends Controller
      */
     public function index()
     {
-        $user = User::find(1);
-        $language = Language::find(1);
+        $user = User::find(13);
         // $message = Message::find(1);
-        dd($language->userLanguage);
+        // dd($rating->writer->score);
+        dd($user->receiveRatings);
         // dd($user->language);
         return view('test', ['users' => $users]);
     }

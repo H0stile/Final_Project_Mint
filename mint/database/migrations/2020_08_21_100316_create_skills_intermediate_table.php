@@ -16,8 +16,8 @@ class CreateSkillsIntermediateTable extends Migration
         Schema::create('skills_intermediate', function (Blueprint $table) {
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-            $table->unsignedBigInteger('skills_id');
-            $table->foreign('skills_id')->references('id')->on('skills');
+            $table->unsignedBigInteger('skill_id');
+            $table->foreign('skill_id')->references('id')->on('skills');
         });
     }
 

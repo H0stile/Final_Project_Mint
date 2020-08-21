@@ -66,4 +66,14 @@ class User extends Authenticatable
     public function skills(){
         return $this->belongsToMany('App\Skill', 'skills_intermediate');
     }
+
+    // Rating Part
+    public function sendRatings()
+    {
+        return $this->hasMany('App\Rating', 'writer_id');
+    }
+    public function receiveRatings()
+    {
+        return $this->hasMany('App\Rating', 'target_id');
+    }
 }

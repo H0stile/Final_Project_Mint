@@ -6,14 +6,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Rating extends Model
 {
-    //
     public function writer() 
     {
-        return $this->belongsTo(User::class, 'writer_id');
+        return $this->belongsTo('App\Rating', 'writer_id');
     }
 
-public function target()
+    public function target()
     {
-        return $this->belongsTo(User::class, 'target_id');
+        return $this->belongsTo('App\Rating', 'target_id');
     }
 }
