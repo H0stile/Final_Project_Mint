@@ -8,11 +8,10 @@ class Message extends Model
 {
     public function writer()
     {
-        return $this->belongsTo(User::class, 'writer_id');
+        return $this->belongsTo('App\User', 'writer_id');
     }
-
-    public function target()
+    public function receiver()
     {
-        return $this->belongsTo(User::class, 'target_id');
+        return $this->belongsTo('App\User', 'target_id');
     }
 }
