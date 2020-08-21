@@ -69,7 +69,7 @@ class SkillSeeder extends Seeder
             'skill' => "Assembly"
             ],
             [
-                'skill' => "VBA"
+            'skill' => "VBA"
             ],
             [
             'skill' => "Visual Basic .NET"
