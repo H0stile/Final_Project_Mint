@@ -58,7 +58,12 @@ class User extends Authenticatable
     }
 
     // Language Part
-    public function language(){
-        return $this->hasMany('App\language', 'id');
+    public function languages(){
+        return $this->belongsToMany('App\Language', 'languages_intermediate');
+    }
+
+    // Skill Part
+    public function skills(){
+        return $this->belongsToMany('App\Skill', 'skills_intermediate');
     }
 }

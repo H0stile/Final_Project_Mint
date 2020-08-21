@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Message;
 use App\Collaboration;
+use App\Language;
 
 class TestController extends Controller
 {
@@ -16,7 +17,7 @@ class TestController extends Controller
      */
     public function index()
     {
-        // $user = User::find(1);
+        $user = User::find(1);
         $language = Language::find(1);
         // $message = Message::find(1);
         dd($language->userLanguage);
