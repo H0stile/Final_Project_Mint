@@ -14,8 +14,16 @@ class CreateRatingsTable extends Migration
     public function up()
     {
         Schema::create('ratings', function (Blueprint $table) {
+            //$table->engine = 'InnoDB';
+
             $table->id();
-            $table->timestamps();
+            $table->unsignedBigInteger('writer_id');
+            $table->unsignedBigInteger('target_id');
+            $table->foreign('writer_id')->references('id')->on('users');
+            $table->foreign('target_id')->references('id')->on('users');
+            $table->integer('score');
+            $table->string('comment',500);
+            //$table->timestamps();
         });
     }
 
