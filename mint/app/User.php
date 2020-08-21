@@ -39,11 +39,19 @@ class User extends Authenticatable
 
     public function mentors()
     {
-        return $this->belongsToMany('App\User', 'collaboration', 'mentor_id');
+        return $this->belongsToMany('App\User', 'collaboration', 'mentee_id', 'mentor_id');
     }
     public function mentees()
     {
-        return $this->belongsToMany('App\User', 'collaboration', 'mentee_id');
+        return $this->belongsToMany('App\User', 'collaboration', 'mentor_id', 'mentee_id');
     }
 
+    public function sendMessages()
+    {
+        return $this->hasMany('App\Message', 'writer_id');
+    }
+    public function receiveMessages()
+    {
+        return $this->hasMany('App\Message', 'target_id');
+    }
 }

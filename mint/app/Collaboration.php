@@ -8,7 +8,7 @@ class Collaboration extends Model
 {
     public function mentor()
     {
-        return $this->belongsTo(User::class, 'mentor_id');
+        return $this->belongsTo(User::class, 'mentor_id', 'mentor_id');
     }
     public function mentee()
     {

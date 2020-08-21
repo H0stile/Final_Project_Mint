@@ -13,8 +13,8 @@ class UserSeeder extends Seeder
     public function run()
     {
         $faker = Faker\Factory::create();
-        $type = array('mentor','mentee');
-        $mentorStatus = array('pending','validate');
+        $type = ['mentor','mentee'];
+        $mentorStatus = ['pending','validate'];
         $availability = array(true, false);
 
         $count = 20;
@@ -23,11 +23,11 @@ class UserSeeder extends Seeder
             DB::table('users')->insert([
                 'email' => $faker->freeEmail,
                 'password' => Hash::make('password'),
-                'firstname' => firstName($gender = null|'male'|'female'),
+                'firstname' => $faker->firstName($gender = 'male'|'female'),
                 'lastname' => $faker->lastName,
-                'type' => array_rand($type),
+                'type' => $type[rand(0,1)],
                 'linkedin' => 'https://www.linkedin.com/in/john-doe',
-                'mentor_status' => rand_array($mentorStatus),
+                'mentor_status' => $mentorStatus[rand(0,1)],
                 'profile_image' => 'defaultProfileLogo.png',
                 'pitch' => $faker->paragraph($nbSentences = 3, $variableNbSentences = true),
                 'availability' => array_rand($availability),
