@@ -16,10 +16,10 @@ class TestController extends Controller
      */
     public function index()
     {
-        $user = User::find(2);
+        $user = User::find(6);
         $message = Message::find(1);
         // dd($message->writer);
-        dd($user->sendMessages);
+        dd($user);
         return view('test', ['users' => $users]);
     }
 
