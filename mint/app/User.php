@@ -16,7 +16,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'email', 'password', 'firstname', 'lastname', 'type', 'linkedin', 'mentor_status', 'profile_image', 'pitch', 'availability'
     ];
 
     /**
@@ -36,4 +36,22 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function mentors()
+    {
+        return $this->belongsToMany('App\User', 'collaboration', 'mentee_id', 'mentor_id');
+    }
+    public function mentees()
+    {
+        return $this->belongsToMany('App\User', 'collaboration', 'mentor_id', 'mentee_id');
+    }
+
+    public function sendMessages()
+    {
+        return $this->hasMany('App\Message', 'writer_id');
+    }
+    public function receiveMessages()
+    {
+        return $this->hasMany('App\Message', 'target_id');
+    }
 }
