@@ -34,8 +34,8 @@ class RatingSeeder extends Seeder
             DB::table('ratings')->insert([
 
                 'writer_id' => $rating['writer_id'],
-                'target_id' => $rating['price'],
-                'score' => $rating['author_id'],
+                'target_id' => $rating['target_id'],
+                'score' => $rating['score'],
                 'comment' => $rating['comment'],
             
                 ]);    
