@@ -15,13 +15,13 @@ class CreateLanguagesIntermediateTable extends Migration
     {
         Schema::create('languages_intermediate', function (Blueprint $table) {
 
-            $table->unsignedBigInteger('users_id');
+            $table->unsignedBigInteger('user_id');
 
-            $table->foreign('users_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('id')->on('users');
 
-            $table->unsignedBigInteger('languages_id');
+            $table->unsignedBigInteger('language_id');
 
-            $table->foreign('languages_id')->references('id')->on('languages');
+            $table->foreign('language_id')->references('id')->on('languages');
         });
     }
 
