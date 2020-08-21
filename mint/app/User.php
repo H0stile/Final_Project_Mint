@@ -37,6 +37,7 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
+    // Collaboration part
     public function mentors()
     {
         return $this->belongsToMany('App\User', 'collaboration', 'mentee_id', 'mentor_id');
@@ -45,7 +46,8 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\User', 'collaboration', 'mentor_id', 'mentee_id');
     }
-
+    
+    // Message part
     public function sendMessages()
     {
         return $this->hasMany('App\Message', 'writer_id');
@@ -53,5 +55,10 @@ class User extends Authenticatable
     public function receiveMessages()
     {
         return $this->hasMany('App\Message', 'target_id');
+    }
+
+    // Language Part
+    public function language(){
+        return $this->hasMany('App\language', 'id');
     }
 }
