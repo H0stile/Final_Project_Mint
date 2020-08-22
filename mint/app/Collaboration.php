@@ -1,9 +1,5 @@
 <?php
-<<<<<<< Updated upstream
 // mwe don't need this file for the moment
-=======
-// w
->>>>>>> Stashed changes
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
