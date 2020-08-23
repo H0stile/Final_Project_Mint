@@ -16,13 +16,13 @@ class AdminController extends Controller
     {
 
 
-        $admin = User::where('type','admin')->get();
+        $admin = User::where('type','=','admin')->first();
         
         $matchMentor = ['type' => 'mentor', 'mentor_status' => 'pending'];
-        $pendingMentor = User::where($matchMentor)->get();
+        $pendingMentor = User::where($matchMentor)->paginate(1);
+        //dd($pendingMentor);
         
-        
-        return view('admin', compact('pendingMentor'));
+        return view('admin', compact('pendingMentor', 'admin'));
     }
 
     /**
