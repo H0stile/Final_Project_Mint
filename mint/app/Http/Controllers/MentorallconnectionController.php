@@ -82,6 +82,12 @@ class MentorallconnectionController extends Controller
      */
     public function destroy($id)
     {
-        return response()->json(['msg'=>"Connection removed for $id"]);
+        $deleteConn = Collaboration::find($id);
+        $deleteConn->delete();
+        if ($deleteConn) {
+            return response()->json(['msg'=>"Connection removed for $id"]);
+        }else{
+            return response()->json(['msg'=>'Something wrong happened, collaboration not deleted']);
+        }
     }
 }
