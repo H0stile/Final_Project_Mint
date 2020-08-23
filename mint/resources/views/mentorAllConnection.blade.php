@@ -20,42 +20,44 @@
     <!-- IMPORT JQUERY -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
     <!-- MY SCRIPT -->
+    <!-- TODO ASK Simon for this -->
+    <!-- <script src="{{url('/resources/js/mentorAllConnection.js')}}"></script> -->
     <script>
-        $(document).ready(function(){
+        $(document).ready(function () {
             //? Button to go to profile
-            $("button[name='getIdMentee']").click(function(event){
+            $("button[name='getIdMentee']").click(function (event) {
                 event.preventDefault();
-                routeUrl = "{{url('')}}/profile/"+$(this).val();
+                routeUrl = "{{url('')}}/profile/" + $(this).val();
                 $.ajaxSetup({
-                    headers:{
-                        'X-CSRF-TOKEN' : $('meta[name="_token"]').attr('content')
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
                     }
                 });
                 $.ajax({
                     url: routeUrl,
                     method: 'GET',
                     dataType: 'json',
-                    success: function(result){
+                    success: function (result) {
 
                     }
                 })
             });
             //? Button to break the connection
             //TODO Add confirm function jquery and if yes run the AJAX call
-            
-            $("button[name='getIdCollab']").click(function(event){
+
+            $("button[name='getIdCollab']").click(function (event) {
                 event.preventDefault();
-                routeUrl = "{{url('')}}/disconnect/"+$(this).val();
+                routeUrl = "{{url('')}}/disconnect/" + $(this).val();
                 $.ajaxSetup({
-                    headers:{
-                        'X-CSRF-TOKEN' : $('meta[name="_token"]').attr('content')
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
                     }
                 });
                 $.ajax({
                     url: routeUrl,
                     method: 'GET',
                     dataType: 'json',
-                    success: function(result){
+                    success: function (result) {
                         location.reload();
                     }
                 })
