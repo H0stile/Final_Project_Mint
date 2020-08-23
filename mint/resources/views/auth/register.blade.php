@@ -96,7 +96,7 @@
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <i class="material-icons prefix">code</i>
-                                        <input type="text" id="autocomplete-input" class="autocomplete">
+                                        <input type="text" id="autocomplete-input" class="autocomplete" required>
                                         <label for="autocomplete-input">Your skills</label>
                                     </div>
                                 </div>
@@ -108,10 +108,19 @@
                         <hr>
                         <!-- TO DO: Check if we need to implement JS part (check in Materialize doc. form text area part) -->
                         <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">http</i>
+                                <input id="linkedin" type="text" name="linkedin" value="{{ old('linkedin') }}" class="{{ $errors->has('linkedin') ? 'invalid' : '' }}" required autofocus>
+                                <label for="email">{{ __('Linkedin') }}</label>
+                                <span class="red-text">{{ $errors->has('linkedin') ? $errors->first('linkedin'): '' }}</span>
+                            </div>
+                        </div>
+                        <div class="row">
                             <form class="col s12">
                                 <div class="row">
                                     <div class="input-field col s12">
-                                        <textarea id="pitch" class="materialize-textarea"></textarea>
+                                        <i class="material-icons prefix">comment</i>
+                                        <textarea id="pitch" class="materialize-textarea" required></textarea>
                                         <label for="pitch">Why do you want to become a mintor ?</label>
                                     </div>
                                 </div>
