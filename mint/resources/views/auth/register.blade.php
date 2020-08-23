@@ -9,7 +9,7 @@
                 <form method="POST" action="{{ route('register') }}">
                     <div class="card-content">
                         {{ csrf_field() }}
-                        <span class="card-title">{{ __('Register') }}</span>
+                        <span class="card-title">{{ __('Personal informations') }}</span>
 
                         <hr>
 
@@ -90,6 +90,33 @@
                         <span class="card-title">{{ __('Skills') }}</span>
 
                         <hr>
+                        <!-- TO DO: Check  JS part  -->
+                        <div class="row">
+                            <div class="col s12">
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <i class="material-icons prefix">code</i>
+                                        <input type="text" id="autocomplete-input" class="autocomplete">
+                                        <label for="autocomplete-input">Your skills</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <span class="card-title">{{ __('Verification Part') }}</span>
+
+                        <hr>
+                        <!-- TO DO: Check if we need to implement JS part (check in Materialize doc. form text area part) -->
+                        <div class="row">
+                            <form class="col s12">
+                                <div class="row">
+                                    <div class="input-field col s12">
+                                        <textarea id="pitch" class="materialize-textarea"></textarea>
+                                        <label for="pitch">Why do you want to become a mintor ?</label>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
 
                         <p>
                             <button class="btn waves-effect waves-light" type="submit" name="action">{{ __('Register') }}
