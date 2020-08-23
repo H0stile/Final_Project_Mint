@@ -13,9 +13,9 @@ class MentorallconnectionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        $menteeRequests = Collaboration::where('status_rqs', 'connected')->get();
+        $menteeRequests = Collaboration::where('status_rqs', 'connected')->where('mentor_id', $id)->get();
         return view('mentorAllConnection', ['menteeRequests' => $menteeRequests]);
     }
 

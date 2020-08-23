@@ -22,5 +22,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/test', 'TestController@index');
 
-Route::get('/mentorac', 'MentorallconnectionController@index');
+Route::get('/mentorac/{id}', 'MentorallconnectionController@index');
 Route::get('/disconnect/{id}', 'MentorallconnectionController@destroy');

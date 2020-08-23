@@ -41,6 +41,8 @@
                 })
             });
             //? Button to break the connection
+            //TODO Add confirm function jquery and if yes run the AJAX call
+            
             $("button[name='getIdCollab']").click(function(event){
                 event.preventDefault();
                 routeUrl = "{{url('')}}/disconnect/"+$(this).val();
