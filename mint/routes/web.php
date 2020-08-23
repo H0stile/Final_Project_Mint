@@ -28,3 +28,5 @@ Route::get('/test', 'TestController@index');
 
 //Auth::routes(['verify' => true]);
 //Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+Route::get('/mentorac/{id}', 'MentorallconnectionController@index');
+Route::get('/disconnect/{id}', 'MentorallconnectionController@destroy');
