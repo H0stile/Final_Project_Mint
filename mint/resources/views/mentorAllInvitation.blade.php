@@ -13,7 +13,7 @@
                 <p>{{$menteeRequest->mentee->firstname}} {{$menteeRequest->mentee->lastname}}</p>
                 <button type="submit" name="getIdMentee" value="{{$menteeRequest->mentee->id}}">View profile</button>
                 <span>Message</span>
-                <textarea name="menteePitch" id="" cols="30" rows="5" readonly="true" style="resize:none"></textarea>
+                <textarea name="menteePitch" id="" cols="30" rows="5" readonly="true" style="resize:none">{{$menteeRequest->request_msg}}</textarea>
                 <button>Accept</button>
                 <button>Decline</button>
             </div>
