@@ -22,9 +22,9 @@ class CreateUsersTable extends Migration
             $table->string('lastname');
             $table->enum('type', ['mentor','mentee','admin']);
             $table->string('linkedin')->nullable();
-            $table->enum('mentor_status', ['pending','validate'])->nullable();
+            $table->enum('mentor_status', ['pending','validate']);
             $table->string('profile_image')->nullable();
-            $table->string('pitch')->nullable();
+            $table->string('pitch');
             $table->boolean('availability')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
