@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use App\User;
 
@@ -15,14 +16,14 @@ class AdminController extends Controller
     public function index()
     {
 
-
+       
         $admin = User::where('type','=','admin')->first();
-        
         $matchMentor = ['type' => 'mentor', 'mentor_status' => 'pending'];
-        $pendingMentor = User::where($matchMentor)->paginate(1);
+        $pendingMentors = User::where($matchMentor)->paginate(3);
         //dd($pendingMentor);
         
-        return view('admin', compact('pendingMentor', 'admin'));
+        
+        return view('admin', compact('pendingMentors', 'admin'));
     }
 
     /**
