@@ -78,4 +78,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany('App\Rating', 'target_id');
     }
+
+    public function getFullName()
+    {
+        return "{$this->firstname} {$this->lastname}";
+    }
 }
