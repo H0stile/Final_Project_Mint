@@ -9,16 +9,17 @@
 
 <body>
     <h1>{{$profile->getFullName()}}</h1>
+    <hr>
     <h3>Pitch:</h3>
     <p>{{$profile->pitch}}</p>
+    <hr>
     <h3>Review:</h3>
     @foreach($profile->receiveRatings as $rating)
-    <hr>
     <p>{{$rating->writer->getFullName()}}</p>
     <p>{{$rating->score}}</p>
     <p>{{$rating->comment}}</p>
     @endforeach
-
+    <hr>
 </body>
 
 </html>
