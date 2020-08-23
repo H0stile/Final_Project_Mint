@@ -15,7 +15,7 @@ class MentorallconnectionController extends Controller
      */
     public function index()
     {
-        $menteeRequests = Collaboration::all();
+        $menteeRequests = Collaboration::where('status_rqs', 'connected')->get();
         return view('mentorAllConnection', ['menteeRequests' => $menteeRequests]);
     }
 
