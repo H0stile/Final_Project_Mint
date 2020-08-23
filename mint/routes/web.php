@@ -31,3 +31,5 @@ Route::get('/test', 'TestController@index');
 //Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 Route::get('/mentorac/{id}', 'MentorallconnectionController@index');
 Route::get('/disconnect/{id}', 'MentorallconnectionController@destroy');
+
+Route::get('/mentee/{id}', 'MenteeController@profile');
