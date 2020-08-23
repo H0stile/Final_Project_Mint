@@ -17,7 +17,15 @@
                             <div class="input-field col s12">
                                 <i class="material-icons prefix">person</i>
                                 <input id="name" type="text" name="name" value="{{ old('name') }}" class="{{ $errors->has('name') ? 'invalid' : '' }}" required autofocus>
-                                <label for="email">{{ __('Name') }}</label>
+                                <label for="email">{{ __('First Name') }}</label>
+                                <span class="red-text">{{ $errors->has('name') ? $errors->first('name'): '' }}</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <i class="material-icons prefix">person</i>
+                                <input id="name" type="text" name="name" value="{{ old('name') }}" class="{{ $errors->has('name') ? 'invalid' : '' }}" required autofocus>
+                                <label for="email">{{ __('Last Name') }}</label>
                                 <span class="red-text">{{ $errors->has('name') ? $errors->first('name'): '' }}</span>
                             </div>
                         </div>
@@ -47,6 +55,41 @@
                                 <label for="password-confirm">{{ __('Confirm Password') }}</label>
                             </div>
                         </div>
+                        <span class="card-title">{{ __('Languages') }}</span>
+
+                        <hr>
+
+                        <div class="row">
+                            <div class="input-field col s12">
+                                <p>
+                                    <label>
+                                        <input type="checkbox" />
+                                        <span>French</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <input type="checkbox" />
+                                        <span>Luxembourgish</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <input type="checkbox" />
+                                        <span>German</span>
+                                    </label>
+                                </p>
+                                <p>
+                                    <label>
+                                        <input type="checkbox" />
+                                        <span>English</span>
+                                    </label>
+                                </p>
+                            </div>
+                        </div>
+                        <span class="card-title">{{ __('Skills') }}</span>
+
+                        <hr>
 
                         <p>
                             <button class="btn waves-effect waves-light" type="submit" name="action">{{ __('Register') }}
