@@ -6,9 +6,6 @@
     <title>Mentor all connection page</title>
 </head>
 <body>
-    <div>
-        <p id="msgSection"></p>
-    </div>
     <section class="askedCard">
         @foreach($menteeRequests as $menteeRequest)
             <div>
@@ -57,7 +54,7 @@
                     method: 'GET',
                     dataType: 'json',
                     success: function(result){
-                        $('#msgSection').text(result.msg);
+                        location.reload();
                     }
                 })
             });
