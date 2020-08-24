@@ -15,7 +15,7 @@
 
                 <span class="card-title">Dashboard</span>
 
-                You are logged in!
+                You are logged in {{$me->firstname}} {{$me->lastname}} and you're an {{$me->type}}
             </div>
         </div>
     </div>
