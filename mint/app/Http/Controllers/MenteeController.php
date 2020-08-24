@@ -7,9 +7,9 @@ use App\User;
 
 class MenteeController extends Controller
 {
-    public function profile()
+    public function profile($id)
     {
-        $profile = User::find(1);
+        $profile = User::find($id);
         //dd($user);
         return view(
             'mentee/profile',

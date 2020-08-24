@@ -20,6 +20,23 @@
     <p>{{$rating->comment}}</p>
     @endforeach
     <hr>
+
+    <form id="form" action="/mentee/{id}">
+        @csrf
+        <label id="label" for="">Write a message</label>
+        <br>
+        <textarea name="" id="textArea" placeholder="Add your text here"></textarea>
+        <br>
+        <div id="button">
+            <input id="submitButton" type="submit" value="Submit">
+        </div>
+    </form>
+
+
+
+    <a href="#">Look for a mentor</a>
+    <br>
+    <a href="#">Modify profile</a>
 </body>
 
 </html>
