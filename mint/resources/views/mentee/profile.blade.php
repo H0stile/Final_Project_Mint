@@ -8,6 +8,8 @@
 </head>
 
 <body>
+    <img src="{{asset('img/')}}/{{$profile->profile_image}}" style="width:60px">
+
     <h1>{{$profile->getFullName()}}</h1>
     <hr>
     <h3>Pitch:</h3>
@@ -37,6 +39,8 @@
     <a href="#">Look for a mentor</a>
     <br>
     <a href="#">Modify profile</a>
+
+
 </body>
 
 </html>
