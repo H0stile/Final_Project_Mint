@@ -32,4 +32,5 @@ Route::get('/mentorac/{id}', 'MentorallconnectionController@index');
 Route::get('/disconnect/{id}', 'MentorallconnectionController@destroy');
 
 Route::get('/admin', 'AdminController@index');
-Route::get('/decline/{id}', 'AdminController@destroy');
+//Route::delete  ('/decline/{id}', 'AdminController@destroy');
+Route::delete('/admin/decline/{id}', 'AdminController@destroy');

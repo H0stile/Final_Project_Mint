@@ -19,9 +19,8 @@ class AdminController extends Controller
        
         $admin = User::where('type','=','admin')->first();
         $matchMentor = ['type' => 'mentor', 'mentor_status' => 'pending'];
-        $pendingMentors = User::where($matchMentor)->paginate(3);
+        $pendingMentors = User::where($matchMentor)->paginate(2);
         //dd($pendingMentor);
-        
         
         return view('admin', compact('pendingMentors', 'admin'));
     }
@@ -87,9 +86,16 @@ class AdminController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        $deleteConn = User::find($id);
-        $deleteConn->delete();
+        $getIdMentor = User::find($request->id);
+        $getIdMentor->delete();
+
+        //User::destroy($request->id);
+
+        return redirect('admin')/*->with([
+            'status' => 'SUCCESS: Reported photo deleted successfully.',
+            'class' => 'alert alert-success alert-dismissible fade show',
+        ])*/;
     }
 }
