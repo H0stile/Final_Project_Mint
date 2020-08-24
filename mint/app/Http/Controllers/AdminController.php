@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\User;
 
 class AdminController extends Controller
@@ -17,7 +18,8 @@ class AdminController extends Controller
     {
 
        
-        $admin = User::where('type','=','admin')->first();
+        //$admin = User::where('type','=','admin')->first();
+        $admin = Auth::user();
         $matchMentor = ['type' => 'mentor', 'mentor_status' => 'pending'];
         $pendingMentors = User::where($matchMentor)->paginate(2);
 
