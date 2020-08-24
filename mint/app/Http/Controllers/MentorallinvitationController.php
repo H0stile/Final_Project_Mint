@@ -59,11 +59,7 @@ class MentorallinvitationController extends Controller
      */
     public function edit($id)
     {
-        $acceptCollab = Collaboration::find($id);
-        $acceptCollab->status_rqs = "connected";
-        // return response()->json($acceptCollab);
-        $acceptCollab->save();
-        return response()->json(['msg'=>"Invitation accepted for $id"]);
+
     }
 
     /**
@@ -75,7 +71,11 @@ class MentorallinvitationController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        $acceptCollab = Collaboration::find($id);
+        $acceptCollab->status_rqs = "connected";
+        // return response()->json($acceptCollab);
+        $acceptCollab->save();
+        return response()->json(['msg'=>"Invitation accepted for $id"]);
     }
 
     /**

@@ -33,4 +33,4 @@ Route::get('/mentoracdisconnect/{id}', 'MentorallconnectionController@destroy');
 
 Route::get('/mentorai/{id}', 'MentorallinvitationController@index');
 Route::get('/mentoraidecline/{id}', 'MentorallinvitationController@destroy');
-Route::get('/mentoraiaccept/{id}', 'MentorallinvitationController@edit');
+Route::get('/mentoraiaccept/{id}', 'MentorallinvitationController@update');
