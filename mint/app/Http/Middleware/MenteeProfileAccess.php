@@ -6,8 +6,6 @@ use Closure;
 use Illuminate\Support\Facades\Auth;
 use GuzzleHttp\Psr7\Response;
 
-use function PHPSTORM_META\type;
-
 /**
  * Check if loggen in user has access to mentee profile.
  */
