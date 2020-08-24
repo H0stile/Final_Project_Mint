@@ -38,7 +38,7 @@
         //? Button to go to profile
         $("button[name='getIdMentee']").click(function (event) {
             event.preventDefault();
-            routeUrl = "{{url('')}}/profile/" + $(this).val();
+            routeUrl = "{{url('')}}/mentee/" + $(this).val();
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
