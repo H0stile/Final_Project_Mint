@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -35,3 +36,6 @@ Route::get('/disconnect/{id}', 'MentorallconnectionController@destroy');
 Route::get('/admin', 'AdminController@index');
 Route::put('/admin/update/{id}', 'AdminController@update');
 Route::delete('/admin/decline/{id}', 'AdminController@destroy');
+Route::get('/mentee/{id}', 'MenteeController@profile');
+
+//Route::get('/mentee/{id}', 'MenteeController@list');
