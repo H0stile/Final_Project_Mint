@@ -19,6 +19,7 @@ class User extends Authenticatable
         'email', 'password', 'firstname', 'lastname', 'type', 'linkedin', 'mentor_status', 'profile_image', 'pitch', 'availability'
     ];
 
+    
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -36,6 +37,7 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
 
     // Collaboration part
     public function mentors()
