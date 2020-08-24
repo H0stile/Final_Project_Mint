@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Collaboration;
 use App\User;
 
@@ -15,6 +16,7 @@ class MentorallinvitationController extends Controller
      */
     public function index($id)
     {
+        // $id = Auth::user()->id; //TODO solve this creating a user for me as mentor and try with login
         $menteeRequests = Collaboration::where('status_rqs', 'pending')->where('mentor_id', $id)->get();
         return view('mentorAllInvitation', ['menteeRequests' => $menteeRequests]);
     }
