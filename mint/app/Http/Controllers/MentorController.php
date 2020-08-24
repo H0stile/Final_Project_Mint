@@ -102,7 +102,7 @@ class MentorController extends Controller
             'score' => $request->score,
             'comment' => $request->comment, 
         ]);
-        return redirect("/mentorprofile/$request->id");
+      //  return redirect("/mentorprofile/$request->id");
     } 
 
     /**

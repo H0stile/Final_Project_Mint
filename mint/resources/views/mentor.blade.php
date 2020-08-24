@@ -121,6 +121,7 @@ Add rules for displaying the different functions depending of the viewer
             error: function(err){
 				// If ajax errors happens
 			}
+            
             e.preventDefault();
         });
 	});
