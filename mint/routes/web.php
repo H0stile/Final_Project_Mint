@@ -28,9 +28,9 @@ Route::get('/test', 'TestController@index');
 
 //Auth::routes(['verify' => true]);
 //Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
-Route::get('/mentorac/{id}', 'MentorallconnectionController@index'); //TODO remove {id} and use only login system
+Route::get('/mentorac/', 'MentorallconnectionController@index');
 Route::get('/mentoracdisconnect/{id}', 'MentorallconnectionController@destroy');
 
-Route::get('/mentorai/', 'MentorallinvitationController@index'); //TODO remove {id} and use only login system
+Route::get('/mentorai/', 'MentorallinvitationController@index');
 Route::get('/mentoraidecline/{id}', 'MentorallinvitationController@destroy');
 Route::get('/mentoraiaccept/{id}', 'MentorallinvitationController@update');

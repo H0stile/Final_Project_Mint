@@ -34,8 +34,6 @@
 <!-- <script src="{{url('/resources/js/mentorAllConnection.js')}}"></script> -->
 <script>
     $(document).ready(function () {
-        //? Call Ajax at loading ?
-
 
         //? Button to go to profile
         $("button[name='getIdMentee']").click(function (event) {
