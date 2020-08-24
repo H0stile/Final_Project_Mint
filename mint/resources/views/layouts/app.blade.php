@@ -35,7 +35,7 @@
                 </ul>
                 @else
                 <ul class="right hide-on-med-and-down">
-                    <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">{{ Auth::user()->name }}<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">{{ Auth::user()->firstname }} {{ Auth::user()->lastname }}<i class="material-icons right">arrow_drop_down</i></a></li>
                 </ul>
                 @endguest
             </div>
