@@ -31,6 +31,7 @@ Route::get('/test', 'TestController@index');
 Route::get('/mentorac/{id}', 'MentorallconnectionController@index');
 Route::get('/disconnect/{id}', 'MentorallconnectionController@destroy');
 
+// ! Admin
 Route::get('/admin', 'AdminController@index');
-//Route::delete  ('/decline/{id}', 'AdminController@destroy');
+Route::put('/admin/update/{id}', 'AdminController@update');
 Route::delete('/admin/decline/{id}', 'AdminController@destroy');

@@ -20,9 +20,10 @@ class AdminController extends Controller
         $admin = User::where('type','=','admin')->first();
         $matchMentor = ['type' => 'mentor', 'mentor_status' => 'pending'];
         $pendingMentors = User::where($matchMentor)->paginate(2);
-        //dd($pendingMentor);
-        
-        return view('admin', compact('pendingMentors', 'admin'));
+
+        $connectedUser = ['type' => 'mentee', 'mentor_status' => 'validate'];
+        $users = User::where($connectedUser)->get();
+        return view('admin', compact('pendingMentors', 'admin', 'users'));
     }
 
     /**
@@ -77,7 +78,12 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        User::where('id', $id)
+          ->update(['mentor_status' => 'pending']);
+          return redirect('/admin')->with([
+            'result' => 'SUCCESS: Update successfully.'
+            //'class' => 'alert alert-success alert-dismissible fade show',
+        ]);
     }
 
     /**
@@ -93,9 +99,6 @@ class AdminController extends Controller
 
         //User::destroy($request->id);
 
-        return redirect('admin')/*->with([
-            'status' => 'SUCCESS: Reported photo deleted successfully.',
-            'class' => 'alert alert-success alert-dismissible fade show',
-        ])*/;
+        return redirect('/admin');
     }
 }
