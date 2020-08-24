@@ -4,14 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\Auth;
+
 use Illuminate\Support\Facades\Http;
 
 class MenteeController extends Controller
 {
-    public function profile($id)
+    public function profile()
     {
-        $profile = User::find($id);
-        //dd($profile);
+        //$profile = User::find($id);
+        $profile = Auth::user();
+        // dd($user);
         return view(
             'mentee/profile',
             [

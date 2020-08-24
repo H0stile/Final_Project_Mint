@@ -9,7 +9,6 @@
 
 <body>
     <img src="{{asset('img/')}}/{{$profile->profile_image}}" style="width:60px">
-
     <h1>{{$profile->getFullName()}}</h1>
     <hr>
     <h3>Pitch:</h3>
@@ -23,7 +22,7 @@
     @endforeach
     <hr>
 
-    <form id="form" action="/mentee/{id}">
+    <form id="form" action="">
         @csrf
         <label id="label" for="">Write a message</label>
         <br>
@@ -34,13 +33,82 @@
         </div>
     </form>
 
+    <section class="comment">
+        <div class='cloneComment'>
+            <img class="userImage" src="https://randomuser.me/api/portraits/men/29.jpg" alt="" style="width:60px">
+            <p class="commentText">Awesome !</p>
+        </div>
+    </section>
 
-
+    <hr>
     <a href="#">Look for a mentor</a>
     <br>
     <a href="#">Modify profile</a>
 
+    <!-- admin part -->
+    <hr>
+    <a href="">Delete profile</a>
 
+    <!-- mentor part -->
+    <a href="">Accept invitation</a>
+    <a href="">Decline invitation</a>
+
+    <a href="">Disconnect</a>
+
+
+
+
+    <script>
+        const comments = [{
+                user: "mentor",
+                message: "Hello! My email address is asd@gmail.com"
+            },
+            {
+                user: "friend2",
+                message: "Amazing ! I can’t wait to work with you!"
+            },
+            {
+                user: "friend3",
+                message: "Wow! so Inspiring ! like my front end teacher !"
+            }
+        ]
+
+
+        //clone comments 
+
+        const commentList = document.querySelector('.comment');
+        const commentClone = document.querySelector('.cloneComment');
+
+        for (const comment of comments) {
+
+            let newComment = commentClone.cloneNode(true);
+
+            newComment.querySelector('.userImage').src = "https://randomuser.me/api/portraits/men/1.jpg"
+            newComment.querySelector('.commentText').textContent = comment.message;
+
+            commentList.append(newComment);
+        }
+        commentClone.remove();
+
+
+        //add my comment
+        const myComment = document.getElementById('form');
+        myComment.addEventListener('submit', addNewComment);
+
+
+        function addNewComment(event) {
+            event.preventDefault();
+            let newCom = document.querySelector('#textArea').value;
+            comments.push(newCom);
+
+            let writtenComment = commentClone.cloneNode(true);
+            writtenComment.querySelector('.commentText').textContent = newCom;
+            writtenComment.querySelector('.userImage').src = "{{asset('img/')}}/{{$profile->profile_image}}";
+            commentList.append(writtenComment);
+            //clean placeholder
+            document.getElementById('textArea').value = " ";
+        }
+    </script>
 </body>
 
 </html>

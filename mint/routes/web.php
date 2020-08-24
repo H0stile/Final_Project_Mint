@@ -32,5 +32,5 @@ Route::get('/test', 'TestController@index');
 Route::get('/mentorac/{id}', 'MentorallconnectionController@index');
 Route::get('/disconnect/{id}', 'MentorallconnectionController@destroy');
 
-Route::get('/mentee/{id}', 'MenteeController@profile');
+Route::get('/mentee', 'MenteeController@profile');
 //Route::get('/mentee/{id}', 'MenteeController@list');
