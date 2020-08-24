@@ -31,6 +31,6 @@ Route::get('/test', 'TestController@index');
 Route::get('/mentorac/{id}', 'MentorallconnectionController@index'); //TODO remove {id} and use only login system
 Route::get('/mentoracdisconnect/{id}', 'MentorallconnectionController@destroy');
 
-Route::get('/mentorai/{id}', 'MentorallinvitationController@index'); //TODO remove {id} and use only login system
+Route::get('/mentorai/', 'MentorallinvitationController@index'); //TODO remove {id} and use only login system
 Route::get('/mentoraidecline/{id}', 'MentorallinvitationController@destroy');
 Route::get('/mentoraiaccept/{id}', 'MentorallinvitationController@update');

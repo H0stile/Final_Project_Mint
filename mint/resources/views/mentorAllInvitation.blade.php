@@ -9,8 +9,8 @@
             </div>
         </div>
         @endif
-        <section class="invitCard">
         @foreach($menteeRequests as $menteeRequest)
+        <section class="invitCard">
             <div>
                 <img src="{{asset('img/')}}/{{$menteeRequest->mentee->profile_image}}" style="width:60px">
                 <p>{{$menteeRequest->mentee->firstname}} {{$menteeRequest->mentee->lastname}}</p>
@@ -21,8 +21,8 @@
                 <button type="submit" name="getIdCollabDec" value="{{$menteeRequest->id}}">Decline</button>
             </div>
             <hr>
+        </section>
         @endforeach
-    </section>
     </div>
 </div>
 @endsection
@@ -34,7 +34,7 @@
 <!-- <script src="{{url('/resources/js/mentorAllConnection.js')}}"></script> -->
 <script>
     $(document).ready(function () {
-        //? Call Ajax at loading
+        //? Call Ajax at loading ?
 
 
         //? Button to go to profile
