@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Collaboration extends Model
 {
     public $table = 'collaboration';
+    public $timestamps = false;
     protected $fillable = ['mentor_id','mentee_id','request_msg','status_rqs'];
 
     public function mentor()

@@ -63,6 +63,7 @@ class MentorallinvitationController extends Controller
         $acceptCollab->status_rqs = "connected";
         // return response()->json($acceptCollab);
         $acceptCollab->save();
+        return response()->json(['msg'=>"Invitation accepted for $id"]);
     }
 
     /**
