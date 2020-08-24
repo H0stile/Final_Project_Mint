@@ -10,6 +10,11 @@
 <body>
     <img src="{{asset('img/')}}/{{$profile->profile_image}}" style="width:60px">
     <h1>{{$profile->getFullName()}}</h1>
+    <h3>You are a {{$profile->type}}</h3>
+    @if(Auth::check())
+    <p>Hello {{Auth::user()->getFullName()}}</p>
+    @endif
+
     <hr>
     <h3>Pitch:</h3>
     <p>{{$profile->pitch}}</p>
@@ -47,13 +52,18 @@
 
     <!-- admin part -->
     <hr>
+    @if(Auth::user()->type == 'mentor')
     <a href="">Delete profile</a>
+    @endif
+
 
     <!-- mentor part -->
+    @if(Auth::user()->type == 'mentor')
     <a href="">Accept invitation</a>
     <a href="">Decline invitation</a>
 
     <a href="">Disconnect</a>
+    @endif
 
 
 
