@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Collaboration;
 use App\User;
 
-class MentorallconnectionController extends Controller
+class MentorallinvitationController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -18,8 +18,8 @@ class MentorallconnectionController extends Controller
     {
         if(Auth::check() && Auth::user()->type == "mentor"){
             $id = Auth::user()->id;
-            $menteeRequests = Collaboration::where('status_rqs', 'connected')->where('mentor_id', $id)->get();
-            return view('mentorAllConnection', ['menteeRequests' => $menteeRequests]);
+            $menteeRequests = Collaboration::where('status_rqs', 'pending')->where('mentor_id', $id)->get();
+            return view('mentorAllInvitation', ['menteeRequests' => $menteeRequests]);
         }else{
             return redirect('/');
         }
@@ -65,7 +65,7 @@ class MentorallconnectionController extends Controller
      */
     public function edit($id)
     {
-        //
+
     }
 
     /**
@@ -76,8 +76,16 @@ class MentorallconnectionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {   
-        
+    {
+        if(Auth::check() && Auth::user()->type == "mentor"){
+            $acceptCollab = Collaboration::find($id);
+            $acceptCollab->status_rqs = "connected";
+            // return response()->json($acceptCollab);
+            $acceptCollab->save();
+            return response()->json(['msg'=>"Invitation accepted for $id"]);
+        }else{
+            return redirect('/');
+        }
     }
 
     /**
@@ -89,12 +97,12 @@ class MentorallconnectionController extends Controller
     public function destroy($id)
     {
         if(Auth::check() && Auth::user()->type == "mentor"){
-            $deleteConn = Collaboration::find($id);
-            $deleteConn->delete();
-            if ($deleteConn) {
-                return response()->json(['msg'=>"Connection removed for $id"]);
+            $declineCollab = Collaboration::find($id);
+            $declineCollab->delete();
+            if ($declineCollab) {
+                return response()->json(['msg'=>"Invitation decline for $id"]);
             }else{
-                return response()->json(['msg'=>'Something wrong happened, collaboration not deleted']);
+                return response()->json(['msg'=>'Something wrong happened, Invitation decline not worked']);
             }
         }else{
             return redirect('/');
