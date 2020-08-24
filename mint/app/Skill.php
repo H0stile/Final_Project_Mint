@@ -11,9 +11,9 @@ class Skill extends Model
         return $this->belongsToMany('App\User', 'skills_intermediate');
     }
 
-    //* Test for the skills retrieving Ajax call
+    /* Test for the skills retrieving Ajax call
     public function allSkills()
     {
         return $this->belongsToMany('App\User', 'skills_intermediate');
-    }
+    }*/
 }

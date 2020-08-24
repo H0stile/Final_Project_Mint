@@ -80,4 +80,9 @@ class RegisterController extends Controller
                 'mentor_status' => 'pending',
             ]);
     }
+
+
+    public function index()
+    {
+    }
 }

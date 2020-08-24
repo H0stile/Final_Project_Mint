@@ -188,10 +188,14 @@
                 url: 'RegisterController.php',
                 data: $("#registerSubmit").serialize(),
                 success: function() {
-                    //success message mybe...
+                    alert("Your registration is pending, wait for admin to validate you !");
                 }
             });
-        } else {}
+        } else if (atLeastOneIsChecked) {
+            alert("Enter a valid linkedin URL !");
+        } else {
+            alert("Check at least one language !");
+        }
     });
 </script>
 @endsection
