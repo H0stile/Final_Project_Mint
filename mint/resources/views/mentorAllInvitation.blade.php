@@ -14,8 +14,8 @@
                 <button type="submit" name="getIdMentee" value="{{$menteeRequest->mentee->id}}">View profile</button>
                 <span>Message</span>
                 <textarea name="menteePitch" id="" cols="30" rows="5" readonly="true" style="resize:none">{{$menteeRequest->request_msg}}</textarea>
-                <button>Accept</button>
-                <button>Decline</button>
+                <button type="submit" name="getIdCollabAcc" value="{{$menteeRequest->id}}">Accept</button>
+                <button type="submit" name="getIdCollabDec" value="{{$menteeRequest->id}}">Decline</button>
             </div>
             <hr>
         @endforeach
@@ -45,27 +45,48 @@
                     }
                 })
             });
-            //TODO : Modify this ajax call to have an accept status in Collaboaration
-            // $("button[name='getIdCollab']").click(function (event) {
-            //     event.preventDefault();
-            //     if(confirm("Are you sure to disconnect from this mentee ?")){
-            //         routeUrl = "{{url('')}}/disconnect/" + $(this).val();
-            //         $.ajaxSetup({
-            //             headers: {
-            //                 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-            //             }
-            //         });
-            //         $.ajax({
-            //             url: routeUrl,
-            //             method: 'GET',
-            //             dataType: 'json',
-            //             success: function (result) {
-            //                 location.reload();
-            //             }
-            //         })
-            //     }
-            // });
+            //? Decline invitation
+            $("button[name='getIdCollabDec']").click(function (event) {
+                event.preventDefault();
+                if(confirm("Are you sure to decline this invitation ?")){
+                    routeUrl = "{{url('')}}/mentoraidecline/" + $(this).val();
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                        }
+                    });
+                    $.ajax({
+                        url: routeUrl,
+                        method: 'GET',
+                        dataType: 'json',
+                        success: function (result) {
+                            location.reload();
+                        }
+                    })
+                }
+            });
         });
+            //? Accept the invitation
+            $("button[name='getIdCollabAcc']").click(function (event) {
+                event.preventDefault();
+                if(confirm("Are you sure to accept this invitation ?")){
+                    routeUrl = "{{url('')}}/mentoraiaccept/" + $(this).val();
+                    $.ajaxSetup({
+                        headers: {
+                            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                        }
+                    });
+                    $.ajax({
+                        url: routeUrl,
+                        method: 'GET',
+                        dataType: 'json',
+                        success: function (result) {
+                            console.log(result);
+                            // location.reload();
+                        }
+                    })
+                }
+            });
     </script>
 </body>
 </html>

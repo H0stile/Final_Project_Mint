@@ -59,7 +59,10 @@ class MentorallinvitationController extends Controller
      */
     public function edit($id)
     {
-        //
+        $acceptCollab = Collaboration::find($id);
+        $acceptCollab->status_rqs = "connected";
+        // return response()->json($acceptCollab);
+        $acceptCollab->save();
     }
 
     /**
@@ -71,7 +74,7 @@ class MentorallinvitationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
     }
 
     /**
@@ -82,6 +85,12 @@ class MentorallinvitationController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $declineCollab = Collaboration::find($id);
+        $declineCollab->delete();
+        if ($declineCollab) {
+            return response()->json(['msg'=>"Invitation decline for $id"]);
+        }else{
+            return response()->json(['msg'=>'Something wrong happened, Invitation decline not worked']);
+        }
     }
 }

@@ -46,7 +46,7 @@
             $("button[name='getIdCollab']").click(function (event) {
                 event.preventDefault();
                 if(confirm("Are you sure to disconnect from this mentee ?")){
-                    routeUrl = "{{url('')}}/disconnect/" + $(this).val();
+                    routeUrl = "{{url('')}}/mentoracdisconnect/" + $(this).val();
                     $.ajaxSetup({
                         headers: {
                             'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')

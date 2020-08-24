@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Collaboration extends Model
 {
     public $table = 'collaboration';
+    protected $fillable = ['mentor_id','mentee_id','request_msg','status_rqs'];
+
     public function mentor()
     {
         return $this->belongsTo('App\User');
