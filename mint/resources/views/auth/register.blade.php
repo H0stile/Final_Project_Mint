@@ -6,7 +6,7 @@
     <div class="row">
         <div class="col s12 m10 offset-m1 l8 offset-l2">
             <div class="card">
-                <form method="POST" action="{{ route('register') }}">
+                <form method="POST" action="{{ route('register') }}" id="registerSubmit">
                     <div class="card-content">
                         {{ csrf_field() }}
                         <span class="card-title">{{ __('Personal informations') }}</span>
@@ -63,25 +63,25 @@
                             <div class="input-field col s12">
                                 <p>
                                     <label>
-                                        <input type="checkbox" />
+                                        <input type="checkbox" name="chck" />
                                         <span>French</span>
                                     </label>
                                 </p>
                                 <p>
                                     <label>
-                                        <input type="checkbox" />
+                                        <input type="checkbox" name="chck" />
                                         <span>Luxembourgish</span>
                                     </label>
                                 </p>
                                 <p>
                                     <label>
-                                        <input type="checkbox" />
+                                        <input type="checkbox" name="chck" />
                                         <span>German</span>
                                     </label>
                                 </p>
                                 <p>
                                     <label>
-                                        <input type="checkbox" />
+                                        <input type="checkbox" name="chck" />
                                         <span>English</span>
                                     </label>
                                 </p>
@@ -143,7 +143,7 @@
 <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 
 <script>
-    //* Ajax call to retrieve skill list from DB
+    //* Fill the autocomplete input with data
     $(document).ready(function() {
         $('input.autocomplete').autocomplete({
             data: {
@@ -174,6 +174,24 @@
                 "25 - Ruby": null,
             },
         });
+    });
+
+    $(function() {
+        const atLeastOneIsChecked = $('input[name="chk[]"]:checked').length > 0;
+        const str1 = $("#linkedin").val();
+        const str2 = "linkedin.com/in/";
+        if (atLeastOneIsChecked && str1.indexOf(str2) != -1) {
+            //* returns data from form
+            $("#registerSubmit").serialize()
+            $.ajax({
+                type: "POST",
+                url: 'RegisterController.php',
+                data: $("#registerSubmit").serialize(),
+                success: function() {
+                    //success message mybe...
+                }
+            });
+        } else {}
     });
 </script>
 @endsection

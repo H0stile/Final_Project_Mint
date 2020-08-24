@@ -67,15 +67,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'firstname' => $data['firstname'],
-            'lastname' => $data['lastname'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'linkedin' => $data['linkedin'],
-            'pitch' => $data['pitch'],
-            'type' => $data['type'],
-            'mentor_status' => $data['mentor_status'],
-        ]);
+        $contains = $data['linkedin']::contains("linkedin.com/in/");
+        if ($contains)
+            return User::create([
+                'firstname' => $data['firstname'],
+                'lastname' => $data['lastname'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+                'linkedin' => $data['linkedin'],
+                'pitch' => $data['pitch'],
+                'type' => 'mentor',
+                'mentor_status' => 'pending',
+            ]);
     }
 }

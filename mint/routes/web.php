@@ -25,11 +25,12 @@ Route::get('/test', 'TestController@index');
 
 
 
-//* Charles : email verification with materialize
 
-//Auth::routes(['verify' => true]);
-//Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 Route::get('/mentorac/{id}', 'MentorallconnectionController@index');
 Route::get('/disconnect/{id}', 'MentorallconnectionController@destroy');
 
 Route::get('/mentee/{id}', 'MenteeController@profile');
+
+//* Routes for register
+Route::get('/register', 'RegisterController@create');
+Route::post('/register', 'RegisterController@store');
