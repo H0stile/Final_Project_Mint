@@ -86,8 +86,8 @@
           </tr>
         </thead>
         <tbody>
-            @if(!empty($users) && $users->count())
-                @foreach($users as $user)
+            @if(!empty($mentorMenteeList) && $mentorMenteeList->count())
+                @foreach($mentorMenteeList as $user)
                  <tr>
                     <td>{{$user->id}} {{$user->firstname}} {{$user->lastname}}</td>
                     <td>{{$user->type}}</td>

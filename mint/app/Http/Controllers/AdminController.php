@@ -16,16 +16,14 @@ class AdminController extends Controller
      */
     public function index()
     {
-
-       
         //$admin = User::where('type','=','admin')->first();
         $admin = Auth::user();
         $matchMentor = ['type' => 'mentor', 'mentor_status' => 'pending'];
         $pendingMentors = User::where($matchMentor)->paginate(2);
+        //$mentorMentee = ['type' => 'mentee', 'mentor_status' => 'validate'];
+        $mentorMenteeList = User::where('type', 'mentee')->orWhere('mentor_status','validate')->get();
 
-        $connectedUser = ['type' => 'mentee', 'mentor_status' => 'validate'];
-        $users = User::where($connectedUser)->get();
-        return view('admin', compact('pendingMentors', 'admin', 'users'));
+        return view('admin', compact('pendingMentors', 'admin', 'mentorMenteeList'));
     }
 
     /**
