@@ -6,7 +6,7 @@
     <title>Apply mentorship</title>
 </head>
 <body>
-
+    <img src="{{ asset('img/') }}/{{ $mentor->profile_image }}" width="400" height="300">
     <h1>FirstName : {{ $mentor->firstname }}</h1>
     <h1>LastName :{{ $mentor->lastname }}</h1>
     <h1>Pitch : {{ $mentor->pitch }}</h1>
