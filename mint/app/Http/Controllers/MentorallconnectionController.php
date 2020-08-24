@@ -16,7 +16,7 @@ class MentorallconnectionController extends Controller
      */
     public function index()
     {
-        if(Auth::check()){
+        if(Auth::check() && Auth::user()->type == "mentor"){
             $id = Auth::user()->id;
             $menteeRequests = Collaboration::where('status_rqs', 'connected')->where('mentor_id', $id)->get();
             return view('mentorAllConnection', ['menteeRequests' => $menteeRequests]);
@@ -88,7 +88,7 @@ class MentorallconnectionController extends Controller
      */
     public function destroy($id)
     {
-        if(Auth::check()){
+        if(Auth::check() && Auth::user()->type == "mentor"){
             $deleteConn = Collaboration::find($id);
             $deleteConn->delete();
             if ($deleteConn) {

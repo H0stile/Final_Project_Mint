@@ -16,7 +16,7 @@ class MentorallinvitationController extends Controller
      */
     public function index()
     {
-        if(Auth::check()){
+        if(Auth::check() && Auth::user()->type == "mentor"){
             $id = Auth::user()->id;
             $menteeRequests = Collaboration::where('status_rqs', 'pending')->where('mentor_id', $id)->get();
             return view('mentorAllInvitation', ['menteeRequests' => $menteeRequests]);
@@ -77,7 +77,7 @@ class MentorallinvitationController extends Controller
      */
     public function update(Request $request, $id)
     {
-        if(Auth::check()){
+        if(Auth::check() && Auth::user()->type == "mentor"){
             $acceptCollab = Collaboration::find($id);
             $acceptCollab->status_rqs = "connected";
             // return response()->json($acceptCollab);
@@ -96,7 +96,7 @@ class MentorallinvitationController extends Controller
      */
     public function destroy($id)
     {
-        if(Auth::check()){
+        if(Auth::check() && Auth::user()->type == "mentor"){
             $declineCollab = Collaboration::find($id);
             $declineCollab->delete();
             if ($declineCollab) {
