@@ -124,13 +124,16 @@ $(document).ready(function () {
         method: 'GET',
         dataType: 'json',
         success: function (result) {
-            console.log(result);
+            // console.log(result);
             $.each(result, function(i, item) {
                 nameData = {};
                 $.each(result[i], function(a, atem){
-                    console.log(result[i][a]);
+                    // console.log(result[i][a]);
 
+                    imgUrl = "{{asset('img/')}}/"+result[i][a].profile_image;
+                    // console.log(imgUrl);
                     clone = elem.clone(true);
+                    clone.find('#img').attr('src', imgUrl);
                     clone.find('#mentorName').text(result[i][a].firstname+" "+result[i][a].lastname);
                     clone.find('#skill').text(result[i][a].skill);
                     clone.appendTo('#mentorList');
