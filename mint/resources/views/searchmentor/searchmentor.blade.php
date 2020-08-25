@@ -51,8 +51,12 @@ $(document).ready(function () {
         method: 'GET',
         dataType: 'json',
         success: function (result) {
-            console.log(result);    
-            $('#language-input').autocomplete({
+            $.each(result, function(i, item) {
+                $.each(result[i], function(a, atem){
+                    console.log(result[i][a].firstname+" "+result[i][a].lastname);
+                })
+            });   
+            $('#Name-input').autocomplete({
                 data: {"result.msg": null},
             });
         }
