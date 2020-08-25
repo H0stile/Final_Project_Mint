@@ -2,9 +2,6 @@
 @section('content')
 <h1>{{$profile->getFullName()}}</h1>
 <h3>You are a {{$profile->type}}</h3>
-@if(Auth::check())
-<p>Hello , my name is {{Auth::user()->getFullName()}} and I'm your mentor</p>
-@endif
 
 <hr>
 <h3>Pitch:</h3>
@@ -18,11 +15,6 @@
 @endforeach
 <hr>
 
-<!-- admin part -->
-<hr>
-@if(Auth::user()->type == 'mentee')
-<a href="">Delete profile</a>
-@endif
 <h3>Messages:</h3>
 @foreach($messages as $message)
 <p>{{$message->message}}</p>
@@ -53,13 +45,6 @@
 <br>
 <a href="#">Modify profile</a>
 
-<!-- admin part -->
-<hr>
-@if(Auth::user()->type == 'admin')
-<a href="">Delete profile</a>
-@endif
-
-
 <!-- mentor part -->
 @if(Auth::user()->type == 'mentor')
 <a href="">Accept invitation</a>
@@ -69,6 +54,13 @@
 
 <a href="">Disconnect</a>
 @endif
+
+<!-- admin part -->
+<hr>
+@if(Auth::user()->type == 'admin')
+<a href="">Delete profile</a>
+@endif
+
 
 <script>
     const comments = [{

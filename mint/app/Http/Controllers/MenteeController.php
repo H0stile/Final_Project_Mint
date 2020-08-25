@@ -33,9 +33,4 @@ class MenteeController extends Controller
             ]
         );
     }
-
-    public function list()
-    {
-        return  Http::get('https://remotive.io/api/remote-jobs?limit=2')->body();
-    }
 }

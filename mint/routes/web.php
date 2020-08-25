@@ -46,3 +46,5 @@ Route::get('/mentoracdisconnect/{id}', 'MentorallconnectionController@destroy');
 Route::get('/mentorai/', 'MentorallinvitationController@index');
 Route::get('/mentoraidecline/{id}', 'MentorallinvitationController@destroy');
 Route::get('/mentoraiaccept/{id}', 'MentorallinvitationController@update');
+
+Route::get('/jobs', 'JobsController@jobs');
