@@ -61,10 +61,15 @@ Route::get('/mentorac/{id}', 'MentorallconnectionController@index');
 Route::get('/disconnect/{id}', 'MentorallconnectionController@destroy');
 
 Route::get('/mentee/{id}', 'MenteeController@profile')->middleware('mentee.profile');
+
+
 // ! Admin
-Route::get('/admin/{id}', 'AdminController@index')->middleware('admin');
-Route::put('/admin/update/{id}', 'AdminController@update')->middleware('admin');
-Route::delete('/admin/decline/{id}', 'AdminController@destroy')->middleware('admin');
+Route::get('/admin', 'AdminController@index')->middleware('admin');
+Route::put('/admin/update/{id}', 'AdminController@update');
+Route::delete('/admin/decline/{id}', 'AdminController@destroy');
+Route::get('/initSearch', 'AdminController@destroy');
+
+
 Route::get('/mentee/{id}', 'MenteeController@profile');
 
 //Route::get('/mentee/{id}', 'MenteeController@list');
