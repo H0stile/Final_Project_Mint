@@ -39,11 +39,13 @@
         <p class="commentText">Awesome !</p>
     </div>
 </section>
-
+<!-- mentee part -->
+@if(Auth::user()->type == 'mentee')
 <hr>
 <a href="/searchmentor/">Look for a mentor</a>
 <br>
 <a href="#">Modify profile</a>
+@endif
 
 <!-- mentor part -->
 @if(Auth::user()->type == 'mentor')
@@ -61,7 +63,7 @@
 <a href="">Delete profile</a>
 @endif
 
-
+@if(Auth::user()->type == 'mentor' || Auth::user()->type == 'mentee')
 <script>
     const comments = [{
             user: "mentor",
@@ -73,7 +75,7 @@
         },
         {
             user: "friend3",
-            message: "Wow! so Inspiring ! like my front end teacher !"
+            message: "Wow! so Inspiring !"
         }
     ]
 
@@ -113,4 +115,5 @@
         document.getElementById('textArea').value = " ";
     }
 </script>
+@endif
 @endsection

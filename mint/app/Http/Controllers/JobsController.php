@@ -10,6 +10,7 @@ class JobsController extends Controller
     public function jobs()
     {
         $data = Http::get('https://remotive.io/api/remote-jobs?limit=5')->json();
+
         return view('mentee/jobs', ['data' => $data]);
     }
 }

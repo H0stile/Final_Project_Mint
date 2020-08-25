@@ -69,9 +69,6 @@ Route::put('/admin/update/{id}', 'AdminController@update');
 Route::delete('/admin/decline/{id}', 'AdminController@destroy');
 Route::get('/initSearch', 'AdminController@destroy');
 
-
-Route::get('/mentee/{id}', 'MenteeController@profile');
-
 //Route::get('/mentee/{id}', 'MenteeController@list');
 Route::get('/mentorac/{id}', 'MentorallconnectionController@index');
 Route::get('/mentoracdisconnect/{id}', 'MentorallconnectionController@destroy');
