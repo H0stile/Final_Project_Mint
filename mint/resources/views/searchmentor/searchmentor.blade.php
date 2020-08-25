@@ -36,6 +36,17 @@
     </div>
   </div>
 
+<section id="mentorList">
+    <div id="clone">
+        <img id="img" src="" style="width:60px">
+        <p id="mentorName"></p>
+        <p id="mentroScore">5/5</p>
+        <p id="skill"></p>
+        <button type="submit" name="goToMentorProfile" value="">View profile</button>
+        <button type="submit" name="goToApply" value="">Apply to mentor</button>
+    </div>
+</section>
+
 @endsection
 @section('script')
 <script>
@@ -102,6 +113,23 @@ $(document).ready(function () {
             //? Add name to autocomplete
             $('#name-input').autocomplete({
                 data: nameData,
+            });
+        }
+    })
+    //? Get and create mentor card
+    routeUrlName = "{{url('')}}/initSearchNames";
+    $elem = $("#clone");
+    $.ajax({
+        url: routeUrlName,
+        method: 'GET',
+        dataType: 'json',
+        success: function (result) {
+            $.each(result, function(i, item) {
+                nameData = {};
+                $.each(result[i], function(a, atem){
+                    $clone = $elem.clone(true);
+                    // datas = result[i][a].firstname+" "+result[i][a].lastname;
+                })
             });
         }
     })
