@@ -48,6 +48,10 @@ Route::post('/mentorprofile/update/{id}', 'MentorController@update');
 Route::get('/mentorprofile/apply/{id}', 'ApplymentorshipController@show')->name('applymentorship');
 // Jeyashree : ajax call route to submit the comment by mentee to the mentor for one time
 Route::post('/mentorprofile/apply/{id}', 'ApplymentorshipController@store');
+// creating navbar specifically for Mentor 
+Route::get('/mentorprofile/{id}', 'NavbarController@show');
+
+
 
 
 //Route to connect the button on mentor page
