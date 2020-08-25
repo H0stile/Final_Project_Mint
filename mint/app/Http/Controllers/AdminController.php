@@ -79,7 +79,7 @@ class AdminController extends Controller
     public function update(Request $request, $id)
     {
         User::where('id', $id)
-          ->update(['mentor_status' => 'pending']);
+          ->update(['mentor_status' => 'validate']);
           return redirect('/admin')->with([
             'result' => 'SUCCESS: Update successfully.'
             //'class' => 'alert alert-success alert-dismissible fade show',
