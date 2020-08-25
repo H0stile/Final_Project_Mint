@@ -46,6 +46,7 @@ $(document).ready(function () {
             'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
         }
     });
+    //? Get and put the data for mentor name
     $.ajax({
         url: routeUrl,
         method: 'GET',
