@@ -1,24 +1,25 @@
 <?php
 
 namespace App\Http\Controllers;
-
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Collaboration;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 use App\User;
+use App\Collaboration;
 
-class MentorallconnectionController extends Controller
+
+
+class ApplymentorshipController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
-        $id = Auth::user()->id;
-        $menteeRequests = Collaboration::where('status_rqs', 'connected')->where('mentor_id', $id)->get();
-        return view('mentorAllConnection', ['menteeRequests' => $menteeRequests]);
+        //
+        return('mentor');
     }
 
     /**
@@ -30,6 +31,14 @@ class MentorallconnectionController extends Controller
     {
         //
     }
+    public function show($id)
+    {
+        //
+        $mentor = User::find($id);
+        $skills = User::find($id)->skills;
+        //dd(Auth::user()->id);
+        return view('applymentorship', compact('mentor','skills'));   
+    }
 
     /**
      * Store a newly created resource in storage.
@@ -40,6 +49,13 @@ class MentorallconnectionController extends Controller
     public function store(Request $request)
     {
         //
+        DB::table('collaboration')->insert([
+            'mentor_id' => $request->mentor_id, 
+            'mentee_id' => $request->mentee_id,
+            'request_msg' => $request->request_msg,
+            'status_rqs' => $request->status_rqs, 
+        ]);
+        //return redirect("/mentorprofile/$request->id");
     }
 
     /**
@@ -48,10 +64,7 @@ class MentorallconnectionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
-    {
-        //
-    }
+    
 
     /**
      * Show the form for editing the specified resource.
@@ -62,6 +75,7 @@ class MentorallconnectionController extends Controller
     public function edit($id)
     {
         //
+
     }
 
     /**
@@ -73,6 +87,7 @@ class MentorallconnectionController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //
     }
 
     /**
@@ -83,12 +98,6 @@ class MentorallconnectionController extends Controller
      */
     public function destroy($id)
     {
-        $deleteConn = Collaboration::find($id);
-        $deleteConn->delete();
-        if ($deleteConn) {
-            return response()->json(['msg' => "Connection removed for $id"]);
-        } else {
-            return response()->json(['msg' => 'Something wrong happened, collaboration not deleted']);
-        }
+        //
     }
 }
