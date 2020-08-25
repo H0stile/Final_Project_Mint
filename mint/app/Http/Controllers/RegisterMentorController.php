@@ -12,7 +12,7 @@ use Illuminate\Http\Request;
 use App\Language;
 use App\Skill;
 use Auth;
-
+use SebastianBergmann\Environment\Console;
 
 class RegisterMentorController extends Controller
 {
@@ -63,11 +63,8 @@ class RegisterMentorController extends Controller
         //     'password' => ['required', 'string', 'min:8', 'confirmed'],
         // ]);
 
-
-
-            $tocheck = $data['linkedin'];
-
-        if (strpos($tocheck, "linkedin.com/in/" )){
+        $checker = str_contains($data['linkedin'], "linkedin.com/in/");
+        if ($checker != FALSE) {
             $validatedData = $data->validate([
                 'firstname' => ['required', 'string', 'max:255'],
                 'lastname' => ['required', 'string', 'max:255'],
@@ -80,25 +77,26 @@ class RegisterMentorController extends Controller
             ]);
 
             $user = new User([
-            'firstname' => $data['firstname'],
-            'lastname' => $data['lastname'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-            'pitch' => $data['pitch'],
-            'linkedin' => $data['linkedin'],
-            'type' => 'mentor',
-            'mentor_status' => 'pending',
+                'firstname' => $data['firstname'],
+                'lastname' => $data['lastname'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+                'pitch' => $data['pitch'],
+                'linkedin' => $data['linkedin'],
+                'type' => 'mentor',
+                'mentor_status' => 'pending',
             ]);
 
             $user->save();
             $user->languages()->sync($data['chck']);
 
             //* Explode and send id ?
-            $resultID = explode( ' - ', $data['skills']);
+            $resultID = explode(' - ', $data['skills']);
 
             $user->skills()->sync($resultID[0]);
             return $user;
-
+        } else {
+            return $checker;
         }
     }
     public function initSkill()
@@ -145,11 +143,11 @@ class RegisterMentorController extends Controller
 
 
     //     }
-        public function index()
-        {
-            $languages = language::all();
-            return view('register_mentor', ['languages' => $languages]);
-        }
+    public function index()
+    {
+        $languages = language::all();
+        return view('register_mentor', ['languages' => $languages]);
+    }
 
     //     public function test()
     //     {
