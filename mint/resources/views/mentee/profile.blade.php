@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <h1>{{$profile->getFullName()}}</h1>
-<h3>You are a {{$profile->type}}</h3>
+<h3>{{$profile->type}}</h3>
 
 <hr>
 <h3>Pitch:</h3>
@@ -41,7 +41,7 @@
 </section>
 
 <hr>
-<a href="#">Look for a mentor</a>
+<a href="/searchmentor/">Look for a mentor</a>
 <br>
 <a href="#">Modify profile</a>
 
