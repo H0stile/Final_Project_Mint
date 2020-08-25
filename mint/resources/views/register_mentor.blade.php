@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('css')
+<link href="{{ asset('css/custom.css') }}" rel="stylesheet">
+@endsection
+
 @section('content')
 <div class="container">
 @if ($errors->any())
@@ -113,7 +117,7 @@
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <i class="material-icons prefix">comment</i>
-                                        <textarea id="pitch" class="materialize-textarea" required></textarea>
+                                        <textarea id="pitch" class="materialize-textarea" name="pitch" required></textarea>
                                         <label for="pitch">Why do you want to become a mintor ?</label>
                                     </div>
                                 </div>
@@ -153,10 +157,12 @@
                 $.each(result, function(i, item) {
                     techData = {};
                     $.each(result[i], function(a, atem){
-                        datas = result[i][a].skill;
+                        datas = result[i][a].id + ' - ' + result[i][a].skill;
                         techData [datas] = null;
+                        //techData [datas] = result[i][a].id;
                     })
                 });
+                console.log(techData);
                 //? Add skills to autocomplete
                 $('#skills-input').autocomplete({
                     data: techData,

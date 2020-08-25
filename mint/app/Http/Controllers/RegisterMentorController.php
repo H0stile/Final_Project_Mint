@@ -65,8 +65,9 @@ class RegisterMentorController extends Controller
 
 
 
-        if (strpos($data['skills'], "linkedin.com/in/") !== false) {
+            $tocheck = $data['linkedin'];
 
+        if (strpos($tocheck, "linkedin.com/in/" )){
             $validatedData = $data->validate([
                 'firstname' => ['required', 'string', 'max:255'],
                 'lastname' => ['required', 'string', 'max:255'],
@@ -84,13 +85,18 @@ class RegisterMentorController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'pitch' => $data['pitch'],
+            'linkedin' => $data['linkedin'],
             'type' => 'mentor',
             'mentor_status' => 'pending',
             ]);
 
             $user->save();
             $user->languages()->sync($data['chck']);
-            $user->skills()->sync($data['skills']);
+
+            //* Explode and send id ?
+            $resultID = explode( ' - ', $data['skills']);
+
+            $user->skills()->sync($resultID[0]);
             return $user;
 
         }
