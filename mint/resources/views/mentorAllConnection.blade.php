@@ -33,19 +33,7 @@
             $("button[name='getIdMentee']").click(function (event) {
                 event.preventDefault();
                 routeUrl = "{{url('')}}/mentee/" + $(this).val();
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                    }
-                });
-                $.ajax({
-                    url: routeUrl,
-                    method: 'GET',
-                    dataType: 'json',
-                    success: function (result) {
-
-                    }
-                })
+                window.location.href = routeUrl;
             });
             //? Button to break the connection
             $("button[name='getIdCollab']").click(function (event) {
