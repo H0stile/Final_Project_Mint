@@ -51,3 +51,4 @@ Route::get('/searchmentor/{id}', 'searchmentorController@index')->middleware('me
 Route::get('/initSearchNames', 'searchmentorController@initName');
 Route::get('/initSearchSkills', 'searchmentorController@initSkill');
 Route::get('/initSearchLanguages', 'searchmentorController@initLanguage');
+Route::get('/initSearchMentorData', 'searchmentorController@initMentorData');

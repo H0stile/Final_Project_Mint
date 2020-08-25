@@ -118,7 +118,7 @@ $(document).ready(function () {
     })
     //? Get and create mentor card
     routeUrlName = "{{url('')}}/initSearchNames";
-    $elem = $("#clone");
+    elem = $("#clone");
     $.ajax({
         url: routeUrlName,
         method: 'GET',
@@ -127,8 +127,12 @@ $(document).ready(function () {
             $.each(result, function(i, item) {
                 nameData = {};
                 $.each(result[i], function(a, atem){
-                    $clone = $elem.clone(true);
-                    // datas = result[i][a].firstname+" "+result[i][a].lastname;
+                    console.log(result[i][a]);
+                    
+                    clone = elem.clone(true);
+                    clone.find('#mentorName').text(result[i][a].firstname+" "+result[i][a].lastname);
+                    clone.find('#skill').text(result[i][a].skill);
+                    clone.appendTo('#mentorList');
                 })
             });
         }
