@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use App\Collaboration;
 use App\User;
 
-class MentorallconnectionController extends Controller
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,13 +16,14 @@ class MentorallconnectionController extends Controller
      */
     public function index()
     {
-        if(Auth::check() && Auth::user()->type == "mentor"){
-            $id = Auth::user()->id;
-            $menteeRequests = Collaboration::where('status_rqs', 'connected')->where('mentor_id', $id)->get();
-            return view('mentorAllConnection', ['menteeRequests' => $menteeRequests]);
-        }else{
-            return redirect('/');
-        }
+        //$admin = User::where('type','=','admin')->first();
+        $admin = Auth::user();
+        $matchMentor = ['type' => 'mentor', 'mentor_status' => 'pending'];
+        $pendingMentors = User::where($matchMentor)->paginate(2);
+        //$mentorMentee = ['type' => 'mentee', 'mentor_status' => 'validate'];
+        $mentorMenteeList = User::where('type', 'mentee')->orWhere('mentor_status','validate')->get();
+
+        return view('admin', compact('pendingMentors', 'admin', 'mentorMenteeList'));
     }
 
     /**
@@ -76,8 +77,13 @@ class MentorallconnectionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {   
-        
+    {
+        User::where('id', $id)
+          ->update(['mentor_status' => 'pending']);
+          return redirect('/admin')->with([
+            'result' => 'SUCCESS: Update successfully.'
+            //'class' => 'alert alert-success alert-dismissible fade show',
+        ]);
     }
 
     /**
@@ -86,18 +92,13 @@ class MentorallconnectionController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Request $request)
     {
-        if(Auth::check() && Auth::user()->type == "mentor"){
-            $deleteConn = Collaboration::find($id);
-            $deleteConn->delete();
-            if ($deleteConn) {
-                return response()->json(['msg'=>"Connection removed for $id"]);
-            }else{
-                return response()->json(['msg'=>'Something wrong happened, collaboration not deleted']);
-            }
-        }else{
-            return redirect('/');
-        }
+        $getIdMentor = User::find($request->id);
+        $getIdMentor->delete();
+
+        //User::destroy($request->id);
+
+        return redirect('/admin');
     }
 }
