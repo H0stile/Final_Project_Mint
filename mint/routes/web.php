@@ -52,9 +52,9 @@ Route::post('/mentorprofile/apply/{id}', 'ApplymentorshipController@store');
 // creating navbar specifically for Mentor 
 //Route::get('/mentorprofile/{id}', 'NavbarController@show');
 
-Route::get('/', function () {
-    return view('navbar');
-});
+// Route::get('/home', function () {
+//     return view('layouts.navbar');
+// });
 
 
 
