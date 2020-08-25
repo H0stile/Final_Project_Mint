@@ -22,14 +22,13 @@ class MenteeProfileAccess
     {
         $loggedInUser = $request->user();
         // $loggedInUser->mentors[0]->id;
-
         if ($loggedInUser->type === 'mentee' && $loggedInUser->id !== (int) $request->id) {
             return response()->view("unauthorized");
         }
         //check if this option is mandatory
-        // if ($loggedInUser->type === 'mentor' && $loggedInUser->mentees()->find($request->id) === null) {
-        //     return response()->view("unauthorized");
-        // }
+        if ($loggedInUser->type === 'mentor' && $loggedInUser->mentees()->find($request->id) === null) {
+            return response()->view("unauthorized");
+        }
 
         return $next($request);
     }

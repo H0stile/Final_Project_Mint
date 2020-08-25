@@ -10,13 +10,13 @@
         </div>
         @endif
         @foreach($menteeRequests as $menteeRequest)
-            <div>
-                <img src="{{asset('img/')}}/{{$menteeRequest->mentee->profile_image}}" style="width:60px">
-                <p>{{$menteeRequest->mentee->firstname}} {{$menteeRequest->mentee->lastname}}</p>
-                <button type="submit" name="getIdMentee" value="{{$menteeRequest->mentee->id}}">View profile</button>
-                <button type="submit" name="getIdCollab" value="{{$menteeRequest->id}}">Disconnect</button>
-            </div>
-            <hr>
+        <div>
+            <img src="{{asset('img/')}}/{{$menteeRequest->mentee->profile_image}}" style="width:60px">
+            <p>{{$menteeRequest->mentee->firstname}} {{$menteeRequest->mentee->lastname}}</p>
+            <button type="submit" name="getIdMentee" value="{{$menteeRequest->mentee->id}}">View profile</button>
+            <button type="submit" name="getIdCollab" value="{{$menteeRequest->id}}">Disconnect</button>
+        </div>
+        <hr>
         @endforeach
     </div>
 </div>
@@ -42,9 +42,9 @@
                 });
                 $.ajax({
                     url: routeUrl,
-                    method: 'GET',
+                    method: 'DELETE',
                     dataType: 'json',
-                    success: function (result) {
+                    success: function(result) {
                         location.reload();
                     }
                 })
