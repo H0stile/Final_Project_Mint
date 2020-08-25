@@ -40,15 +40,55 @@
 @section('script')
 <script>
 $(document).ready(function () {
-    routeUrl = "{{url('')}}/initSearch";
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
         }
     });
-    //? Get and put the data for mentor name
+    //? Get and put the data for language
+    routeUrlLanguages = "{{url('')}}/initSearchLanguages";
     $.ajax({
-        url: routeUrl,
+        url: routeUrlLanguages,
+        method: 'GET',
+        dataType: 'json',
+        success: function (result) {
+            $.each(result, function(i, item) {
+                langData = {};
+                $.each(result[i], function(a, atem){
+                    datas = result[i][a].languages;
+                    langData [datas] = null;
+                })
+            });
+            //? Add language to autocomplete
+            $('#language-input').autocomplete({
+                data: langData,
+            });
+        }
+    })
+    //? Get and put the data for skill
+    routeUrlSkills = "{{url('')}}/initSearchSkills";
+    $.ajax({
+        url: routeUrlSkills,
+        method: 'GET',
+        dataType: 'json',
+        success: function (result) {
+            $.each(result, function(i, item) {
+                techData = {};
+                $.each(result[i], function(a, atem){
+                    datas = result[i][a].skill;
+                    techData [datas] = null;
+                })
+            });
+            //? Add skills to autocomplete
+            $('#technologie-input').autocomplete({
+                data: techData,
+            });
+        }
+    })
+    //? Get and put the data for mentor name
+    routeUrlName = "{{url('')}}/initSearchNames";
+    $.ajax({
+        url: routeUrlName,
         method: 'GET',
         dataType: 'json',
         success: function (result) {
@@ -59,8 +99,7 @@ $(document).ready(function () {
                     nameData [datas] = null;
                 })
             });
-            console.log(nameData);
-            
+            //? Add name to autocomplete
             $('#name-input').autocomplete({
                 data: nameData,
             });

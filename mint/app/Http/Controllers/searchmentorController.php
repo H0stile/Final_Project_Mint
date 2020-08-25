@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Collaboration;
 use App\User;
+use App\Skill;
+use App\Language;
 
 class searchmentorController extends Controller
 {
@@ -84,9 +86,19 @@ class searchmentorController extends Controller
     {
         //
     }
-    public function initData()
+    public function initName()
     {
         $mentors = User::where('type', 'mentor')->get();
         return response()->json([$mentors]);
+    }
+    public function initSkill()
+    {
+        $skills = Skill::all();
+        return response()->json([$skills]);
+    }
+    public function initLanguage()
+    {
+        $languages = Language::all();
+        return response()->json([$languages]);
     }
 }
