@@ -13,7 +13,7 @@ use App\Language;
 use Auth;
 
 
-class RegisterMenteeController extends Controller
+class RegisterMentorController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
@@ -66,7 +66,10 @@ class RegisterMenteeController extends Controller
             'lastname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'chck' => ['required']
+            'pitch' => ['required', 'string', 'max:1000'],
+            'chck' => ['required'],
+            'linkedin' => ['required'],
+            'skills' => ['required']
         ]);
 
         $user = new User([
@@ -74,14 +77,12 @@ class RegisterMenteeController extends Controller
             'lastname' => $data['lastname'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'type' => 'mentee'
+            'type' => 'mentor',
+            'mentor_status' => 'pending',
         ]);
 
-
-
-            $user->save();
+        $user->save();
         $user->languages()->sync($data['chck']);
-
         return $user;
     }
 
@@ -127,7 +128,7 @@ class RegisterMenteeController extends Controller
         public function index()
         {
             $languages = language::all();
-            return view('register_mentee', ['languages' => $languages]);
+            return view('register_mentor', ['languages' => $languages]);
         }
 
     //     public function test()
