@@ -33,4 +33,6 @@ Route::get('/mentee/{id}', 'MenteeController@profile');
 
 //* Routes for register
 Route::get('/register_mentor', 'Auth\RegisterController@index');
-Route::get('/register_mentee', 'Auth\RegisterController@index');
+Route::get('/register_mentee', 'Auth\RegisterMenteeController@index');
+Route::get('/test', 'Auth\RegisterMenteeController@test');
+Route::post('/register_mentee', 'Auth\RegisterMenteeController@validator')->name('register.mentee');

@@ -2,11 +2,19 @@
 
 @section('content')
 <div class="container">
-
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
     <div class="row">
         <div class="col s12 m10 offset-m1 l8 offset-l2">
             <div class="card">
-                <form method="POST" action="{{ route('register') }}" id="registerSubmit">
+                <form method="POST" action="{{ route('register.mentee') }}" id="registerSubmit">
                     <div class="card-content">
                         {{ csrf_field() }}
                         <span class="card-title">{{ __('Personal informations') }}</span>
@@ -16,17 +24,17 @@
                         <div class="row">
                             <div class="input-field col s12">
                                 <i class="material-icons prefix">person</i>
-                                <input id="name" type="text" name="name" value="{{ old('name') }}" class="{{ $errors->has('name') ? 'invalid' : '' }}" required autofocus>
+                                <input id="firstname" type="text" name="firstname" value="{{ old('firstname') }}" class="{{ $errors->has('firstname') ? 'invalid' : '' }}" required autofocus>
                                 <label for="email">{{ __('First Name') }}</label>
-                                <span class="red-text">{{ $errors->has('name') ? $errors->first('name'): '' }}</span>
+                                <span class="red-text">{{ $errors->has('firstname') ? $errors->first('firstname'): '' }}</span>
                             </div>
                         </div>
                         <div class="row">
                             <div class="input-field col s12">
                                 <i class="material-icons prefix">person</i>
-                                <input id="name" type="text" name="name" value="{{ old('name') }}" class="{{ $errors->has('name') ? 'invalid' : '' }}" required autofocus>
+                                <input id="lastname" type="text" name="lastname" value="{{ old('lastname') }}" class="{{ $errors->has('lastname') ? 'invalid' : '' }}" required autofocus>
                                 <label for="email">{{ __('Last Name') }}</label>
-                                <span class="red-text">{{ $errors->has('name') ? $errors->first('name'): '' }}</span>
+                                <span class="red-text">{{ $errors->has('lastname') ? $errors->first('lastname'): '' }}</span>
                             </div>
                         </div>
 

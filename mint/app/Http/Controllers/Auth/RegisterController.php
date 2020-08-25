@@ -73,7 +73,7 @@ class RegisterController extends Controller
     protected function create(array $data)
     {
         $contains = $data['linkedin']::contains("linkedin.com/in/");
-        if ($contains)
+        if ($contains){
             /*return User::create([
                 'firstname' => $data['firstname'],
                 'lastname' => $data['lastname'],
@@ -104,11 +104,8 @@ class RegisterController extends Controller
             }
 
             return $user->save();
-
-
-
-
         }
+    }
         public function index()
         {
             $languages = language::all();
