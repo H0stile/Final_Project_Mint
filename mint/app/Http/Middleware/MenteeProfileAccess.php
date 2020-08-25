@@ -21,6 +21,8 @@ class MenteeProfileAccess
     public function handle($request, Closure $next)
     {
         $loggedInUser = $request->user();
+        // $loggedInUser->mentors[0]->id;
+
         if ($loggedInUser->type === 'mentee' && $loggedInUser->id !== (int) $request->id) {
             return response()->view("unauthorized");
         }
