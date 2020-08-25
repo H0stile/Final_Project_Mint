@@ -104,6 +104,6 @@ class searchmentorController extends Controller
     public function initMentorData()
     {
         $mentorsData = User::where('type', 'mentor')->get();
-        return response()->json([$languages]);
+        return response()->json([$mentorsData]);
     }
 }
