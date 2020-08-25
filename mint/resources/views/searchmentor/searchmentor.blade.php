@@ -52,12 +52,16 @@ $(document).ready(function () {
         dataType: 'json',
         success: function (result) {
             $.each(result, function(i, item) {
+                nameData = {};
                 $.each(result[i], function(a, atem){
-                    console.log(result[i][a].firstname+" "+result[i][a].lastname);
+                    datas = result[i][a].firstname+" "+result[i][a].lastname;
+                    nameData [datas] = null;
                 })
-            });   
-            $('#Name-input').autocomplete({
-                data: {"result.msg": null},
+            });
+            console.log(nameData);
+            
+            $('#name-input').autocomplete({
+                data: nameData,
             });
         }
     })
