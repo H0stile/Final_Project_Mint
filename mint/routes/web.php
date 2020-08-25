@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,8 +27,8 @@ Route::get('/test', 'TestController@index');
 
 //* Charles : email verification with materialize
 
-Auth::routes(['verify' => true]);
-Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+//Auth::routes(['verify' => true]);
+//Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
 
 // Jeyashree : Creating route to see the mentor profile page
@@ -35,22 +36,34 @@ Route::get('/mentorprofile/{id}', 'MentorController@show');
 // Jeyashree : ajax call route to submit the comment by mentee to the mentor for one time
 Route::post('/mentorprofile/{id}', 'MentorController@store');
 // Jeyashree :to delete the mentor profile from the database by admin
-Route::delete('/mentorprofile/{id}', 'MentorController@destroy');
+Route::delete('/mentorprofile/delete/{id}', 'MentorController@destroy');
 
 
 //  : to show the mentor profile in the form -which have to be edited
-Route::get('/mentorprofile/edit/{id}', 'MentorController@edit'); 
+Route::get('/mentorprofile/edit/{id}', 'MentorController@edit');
 //  :to update the updated mentor profile into the database
-Route::post('/mentorprofile/update/{id}', 'MentorController@update'); 
+Route::post('/mentorprofile/update/{id}', 'MentorController@update');
 
 // Jeyashree :Apply for mentorship by pushing button in mentor profile and connects apply mentorship page data stored in collaboration table
-Route::get('/mentorprofile/apply/{id}', 'ApplymentorshipController@show');
+Route::get('/mentorprofile/apply/{id}', 'ApplymentorshipController@show')->name('applymentorship');
 // Jeyashree : ajax call route to submit the comment by mentee to the mentor for one time
 Route::post('/mentorprofile/apply/{id}', 'ApplymentorshipController@store');
- 
+
 
 //Route to connect the button on mentor page
 //Route::get('/mentorac', 'MentorallconnectionController@index')>name('seeallconnection');
 
 
 
+//Auth::routes(['verify' => true]);
+//Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+Route::get('/mentorac/{id}', 'MentorallconnectionController@index');
+Route::get('/disconnect/{id}', 'MentorallconnectionController@destroy');
+
+Route::get('/mentee/{id}', 'MenteeController@profile')->middleware('mentee.profile');
+Route::get('/mentorac/', 'MentorallconnectionController@index');
+Route::get('/mentoracdisconnect/{id}', 'MentorallconnectionController@destroy');
+
+Route::get('/mentorai/', 'MentorallinvitationController@index');
+Route::get('/mentoraidecline/{id}', 'MentorallinvitationController@destroy');
+Route::get('/mentoraiaccept/{id}', 'MentorallinvitationController@update');

@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 // require_once 'vendor/autoload.php';
 
 class UserSeeder extends Seeder
@@ -33,5 +35,14 @@ class UserSeeder extends Seeder
                 'availability' => array_rand($availability),
             ]);
         }
+        //creation of unique user admin
+        DB::table('users')->insert([
+            'email' => $faker->freeEmail,
+            'password' => Hash::make('root'),
+            'firstname' => $faker->firstName($gender = 'male'|'female'),
+            'lastname' => $faker->lastName,
+            'type' => 'admin',
+        ]);
+
     }
 }

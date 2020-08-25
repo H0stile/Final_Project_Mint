@@ -48,7 +48,7 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\User', 'collaboration', 'mentor_id', 'mentee_id');
     }
-    
+
     // Message part
     public function sendMessages()
     {
@@ -60,12 +60,14 @@ class User extends Authenticatable
     }
 
     // Language Part
-    public function languages(){
+    public function languages()
+    {
         return $this->belongsToMany('App\Language', 'languages_intermediate');
     }
 
     // Skill Part
-    public function skills(){
+    public function skills()
+    {
         return $this->belongsToMany('App\Skill', 'skills_intermediate');
     }
 
@@ -77,5 +79,10 @@ class User extends Authenticatable
     public function receiveRatings()
     {
         return $this->hasMany('App\Rating', 'target_id');
+    }
+
+    public function getFullName()
+    {
+        return "{$this->firstname} {$this->lastname}";
     }
 }
