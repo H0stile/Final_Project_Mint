@@ -49,12 +49,24 @@
 
 <!-- mentor part -->
 @if(Auth::user()->type == 'mentor')
-<a href="">Accept invitation</a>
-<br>
-<a href="">Decline invitation</a>
-<br>
+@if($collabRequestStatus == 'pending')
+<form action="{{route('mentor.invitation.accept', $collabRequestId)}}" method="get">
+    @csrf
+    <button name="accept-request">Accept invitation</button>
+</form>
+<form action="{{route('mentor.connection.destroy', $collabRequestId)}}" method="post">
+    @csrf
+    @method('DELETE')
+    <button name="decline-request">Decline invitation</button>
+</form>
+@else
+<form action="{{route('mentor.connection.destroy', $collabRequestId)}}" method="post">
+    @csrf
+    @method('DELETE')
+    <button name="disconnect">Disconnect</button>
+</form>
 
-<a href="">Disconnect</a>
+@endif
 @endif
 
 <!-- admin part -->
@@ -71,56 +83,63 @@
 @endif
 
 @if(Auth::user()->type == 'mentor' || Auth::user()->type == 'mentee')
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
 <script>
-    const comments = [{
-            user: "mentor",
-            message: "Hello! My email address is asd@gmail.com"
-        },
-        {
-            user: "friend2",
-            message: "Amazing ! I can’t wait to work with you!"
-        },
-        {
-            user: "friend3",
-            message: "Wow! so Inspiring !"
+    $(document).ready(function() {
+        function deleteCollaboration() {
+            routeUrl = "{{route('mentor.connection.destroy', $collabRequestId)}}";
+            $.ajaxSetup({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                }
+            });
+            $.ajax({
+                url: routeUrl,
+                method: 'DELETE',
+                dataType: 'json',
+                success: function(result) {
+                    window.location.replace("{{route('mentor.profile', Auth::user()->id)}}");
+                }
+            })
         }
-    ]
 
+        //? Button to accept invitation
+        $("button[name='accept-request']").click(function(event) {
+            event.preventDefault();
+            if (confirm("Are you sure to accept this invitation?")) {
+                routeUrl = "{{route('mentor.invitation.accept', $collabRequestId)}}";
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                    }
+                });
+                $.ajax({
+                    url: routeUrl,
+                    method: 'GET',
+                    dataType: 'json',
+                    success: function(result) {
+                        location.reload();
+                    }
+                })
+            }
+        });
 
-    //clone comments 
-
-    const commentList = document.querySelector('.comment');
-    const commentClone = document.querySelector('.cloneComment');
-
-    for (const comment of comments) {
-
-        let newComment = commentClone.cloneNode(true);
-
-        newComment.querySelector('.userImage').src = "https://randomuser.me/api/portraits/men/1.jpg"
-        newComment.querySelector('.commentText').textContent = comment.message;
-
-        commentList.append(newComment);
-    }
-    commentClone.remove();
-
-
-    //add my comment
-    const myComment = document.getElementById('form');
-    myComment.addEventListener('submit', addNewComment);
-
-
-    function addNewComment(event) {
-        event.preventDefault();
-        let newCom = document.querySelector('#textArea').value;
-        comments.push(newCom);
-
-        let writtenComment = commentClone.cloneNode(true);
-        writtenComment.querySelector('.commentText').textContent = newCom;
-        writtenComment.querySelector('.userImage').src = "{{asset('img/')}}/{{$profile->profile_image}}";
-        commentList.append(writtenComment);
-        //clean placeholder
-        document.getElementById('textArea').value = " ";
-    }
+        //? Button to decline collaboration request
+        $("button[name='decline-request']").click(function(event) {
+            event.preventDefault();
+            if (confirm("Are you sure to decline invitation?")) {
+                deleteCollaboration();
+            }
+        });
+        //? Button to break the connection
+        $("button[name='disconnect']").click(function(event) {
+            event.preventDefault();
+            if (confirm("Are you sure to disconnect from this mentee?")) {
+                deleteCollaboration();
+            }
+        });
+    });
 </script>
 @endif
 @endsection

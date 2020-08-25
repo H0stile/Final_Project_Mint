@@ -19,7 +19,7 @@ class User extends Authenticatable
         'email', 'password', 'firstname', 'lastname', 'type', 'linkedin', 'mentor_status', 'profile_image', 'pitch', 'availability'
     ];
 
-    
+
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -42,11 +42,11 @@ class User extends Authenticatable
     // Collaboration part
     public function mentors()
     {
-        return $this->belongsToMany('App\User', 'collaboration', 'mentee_id', 'mentor_id')->withPivot('status_rqs');;
+        return $this->belongsToMany('App\User', 'collaboration', 'mentee_id', 'mentor_id')->withPivot(['status_rqs', 'id']);
     }
     public function mentees()
     {
-        return $this->belongsToMany('App\User', 'collaboration', 'mentor_id', 'mentee_id')->withPivot('status_rqs');
+        return $this->belongsToMany('App\User', 'collaboration', 'mentor_id', 'mentee_id')->withPivot(['status_rqs', 'id']);
     }
 
     // Message part

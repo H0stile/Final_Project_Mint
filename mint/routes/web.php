@@ -32,7 +32,7 @@ Route::get('/test', 'TestController@index');
 
 
 // Jeyashree : Creating route to see the mentor profile page
-Route::get('/mentorprofile/{id}', 'MentorController@show');
+Route::get('/mentorprofile/{id}', 'MentorController@show')->name('mentor.profile');
 // Jeyashree : ajax call route to submit the comment by mentee to the mentor for one time
 Route::post('/mentorprofile/{id}', 'MentorController@store');
 // Jeyashree :to delete the mentor profile from the database by admin
@@ -71,10 +71,10 @@ Route::delete('/admin/decline/{id}', 'AdminController@destroy');
 Route::get('/initSearch', 'AdminController@destroy');
 
 Route::get('/mentorac/{id}', 'MentorallconnectionController@index');
-Route::get('/mentoracdisconnect/{id}', 'MentorallconnectionController@destroy');
+Route::delete('/mentoracdisconnect/{id}', 'MentorallconnectionController@destroy')->name('mentor.connection.destroy');
 
 Route::get('/mentorai/{id}', 'MentorallinvitationController@index');
-Route::get('/mentoraidecline/{id}', 'MentorallinvitationController@destroy');
-Route::get('/mentoraiaccept/{id}', 'MentorallinvitationController@update');
+Route::get('/mentoraidecline/{id}', 'MentorallinvitationController@destroy')->name('mentor.invitation.destroy');
+Route::get('/mentoraiaccept/{id}', 'MentorallinvitationController@update')->name('mentor.invitation.accept');
 
 Route::get('/jobs', 'JobsController@jobs');
