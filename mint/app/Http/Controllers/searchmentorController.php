@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Collaboration;
+use App\User;
 
 class searchmentorController extends Controller
 {
@@ -80,5 +83,10 @@ class searchmentorController extends Controller
     public function destroy($id)
     {
         //
+    }
+    public function initData()
+    {
+        $mentors = User::where('type', 'mentor')->get();
+        return response()->json([$mentors]);
     }
 }
