@@ -81,3 +81,8 @@ Route::get('/mentoraidecline/{id}', 'MentorallinvitationController@destroy');
 Route::get('/mentoraiaccept/{id}', 'MentorallinvitationController@update');
 
 Route::get('/jobs', 'JobsController@jobs');
+Route::get('/searchmentor/{id}', 'searchmentorController@index')->middleware('mentee.profile');
+Route::get('/initSearchNames', 'searchmentorController@initName');
+Route::get('/initSearchSkills', 'searchmentorController@initSkill');
+Route::get('/initSearchLanguages', 'searchmentorController@initLanguage');
+Route::get('/initSearchMentorData', 'searchmentorController@initMentorData');
