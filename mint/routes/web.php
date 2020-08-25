@@ -32,8 +32,9 @@ Route::get('/test', 'TestController@index');
 
 
 // Jeyashree : Creating route to see the mentor profile page
-Route::get('/mentorprofile/{id}', 'MentorController@show')->name('mentorprofile');
+
 // Jeyashree : ajax call route to submit the comment by mentee to the mentor for one time
+Route::get('/mentorprofile/{id}', 'MentorController@show')->name('mentorprofile');
 Route::post('/mentorprofile/{id}', 'MentorController@store');
 // Jeyashree :to delete the mentor profile from the database by admin
 Route::delete('/mentorprofile/delete/{id}', 'MentorController@destroy');

@@ -107,7 +107,7 @@ Add rules for displaying the different functions depending of the viewer
         });
         $("button[name='seeallconnectionbtn']").click(function(event) {
             event.preventDefault();
-            routeUrl = "{{url('')}}/mentee/" + $(this).val();
+            routeUrl = "{{url('')}}/mentorac/" + $(this).val();
             window.location.href = routeUrl;
         });
         $("button[name='applymentorship']").click(function(event) {
