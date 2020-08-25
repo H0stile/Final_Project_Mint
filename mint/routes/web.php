@@ -43,6 +43,6 @@ Route::get('/mentee/{id}', 'MenteeController@profile');
 Route::get('/mentorac/', 'MentorallconnectionController@index');
 Route::get('/mentoracdisconnect/{id}', 'MentorallconnectionController@destroy');
 
-Route::get('/mentorai/', 'MentorallinvitationController@index');
+Route::get('/mentorai/{id}', 'MentorallinvitationController@index');
 Route::get('/mentoraidecline/{id}', 'MentorallinvitationController@destroy');
 Route::get('/mentoraiaccept/{id}', 'MentorallinvitationController@update');
