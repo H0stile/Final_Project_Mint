@@ -10,7 +10,7 @@ class AdminUserController extends Controller
     public function show($id)
     {  
         $profile = User::where('id', $id)->first();
-        if ($id->type === 'mentee'){
+        if ($profile->type === 'mentee'){
             return view('mentee/profile', compact('profile'));
         }   
     }
