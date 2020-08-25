@@ -21,10 +21,9 @@ class MentorProfileAccess
     public function handle($request, Closure $next)
 
     {
-        if (Auth::check() && Auth::user()->type === 'admin') {
-            return $next($request);
-        } else {
-            return redirect('/home');
+        $loggedInUser = $request->user();
+        if ($loggedInUser->type === 'mentor' && $loggedInUser->id !== (int) $request->id) {
+            return response()->view("unauthorized");
         }
     }
 }
