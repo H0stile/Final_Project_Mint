@@ -54,7 +54,6 @@
             <li><a href="{{ route('logout') }}" class="logout">{{ __('Logout') }}</a></li>
             @endguest
         </ul>
-        @yield('content')
     </div>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
@@ -68,7 +67,7 @@
             });
         });
     </script>
-   
+
 </body>
 
 </html>
