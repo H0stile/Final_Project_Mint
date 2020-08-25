@@ -31,11 +31,6 @@ Add rules for displaying the different functions depending of the viewer
  Add the form to have a new ratings
  Show the availability-->
 
-    <section>
-
-
-
-    </section>
 
 
     <img src="{{ asset('img/') }}/{{ $mentor->profile_image }}" width="400" height="300">
