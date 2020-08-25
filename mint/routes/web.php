@@ -34,7 +34,7 @@ Route::get('/disconnect/{id}', 'MentorallconnectionController@destroy');
 
 Route::get('/mentee/{id}', 'MenteeController@profile')->middleware('mentee.profile');
 // ! Admin
-Route::get('/admin', 'AdminController@index')->middleware('admin');
+Route::get('/admin/{id}', 'AdminController@index')->middleware('admin');
 Route::put('/admin/update/{id}', 'AdminController@update')->middleware('admin');
 Route::delete('/admin/decline/{id}', 'AdminController@destroy')->middleware('admin');
 Route::get('/mentee/{id}', 'MenteeController@profile');

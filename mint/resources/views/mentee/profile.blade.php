@@ -1,6 +1,5 @@
 @extends('layouts.app')
 @section('content')
-<img src="{{asset('img/')}}/{{$profile->profile_image}}" style="width:60px">
 <h1>{{$profile->getFullName()}}</h1>
 <h3>You are a {{$profile->type}}</h3>
 @if(Auth::check())

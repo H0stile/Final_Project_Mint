@@ -40,11 +40,11 @@ class User extends Authenticatable
     // Collaboration part
     public function mentors()
     {
-        return $this->belongsToMany('App\User', 'collaboration', 'mentee_id', 'mentor_id');
+        return $this->belongsToMany('App\User', 'collaboration', 'mentee_id', 'mentor_id')->withPivot('status_rqs');;
     }
     public function mentees()
     {
-        return $this->belongsToMany('App\User', 'collaboration', 'mentor_id', 'mentee_id');
+        return $this->belongsToMany('App\User', 'collaboration', 'mentor_id', 'mentee_id')->withPivot('status_rqs');
     }
 
     // Message part
