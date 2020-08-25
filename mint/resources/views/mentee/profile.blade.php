@@ -136,7 +136,7 @@
                 method: 'DELETE',
                 dataType: 'json',
                 success: function(result) {
-                    window.location.replace("{{route('mentor.profile', Auth::user()->id)}}");
+                    window.location.replace("{{route('mentorprofile', Auth::user()->id)}}");
                 }
             })
         }

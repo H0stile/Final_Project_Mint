@@ -30,9 +30,6 @@ Route::get('/test', 'TestController@index');
 //Auth::routes(['verify' => true]);
 //Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
-
-// Jeyashree : Creating route to see the mentor profile page
-Route::get('/mentorprofile/{id}', 'MentorController@show')->name('mentor.profile');
 // Jeyashree : ajax call route to submit the comment by mentee to the mentor for one time
 Route::get('/mentorprofile/{id}', 'MentorController@show')->name('mentorprofile');
 Route::post('/mentorprofile/{id}', 'MentorController@store');
@@ -90,6 +87,12 @@ Route::get('/mentoraidecline/{id}', 'MentorallinvitationController@destroy')->na
 Route::get('/mentoraiaccept/{id}', 'MentorallinvitationController@update')->name('mentor.invitation.accept');
 
 Route::get('/jobs', 'JobsController@jobs');
+
+Route::get('/searchmentor/{id}', 'searchmentorController@index')->middleware('mentee.profile');	
+Route::get('/initSearchNames', 'searchmentorController@initName');	
+Route::get('/initSearchSkills', 'searchmentorController@initSkill');	
+Route::get('/initSearchLanguages', 'searchmentorController@initLanguage');	
+Route::get('/initSearchMentorData', 'searchmentorController@initMentorData');
 
 // Rating routes
 Route::post('/rating', 'RatingController@create')->name('rating.create');
