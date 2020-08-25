@@ -19,16 +19,12 @@ class MentorProfileAccess
      * @return mixed
      */
     public function handle($request, Closure $next)
+
     {
-        $loggedInUser = $request->user();
-        if ($loggedInUser->type === 'mentee' && $loggedInUser->id !== (int) $request->id) {
-            return response()->view("unauthorized");
+        if (Auth::check() && Auth::user()->type === 'admin') {
+            return $next($request);
+        } else {
+            return redirect('/home');
         }
-
-        if ($loggedInUser->type === 'mentor' && $loggedInUser->mentees()->find($request->id) === null) {
-            return response()->view("unauthorized");
-        }
-
-        return $next($request);
     }
 }
