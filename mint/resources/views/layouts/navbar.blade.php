@@ -29,6 +29,8 @@
             <a href="#" class="brand-logo">Logo</a>
             <ul id="nav-mobile" class="right hide-on-med-and-down">
                 <li><a href="{{ route('mentee.profile', ['id' => {{Auth::user()->id}} ]]) }}">Profile</a></li>
+                <!--put the route of --- see all the mentors page-->
+                <li><a href="{{ route('mentee.profile', ['id' => {{Auth::user()->id}} ]]) }}">Mentors</a></li>
                 <li><a href="{{ route('logout') }}">logout</a></li>
             </ul>
         </div>
