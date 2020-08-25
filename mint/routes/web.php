@@ -58,7 +58,11 @@ Route::post('/mentorprofile/apply/{id}', 'ApplymentorshipController@store');
 Route::get('/mentorac/{id}', 'MentorallconnectionController@index');
 Route::get('/disconnect/{id}', 'MentorallconnectionController@destroy');
 
-Route::get('/mentee/{id}', 'MenteeController@profile')->middleware('mentee.profile');
+
+// Mentee routes
+Route::get('/mentee/{id}', 'MenteeController@profile')
+    ->name('mentee.profile')
+    ->middleware('mentee.profile');
 Route::delete('/mentee/{id}/destroy', 'MenteeController@destroy')
     ->name('mentee.destroy')
     ->middleware('admin');
@@ -74,7 +78,10 @@ Route::get('/mentorac/{id}', 'MentorallconnectionController@index');
 Route::delete('/mentoracdisconnect/{id}', 'MentorallconnectionController@destroy')->name('mentor.connection.destroy');
 
 Route::get('/mentorai/{id}', 'MentorallinvitationController@index');
-Route::get('/mentoraidecline/{id}', 'MentorallinvitationController@destroy')->name('mentor.invitation.destroy');
+Route::get('/mentoraidecline/{id}', 'MentorallinvitationController@destroy')->name('mentor.invitation.accept');
 Route::get('/mentoraiaccept/{id}', 'MentorallinvitationController@update')->name('mentor.invitation.accept');
 
 Route::get('/jobs', 'JobsController@jobs');
+
+// Rating routes
+Route::post('/rating', 'RatingController@create')->name('rating.create');

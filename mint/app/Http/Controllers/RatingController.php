@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Rating;
 use Illuminate\Http\Request;
 
 class RatingController extends Controller
@@ -21,9 +22,17 @@ class RatingController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $rating = new Rating();
+        $rating->writer_id = $request->writer;
+        $rating->target_id = $request->target;
+        $rating->score = $request->score;
+        $rating->comment = $request->comment;
+
+        $rating->save();
+
+        return redirect(route('mentee.profile', $request->target));
     }
 
     /**

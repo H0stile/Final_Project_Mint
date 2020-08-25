@@ -15,6 +15,32 @@
 @endforeach
 <hr>
 
+@if(Auth::user()->type == 'mentor')
+<form id="form" action="{{route('rating.create')}}" method="POST">
+    @csrf
+    <input type="hidden" name="target" value="{{$profile->id}}">
+    <input type="hidden" name="writer" value="{{Auth::user()->id}}">
+
+    <p>
+        <select name="score">
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+        </select>
+    </p>
+
+    <label id="label" for="comment">Add a rating</label>
+    <br>
+    <textarea name="comment" id="textArea" placeholder="Add your text here"></textarea>
+    <br>
+    <div id="button">
+        <input id="submitButton" type="submit" value="Submit">
+    </div>
+</form>
+@endif
+
 <h3>Messages:</h3>
 @foreach($messages as $message)
 <p>{{$message->message}}</p>
@@ -42,15 +68,26 @@
 <!-- mentee part -->
 @if(Auth::user()->type == 'mentee')
 <hr>
-<a href="/searchmentor/">Look for a mentor</a>
+<a href="#">Look for a mentor</a>
 <br>
 <a href="#">Modify profile</a>
+
+<div>
+    <h2>Job list</h2>
+
+    @foreach($jobsData as $job)
+    <li>Job title: {{$job['title']}}</li>
+    <li>Company: {{$job['company_name']}}</li>
+    <li><a href="{{$job['url']}}">Details</a></li>
+    <hr>
+    @endforeach
+</div>
 @endif
 
 <!-- mentor part -->
 @if(Auth::user()->type == 'mentor')
 @if($collabRequestStatus == 'pending')
-<form action="{{route('mentor.invitation.accept', $collabRequestId)}}" method="get">
+<form action="" method="get">
     @csrf
     <button name="accept-request">Accept invitation</button>
 </form>
