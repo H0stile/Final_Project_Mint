@@ -49,9 +49,6 @@ Route::get('/mentorprofile/apply/{id}', 'ApplymentorshipController@show')->name(
 // Jeyashree : ajax call route to submit the comment by mentee to the mentor for one time
 Route::post('/mentorprofile/apply/{id}', 'ApplymentorshipController@store');
 
-// creating navbar specifically for Mentor 
-//Route::get('/mentorprofile/{id}', 'NavbarController@show');
-
 // Route::get('/home', function () {
 //     return view('layouts.navbar');
 // });
