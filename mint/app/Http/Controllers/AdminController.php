@@ -86,6 +86,13 @@ class AdminController extends Controller
         ]);
     }
 
+    public function searchUser(){
+        
+        $mentorMenteeList = User::where('type', 'mentee')->orWhere('mentor_status','validate')->get();
+        return json_encode($mentorMenteeList);
+
+    }
+
     /**
      * Remove the specified resource from storage.
      *

@@ -81,7 +81,7 @@
                     <thead>
                         <tr>
                             <th>Picture</th>
-                            <th><input type="text" id="myInput" onkeyup="myFunction()" placeholder="Search for names.." title="Type in a name"></th>
+                            <th><input type="search" name="inputSearch" id="search_User" placeholder="Enter User" style="width: 600px; height: 30px;"></th>
                             <th>
 
                             <a class='dropdown-trigger btn' href='#' data-target='dropdown1'>Drop Me!</a>
@@ -94,10 +94,10 @@
                             </th>    
                         </tr>
                     </thead>
-                    <tbody>
+                    <tbody >
                         @if(!empty($mentorMenteeList) && $mentorMenteeList->count())
                             @foreach($mentorMenteeList as $user)
-                            <tr>
+                            <tr class="promoting-card">
                             <td><a href="{{ url('')}}/{{ $user->type}}/{{$user->id}}" ><img src="{{asset('img/')}}/{{$user->profile_image}}" style="width:60px"></a></td>
                                 <td><a href="{{ url('')}}/{{ $user->type}}/{{$user->id}}" >{{$user->id}} {{$user->firstname}} {{$user->lastname}}</a></td>
                                 <td>{{$user->type}}</td>
@@ -117,11 +117,36 @@
     
     @endsection
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/scrollreveal"></script>
     <script>
+        ScrollReveal().reveal(document.querySelector('.promoting-card'), {
+            delay: 1000
+        },);
+        $(function() {
+            $('#search_User').keyup(function(e) {
+                e.preventDefault();
+                $.ajax({
+                    url: "{{ url('')}}/initSearch",
+                    type: 'get',
+                    data: {
+                        checkName: $(this).val()
+                    },
+
+                    success: function(result) {
+                        console.log(result);
+                        $('#results').show();
+                        $('#results').html(result);
+                    },
+
+                    error: function(err) {
+                        // If ajax errors happens
+                    }
+                });
+            });
+        });
 
 
-        $(document).ready(function () {
-            
+        $(document).ready(function () {  
             $(".moreDetails").click(function(event){
                 $("#showResultMentor").hide("#showResultMentor");
                 $("#showResultMentor").show("#showResultMentor");
@@ -134,6 +159,8 @@
                 $("#showResultMentor").html(result);
             })  
         });
+
+
     </script>
 
     
