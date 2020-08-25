@@ -40,7 +40,7 @@ Route::delete('/admin/decline/{id}', 'AdminController@destroy')->middleware('adm
 Route::get('/mentee/{id}', 'MenteeController@profile');
 
 //Route::get('/mentee/{id}', 'MenteeController@list');
-Route::get('/mentorac/', 'MentorallconnectionController@index');
+Route::get('/mentorac/{id}', 'MentorallconnectionController@index');
 Route::get('/mentoracdisconnect/{id}', 'MentorallconnectionController@destroy');
 
 Route::get('/mentorai/{id}', 'MentorallinvitationController@index');
