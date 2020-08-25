@@ -79,7 +79,7 @@ class RegisterMenteeController extends Controller
 
 
 
-            $user->save();
+        $user->save();
         $user->languages()->sync($data['chck']);
 
         return $user;

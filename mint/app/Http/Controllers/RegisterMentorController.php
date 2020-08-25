@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Language;
+use App\Skill;
 use Auth;
 
 
@@ -61,31 +62,44 @@ class RegisterMentorController extends Controller
         //     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
         //     'password' => ['required', 'string', 'min:8', 'confirmed'],
         // ]);
-        $validatedData = $data->validate([
-            'firstname' => ['required', 'string', 'max:255'],
-            'lastname' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'pitch' => ['required', 'string', 'max:1000'],
-            'chck' => ['required'],
-            'linkedin' => ['required'],
-            'skills' => ['required']
-        ]);
 
-        $user = new User([
+
+
+        if (strpos($data['skills'], "linkedin.com/in/") !== false) {
+
+            $validatedData = $data->validate([
+                'firstname' => ['required', 'string', 'max:255'],
+                'lastname' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+                'pitch' => ['required'],
+                'chck' => ['required'],
+                'linkedin' => ['required'],
+                'skills' => ['required']
+            ]);
+
+            $user = new User([
             'firstname' => $data['firstname'],
             'lastname' => $data['lastname'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'pitch' => $data['pitch'],
             'type' => 'mentor',
             'mentor_status' => 'pending',
-        ]);
+            ]);
 
-        $user->save();
-        $user->languages()->sync($data['chck']);
-        return $user;
+            $user->save();
+            $user->languages()->sync($data['chck']);
+            $user->skills()->sync($data['skills']);
+            return $user;
+
+        }
     }
-
+    public function initSkill()
+    {
+        $skills = Skill::all();
+        return response()->json([$skills]);
+    }
     // /**
     //  * Create a new user instance after a valid registration.
     //  *

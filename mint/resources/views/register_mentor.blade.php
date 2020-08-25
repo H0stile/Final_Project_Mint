@@ -89,8 +89,8 @@
                                 <div class="row">
                                     <div class="input-field col s12">
                                         <i class="material-icons prefix">code</i>
-                                        <input type="text" id="autocomplete-input" class="autocomplete" name="skills" required>
-                                        <label for="autocomplete-input">Your skills</label>
+                                        <input type="text" id="skills-input" class="autocomplete" name="skills" required>
+                                        <label for="skills-input">Your skills</label>
                                     </div>
                                 </div>
                             </div>
@@ -137,45 +137,40 @@
 
 <script>
     //* Fill the autocomplete input with data
-    $(document).ready(function() {
-        $('input.autocomplete').autocomplete({
-            data: {
-                "1 - HTML/CSS": null,
-                "2 - JavaScript": null,
-                "3 - JQuery": null,
-                "4 - Vue": null,
-                "5 - React": null,
-                "6 - Angular": null,
-                "7 - TypeScript": null,
-                "8 - NodeJS": null,
-                "9 - PHP": null,
-                "10 - Laravel": null,
-                "11 - Symphony": null,
-                "12 - SQL": null,
-                "13 - Java": null,
-                "14 - C": null,
-                "15 - C++": null,
-                "16 - C#": null,
-                "17 - Python": null,
-                "18 - Assembly": null,
-                "19 - VBA": null,
-                "20 - Visual Basic .NET": null,
-                "21 - Swift": null,
-                "22 - Bash/Shell/PowerShell": null,
-                "23 - Go": null,
-                "24 - Kotlin": null,
-                "25 - Ruby": null,
-            },
+    $(document).ready(function () {
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            }
         });
+        //? Get and put the data for skill
+        routeUrlSkills = "{{url('')}}/register_mentor_skill";
+        $.ajax({
+            url: routeUrlSkills,
+            method: 'GET',
+            dataType: 'json',
+            success: function (result) {
+                $.each(result, function(i, item) {
+                    techData = {};
+                    $.each(result[i], function(a, atem){
+                        datas = result[i][a].skill;
+                        techData [datas] = null;
+                    })
+                });
+                //? Add skills to autocomplete
+                $('#skills-input').autocomplete({
+                    data: techData,
+                });
+            }
+        })
+        $.ajax({
+            url: routeUrl,
+            method: 'GET',
+            dataType: 'json',
+            success: function (result) {
+
+            }
+        })
     });
-
-    $.ajax({
-        url: routeUrl,
-        method: 'GET',
-        dataType: 'json',
-        success: function (result) {
-
-        }
-    })
 </script>
 @endsection
