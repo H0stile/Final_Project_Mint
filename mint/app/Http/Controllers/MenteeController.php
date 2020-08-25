@@ -19,8 +19,10 @@ class MenteeController extends Controller
         $messages = Message::whereIn('writer_id', $messageUserIds, 'and')
             ->whereIn('target_id', $messageUserIds)->get();
 
-        // $mentee = Auth::user()->mentees()->find($id);
-        // dd($mentee->pivot->status_rqs);
+        //to chek if mentee and mentor connected
+        $mentee = Auth::user()->mentees->find($id);
+        dd($mentee->pivot);
+        dd($mentee->pivot->status_rqs);
 
         return view(
             'mentee/profile',
