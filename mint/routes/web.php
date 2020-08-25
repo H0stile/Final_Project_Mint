@@ -28,7 +28,7 @@ Route::get('/test', 'TestController@index');
 //* Charles : email verification with materialize
 
 //Auth::routes(['verify' => true]);
-//Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
 
 // Jeyashree : Creating route to see the mentor profile page
