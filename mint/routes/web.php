@@ -32,5 +32,5 @@ Route::get('/disconnect/{id}', 'MentorallconnectionController@destroy');
 Route::get('/mentee/{id}', 'MenteeController@profile');
 
 //* Routes for register
-Route::get('/register', 'RegisterController@create');
-Route::post('/register', 'RegisterController@store');
+Route::get('/register_mentor', 'Auth\RegisterController@index');
+Route::get('/register_mentee', 'Auth\RegisterController@index');
