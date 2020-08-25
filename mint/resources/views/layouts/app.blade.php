@@ -40,6 +40,12 @@
                 @endguest
             </div>
         </nav>
+
+        <main class="py-4">
+            @yield('content')
+        </main>
+
+
         <ul class="sidenav" id="mobile-demo">
             @guest
             <li><a href="{{ route('login') }}">{{ __('Login') }}</a></li>

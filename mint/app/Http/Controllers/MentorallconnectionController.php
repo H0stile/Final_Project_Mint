@@ -16,9 +16,14 @@ class MentorallconnectionController extends Controller
      */
     public function index()
     {
-        $id = Auth::user()->id;
-        $menteeRequests = Collaboration::where('status_rqs', 'connected')->where('mentor_id', $id)->get();
-        return view('mentorAllConnection', ['menteeRequests' => $menteeRequests]);
+        //
+        if (Auth::check() && Auth::user()->type == "mentor") {
+            $id = Auth::user()->id;
+            $menteeRequests = Collaboration::where('status_rqs', 'connected')->where('mentor_id', $id)->get();
+            return view('mentorAllConnection', ['menteeRequests' => $menteeRequests]);
+        } else {
+            return redirect('/');
+        }
     }
 
     /**
@@ -72,8 +77,7 @@ class MentorallconnectionController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    {   
-        
+    {
     }
 
     /**
@@ -84,12 +88,17 @@ class MentorallconnectionController extends Controller
      */
     public function destroy($id)
     {
-        $deleteConn = Collaboration::find($id);
-        $deleteConn->delete();
-        if ($deleteConn) {
-            return response()->json(['msg'=>"Connection removed for $id"]);
-        }else{
-            return response()->json(['msg'=>'Something wrong happened, collaboration not deleted']);
+        //
+        if (Auth::check() && Auth::user()->type == "mentor") {
+            $deleteConn = Collaboration::find($id);
+            $deleteConn->delete();
+            if ($deleteConn) {
+                return response()->json(['msg' => "Connection removed for $id"]);
+            } else {
+                return response()->json(['msg' => 'Something wrong happened, collaboration not deleted']);
+            }
+        } else {
+            return redirect('/');
         }
     }
 }
