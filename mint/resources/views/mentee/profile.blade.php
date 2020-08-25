@@ -1,7 +1,7 @@
 @extends('layouts.app')
 @section('content')
 <h1>{{$profile->getFullName()}}</h1>
-<h3>{{$profile->type}}</h3>
+<h4>{{$profile->type}}</h4>
 
 <hr>
 <h3>Pitch:</h3>
@@ -60,7 +60,14 @@
 <!-- admin part -->
 <hr>
 @if(Auth::user()->type == 'admin')
-<a href="">Delete profile</a>
+
+<form action="{{route('mentee.destroy', $profile->id)}}" method="post">
+    @csrf
+    @method('DELETE')
+
+    <input type="hidden" value="{{$profile->id}}">
+    <button>Delete profile</button>
+</form>
 @endif
 
 @if(Auth::user()->type == 'mentor' || Auth::user()->type == 'mentee')

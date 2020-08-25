@@ -23,7 +23,8 @@ class MenteeController extends Controller
         $mentee = Auth::user()->mentees->find($id);
         // $mentee = Auth::user()->mentees[0];
         //dd($mentee->pivot);
-        $status = $mentee->pivot->status_rqs;
+        //dd($mentee->pivot->status_rqs);
+
 
         return view(
             'mentee/profile',
@@ -32,5 +33,12 @@ class MenteeController extends Controller
                 'messages' => $messages,
             ]
         );
+    }
+
+    public function destroy($id)
+    {
+        User::destroy($id);
+
+        return redirect('admin');
     }
 }
