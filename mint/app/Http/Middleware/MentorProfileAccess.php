@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use GuzzleHttp\Psr7\Response;
 
 /**
- * Check if loggen in user has access to mentee profile.
+ * Check if loggen in user has access to mentor profile.
  */
 class MentorProfileAccess
 {
