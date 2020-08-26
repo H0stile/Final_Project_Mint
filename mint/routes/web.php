@@ -45,7 +45,7 @@ Route::delete('/mentor/delete/{id}', 'MentorController@destroy');
 
 
 //  : to show the mentor profile in the form -which have to be edited
-Route::get('/mentor/edit/{id}', 'MentorController@edit');
+Route::get('/mentor/edit/{id}', 'editmentorprofileController@edit');
 //  :to update the updated mentor profile into the database
 Route::post('/mentor/update/{id}', 'MentorController@update');
 
