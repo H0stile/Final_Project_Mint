@@ -55,3 +55,4 @@ Route::get('/initSearchSkills', 'searchmentorController@initSkill');
 Route::get('/initSearchLanguages', 'searchmentorController@initLanguage');
 Route::get('/initSearchMentorData', 'searchmentorController@initMentorData');
 Route::get('/getRatingByMentor/{id}', 'searchmentorController@getAllRateByMentor');
+Route::post('/refreshSearch', 'searchmentorController@refreshSearch');

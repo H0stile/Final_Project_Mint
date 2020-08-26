@@ -115,4 +115,8 @@ class searchmentorController extends Controller
         $mentorRating = DB::table('ratings')->select('score')->where('target_id', $id)->avg('score');
         return response()->json(['rating' => intVal($mentorRating)]);
     }
+    public function refreshSearch(){
+        $testComm = input::get('test');
+        return response()->json([$testComm]);
+    }
 }

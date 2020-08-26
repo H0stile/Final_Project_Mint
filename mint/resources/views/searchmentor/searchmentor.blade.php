@@ -2,39 +2,41 @@
 @section('content')
 
 <h2>Filter</h2>
-<div class="row">
-    <div class="col s2">
-      <div class="row">
-        <div class="input-field col s12">
-          <i class="material-icons prefix">search</i>
-          <input type="text" id="language-input" class="autocomplete">
-          <label for="language-input">Languages</label>
+<section id="searchField">
+    <div class="row">
+        <div class="col s2">
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">search</i>
+              <input type="text" id="language-input" class="autocomplete">
+              <label for="language-input">Languages</label>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col s2">
       <div class="row">
-        <div class="input-field col s12">
-          <i class="material-icons prefix">search</i>
-          <input type="text" id="technologie-input" class="autocomplete">
-          <label for="technologie-input">Technologie</label>
+        <div class="col s2">
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">search</i>
+              <input type="text" id="technologie-input" class="autocomplete">
+              <label for="technologie-input">Technologie</label>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col s2">
       <div class="row">
-        <div class="input-field col s12">
-          <i class="material-icons prefix">search</i>
-          <input type="text" id="name-input" class="autocomplete">
-          <label for="name-input">Name</label>
+        <div class="col s2">
+          <div class="row">
+            <div class="input-field col s12">
+              <i class="material-icons prefix">search</i>
+              <input type="text" id="name-input" class="autocomplete">
+              <label for="name-input">Name</label>
+            </div>
+          </div>
         </div>
       </div>
-    </div>
-  </div>
+</section>
 
 <section id="mentorList">
     <div id="clone">
@@ -54,6 +56,9 @@ $(document).ready(function () {
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+        },
+        data: {
+            _token: $('meta[name="csrf-token"]').attr('content')
         },
         async: false,
     });
@@ -159,6 +164,20 @@ $(document).ready(function () {
                 })
             });
         }
+    })
+    $('#searchField').change(function (){
+        console.log("Oki, something changed !!!");
+        routeUrlRefresh = "{{url('')}}/refreshSearch";
+
+        $.ajax({
+        url: routeUrlRefresh,
+        method: 'POST',
+        data: {'test': 'testdata'},
+        dataType: 'json',
+        success: function (result) {
+            console.log(result);
+        }
+    })
     })
 });
 </script>
