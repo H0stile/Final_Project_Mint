@@ -20,7 +20,7 @@
                         <span class="card-title">{{ __('Personal informations') }}</span>
 
                         <hr>
-                        //* Charles : personal informations, mail & password part, no need pitch/linkedin/skills for the mentee
+                         <!-- Charles : personal informations, mail & password part, no need pitch/linkedin/skills for the mentee -->
                         <div class="row">
                             <div class="input-field col s12">
                                 <i class="material-icons prefix">person</i>
@@ -63,7 +63,7 @@
                                 <label for="password-confirm">{{ __('Confirm Password') }}</label>
                             </div>
                         </div>
-                        //* Charles : languages checkboxes part
+                        <!-- Charles : languages checkboxes part -->
                         <span class="card-title">{{ __('Languages') }}</span>
 
                         <hr>

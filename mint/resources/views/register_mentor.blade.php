@@ -24,7 +24,7 @@
                         <span class="card-title">{{ __('Personal informations') }}</span>
 
                         <hr>
-                        //* Charles : personal informations, mail & password part
+                         <!-- Charles : personal informations, mail & password part -->
                         <div class="row">
                             <div class="input-field col s12">
                                 <i class="material-icons prefix">person</i>
@@ -67,7 +67,7 @@
                                 <label for="password-confirm">{{ __('Confirm Password') }}</label>
                             </div>
                         </div>
-                        //* Charles : languages checkboxes part
+                         <!-- Charles : languages checkboxes part -->
                         <span class="card-title">{{ __('Languages') }}</span>
 
                         <hr>
@@ -85,7 +85,7 @@
 
                             </div>
                         </div>
-                        //* Charles : skills autocomplete input part
+                        <!-- Charles : skills autocomplete input part -->
                         <span class="card-title">{{ __('Skills') }}</span>
 
                         <hr>
@@ -101,7 +101,7 @@
                                 </div>
                             </div>
                         </div>
-                        //* Charles : Pitch & linkedin account part (for mentor validation)
+                        <!-- Charles : Pitch & linkedin account part (for mentor validation) -->
                         <span class="card-title">{{ __('Verification Part') }}</span>
 
                         <hr>
