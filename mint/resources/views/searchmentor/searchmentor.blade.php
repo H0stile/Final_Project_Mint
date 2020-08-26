@@ -42,8 +42,8 @@
         <p id="mentorName"></p>
         <p id="mentroScore">5/5</p>
         <p id="skill"></p>
-        <button type="submit" name="goToMentorProfile" value="">View profile</button>
-        <button type="submit" name="goToApply" value="">Apply to mentor</button>
+        <button type="submit" id="goToMentorProfile" name="goToMentorProfile" value="">View profile</button>
+        <button type="submit" id="goToApply" name="goToApply" value="">Apply to mentor</button>
     </div>
 </section>
 
@@ -136,6 +136,7 @@ $(document).ready(function () {
                     clone.find('#img').attr('src', imgUrl);
                     clone.find('#mentorName').text(result[i][a].firstname+" "+result[i][a].lastname);
                     clone.find('#skill').text(result[i][a].skill);
+                    clone.find('#goToMentorProfile').attr('value','test');
                     clone.appendTo('#mentorList');
                 })
             });

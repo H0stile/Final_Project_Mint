@@ -105,8 +105,10 @@ class searchmentorController extends Controller
     public function initMentorData()
     {
         // $mentorsData = User::where('type', 'mentor')->get();
-        $mentorsData = DB::table('skills_intermediate')->join('users', 'users.id', '=', 'skills_intermediate.user_id')->join('skills', 'skills.id', '=', 'skills_intermediate.skill_id')->get();
-        dd($mentorsData);
+        $mentorsData = DB::table('users')->join('skills_intermediate', 'skills_intermediate.user_id', '=', 'users.id')->join('skills', 'skills.id', '=', 'skills_intermediate.skill_id')->where('users.mentor_status', 'validate')->get();
+        
+        // $mentorsData = DB::table('users')->join('skills_intermediate', 'skills_intermediate.user_id', '=', 'users.id')->join('skills', 'skills.id', '=', 'skills_intermediate.skill_id')->join('ratings', 'ratings.target_id', '=', 'users.id')->get();
+        // dd($mentorsData);
         return response()->json([$mentorsData]);
     }
 }
