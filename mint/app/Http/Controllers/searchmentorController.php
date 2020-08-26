@@ -108,7 +108,11 @@ class searchmentorController extends Controller
         $skill = $request->skill;
         $name = $request->name;
         if ($lang != null || $skill != null || $name != null) {
-            return response()->json(['lang' => $lang, 'skill' => $skill, 'name' => $name ]);
+            $mentorsData = DB::table('users')->join('skills_intermediate', 'skills_intermediate.user_id', '=', 'users.id')->join('skills', 'skills.id', '=', 'skills_intermediate.skill_id')->join('languages_intermediate', 'languages_intermediate.user_id', '=', 'users.id')->join('languages', 'languages.id', '=', 'languages_intermediate.language_id')->where('users.mentor_status', 'validate')->where('users.type', 'mentor')->where('languages', 'like', '%'.$lang.'%')->where('skill', 'like', '%'.$skill.'%')->get();
+            //* ->where('users.firstname', 'like', '=', '%'.$name.'%')->where('users.lastname', 'like', '=', '%'.$name.'%')
+            return response()->json([$mentorsData]);
+            
+            // return response()->json(['lang' => $lang, 'skill' => $skill, 'name' => $name ]);
         }else{
             $mentorsData = DB::table('users')->join('skills_intermediate', 'skills_intermediate.user_id', '=', 'users.id')->join('skills', 'skills.id', '=', 'skills_intermediate.skill_id')->join('languages_intermediate', 'languages_intermediate.user_id', '=', 'users.id')->join('languages', 'languages.id', '=', 'languages_intermediate.language_id')->where('users.mentor_status', 'validate')->where('users.type', 'mentor')->get();
             return response()->json([$mentorsData]);

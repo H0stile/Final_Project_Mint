@@ -37,8 +37,7 @@
         </div>
       </div>
 </section>
-
-<section id="mentorList">
+<!-- CLONE ELEMENT -->
     <div id="clone">
         <img id="img" src="" style="width:60px">
         <p id="mentorName"></p>
@@ -48,6 +47,8 @@
         <button type="submit" id="goToMentorProfile" name="goToMentorProfile" value="">View profile</button>
         <button type="submit" id="goToApply" name="goToApply" value="">Apply to mentor</button>
     </div>
+<!-- CLONE ELEMENT -->
+<section id="mentorList">
 </section>
 
 @endsection
@@ -133,6 +134,7 @@ $(document).ready(function () {
             dataType: 'json',
             success: function (result) {
                 // console.log(result);
+                $('#mentorList').html('');
                 $.each(result, function(i, item) {
                     nameData = {};
                     $.each(result[i], function(a, atem){
@@ -174,9 +176,9 @@ $(document).ready(function () {
     createCard();
 
     //? Evenlistener to check the search field
-    $('#searchField').change(function (){
+    $('#searchField').focusout(function (){
         console.log("Oki, something changed !!!");
-        // routeUrlRefresh = "{{url('')}}/refreshSearch";
+
         routeUrlName = "{{url('')}}/initSearchMentorData";
         initLanguageVal = $('#language-input').val();
         initSkillVal = $('#technologie-input').val();
@@ -189,6 +191,7 @@ $(document).ready(function () {
         dataType: 'json',
         success: function (result) {
             console.log(result);
+            createCard();
         }
     })
     })
