@@ -63,6 +63,7 @@ class RegisterMentorController extends Controller
         //     'password' => ['required', 'string', 'min:8', 'confirmed'],
         // ]);
 
+        //* Charles : my personal validator, i also added a constraint for the linkedin url
         $checker = str_contains($data['linkedin'], "linkedin.com/in/");
         if ($checker != FALSE) {
             $validatedData = $data->validate([
@@ -75,7 +76,7 @@ class RegisterMentorController extends Controller
                 'linkedin' => ['required'],
                 'skills' => ['required']
             ]);
-
+        //* Charles : I'll create those fields in my DB
             $user = new User([
                 'firstname' => $data['firstname'],
                 'lastname' => $data['lastname'],
@@ -86,7 +87,7 @@ class RegisterMentorController extends Controller
                 'type' => 'mentor',
                 'mentor_status' => 'pending',
             ]);
-
+        //* Charles : here i sync my DB with the languages and the skills (need to do that since they are intermediate tables)
             $user->save();
             $user->languages()->sync($data['chck']);
 
@@ -96,12 +97,13 @@ class RegisterMentorController extends Controller
             $user->skills()->sync($resultID[0]);
 
             //sleep(5);
-            //TODO Ask for a redirection message
+            //TODO Charles : Ask for a redirection message, it doesnt seems to work
             return redirect('/home')->with('message', 'Wait for the admin validation !');
         } else {
             return redirect()->back()->withInput()->with('message', 'Put a valid linkedin account !');
         }
     }
+    //* Charles : part used by the ajax call to retrieve the skills from DB and put them in autocomplete
     public function initSkill()
     {
         $skills = Skill::all();
@@ -146,6 +148,7 @@ class RegisterMentorController extends Controller
 
 
     //     }
+    //* Charles : to display checkboxes
     public function index()
     {
         $languages = language::all();

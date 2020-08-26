@@ -31,7 +31,7 @@ Route::get('/disconnect/{id}', 'MentorallconnectionController@destroy');
 
 Route::get('/mentee/{id}', 'MenteeController@profile');
 
-//* Routes for register
+//* Charles : routes used for register forms
 Route::get('/register_mentor', 'Auth\RegisterMentorController@index');
 Route::get('/register_mentee', 'Auth\RegisterMenteeController@index');
 Route::get('/register_mentor_skill', 'Auth\RegisterMentorController@initSkill');
