@@ -35,7 +35,7 @@ Route::get('/register_mentor_skill', 'Auth\RegisterMentorController@initSkill');
 Route::post('/register_mentee', 'Auth\RegisterMenteeController@validator')->name('register.mentee');
 Route::post('/register_mentor', 'Auth\RegisterMentorController@validator')->name('register.mentor');
 //Auth::routes(['verify' => true]);
-//Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
 // Jeyashree : ajax call route to submit the comment by mentee to the mentor for one time
 Route::get('/mentor/{id}', 'MentorController@show')->name('mentorprofile');
@@ -49,10 +49,16 @@ Route::get('/mentor/edit/{id}', 'MentorController@edit');
 //  :to update the updated mentor profile into the database
 Route::post('/mentor/update/{id}', 'MentorController@update');
 
+
+
 // Jeyashree :Apply for mentorship by pushing button in mentor profile and connects apply mentorship page data stored in collaboration table
 Route::get('/mentor/apply/{id}', 'ApplymentorshipController@show')->name('applymentorship');
 // Jeyashree : ajax call route to submit the comment by mentee to the mentor for one time
 Route::post('/mentor/apply/{id}', 'ApplymentorshipController@store');
+
+
+
+
 
 // Route::get('/home', function () {
 //     return view('layouts.navbar');

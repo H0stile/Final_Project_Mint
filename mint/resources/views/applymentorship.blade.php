@@ -13,6 +13,8 @@
     <h1>LastName :{{ $mentor->lastname }}</h1>
     <h1>Pitch : {{ $mentor->pitch }}</h1>
 
+    @if(Auth::user()->type == 'mentee')
+
     <form action="" method="POST">
 
         @csrf
@@ -30,13 +32,14 @@
         <button type="submit" name="backtomentorprofile" value="{{$mentor->id}}">Go Back</button>
 
     </form>
+    @endif
 
     <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 
     <script type="text/javascript">
         $("button[name='backtomentorprofile']").click(function(event) {
             event.preventDefault();
-            routeUrl = "{{url('')}}/mentorprofile/" + $(this).val();
+            routeUrl = "{{url('')}}/mentor/" + $(this).val();
             window.location.href = routeUrl;
         });
 
@@ -65,7 +68,6 @@
             });
         });
     </script>
+</body>
 
-
-
-    < /body> < / html>
+</html>
