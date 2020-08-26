@@ -55,6 +55,7 @@
             @endguest
         </ul>
     </div>
+    @include('footer')
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script>
@@ -68,7 +69,7 @@
         });
     </script>
 
-@yield('script')
+    @yield('script')
 </body>
 
 </html>

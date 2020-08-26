@@ -18,7 +18,7 @@
     <p style="font-size: 25px; color: white; padding: 5em">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam lobortis vitae sapien id varius. Maecenas massa diam, dignissim eget magna et, tincidunt elementum nulla. Mauris pulvinar, urna tempus dignissim mollis, ligula ligula tincidunt libero, nec finibus felis libero vel neque. Pellentesque a ipsum eget tellus laoreet faucibus. Aenean euismod sollicitudin lectus, sed vehicula magna sagittis sit amet. Fusce velit velit, mollis at gravida id, consectetur ut lacus. Suspendisse potenti. Mauris porttitor dolor in dolor convallis aliquam. Nulla in.</p>
 </div>
 </div>
-<div class="row" style="text-align: center; color: white;">
+<div class="row" style="text-align: center; color: white;" id="home-register">
     <div class="col s6" style="background-color: #52b788; padding: 2em; margin-bottom: 0">
 
         <img src="https://www.thespruceeats.com/thmb/721kkzdDKgQ4FnJpdCaXVgwttUI=/1816x1362/smart/filters:no_upscale()/easy-fresh-mint-tea-recipe-766391-6_preview-5b291f95ba61770036733329.jpeg" style="height: 400px">
