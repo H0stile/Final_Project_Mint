@@ -131,12 +131,15 @@ $(document).ready(function () {
                     console.log(result[i][a]);
 
                     imgUrl = "{{asset('img/')}}/"+result[i][a].profile_image;
+                    mentorProfile = "{{url('')}}/mentorprofile/"+result[i][a].id;
+                    applyToMentor = "{{url('')}}//mentorprofile/apply/"+result[i][a].id;;
                     // console.log(imgUrl);
                     clone = elem.clone(true);
                     clone.find('#img').attr('src', imgUrl);
                     clone.find('#mentorName').text(result[i][a].firstname+" "+result[i][a].lastname);
                     clone.find('#skill').text(result[i][a].skill);
-                    clone.find('#goToMentorProfile').attr('value','test');
+                    clone.find('#goToMentorProfile').val(mentorProfile);
+                    clone.find('#goToApply').val(applyToMentor);
                     clone.appendTo('#mentorList');
                 })
             });
