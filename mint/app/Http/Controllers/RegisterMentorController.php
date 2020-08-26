@@ -94,9 +94,12 @@ class RegisterMentorController extends Controller
             $resultID = explode(' - ', $data['skills']);
 
             $user->skills()->sync($resultID[0]);
-            return redirect('/home');
+
+            //sleep(5);
+            //TODO Ask for a redirection message
+            return redirect('/home')->with('message', 'Wait for the admin validation !');
         } else {
-            return "Error : put a valid linkedin account link please !";
+            return redirect()->back()->withInput()->with('message', 'Put a valid linkedin account !');
         }
     }
     public function initSkill()
