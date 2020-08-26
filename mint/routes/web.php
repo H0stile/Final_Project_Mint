@@ -43,12 +43,15 @@ Route::get('/mentee/{id}', 'MenteeController@profile');
 Route::get('/mentorac/', 'MentorallconnectionController@index');
 Route::get('/mentoracdisconnect/{id}', 'MentorallconnectionController@destroy');
 
+//* Route for mentor all invitations - Matt
 Route::get('/mentorai/', 'MentorallinvitationController@index');
 Route::get('/mentoraidecline/{id}', 'MentorallinvitationController@destroy');
 Route::get('/mentoraiaccept/{id}', 'MentorallinvitationController@update');
 
+//* Route for mentor all Connections - Matt
 Route::get('/searchmentor/{id}', 'searchmentorController@index')->middleware('mentee.profile');
 Route::get('/initSearchNames', 'searchmentorController@initName');
 Route::get('/initSearchSkills', 'searchmentorController@initSkill');
 Route::get('/initSearchLanguages', 'searchmentorController@initLanguage');
 Route::get('/initSearchMentorData', 'searchmentorController@initMentorData');
+Route::get('/getRatingByMentor/{id}', 'searchmentorController@getAllRateByMentor');

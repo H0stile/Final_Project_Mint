@@ -40,7 +40,7 @@
     <div id="clone">
         <img id="img" src="" style="width:60px">
         <p id="mentorName"></p>
-        <p id="mentroScore">5/5</p>
+        <p id="mentroScore"></p>
         <p id="skill"></p>
         <button type="submit" id="goToMentorProfile" name="goToMentorProfile" value="">View profile</button>
         <button type="submit" id="goToApply" name="goToApply" value="">Apply to mentor</button>
@@ -54,7 +54,8 @@ $(document).ready(function () {
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-        }
+        },
+        async: false,
     });
     //? Get and put the data for language
     routeUrlLanguages = "{{url('')}}/initSearchLanguages";
@@ -132,13 +133,25 @@ $(document).ready(function () {
 
                     imgUrl = "{{asset('img/')}}/"+result[i][a].profile_image;
                     //TODO Check also in other link !!!
-                    mentorProfile = "{{url('')}}/mentor/"+result[i][a].id;
-                    applyToMentor = "{{url('')}}//mentorprofile/apply/"+result[i][a].id;;
-                    // console.log(imgUrl);
+                    mentorProfile = "{{url('')}}/mentor/"+result[i][a].user_id;
+                    applyToMentor = "{{url('')}}/mentorprofile/apply/"+result[i][a].user_id;
+                    getRatingMentorAvg = "{{url('')}}/getRatingByMentor/"+result[i][a].user_id;
+                    avgRating = 0;
+
+                    //*AJAX Call for getting all rating and have the average
+                    $.ajax({
+                        url: getRatingMentorAvg,
+                        method: 'GET',
+                        dataType: 'json',
+                        success: function (result) {
+                            avgRating = result.rating;
+                        }
+                        })
                     clone = elem.clone(true);
                     clone.find('#img').attr('src', imgUrl);
                     clone.find('#mentorName').text(result[i][a].firstname+" "+result[i][a].lastname);
                     clone.find('#skill').text(result[i][a].skill);
+                    clone.find('#mentroScore').text(avgRating+"/5");
                     clone.find('#goToMentorProfile').val(mentorProfile);
                     clone.find('#goToApply').val(applyToMentor);
                     clone.appendTo('#mentorList');

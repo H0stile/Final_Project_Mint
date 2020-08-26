@@ -111,4 +111,8 @@ class searchmentorController extends Controller
         // dd($mentorsData);
         return response()->json([$mentorsData]);
     }
+    public function getAllRateByMentor($id){
+        $mentorRating = DB::table('ratings')->select('score')->where('target_id', $id)->avg('score');
+        return response()->json(['rating' => intVal($mentorRating)]);
+    }
 }
