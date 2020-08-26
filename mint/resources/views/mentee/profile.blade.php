@@ -16,13 +16,15 @@
 <hr>
 
 @if(Auth::user()->type == 'mentor')
-<form id="form" action="{{route('rating.create')}}" method="POST">
+@if($collabRequestStatus == 'connected')
+
+<!-- <form id="form" action="{{route('rating.create')}}" method="POST">
     @csrf
     <input type="hidden" name="target" value="{{$profile->id}}">
     <input type="hidden" name="writer" value="{{Auth::user()->id}}">
 
     <p>
-        <select name="score">
+        <select name="score" style="display: initial;">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -39,23 +41,30 @@
         <input id="submitButton" type="submit" value="Submit">
     </div>
 </form>
-<br><br>
+<br><br> -->
+@endif
 @endif
 
 <!-- message part part -->
-@if(Auth::user()->type == 'mentee' || Auth::user()->type == 'mentor')
+@if(Auth::user()->type == 'mentor')
 
 <h3>Messages:</h3>
-<form id="form" action="">
+<form id="form2" action="{{route('message.create')}}" method="POST">
     @csrf
-    <label id="label" for="">Write a message</label>
+    <input type="hidden" name="target" value="{{$profile->id}}">
+    <input type="hidden" name="writer" value="{{Auth::user()->id}}">
 
-    <textarea name="" id="textArea" placeholder="Add your text here"></textarea>
+    <label id="labelMessage" for="message">Write a message</label>
     <br>
+    <textarea name="message" id="textAreaMessage" placeholder="Write your message here"></textarea>
+    <br>
+    <!-- <input type="datetime" name="time_msg" id=""> -->
     <div id="button">
-        <input id="submitButton" type="submit" value="Submit">
+        <input id="submitButton" type="submit" value="Send" name="form2">
     </div>
 </form>
+<br><br>
+
 
 @foreach($messages as $message)
 <p>{{$message->message}}</p>

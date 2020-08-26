@@ -108,3 +108,4 @@ Route::get('/initSearchMentorData', 'searchmentorController@initMentorData');
 
 // Rating routes
 Route::post('/rating', 'RatingController@create')->name('rating.create');
+Route::post('/message','RatingController@create')->name('message.create');

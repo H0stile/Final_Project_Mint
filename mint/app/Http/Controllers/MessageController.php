@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Message;
 use Illuminate\Http\Request;
 
 class MessageController extends Controller
@@ -21,9 +22,20 @@ class MessageController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $message = new Message();
+
+        $message->writer_id = $request->writer;
+        $message->target_id = $request->target;
+        $message->message = $request->message;
+        //$message->time_msg = $request->time_msg;
+
+        $message->save();
+
+        dd($request->all());
+
+        //return redirect(route('mentee.profile', $request->receiver);
     }
 
     /**
