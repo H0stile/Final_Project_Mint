@@ -129,12 +129,11 @@ $(document).ready(function () {
             $.each(result, function(i, item) {
                 nameData = {};
                 $.each(result[i], function(a, atem){
-                    console.log(result[i][a]);
-
+                    //*INIT VARIABLES
                     imgUrl = "{{asset('img/')}}/"+result[i][a].profile_image;
                     //TODO Check also in other link !!!
                     mentorProfile = "{{url('')}}/mentor/"+result[i][a].user_id;
-                    applyToMentor = "{{url('')}}/mentorprofile/apply/"+result[i][a].user_id;
+                    applyToMentor = "{{url('')}}/mentor/apply/"+result[i][a].user_id;
                     getRatingMentorAvg = "{{url('')}}/getRatingByMentor/"+result[i][a].user_id;
                     avgRating = 0;
 
@@ -147,6 +146,7 @@ $(document).ready(function () {
                             avgRating = result.rating;
                         }
                         })
+                    //* CLONE THE CARD
                     clone = elem.clone(true);
                     clone.find('#img').attr('src', imgUrl);
                     clone.find('#mentorName').text(result[i][a].firstname+" "+result[i][a].lastname);
@@ -154,6 +154,7 @@ $(document).ready(function () {
                     clone.find('#mentroScore').text(avgRating+"/5");
                     clone.find('#goToMentorProfile').val(mentorProfile);
                     clone.find('#goToApply').val(applyToMentor);
+                    //TODO : Add a remove class to unhide the card
                     clone.appendTo('#mentorList');
                 })
             });
