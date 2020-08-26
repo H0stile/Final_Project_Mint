@@ -168,6 +168,12 @@ $(document).ready(function () {
     $('#searchField').change(function (){
         console.log("Oki, something changed !!!");
         routeUrlRefresh = "{{url('')}}/refreshSearch";
+        initLanguageVal = $('#language-input').val();
+        console.log(initLanguageVal);
+        initSkillVal = $('#technologie-input').val();
+        console.log(initSkillVal);
+        initNameVal = $('#name-input').val();
+        console.log(initNameVal);
 
         $.ajax({
         url: routeUrlRefresh,
