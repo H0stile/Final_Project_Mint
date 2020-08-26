@@ -38,7 +38,7 @@ Add rules for displaying the different functions depending of the viewer
     <h1>LastName :{{ $mentor->lastname }}</h1>
     <h1>Pitch : {{ $mentor->pitch }}</h1>
     <h1>linkedin : {{ $mentor->linkedin }}</h1>
-    <h1>Available for mentorship : {{ $mentorAvailable }}</h1>
+
     <!-- <label for="checkboxyes">Available for mentorship</label>
     <input type="checkbox" id="checkbox" name="available" value="{{ $mentor->availability}}"> -->
 
@@ -48,21 +48,26 @@ Add rules for displaying the different functions depending of the viewer
 
     @if(Auth::user()->type == 'mentor')
 
-    <button class="editbtn" value="{{$mentor->id}}">Edit the profile page</button>
-    <button class="seeallinvitationbtn" value="{{$mentor->id}}">See all the invitation-request page</button>
-    <button class="seeallconnectionbtn" value="{{$mentor->id}}">See all the connection page</button>
+    <h1>Available for mentorship : {{ $mentorAvailable }}</h1>
+
+    <button name="editbtn" value="{{$mentor->id}}">Edit the profile page</button>
+    <button name="seeallinvitationbtn" value="{{$mentor->id}}">See all the invitation-request page</button>
+    <button name="seeallconnectionbtn" value="{{$mentor->id}}">See all the connection page</button>
 
     @endif
 
     @if(Auth::user()->type == 'admin')
 
-    <button class="deletebtn" value="{{$mentor->id}}">Delete the profile</button>
+    <button name='deletebyadmin' class='deletebtn' value="{{$mentor->id}}">Delete the profile</button>
+
 
     @endif
     @if(Auth::user()->type == 'mentee')
 
+    <h1>Available for mentorship : {{ $mentorAvailable }}</h1>
 
-    <button class="applymentorship" value="{{$mentor->id}}">Apply for the mentorship</button>
+
+    <button name='applymentorship' value="{{$mentor->id}}">Apply for the mentorship</button>
 
 
     <h2>Ratings</h2>
@@ -97,7 +102,7 @@ Add rules for displaying the different functions depending of the viewer
     <script type="text/javascript">
         $("button[name='editbtn']").click(function(event) {
             event.preventDefault();
-            routeUrl = "{{url('')}}/mentorprofile/edit" + $(this).val();
+            routeUrl = "{{url('')}}/mentor/edit/" + $(this).val();
             window.location.href = routeUrl;
         });
         $("button[name='seeallinvitationbtn']").click(function(event) {
@@ -112,9 +117,10 @@ Add rules for displaying the different functions depending of the viewer
         });
         $("button[name='applymentorship']").click(function(event) {
             event.preventDefault();
-            routeUrl = "{{url('')}}/mentorprofile/apply/" + $(this).val();
+            routeUrl = "{{url('')}}/mentor/apply/" + $(this).val();
             window.location.href = routeUrl;
         });
+
 
 
         $.ajaxSetup({
@@ -149,7 +155,7 @@ Add rules for displaying the different functions depending of the viewer
     <script>
         $(function() {
             $('.deletebtn').click(function(e) {
-                let route = '/mentorprofile/delete/' + $(this).val();
+                let route = '/mentor/delete/' + $(this).val();
                 console.log('Route: ' + route);
                 $.ajax({
                     url: route,
@@ -160,6 +166,9 @@ Add rules for displaying the different functions depending of the viewer
                     },
                     success: function(result) {
                         console.log(result.message);
+                        alert('Mentor Profile deleted');
+                        routeUrl = "{{url('')}}/admin/";
+                        window.location.href = routeUrl;
 
                     },
                     error: function(err) {
