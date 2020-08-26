@@ -56,7 +56,12 @@
 <!-- admin part -->
 <hr>
 @if(Auth::user()->type == 'admin')
-<a href="">Delete profile</a>
+<!-- add form to delete the current profile -->
+<form action="/admin/decline/{{ $profile->id }}" method="post">
+@csrf
+@method('DELETE')
+<input type="hidden" name="declineProfile" value="{{ $profile->id }}">
+</form>
 @endif
 
 
