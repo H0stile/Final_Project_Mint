@@ -21,7 +21,7 @@ class AdminController extends Controller
         $matchMentor = ['type' => 'mentor', 'mentor_status' => 'pending'];
         $pendingMentors = User::where($matchMentor)->paginate(2);
         //$mentorMentee = ['type' => 'mentee', 'mentor_status' => 'validate'];
-        $mentorMenteeList = User::where('type', 'mentee')->orWhere('mentor_status','validate')->get();
+        $mentorMenteeList = User::where('type', 'mentee')->orWhere('mentor_status','validate')->paginate(5);
 
         return view('admin', compact('pendingMentors', 'admin', 'mentorMenteeList'));
     }
@@ -80,18 +80,9 @@ class AdminController extends Controller
     {
         User::where('id', $id)
           ->update(['mentor_status' => 'validate']);
-          return redirect('/admin')->with([
-            'result' => 'SUCCESS: Update successfully.'
-            //'class' => 'alert alert-success alert-dismissible fade show',
-        ]);
+          return redirect('/admin');
     }
 
-    public function searchUser(){
-        
-        $mentorMenteeList = User::where('type', 'mentee')->orWhere('mentor_status','validate')->get();
-        return json_encode($mentorMenteeList);
-
-    }
 
     /**
      * Remove the specified resource from storage.
