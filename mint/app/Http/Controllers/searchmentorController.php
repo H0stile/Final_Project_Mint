@@ -102,27 +102,20 @@ class searchmentorController extends Controller
         $languages = Language::all();
         return response()->json([$languages]);
     }
-    public function initMentorData()
+    public function initMentorData(request $request)
     {
-        // $mentorsData = User::where('type', 'mentor')->get();
-        $mentorsData = DB::table('users')->join('skills_intermediate', 'skills_intermediate.user_id', '=', 'users.id')->join('skills', 'skills.id', '=', 'skills_intermediate.skill_id')->where('users.mentor_status', 'validate')->get();
-        
-        // $mentorsData = DB::table('users')->join('skills_intermediate', 'skills_intermediate.user_id', '=', 'users.id')->join('skills', 'skills.id', '=', 'skills_intermediate.skill_id')->join('ratings', 'ratings.target_id', '=', 'users.id')->get();
-        // dd($mentorsData);
-        return response()->json([$mentorsData]);
-    }
-    public function getAllRateByMentor($id){
-        $mentorRating = DB::table('ratings')->select('score')->where('target_id', $id)->avg('score');
-        return response()->json(['rating' => intVal($mentorRating)]);
-    }
-    public function refreshSearch(request $request){
         $lang = $request->lang;
         $skill = $request->skill;
         $name = $request->name;
         if ($lang != null || $skill != null || $name != null) {
             return response()->json(['lang' => $lang, 'skill' => $skill, 'name' => $name ]);
         }else{
-            return response()->json(['msg' => 'Fields are empty']);
+            $mentorsData = DB::table('users')->join('skills_intermediate', 'skills_intermediate.user_id', '=', 'users.id')->join('skills', 'skills.id', '=', 'skills_intermediate.skill_id')->where('users.mentor_status', 'validate')->get();
+            return response()->json([$mentorsData]);
         }
+    }
+    public function getAllRateByMentor($id){
+        $mentorRating = DB::table('ratings')->select('score')->where('target_id', $id)->avg('score');
+        return response()->json(['rating' => intVal($mentorRating)]);
     }
 }

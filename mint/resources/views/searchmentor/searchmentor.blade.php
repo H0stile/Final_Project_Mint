@@ -174,14 +174,15 @@ $(document).ready(function () {
     //? Evenlistener to check the search field
     $('#searchField').change(function (){
         console.log("Oki, something changed !!!");
-        routeUrlRefresh = "{{url('')}}/refreshSearch";
+        // routeUrlRefresh = "{{url('')}}/refreshSearch";
+        routeUrlName = "{{url('')}}/initSearchMentorData";
         initLanguageVal = $('#language-input').val();
         initSkillVal = $('#technologie-input').val();
         initNameVal = $('#name-input').val();
 
         $.ajax({
-        url: routeUrlRefresh,
-        method: 'POST',
+        url: routeUrlName,
+        method: 'GET',
         data: {lang: initLanguageVal, skill: initSkillVal, name: initNameVal},
         dataType: 'json',
         success: function (result) {
