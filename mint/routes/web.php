@@ -35,7 +35,7 @@ Route::get('/register_mentor_skill', 'Auth\RegisterMentorController@initSkill');
 Route::post('/register_mentee', 'Auth\RegisterMenteeController@validator')->name('register.mentee');
 Route::post('/register_mentor', 'Auth\RegisterMentorController@validator')->name('register.mentor');
 //Auth::routes(['verify' => true]);
-Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+//Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
 // Jeyashree : ajax call route to submit the comment by mentee to the mentor for one time
 Route::get('/mentor/{id}', 'MentorController@show')->name('mentorprofile');
