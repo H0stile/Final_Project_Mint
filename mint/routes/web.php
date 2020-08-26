@@ -77,7 +77,6 @@ Route::delete('/mentee/{id}/destroy', 'MenteeController@destroy')
 Route::get('/admin', 'AdminController@index')->name('admin')->middleware('admin');
 Route::put('/admin/update/{id}', 'AdminController@update');
 Route::delete('/admin/decline/{id}', 'AdminController@destroy');
-Route::get('/initSearch', 'AdminController@destroy');
 
 Route::get('/mentorac/{id}', 'MentorallconnectionController@index');
 Route::delete('/mentoracdisconnect/{id}', 'MentorallconnectionController@destroy')->name('mentor.connection.destroy');
