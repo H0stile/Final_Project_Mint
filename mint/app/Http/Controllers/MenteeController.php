@@ -18,22 +18,36 @@ class MenteeController extends Controller
         }
 
         $loggedInUser = Auth::user();
-        $messageUserIds = [$id, $loggedInUser->id];
-        $messages = Message::whereIn('writer_id', $messageUserIds, 'and')
-            ->whereIn('target_id', $messageUserIds)->get();
 
+        $collaborator = null;
         $collabRequestStatus = null;
         $collabRequestId = 0;
         $jobsData = [];
+        $canWriteRating = false;
 
         if ($loggedInUser->type === 'mentor') {
-            $mentee = $loggedInUser->mentees->find($id);
-            $collabRequestStatus = $mentee->pivot->status_rqs;
-            $collabRequestId = $mentee->pivot->id;
+            $collaborator = $loggedInUser->mentees->find($id);
+            $collabRequestStatus = $collaborator->pivot->status_rqs;
+            $collabRequestId = $collaborator->pivot->id;
+
+            $ratings = $loggedInUser->sendRatings->where('target_id', $id);
+            $canWriteRating = (count($ratings) == 0) && $collabRequestStatus == 'connected';
         } else if ($loggedInUser->type === 'mentee') {
+            $collaborators = $loggedInUser->mentors;
+            if (count($collaborators) > 0) {
+                // Assuming that mentee can have just one mentor
+                $collaborator = $collaborators[0];
+            }
             $jobsData = Http::get('https://remotive.io/api/remote-jobs?limit=5')->json();
             $jobsData = $jobsData['jobs'];
         }
+
+        $messageUserIds = [$loggedInUser->id];
+        if ($collaborator !== null) {
+            $messageUserIds[] = $collaborator->id;
+        }
+        $messages = Message::whereIn('writer_id', $messageUserIds, 'and')
+            ->whereIn('target_id', $messageUserIds)->get();
 
         return view(
             'mentee/profile',
@@ -43,6 +57,8 @@ class MenteeController extends Controller
                 'collabRequestStatus' => $collabRequestStatus,
                 'collabRequestId' => $collabRequestId,
                 'jobsData' => $jobsData,
+                'collaborator' => $collaborator,
+                'canWriteRating' => $canWriteRating,
             ]
         );
     }

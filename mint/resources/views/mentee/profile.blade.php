@@ -15,9 +15,7 @@
 @endforeach
 <hr>
 
-@if(Auth::user()->type == 'mentor')
-@if($collabRequestStatus == 'connected')
-
+@if($canWriteRating)
 <form id="form" action="{{route('rating.create')}}" method="POST">
     @csrf
     <input type="hidden" name="target" value="{{$profile->id}}">
@@ -42,15 +40,26 @@
     </div>
 </form>
 <br><br>
+@endif
+
 
 
 <!-- message part part -->
+@if(count($messages) >0)
 <h3>Messages:</h3>
+@foreach($messages as $message)
+<p>{{$message->message}}</p>
+<p>{{$message->writer->getFullName()}}</p>
+@endforeach
+<hr>
+@endif
+
+@if($collaborator !== null)
 <form id="form2" action="{{route('message.create')}}" method="POST">
     @csrf
     {{ csrf_field() }}
-    <input type="hidden" name="target" value="{{$profile->id}}">
     <input type="hidden" name="writer" value="{{Auth::user()->id}}">
+    <input type="hidden" name="target" value="{{$collaborator->id}}">
 
     <label id="labelMessage" for="message">Write a message</label>
     <br>
@@ -60,46 +69,11 @@
         <input id="submitButton2" type="submit" value="Send" name="form2">
     </div>
 </form>
-<br><br>
-
-
-@foreach($messages as $message)
-<p>{{$message->message}}</p>
-<p>{{$message->writer->getFullName()}}</p>
-@endforeach
-<hr>
-@endif
+<br>
 @endif
 
 <!-- mentee part -->
 @if(Auth::user()->type == 'mentee')
-
-<!-- message part part -->
-<h3>Messages:</h3>
-<form id="form2" action="{{route('message.create')}}" method="POST">
-    @csrf
-    {{ csrf_field() }}
-    <input type="hidden" name="writer" value="{{$profile->id}}">
-    <input type="hidden" name="target" value="{{Auth::user()->id}}">
-
-    <label id="labelMessage" for="message">Write a message</label>
-    <br>
-    <textarea name="message" id="textAreaMessage" placeholder="Write your message here"></textarea>
-    <br>
-    <div id="button">
-        <input id="submitButton2" type="submit" value="Send" name="form2">
-    </div>
-</form>
-<br><br>
-
-@if($collabRequestStatus == 'connected')
-@foreach($messages as $message)
-<p>{{$message->message}}</p>
-<p>{{$message->writer->getFullName()}}</p>
-@endforeach
-<hr>
-@endif
-
 <hr>
 <a href="#">Look for a mentor</a>
 <br>
@@ -137,26 +111,8 @@
     @method('DELETE')
     <button name="disconnect">Disconnect</button>
 </form>
-
 @endif
-@endif
-
-<!-- admin part -->
-<hr>
-@if(Auth::user()->type == 'admin')
-
-<form action="{{route('mentee.destroy', $profile->id)}}" method="post">
-    @csrf
-    @method('DELETE')
-
-    <input type="hidden" value="{{$profile->id}}">
-    <button>Delete profile</button>
-</form>
-@endif
-
-@if(Auth::user()->type == 'mentor' || Auth::user()->type == 'mentee')
-
-<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+@section('script')
 <script>
     $(document).ready(function() {
         function deleteCollaboration() {
@@ -213,5 +169,19 @@
         });
     });
 </script>
+@endsection
+@endif
+
+<!-- admin part -->
+<hr>
+@if(Auth::user()->type == 'admin')
+
+<form action="{{route('mentee.destroy', $profile->id)}}" method="post">
+    @csrf
+    @method('DELETE')
+
+    <input type="hidden" value="{{$profile->id}}">
+    <button>Delete profile</button>
+</form>
 @endif
 @endsection

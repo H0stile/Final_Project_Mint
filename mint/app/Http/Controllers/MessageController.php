@@ -32,7 +32,7 @@ class MessageController extends Controller
         $message->message = $request->message;
         // $message->time_msg = "2020-05-11 10:05:20";
         $message->save();
-        return redirect(route('mentee.profile', $request->target));
+        return redirect()->back();
     }
 
     /**
