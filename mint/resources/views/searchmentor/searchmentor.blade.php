@@ -187,11 +187,11 @@ $(document).ready(function () {
         $.ajax({
         url: routeUrlName,
         method: 'GET',
-        data: {lang: initLanguageVal, skill: initSkillVal, name: initNameVal},
+        //TODO Find a way to pass something like data into the function or copy the code and optimise later lol
+        data: {lang: initLanguageVal, skill: initSkillVal, name: initNameVal}, 
         dataType: 'json',
         success: function (result) {
             console.log(result);
-            createCard();
         }
     })
     })
