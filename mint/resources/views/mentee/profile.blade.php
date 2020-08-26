@@ -39,19 +39,17 @@
         <input id="submitButton" type="submit" value="Submit">
     </div>
 </form>
+<br><br>
 @endif
 
-<h3>Messages:</h3>
-@foreach($messages as $message)
-<p>{{$message->message}}</p>
-<p>{{$message->writer->getFullName()}}</p>
-@endforeach
-<hr>
+<!-- message part part -->
+@if(Auth::user()->type == 'mentee' || Auth::user()->type == 'mentor')
 
+<h3>Messages:</h3>
 <form id="form" action="">
     @csrf
     <label id="label" for="">Write a message</label>
-    <br>
+
     <textarea name="" id="textArea" placeholder="Add your text here"></textarea>
     <br>
     <div id="button">
@@ -59,12 +57,13 @@
     </div>
 </form>
 
-<section class="comment">
-    <div class='cloneComment'>
-        <img class="userImage" src="https://randomuser.me/api/portraits/men/29.jpg" alt="" style="width:60px">
-        <p class="commentText">Awesome !</p>
-    </div>
-</section>
+@foreach($messages as $message)
+<p>{{$message->message}}</p>
+<p>{{$message->writer->getFullName()}}</p>
+@endforeach
+<hr>
+@endif
+
 <!-- mentee part -->
 @if(Auth::user()->type == 'mentee')
 <hr>
