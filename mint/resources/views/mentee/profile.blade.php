@@ -42,12 +42,9 @@
     </div>
 </form>
 <br><br>
-@endif
-@endif
+
 
 <!-- message part part -->
-@if(Auth::user()->type == 'mentor')
-
 <h3>Messages:</h3>
 <form id="form2" action="{{route('message.create')}}" method="POST">
     @csrf
@@ -72,14 +69,43 @@
 @endforeach
 <hr>
 @endif
+@endif
 
 <!-- mentee part -->
 @if(Auth::user()->type == 'mentee')
+
+<!-- message part part -->
+<h3>Messages:</h3>
+<form id="form2" action="{{route('message.create')}}" method="POST">
+    @csrf
+    {{ csrf_field() }}
+    <input type="hidden" name="writer" value="{{$profile->id}}">
+    <input type="hidden" name="target" value="{{Auth::user()->id}}">
+
+    <label id="labelMessage" for="message">Write a message</label>
+    <br>
+    <textarea name="message" id="textAreaMessage" placeholder="Write your message here"></textarea>
+    <br>
+    <div id="button">
+        <input id="submitButton2" type="submit" value="Send" name="form2">
+    </div>
+</form>
+<br><br>
+
+@if($collabRequestStatus == 'connected')
+@foreach($messages as $message)
+<p>{{$message->message}}</p>
+<p>{{$message->writer->getFullName()}}</p>
+@endforeach
+<hr>
+@endif
+
 <hr>
 <a href="#">Look for a mentor</a>
 <br>
 <a href="#">Modify profile</a>
 
+<!-- API part -->
 <div>
     <h2>Job list</h2>
 
@@ -90,6 +116,7 @@
     <hr>
     @endforeach
 </div>
+
 @endif
 
 <!-- mentor part -->

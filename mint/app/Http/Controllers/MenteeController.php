@@ -25,6 +25,7 @@ class MenteeController extends Controller
         $collabRequestStatus = null;
         $collabRequestId = 0;
         $jobsData = [];
+
         if ($loggedInUser->type === 'mentor') {
             $mentee = $loggedInUser->mentees->find($id);
             $collabRequestStatus = $mentee->pivot->status_rqs;
