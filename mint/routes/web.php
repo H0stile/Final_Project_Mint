@@ -45,6 +45,8 @@ Route::get('/mentor/edit/{id}', 'MentorController@edit');
 //  :to update the updated mentor profile into the database
 Route::post('/mentor/update/{id}', 'MentorController@update');
 
+
+
 // Jeyashree :Apply for mentorship by pushing button in mentor profile and connects apply mentorship page data stored in collaboration table
 Route::get('/mentor/apply/{id}', 'ApplymentorshipController@show')->name('applymentorship');
 // Jeyashree : ajax call route to submit the comment by mentee to the mentor for one time
