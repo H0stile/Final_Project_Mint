@@ -39,7 +39,7 @@
     <script type="text/javascript">
         $("button[name='backtomentorprofile']").click(function(event) {
             event.preventDefault();
-            routeUrl = "{{url('')}}/mentorprofile/" + $(this).val();
+            routeUrl = "{{url('')}}/mentor/" + $(this).val();
             window.location.href = routeUrl;
         });
 
@@ -68,7 +68,6 @@
             });
         });
     </script>
+</body>
 
-
-
-    < /body> < / html>
+</html>

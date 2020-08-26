@@ -34,21 +34,25 @@ Route::get('/home', 'HomeController@index')->name('home')->middleware('verified'
 // Jeyashree : Creating route to see the mentor profile page
 
 // Jeyashree : ajax call route to submit the comment by mentee to the mentor for one time
-Route::get('/mentorprofile/{id}', 'MentorController@show')->name('mentorprofile');
-Route::post('/mentorprofile/{id}', 'MentorController@store');
+Route::get('/mentor/{id}', 'MentorController@show')->name('mentorprofile');
+Route::post('/mentor/{id}', 'MentorController@store');
 // Jeyashree :to delete the mentor profile from the database by admin
-Route::delete('/mentorprofile/delete/{id}', 'MentorController@destroy');
+Route::delete('/mentor/delete/{id}', 'MentorController@destroy');
 
 
 //  : to show the mentor profile in the form -which have to be edited
-Route::get('/mentorprofile/edit/{id}', 'MentorController@edit');
+Route::get('/mentor/edit/{id}', 'MentorController@edit');
 //  :to update the updated mentor profile into the database
-Route::post('/mentorprofile/update/{id}', 'MentorController@update');
+Route::post('/mentor/update/{id}', 'MentorController@update');
 
 // Jeyashree :Apply for mentorship by pushing button in mentor profile and connects apply mentorship page data stored in collaboration table
-Route::get('/mentorprofile/apply/{id}', 'ApplymentorshipController@show')->name('applymentorship');
+Route::get('/mentor/apply/{id}', 'ApplymentorshipController@show')->name('applymentorship');
 // Jeyashree : ajax call route to submit the comment by mentee to the mentor for one time
-Route::post('/mentorprofile/apply/{id}', 'ApplymentorshipController@store');
+Route::post('/mentor/apply/{id}', 'ApplymentorshipController@store');
+
+
+
+
 
 // Route::get('/home', function () {
 //     return view('layouts.navbar');

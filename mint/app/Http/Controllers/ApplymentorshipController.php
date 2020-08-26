@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
@@ -19,7 +20,7 @@ class ApplymentorshipController extends Controller
     public function index($id)
     {
         //
-        return('mentor');
+        //return('mentor');
     }
 
     /**
@@ -37,7 +38,7 @@ class ApplymentorshipController extends Controller
         $mentor = User::find($id);
         $skills = User::find($id)->skills;
         //dd(Auth::user()->id);
-        return view('applymentorship', compact('mentor','skills'));   
+        return view('applymentorship', compact('mentor', 'skills'));
     }
 
     /**
@@ -50,10 +51,10 @@ class ApplymentorshipController extends Controller
     {
         //
         DB::table('collaboration')->insert([
-            'mentor_id' => $request->mentor_id, 
+            'mentor_id' => $request->mentor_id,
             'mentee_id' => $request->mentee_id,
             'request_msg' => $request->request_msg,
-            'status_rqs' => $request->status_rqs, 
+            'status_rqs' => $request->status_rqs,
         ]);
         //return redirect("/mentorprofile/$request->id");
     }
@@ -64,7 +65,7 @@ class ApplymentorshipController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    
+
 
     /**
      * Show the form for editing the specified resource.
