@@ -116,7 +116,7 @@
 <script>
     $(document).ready(function() {
         function deleteCollaboration(collabId) {
-            routeUrl = "{{url('')}}/mentoraidecline/" + collabId;
+            routeUrl = "{{url('')}}/mentoracdisconnect/" + collabId;
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -124,7 +124,7 @@
             });
             $.ajax({
                 url: routeUrl,
-                method: 'GET',
+                method: 'DELETE',
                 dataType: 'json',
                 success: function(result) {
                     window.location.replace("{{route('mentorprofile', Auth::user()->id)}}");
