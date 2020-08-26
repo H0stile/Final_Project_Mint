@@ -100,6 +100,12 @@ Route::get('/mentoraiaccept/{id}', 'MentorallinvitationController@update')->name
 
 Route::get('/jobs', 'JobsController@jobs');
 
+//* Route for mentor all invitations - Matt
+Route::get('/mentorai/', 'MentorallinvitationController@index');
+Route::get('/mentoraidecline/{id}', 'MentorallinvitationController@destroy');
+Route::get('/mentoraiaccept/{id}', 'MentorallinvitationController@update');
+
+//* Route for mentor all Connections - Matt
 Route::get('/searchmentor/{id}', 'searchmentorController@index');
 Route::get('/initSearchNames', 'searchmentorController@initName');
 Route::get('/initSearchSkills', 'searchmentorController@initSkill');
@@ -109,3 +115,5 @@ Route::get('/initSearchMentorData', 'searchmentorController@initMentorData');
 // Rating routes
 Route::post('/rating', 'RatingController@create')->name('rating.create');
 Route::post('/message', 'MessageController@create')->name('message.create');
+Route::get('/getRatingByMentor/{id}', 'searchmentorController@getAllRateByMentor');
+
