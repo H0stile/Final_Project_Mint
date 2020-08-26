@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Collaboration;
 use App\User;
 use App\Skill;
@@ -103,7 +104,9 @@ class searchmentorController extends Controller
     }
     public function initMentorData()
     {
-        $mentorsData = User::where('type', 'mentor')->get();
+        // $mentorsData = User::where('type', 'mentor')->get();
+        $mentorsData = DB::table('skills_intermediate')->join('users', 'users.id', '=', 'skills_intermediate.user_id')->join('skills', 'skills.id', '=', 'skills_intermediate.skill_id')->get();
+        dd($mentorsData);
         return response()->json([$mentorsData]);
     }
 }

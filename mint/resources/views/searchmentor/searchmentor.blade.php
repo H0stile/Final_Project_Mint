@@ -128,7 +128,7 @@ $(document).ready(function () {
             $.each(result, function(i, item) {
                 nameData = {};
                 $.each(result[i], function(a, atem){
-                    // console.log(result[i][a]);
+                    console.log(result[i][a]);
 
                     imgUrl = "{{asset('img/')}}/"+result[i][a].profile_image;
                     // console.log(imgUrl);
