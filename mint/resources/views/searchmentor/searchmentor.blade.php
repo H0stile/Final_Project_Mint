@@ -176,7 +176,7 @@ $(document).ready(function () {
     createCard();
 
     //? Evenlistener to check the search field
-    $('#searchField').focusout(function (){
+    $('#searchField').change(function (){
         console.log("Oki, something changed !!!");
 
         routeUrlName = "{{url('')}}/initSearchMentorData";
