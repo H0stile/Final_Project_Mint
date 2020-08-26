@@ -131,7 +131,8 @@ $(document).ready(function () {
                     console.log(result[i][a]);
 
                     imgUrl = "{{asset('img/')}}/"+result[i][a].profile_image;
-                    mentorProfile = "{{url('')}}/mentorprofile/"+result[i][a].id;
+                    //TODO Check also in other link !!!
+                    mentorProfile = "{{url('')}}/mentor/"+result[i][a].id;
                     applyToMentor = "{{url('')}}//mentorprofile/apply/"+result[i][a].id;;
                     // console.log(imgUrl);
                     clone = elem.clone(true);
