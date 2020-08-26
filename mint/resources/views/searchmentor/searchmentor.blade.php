@@ -44,6 +44,7 @@
         <p id="mentorName"></p>
         <p id="mentroScore"></p>
         <p id="skill"></p>
+        <p id="language"></p>
         <button type="submit" id="goToMentorProfile" name="goToMentorProfile" value="">View profile</button>
         <button type="submit" id="goToApply" name="goToApply" value="">Apply to mentor</button>
     </div>
@@ -158,6 +159,7 @@ $(document).ready(function () {
                         clone.find('#mentorName').text(result[i][a].firstname+" "+result[i][a].lastname);
                         clone.find('#skill').text(result[i][a].skill);
                         clone.find('#mentroScore').text(avgRating+"/5");
+                        clone.find('#language').text(result[i][a].languages);
                         clone.find('#goToMentorProfile').val(mentorProfile);
                         clone.find('#goToApply').val(applyToMentor);
                         //TODO : Add a remove class to unhide the card
