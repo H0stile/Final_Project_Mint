@@ -24,18 +24,15 @@ class MessageController extends Controller
      */
     public function create(Request $request)
     {
+
         $message = new Message();
 
         $message->writer_id = $request->writer;
         $message->target_id = $request->target;
         $message->message = $request->message;
-        //$message->time_msg = $request->time_msg;
-
+        // $message->time_msg = "2020-05-11 10:05:20";
         $message->save();
-
-        dd($request->all());
-
-        //return redirect(route('mentee.profile', $request->receiver);
+        return redirect(route('mentee.profile', $request->target));
     }
 
     /**

@@ -18,7 +18,7 @@
 @if(Auth::user()->type == 'mentor')
 @if($collabRequestStatus == 'connected')
 
-<!-- <form id="form" action="{{route('rating.create')}}" method="POST">
+<form id="form" action="{{route('rating.create')}}" method="POST">
     @csrf
     <input type="hidden" name="target" value="{{$profile->id}}">
     <input type="hidden" name="writer" value="{{Auth::user()->id}}">
@@ -41,7 +41,7 @@
         <input id="submitButton" type="submit" value="Submit">
     </div>
 </form>
-<br><br> -->
+<br><br>
 @endif
 @endif
 
@@ -51,6 +51,7 @@
 <h3>Messages:</h3>
 <form id="form2" action="{{route('message.create')}}" method="POST">
     @csrf
+    {{ csrf_field() }}
     <input type="hidden" name="target" value="{{$profile->id}}">
     <input type="hidden" name="writer" value="{{Auth::user()->id}}">
 
@@ -58,9 +59,8 @@
     <br>
     <textarea name="message" id="textAreaMessage" placeholder="Write your message here"></textarea>
     <br>
-    <!-- <input type="datetime" name="time_msg" id=""> -->
     <div id="button">
-        <input id="submitButton" type="submit" value="Send" name="form2">
+        <input id="submitButton2" type="submit" value="Send" name="form2">
     </div>
 </form>
 <br><br>
