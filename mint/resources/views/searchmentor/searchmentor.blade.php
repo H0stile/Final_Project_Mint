@@ -169,16 +169,13 @@ $(document).ready(function () {
         console.log("Oki, something changed !!!");
         routeUrlRefresh = "{{url('')}}/refreshSearch";
         initLanguageVal = $('#language-input').val();
-        console.log(initLanguageVal);
         initSkillVal = $('#technologie-input').val();
-        console.log(initSkillVal);
         initNameVal = $('#name-input').val();
-        console.log(initNameVal);
 
         $.ajax({
         url: routeUrlRefresh,
         method: 'POST',
-        data: {test: 'testdata', pouet: 'pouet pouet'},
+        data: {lang: initLanguageVal, skill: initSkillVal, name: initNameVal},
         dataType: 'json',
         success: function (result) {
             console.log(result);

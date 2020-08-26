@@ -116,8 +116,13 @@ class searchmentorController extends Controller
         return response()->json(['rating' => intVal($mentorRating)]);
     }
     public function refreshSearch(request $request){
-        $testComm = $request->test;
-        $testComm2 = $request->pouet;
-        return response()->json(['msg' => $testComm, 'msg2' => $testComm2 ]);
+        $lang = $request->lang;
+        $skill = $request->skill;
+        $name = $request->name;
+        if ($lang != null || $skill != null || $name != null) {
+            return response()->json(['lang' => $lang, 'skill' => $skill, 'name' => $name ]);
+        }else{
+            return response()->json(['msg' => 'Fields are empty']);
+        }
     }
 }
