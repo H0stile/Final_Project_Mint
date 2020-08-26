@@ -172,7 +172,7 @@ $(document).ready(function () {
         $.ajax({
         url: routeUrlRefresh,
         method: 'POST',
-        data: {'test': 'testdata'},
+        data: {test: 'testdata', pouet: 'pouet pouet'},
         dataType: 'json',
         success: function (result) {
             console.log(result);
