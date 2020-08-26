@@ -176,7 +176,7 @@ $(document).ready(function () {
     createCard();
 
     //? Evenlistener to check the search field
-    $('#searchField').focusout(function (){
+    $('#searchField').change(function (){
         console.log("Oki, something changed !!!");
 
         routeUrlName = "{{url('')}}/initSearchMentorData";
@@ -187,7 +187,7 @@ $(document).ready(function () {
         $.ajax({
         url: routeUrlName,
         method: 'GET',
-        //TODO Find a way to pass something like data into the function or copy the code and optimise later lol
+        //TODO Find a way to pass something like data into the function or copy the code and optimise later lol !!! SOLUTION : Just use the clone part as function and not all the ajax call.
         data: {lang: initLanguageVal, skill: initSkillVal, name: initNameVal}, 
         dataType: 'json',
         success: function (result) {
