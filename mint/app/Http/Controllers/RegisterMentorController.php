@@ -94,9 +94,9 @@ class RegisterMentorController extends Controller
             $resultID = explode(' - ', $data['skills']);
 
             $user->skills()->sync($resultID[0]);
-            return $user;
+            return redirect('/home');
         } else {
-            return $checker;
+            return "Error : put a valid linkedin account link please !";
         }
     }
     public function initSkill()

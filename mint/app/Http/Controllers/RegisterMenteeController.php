@@ -81,8 +81,8 @@ class RegisterMenteeController extends Controller
 
         $user->save();
         $user->languages()->sync($data['chck']);
+        return redirect('/login');
 
-        return $user;
     }
 
     // /**
