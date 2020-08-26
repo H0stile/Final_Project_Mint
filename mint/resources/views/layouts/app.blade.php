@@ -35,11 +35,17 @@
                 </ul>
                 @else
                 <ul class="right hide-on-med-and-down">
-                    <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">{{ Auth::user()->name }}<i class="material-icons right">arrow_drop_down</i></a></li>
+                    <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">{{ Auth::user()->firstname }} {{ Auth::user()->lastname }}<i class="material-icons right">arrow_drop_down</i></a></li>
                 </ul>
                 @endguest
             </div>
         </nav>
+
+        <main class="py-4">
+            @yield('content')
+        </main>
+
+
         <ul class="sidenav" id="mobile-demo">
             @guest
             <li><a href="{{ route('login') }}">{{ __('Login') }}</a></li>
@@ -48,7 +54,6 @@
             <li><a href="{{ route('logout') }}" class="logout">{{ __('Logout') }}</a></li>
             @endguest
         </ul>
-        @yield('content')
     </div>
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
@@ -62,6 +67,8 @@
             });
         });
     </script>
+
+@yield('script')
 </body>
 
 </html>

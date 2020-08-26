@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Rating;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use App\Collaboration;
-use App\User;
 
-class MentorallconnectionController extends Controller
+class RatingController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,9 +14,7 @@ class MentorallconnectionController extends Controller
      */
     public function index()
     {
-        $id = Auth::user()->id;
-        $menteeRequests = Collaboration::where('status_rqs', 'connected')->where('mentor_id', $id)->get();
-        return view('mentorAllConnection', ['menteeRequests' => $menteeRequests]);
+        //
     }
 
     /**
@@ -26,9 +22,17 @@ class MentorallconnectionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $rating = new Rating();
+        $rating->writer_id = $request->writer;
+        $rating->target_id = $request->target;
+        $rating->score = $request->score;
+        $rating->comment = $request->comment;
+
+        $rating->save();
+
+        return redirect(route('mentee.profile', $request->target));
     }
 
     /**
@@ -73,6 +77,7 @@ class MentorallconnectionController extends Controller
      */
     public function update(Request $request, $id)
     {
+        //
     }
 
     /**
@@ -83,12 +88,6 @@ class MentorallconnectionController extends Controller
      */
     public function destroy($id)
     {
-        $deleteConn = Collaboration::find($id);
-        $deleteConn->delete();
-        if ($deleteConn) {
-            return response()->json(['msg'=>"Connection removed for $id"]);
-        }else{
-            return response()->json(['msg'=>'Something wrong happened, collaboration not deleted']);
-        }
+        //
     }
 }
