@@ -98,25 +98,25 @@
 @if($collabRequestStatus == 'pending')
 <form action="" method="get">
     @csrf
-    <button name="accept-request">Accept invitation</button>
+    <button name="accept-request" value="{{$collabRequestId}}">Accept invitation</button>
 </form>
 <form action="{{route('mentor.connection.destroy', $collabRequestId)}}" method="post">
     @csrf
     @method('DELETE')
-    <button name="decline-request">Decline invitation</button>
+    <button name="decline-request" value="{{$collabRequestId}}">Decline invitation</button>
 </form>
 @else
 <form action="{{route('mentor.connection.destroy', $collabRequestId)}}" method="post">
     @csrf
     @method('DELETE')
-    <button name="disconnect">Disconnect</button>
+    <button name="disconnect" value="{{$collabRequestId}}">Disconnect</button>
 </form>
 @endif
 @section('script')
 <script>
     $(document).ready(function() {
-        function deleteCollaboration() {
-            routeUrl = "{{route('mentor.connection.destroy', $collabRequestId)}}";
+        function deleteCollaboration(collabId) {
+            routeUrl = "{{url('')}}/mentoraidecline/" + collabId;
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -124,7 +124,7 @@
             });
             $.ajax({
                 url: routeUrl,
-                method: 'DELETE',
+                method: 'GET',
                 dataType: 'json',
                 success: function(result) {
                     window.location.replace("{{route('mentorprofile', Auth::user()->id)}}");
@@ -136,7 +136,7 @@
         $("button[name='accept-request']").click(function(event) {
             event.preventDefault();
             if (confirm("Are you sure to accept this invitation?")) {
-                routeUrl = "{{route('mentor.invitation.accept', $collabRequestId)}}";
+                routeUrl = "{{url('')}}/mentoraiaccept/" + $(this).val();
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
@@ -157,14 +157,14 @@
         $("button[name='decline-request']").click(function(event) {
             event.preventDefault();
             if (confirm("Are you sure to decline invitation?")) {
-                deleteCollaboration();
+                deleteCollaboration($(this).val());
             }
         });
         //? Button to break the connection
         $("button[name='disconnect']").click(function(event) {
             event.preventDefault();
             if (confirm("Are you sure to disconnect from this mentee?")) {
-                deleteCollaboration();
+                deleteCollaboration($(this).val());
             }
         });
     });

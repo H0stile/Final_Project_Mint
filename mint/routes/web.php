@@ -95,7 +95,7 @@ Route::get('/mentorac/{id}', 'MentorallconnectionController@index');
 Route::delete('/mentoracdisconnect/{id}', 'MentorallconnectionController@destroy')->name('mentor.connection.destroy');
 
 Route::get('/mentorai/{id}', 'MentorallinvitationController@index');
-Route::get('/mentoraidecline/{id}', 'MentorallinvitationController@destroy')->name('mentor.invitation.accept');
+Route::get('/mentoraidecline/{id}', 'MentorallinvitationController@destroy')->name('mentor.invitation.destroy');
 Route::get('/mentoraiaccept/{id}', 'MentorallinvitationController@update')->name('mentor.invitation.accept');
 
 Route::get('/jobs', 'JobsController@jobs');
@@ -116,4 +116,3 @@ Route::get('/initSearchMentorData', 'searchmentorController@initMentorData');
 Route::post('/rating', 'RatingController@create')->name('rating.create');
 Route::post('/message', 'MessageController@create')->name('message.create');
 Route::get('/getRatingByMentor/{id}', 'searchmentorController@getAllRateByMentor');
-
