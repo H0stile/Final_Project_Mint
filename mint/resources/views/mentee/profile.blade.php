@@ -78,7 +78,8 @@
 <hr>
 <a href="{{route('searchmentor', Auth::user()->id)}}">Look for a mentor</a>
 <br>
-<a href="#">Modify profile</a>
+<a href="{{route('editmenteeprofile', Auth::user()->id)}}">Modify profile</a>
+
 
 <!-- API part -->
 <div>
