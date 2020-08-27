@@ -80,7 +80,7 @@ Route::get('/disconnect/{id}', 'MentorallconnectionController@destroy');
 // Mentee routes
 Route::get('/mentee/{id}', 'MenteeController@profile')
     ->name('mentee.profile')
-    ->middleware('mentee.profile');
+    ->middleware('mentee.profile')->middleware('auth');
 Route::delete('/mentee/{id}/destroy', 'MenteeController@destroy')
     ->name('mentee.destroy')
     ->middleware('admin');
@@ -107,7 +107,7 @@ Route::get('/mentoraidecline/{id}', 'MentorallinvitationController@destroy');
 Route::get('/mentoraiaccept/{id}', 'MentorallinvitationController@update');
 
 //* Route for mentor all Connections - Matt
-Route::get('/searchmentor/{id}', 'searchmentorController@index');
+Route::get('/searchmentor/{id}', 'searchmentorController@index')->name('searchmentor');
 Route::get('/initSearchNames', 'searchmentorController@initName');
 Route::get('/initSearchSkills', 'searchmentorController@initSkill');
 Route::get('/initSearchLanguages', 'searchmentorController@initLanguage');
