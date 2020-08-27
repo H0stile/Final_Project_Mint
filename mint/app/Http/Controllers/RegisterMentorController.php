@@ -54,6 +54,7 @@ class RegisterMentorController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+
     protected function validator(Request $data)
     {
         // return Validator::make($data, [
@@ -72,11 +73,11 @@ class RegisterMentorController extends Controller
                 'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                 'password' => ['required', 'string', 'min:8', 'confirmed'],
                 'pitch' => ['required'],
-                'chck' => ['required'],
+                'language' => ['required'],
                 'linkedin' => ['required'],
                 'skills' => ['required']
             ]);
-        //* Charles : I'll create those fields in my DB
+            //* Charles : I'll create those fields in my DB
             $user = new User([
                 'firstname' => $data['firstname'],
                 'lastname' => $data['lastname'],
@@ -87,9 +88,9 @@ class RegisterMentorController extends Controller
                 'type' => 'mentor',
                 'mentor_status' => 'pending',
             ]);
-        //* Charles : here i sync my DB with the languages and the skills (need to do that since they are intermediate tables)
+            //* Charles : here i sync my DB with the languages and the skills (need to do that since they are intermediate tables)
             $user->save();
-            $user->languages()->sync($data['chck']);
+            $user->languages()->sync($data['language']);
 
             //* Explode and send id ?
             $resultID = explode(' - ', $data['skills']);
@@ -100,7 +101,7 @@ class RegisterMentorController extends Controller
             //TODO Charles : Ask for a redirection message, it doesnt seems to work
             return redirect('/home')->with('message', 'Wait for the admin validation !');
         } else {
-            return redirect()->back()->withInput()->with('message', 'Put a valid linkedin account !');
+            return redirect()->back()->withErrors('Put a valid linkedin account !');
         }
     }
     //* Charles : part used by the ajax call to retrieve the skills from DB and put them in autocomplete
@@ -124,7 +125,7 @@ class RegisterMentorController extends Controller
     //             'password' => Hash::make($data['password']),
     //             'linkedin' => $data['linkedin'],
     //             'pitch' => $data['pitch'],
-    //             'language' => $data['chck'],
+    //             'language' => $data['language'],
     //             'skills' => $data['skills'],
     //             'type' => 'mentor',
     //             'mentor_status' => 'pending',
@@ -142,7 +143,7 @@ class RegisterMentorController extends Controller
 
 
     //             $user->save();
-    //         $user->languages()->sync($data['chck']);
+    //         $user->languages()->sync($data['language']);
 
     //         return $user;
 
