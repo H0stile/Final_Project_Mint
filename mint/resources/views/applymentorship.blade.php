@@ -1,73 +1,70 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
+@section('content')
+<img src="{{ asset('img/') }}/{{ $mentor->profile_image }}" width="400" height="300">
+<h1>FirstName : {{ $mentor->firstname }}</h1>
+<h1>LastName :{{ $mentor->lastname }}</h1>
+<h1>Pitch : {{ $mentor->pitch }}</h1>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Apply mentorship</title>
-</head>
+<form action="" method="POST">
 
-<body>
-    <img src="{{ asset('img/') }}/{{ $mentor->profile_image }}" width="400" height="300">
-    <h1>FirstName : {{ $mentor->firstname }}</h1>
-    <h1>LastName :{{ $mentor->lastname }}</h1>
-    <h1>Pitch : {{ $mentor->pitch }}</h1>
+    @csrf
 
-    @if(Auth::user()->type == 'mentee')
+    <input name="mentor_id" type="hidden" value="{{Auth::user()->id}}" />
+    <input name="mentee_id" type="hidden" value="{{$mentor->id}}" />
 
-    <form action="" method="POST">
+    <label for="msgtomentor">Request Message</label>
+    <textarea name="request_msg" id="request_msg" cols="30" rows="10"></textarea>
 
-        @csrf
+    <input name="status_rqs" type="hidden" value="pending" />
 
-        <input name="mentor_id" type="hidden" value="{{Auth::user()->id}}" />
-        <input name="mentee_id" type="hidden" value="{{$mentor->id}}" />
+    <input type="submit" name="submit" value="submit">
 
-        <label for="msgtomentor">Request Message</label>
-        <textarea name="request_msg" id="request_msg" cols="30" rows="10"></textarea>
+    <button type="submit" name="backtomentorprofile" value="{{$mentor->id}}">Go Back</button>
 
-        <input name="status_rqs" type="hidden" value="pending" />
+</form>
+@endsection
 
-        <input type="submit" name="submit" value="submit">
+@section('script')
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 
-        <button type="submit" name="backtomentorprofile" value="{{$mentor->id}}">Go Back</button>
+</form>
+@endif
 
-    </form>
-    @endif
+<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
 
-    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+<script type="text/javascript">
+    $("button[name='backtomentorprofile']").click(function(event) {
+        event.preventDefault();
+        routeUrl = "{{url('')}}/mentor/" + $(this).val();
+        window.location.href = routeUrl;
+    });
 
-    <script type="text/javascript">
-        $("button[name='backtomentorprofile']").click(function(event) {
-            event.preventDefault();
-            routeUrl = "{{url('')}}/mentor/" + $(this).val();
-            window.location.href = routeUrl;
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+
+    $("input[type='submit']").click(function(e) {
+        e.preventDefault();
+        $.ajax({
+            //url:'/rating',
+            method: 'POST',
+            data: $('form').serialize(),
+
+            success: function(result) {
+                console.log('data inserted successfully')
+                alert('Your form submitted');
+            },
+            error: function(err) {
+                // If ajax errors happens
+            },
+
         });
-
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
+    });
+</script>
 
 
-        $("input[type='submit']").click(function(e) {
-            e.preventDefault();
-            $.ajax({
-                //url:'/rating',
-                method: 'POST',
-                data: $('form').serialize(),
 
-                success: function(result) {
-                    console.log('data inserted successfully')
-                    alert('Your form submitted');
-                },
-                error: function(err) {
-                    // If ajax errors happens
-                },
-
-            });
-        });
-    </script>
-</body>
-
-</html>
+@endsection
