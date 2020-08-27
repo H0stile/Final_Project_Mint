@@ -114,7 +114,7 @@ $(document).ready(function () {
             $.each(result, function(i, item) {
                 nameData = {};
                 $.each(result[i], function(a, atem){
-                    datas = result[i][a].firstname+" "+result[i][a].lastname;
+                    datas = result[i][a].lastname;
                     nameData [datas] = null;
                 })
             });
@@ -125,55 +125,50 @@ $(document).ready(function () {
         }
     })
     //? Get and create mentor card using function
-    function createCard(){
-        routeUrlName = "{{url('')}}/initSearchMentorData";
-        elem = $("#clone");
-        $.ajax({
-            url: routeUrlName,
-            method: 'GET',
-            dataType: 'json',
-            success: function (result) {
-                // console.log(result);
-                $('#mentorList').html('');
-                $.each(result, function(i, item) {
-                    nameData = {};
-                    $.each(result[i], function(a, atem){
-                        //*INIT VARIABLES
-                        imgUrl = "{{asset('img/')}}/"+result[i][a].profile_image;
-                        //TODO Check also in other link !!!
-                        mentorProfile = "{{url('')}}/mentor/"+result[i][a].user_id;
-                        applyToMentor = "{{url('')}}/mentor/apply/"+result[i][a].user_id;
-                        getRatingMentorAvg = "{{url('')}}/getRatingByMentor/"+result[i][a].user_id;
-                        avgRating = 0;
+    routeUrlName = "{{url('')}}/initSearchMentorData";
+    elem = $("#clone");
+    $.ajax({
+        url: routeUrlName,
+        method: 'GET',
+        dataType: 'json',
+        success: function (result) {
+            // console.log(result);
+            $('#mentorList').html('');
+            $.each(result, function(i, item) {
+                nameData = {};
+                $.each(result[i], function(a, atem){
+                    //*INIT VARIABLES
+                    imgUrl = "{{asset('img/')}}/"+result[i][a].profile_image;
+                    //TODO Check also in other link !!!
+                    mentorProfile = "{{url('')}}/mentor/"+result[i][a].user_id;
+                    applyToMentor = "{{url('')}}/mentor/apply/"+result[i][a].user_id;
+                    getRatingMentorAvg = "{{url('')}}/getRatingByMentor/"+result[i][a].user_id;
+                    avgRating = 0;
 
-                        //*AJAX Call for getting all rating and have the average
-                        $.ajax({
-                            url: getRatingMentorAvg,
-                            method: 'GET',
-                            dataType: 'json',
-                            success: function (result) {
-                                avgRating = result.rating;
-                            }
-                            })
-                        //* CLONE THE CARD
-                        clone = elem.clone(true);
-                        clone.find('#img').attr('src', imgUrl);
-                        clone.find('#mentorName').text(result[i][a].firstname+" "+result[i][a].lastname);
-                        clone.find('#skill').text(result[i][a].skill);
-                        clone.find('#mentroScore').text(avgRating+"/5");
-                        clone.find('#language').text(result[i][a].languages);
-                        clone.find('#goToMentorProfile').val(mentorProfile);
-                        clone.find('#goToApply').val(applyToMentor);
-                        //TODO : Add a remove class to unhide the card
-                        clone.appendTo('#mentorList');
-                    })
-                });
-            }
-        })
-    }
-
-    //? Launch the create card function
-    createCard();
+                    //*AJAX Call for getting all rating and have the average
+                    $.ajax({
+                        url: getRatingMentorAvg,
+                        method: 'GET',
+                        dataType: 'json',
+                        success: function (result) {
+                            avgRating = result.rating;
+                        }
+                        })
+                    //* CLONE THE CARD
+                    clone = elem.clone(true);
+                    clone.find('#img').attr('src', imgUrl);
+                    clone.find('#mentorName').text(result[i][a].firstname+" "+result[i][a].lastname);
+                    clone.find('#skill').text(result[i][a].skill);
+                    clone.find('#mentroScore').text(avgRating+"/5");
+                    clone.find('#language').text(result[i][a].languages);
+                    clone.find('#goToMentorProfile').val(mentorProfile);
+                    clone.find('#goToApply').val(applyToMentor);
+                    //TODO : Add a remove class to unhide the card
+                    clone.appendTo('#mentorList');
+                })
+            });
+        }
+    })
 
     //? Evenlistener to check the search field
     $('#searchField').change(function (){
@@ -187,14 +182,62 @@ $(document).ready(function () {
         $.ajax({
         url: routeUrlName,
         method: 'GET',
-        //TODO Find a way to pass something like data into the function or copy the code and optimise later lol !!! SOLUTION : Just use the clone part as function and not all the ajax call.
         data: {lang: initLanguageVal, skill: initSkillVal, name: initNameVal}, 
         dataType: 'json',
         success: function (result) {
             console.log(result);
+            $('#mentorList').html('');
+            $.each(result, function(i, item) {
+                nameData = {};
+                $.each(result[i], function(a, atem){
+                    //*INIT VARIABLES
+                    imgUrl = "{{asset('img/')}}/"+result[i][a].profile_image;
+                    //TODO Check also in other link !!!
+                    mentorProfile = "{{url('')}}/mentor/"+result[i][a].user_id;
+                    applyToMentor = "{{url('')}}/mentor/apply/"+result[i][a].user_id;
+                    getRatingMentorAvg = "{{url('')}}/getRatingByMentor/"+result[i][a].user_id;
+                    avgRating = 0;
+
+                    //*AJAX Call for getting all rating and have the average
+                    $.ajax({
+                        url: getRatingMentorAvg,
+                        method: 'GET',
+                        dataType: 'json',
+                        success: function (result) {
+                            avgRating = result.rating;
+                        }
+                        })
+                    //* CLONE THE CARD
+                    clone = elem.clone(true);
+                    clone.find('#img').attr('src', imgUrl);
+                    clone.find('#mentorName').text(result[i][a].firstname+" "+result[i][a].lastname);
+                    clone.find('#skill').text(result[i][a].skill);
+                    clone.find('#mentroScore').text(avgRating+"/5");
+                    clone.find('#language').text(result[i][a].languages);
+                    clone.find('#goToMentorProfile').val(mentorProfile);
+                    clone.find('#goToApply').val(applyToMentor);
+                    //TODO : Add a remove class to unhide the card
+                    clone.appendTo('#mentorList');
+                })
+            })
         }
+        })    
     })
+
+    //? even to go to mentor profile
+    $("button[name='goToMentorProfile']").click(function (event){
+        event.preventDefault();
+        routeUrl = $(this).val();
+        window.location.href = routeUrl;
     })
+    //? even to go to apply mentor profile
+    $("button[name='goToApply']").click(function (event){
+        event.preventDefault();
+        routeUrl = $(this).val();
+        window.location.href = routeUrl;
+    })
+
+
 });
 </script>
 @endsection

@@ -80,7 +80,7 @@ Route::get('/disconnect/{id}', 'MentorallconnectionController@destroy');
 // Mentee routes
 Route::get('/mentee/{id}', 'MenteeController@profile')
     ->name('mentee.profile')
-    ->middleware('mentee.profile');
+    ->middleware('mentee.profile')->middleware('auth');
 Route::delete('/mentee/{id}/destroy', 'MenteeController@destroy')
     ->name('mentee.destroy')
     ->middleware('admin');
