@@ -149,6 +149,7 @@
                                             <button class="btn waves-effect waves-light" type="submit" name="action">{{ __('Register') }}
                                                 <i class="material-icons right">create</i>
                                             </button>
+                                            <button class="waves-effect waves-dark btn-flat previous-step" type="button">BACK</button>
                                         </p>
                                     </div>
                                 </div>
