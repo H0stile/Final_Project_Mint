@@ -38,7 +38,7 @@ class MenteeController extends Controller
                 // Assuming that mentee can have just one mentor
                 $collaborator = $collaborators[0];
             }
-            $jobsData = Http::get('https://remotive.io/api/remote-jobs?limit=5', ['verify' => false])->json();
+            $jobsData = Http::get('http://remotive.io/api/remote-jobs?limit=5')->json();
             $jobsData = $jobsData['jobs'];
         }
 
