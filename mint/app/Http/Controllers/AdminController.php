@@ -22,8 +22,13 @@ class AdminController extends Controller
         $pendingMentors = User::where($matchMentor)->paginate(2);
         //$mentorMentee = ['type' => 'mentee', 'mentor_status' => 'validate'];
         $mentorMenteeList = User::where('type', 'mentee')->orWhere('mentor_status','validate')->paginate(5);
+        for ($i=0; $i < $mentorMenteeList->count(); $i++) {
+            $userCollaborators[$i] = $mentorMenteeList[$i]->mentees;
+        }
+        
 
-        return view('admin', compact('pendingMentors', 'admin', 'mentorMenteeList'));
+
+        return view('admin', compact('pendingMentors', 'admin', 'mentorMenteeList','userCollaborators'));
     }
 
     /**
@@ -98,5 +103,25 @@ class AdminController extends Controller
         //User::destroy($request->id);
 
         return redirect('/admin');
+    }
+
+    /**
+     * Get User collaborators.
+     *
+     * 
+     * 
+     */
+    public function getUserCollabs($userId)
+    {
+        $user = User::find($userId);
+        
+        if ($user->type === "mentor"){
+            return $user->mentees;
+        }
+
+        if ($user->type === "mentee"){
+            return $user->mentors;
+        }
+
     }
 }
