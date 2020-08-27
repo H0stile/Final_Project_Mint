@@ -91,6 +91,9 @@ Route::get('/admin', 'AdminController@index')->name('admin')->middleware('admin'
 Route::get('/userCollaborations/{id}', 'AdminController@getUserCollabs')->middleware('admin');
 Route::put('/admin/update/{id}', 'AdminController@update');
 Route::delete('/admin/decline/{id}', 'AdminController@destroy');
+Route::get('/contactUser/{id}', 'SendEmailController@show');
+Route::post('/contactUser', 'SendEmailController@store');
+
 
 Route::get('/mentorac/{id}', 'MentorallconnectionController@index');
 Route::delete('/mentoracdisconnect/{id}', 'MentorallconnectionController@destroy')->name('mentor.connection.destroy');
