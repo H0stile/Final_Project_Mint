@@ -118,15 +118,12 @@ class searchmentorController extends Controller
             );
             $mentorsData = DB::table('users')->join('skills_intermediate', 'skills_intermediate.user_id', '=', 'users.id')->join('skills', 'skills.id', '=', 'skills_intermediate.skill_id')->join('languages_intermediate', 'languages_intermediate.user_id', '=', 'users.id')->join('languages', 'languages.id', '=', 'languages_intermediate.language_id')->where($conditions)->get();
             return response()->json([$mentorsData]);
-            
-            // return response()->json(['lang' => $lang, 'skill' => $skill, 'name' => $name ]);
         }else{
             $conditions = array(
                 array('users.mentor_status', 'validate'),
                 array('users.type', 'mentor'),
             );
             $mentorsData = DB::table('users')->join('skills_intermediate', 'skills_intermediate.user_id', '=', 'users.id')->join('skills', 'skills.id', '=', 'skills_intermediate.skill_id')->join('languages_intermediate', 'languages_intermediate.user_id', '=', 'users.id')->join('languages', 'languages.id', '=', 'languages_intermediate.language_id')->where($conditions)->get();
-            //->where('users.type', 'mentor')
             return response()->json([$mentorsData]);
         }
     }

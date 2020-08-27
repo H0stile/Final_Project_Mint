@@ -16,9 +16,9 @@ class CreateCollaborationTable extends Migration
         Schema::create('collaboration', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('mentor_id');
-            $table->foreign('mentor_id')->references('id')->on('users');
+            $table->foreign('mentor_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->unsignedBigInteger('mentee_id');
-            $table->foreign('mentee_id')->references('id')->on('users');
+            $table->foreign('mentee_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->string('request_msg', 500);
             $table->enum('status_rqs', ['pending', 'connected']);
         });

@@ -66,7 +66,7 @@ class RegisterMenteeController extends Controller
             'lastname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'chck' => ['required']
+            'language' => ['required']
         ]);
 
         $user = new User([
@@ -80,7 +80,7 @@ class RegisterMenteeController extends Controller
 
 
         $user->save();
-        $user->languages()->sync($data['chck']);
+        $user->languages()->sync($data['language']);
         return redirect('/login');
     }
 
@@ -99,7 +99,7 @@ class RegisterMenteeController extends Controller
     //             'password' => Hash::make($data['password']),
     //             'linkedin' => $data['linkedin'],
     //             'pitch' => $data['pitch'],
-    //             'language' => $data['chck'],
+    //             'language' => $data['language'],
     //             'skills' => $data['skills'],
     //             'type' => 'mentor',
     //             'mentor_status' => 'pending',
@@ -117,7 +117,7 @@ class RegisterMenteeController extends Controller
 
 
     //             $user->save();
-    //         $user->languages()->sync($data['chck']);
+    //         $user->languages()->sync($data['language']);
 
     //         return $user;
 
