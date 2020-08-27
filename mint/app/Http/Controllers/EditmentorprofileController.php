@@ -54,11 +54,7 @@ class EditmentorprofileController extends Controller
         //return ('editmentorprofile');
     }
 
-    public function initSkill()
-    {
-        $skills = Skill::all();
-        return response()->json([$skills]);
-    }
+
     // public function mentorlanguages()
     // {
     //     $languages = language::all();
@@ -158,5 +154,8 @@ class EditmentorprofileController extends Controller
     public function destroy($id)
     {
         //
+
+        $result = User::find($id);
+        $result->delete();
     }
 }

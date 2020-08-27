@@ -21,43 +21,45 @@
         <div class="row">
             <div class="input-field col s12">
                 <div class="row">
-                    <span class="card-title">{{ __('Languages  :') }}</span><br>
-
+                    <span class="card-title">{{ __('Languages  : ') }}</span><br>
                     @foreach($langChosen as $choice)
                     <label><br>
                         <input type="checkbox" name="langChkBox[{{$choice['id']}}]" value="{{$choice['id']}}" @if($choice['chosen']) checked @endif />
                         <span>{{$choice['language']}}</span><br>
                     </label>
                     @endforeach
-
-
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="input-field col s12">
                 <div class="row">
-                    <span class="card-title">{{ __('Skills') }}</span>
-                    @foreach($skillChosen as $choice)
-                    <label><br>
-                        <input type="checkbox" name="skillChkBox[{{$choice['id']}}]" value="{{$choice['id']}}" @if($choice['chosen']) checked @endif />
-                        <span>{{$choice['skill']}}</span>
-                    </label>
-                    @endforeach
+                    <span class="card-title">{{ __('Skills : **Chooose Only One Skill') }}</span>
+                    <div style='height :200px;overflow:auto'>
+                        @foreach($skillChosen as $choice)
+                        <label><br>
+                            <input type="checkbox" name="skillChkBox[{{$choice['id']}}]" value="{{$choice['id']}}" @if($choice['chosen']) checked @endif />
+                            <span>{{$choice['skill']}}</span>
+                        </label>
+                        @endforeach
+                    </div>
                 </div>
             </div>
         </div>
 
         <p>
-            <button class="btn waves-effect waves-light" type="submitsave" name="action" value={{ $mentor->id }}>{{ __('Edit & Show Profile') }}
+            <button class="btn waves-effect waves-light" type="submitsave" name="action" value={{ $mentor->id }}>{{ __('Update & Show Profile') }}
                 <i class="material-icons right">create</i>
             </button>
+        </p>
+        <p>
+            <button name='deletebyadmin' class='deletebtn' value="{{$mentor->id}}">Delete the profile</button>
         </p>
 
 
 
     </form>
-
+    @section('script')
     <script type="text/javascript">
         $.ajaxSetup({
             headers: {
@@ -70,15 +72,14 @@
             e.preventDefault();
             let route = '/mentor/edit/' + $(this).val();
             $.ajax({
+
                 url: route,
                 method: 'POST',
                 data: $('form').serialize(),
 
                 success: function(result) {
-                    console.log('data inserted successfully')
-                    alert('Your Data Inserted Successfully');
-                    routeUrl = "{{url('')}}/mentor/edit/" + $(this).val();
-                    window.location.href = routeUrl;
+                    console.log('data saved successfully');
+                    alert('data saved successfully');
                 },
 
                 error: function(err) {
@@ -88,9 +89,38 @@
 
             });
         });
+
+
+
+        $(".deletebtn").click(function(e) {
+            let route = '/mentor/edit' + $(this).val();
+            console.log('Route: ' + route);
+            $.ajax({
+                url: route,
+                type: 'delete',
+                dataType: 'json',
+
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+
+                success: function(result) {
+                    console.log(result.message);
+                    alert('Profile deleted');
+                    routeUrl = "{{url('')}}/home";
+                    window.location.href = routeUrl;
+
+                },
+                error: function(err) {
+
+                    alert('AJAX ERROR');
+                }
+            });
+        });
     </script>
 
 
+    @endsection
 
 
 </div>

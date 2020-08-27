@@ -46,10 +46,10 @@ Route::delete('/mentor/delete/{id}', 'MentorController@destroy');
 
 //  Jeyashree: to show the mentor profile in the form -which have to be edited
 Route::get('/mentor/edit/{id}', 'editmentorprofileController@edit');
-//Route::get('/mentor/edit/{id}/skill', 'editmentorprofileController@initSkill');
 //  Jeyashree :to update the updated mentor profile into the database
 Route::post('/mentor/edit/{id}', 'editmentorprofileController@update');
-
+// Jeyashree :to delete the mentor profile from the database by himself
+Route::delete('/mentor/edit/{id}', 'editmentorprofileController@destroy');
 
 
 // Jeyashree :Apply for mentorship by pushing button in mentor profile and connects apply mentorship page data stored in collaboration table
