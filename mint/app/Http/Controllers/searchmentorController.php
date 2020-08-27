@@ -116,14 +116,14 @@ class searchmentorController extends Controller
                 array('skill', 'like', '%'.$skill.'%'),
                 array('lastname', 'like', '%'.$name.'%'),
             );
-            $mentorsData = DB::table('users')->join('skills_intermediate', 'skills_intermediate.user_id', '=', 'users.id')->join('skills', 'skills.id', '=', 'skills_intermediate.skill_id')->join('languages_intermediate', 'languages_intermediate.user_id', '=', 'users.id')->join('languages', 'languages.id', '=', 'languages_intermediate.language_id')->where($conditions)->get();
+            $mentorsData = DB::table('users')->join('skills_intermediate', 'skills_intermediate.user_id', '=', 'users.id')->join('skills', 'skills.id', '=', 'skills_intermediate.skill_id')->join('languages_intermediate', 'languages_intermediate.user_id', '=', 'users.id')->join('languages', 'languages.id', '=', 'languages_intermediate.language_id')->orderBy('lastname', 'asc')->where($conditions)->get();
             return response()->json([$mentorsData]);
         }else{
             $conditions = array(
                 array('users.mentor_status', 'validate'),
                 array('users.type', 'mentor'),
             );
-            $mentorsData = DB::table('users')->join('skills_intermediate', 'skills_intermediate.user_id', '=', 'users.id')->join('skills', 'skills.id', '=', 'skills_intermediate.skill_id')->join('languages_intermediate', 'languages_intermediate.user_id', '=', 'users.id')->join('languages', 'languages.id', '=', 'languages_intermediate.language_id')->where($conditions)->get();
+            $mentorsData = DB::table('users')->join('skills_intermediate', 'skills_intermediate.user_id', '=', 'users.id')->join('skills', 'skills.id', '=', 'skills_intermediate.skill_id')->join('languages_intermediate', 'languages_intermediate.user_id', '=', 'users.id')->join('languages', 'languages.id', '=', 'languages_intermediate.language_id')->orderBy('lastname', 'asc')->where($conditions)->get();
             return response()->json([$mentorsData]);
         }
     }
