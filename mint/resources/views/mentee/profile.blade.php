@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+<img src="{{ asset('img/') }}/{{$profile->profile_image}}" height="100">
 <h1>{{$profile->getFullName()}}</h1>
 <h4>{{$profile->type}}</h4>
 
