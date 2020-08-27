@@ -222,7 +222,22 @@ $(document).ready(function () {
             })
         }
         })    
-    })    
+    })
+
+    //? even to go to mentor profile
+    $("button[name='goToMentorProfile']").click(function (event){
+        event.preventDefault();
+        routeUrl = $(this).val();
+        window.location.href = routeUrl;
+    })
+    //? even to go to apply mentor profile
+    $("button[name='goToApply']").click(function (event){
+        event.preventDefault();
+        routeUrl = $(this).val();
+        window.location.href = routeUrl;
+    })
+
+
 });
 </script>
 @endsection
