@@ -84,6 +84,7 @@
 
                 error: function(err) {
                     // If ajax errors happens
+                    alert('something to do in submit save');
                 }
 
 
@@ -93,16 +94,12 @@
 
 
         $(".deletebtn").click(function(e) {
-            let route = '/mentor/edit' + $(this).val();
+            let route = '/mentor/delete/' + $(this).val();
             console.log('Route: ' + route);
             $.ajax({
                 url: route,
                 type: 'delete',
-                dataType: 'json',
-
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
+                //dataType: 'json',
 
                 success: function(result) {
                     console.log(result.message);

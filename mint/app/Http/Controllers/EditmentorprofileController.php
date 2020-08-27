@@ -153,8 +153,6 @@ class EditmentorprofileController extends Controller
      */
     public function destroy($id)
     {
-        //
-
         $result = User::find($id);
         $result->delete();
     }
