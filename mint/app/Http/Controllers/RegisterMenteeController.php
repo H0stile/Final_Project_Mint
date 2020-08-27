@@ -82,7 +82,6 @@ class RegisterMenteeController extends Controller
         $user->save();
         $user->languages()->sync($data['chck']);
         return redirect('/login');
-
     }
 
     // /**
@@ -124,11 +123,11 @@ class RegisterMenteeController extends Controller
 
 
     //     }
-        public function index()
-        {
-            $languages = language::all();
-            return view('register_mentee', ['languages' => $languages]);
-        }
+    public function index()
+    {
+        $languages = language::all();
+        return view('register_mentee', ['languages' => $languages]);
+    }
 
     //     public function test()
     //     {
