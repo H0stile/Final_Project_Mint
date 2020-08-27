@@ -34,7 +34,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <div class="row">
-                    <span class="card-title">{{ __('Skills : **Chooose Only One Skill') }}</span>
+                    <span class="card-title">{{ __('Skills : Please hooose Only One Skill') }}</span>
                     <div style='height :200px;overflow:auto'>
                         @foreach($skillChosen as $choice)
                         <label><br>
