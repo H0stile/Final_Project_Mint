@@ -4,15 +4,6 @@
 @endsection
 @section('content')
 <div class="container">
-    @if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-            <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-    @endif
     <div class="row">
         <div class="col s12 m10 offset-m1 l8 offset-l2">
             <div class="card">
@@ -91,7 +82,7 @@
                                             @foreach($languages as $language)
                                             <p>
                                                 <label>
-                                                    <input type="checkbox" name="chck[]" value="{{$language->id}}" />
+                                                    <input type="checkbox" name="language[]" value="{{$language->id}}" />
                                                     <span>{{$language->languages}}</span>
                                                 </label>
                                             </p>
@@ -115,6 +106,15 @@
                     </div>
                 </form>
             </div>
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
         </div>
     </div>
 
@@ -122,7 +122,15 @@
 
 
     @section('script')
+
     <script>
+        //* Charles : allow only one checkbox
+        $(document).ready(function() {
+            $('input:checkbox').click(function() {
+                $('input:checkbox').not(this).prop('checked', false);
+            });
+        });
+        //* Charles : get checkboxes
         $.ajax({
             url: routeUrl,
             method: 'GET',
