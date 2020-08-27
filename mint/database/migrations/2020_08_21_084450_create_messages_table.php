@@ -21,7 +21,6 @@ class CreateMessagesTable extends Migration
             $table->unsignedBigInteger('target_id');
             $table->foreign('writer_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->foreign('target_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->dateTime('time_msg');
         });
     }
 
