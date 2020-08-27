@@ -93,7 +93,7 @@ Route::put('/admin/update/{id}', 'AdminController@update');
 Route::delete('/admin/decline/{id}', 'AdminController@destroy');
 
 Route::get('/mentorac/{id}', 'MentorallconnectionController@index');
-Route::delete('/mentoracdisconnect/{id}', 'MentorallconnectionController@destroy')->name('mentor.connection.destroy');
+Route::get('/mentoracdisconnect/{id}', 'MentorallconnectionController@destroy')->name('mentor.connection.destroy');
 
 Route::get('/mentorai/{id}', 'MentorallinvitationController@index');
 Route::get('/mentoraidecline/{id}', 'MentorallinvitationController@destroy')->name('mentor.invitation.destroy');
@@ -103,8 +103,8 @@ Route::get('/jobs', 'JobsController@jobs');
 
 //* Route for mentor all invitations - Matt
 Route::get('/mentorai/', 'MentorallinvitationController@index');
-Route::get('/mentoraidecline/{id}', 'MentorallinvitationController@destroy');
-Route::get('/mentoraiaccept/{id}', 'MentorallinvitationController@update');
+// Route::get('/mentoraidecline/{id}', 'MentorallinvitationController@destroy');
+// Route::get('/mentoraiaccept/{id}', 'MentorallinvitationController@update');
 
 //* Route for mentor all Connections - Matt
 Route::get('/searchmentor/{id}', 'searchmentorController@index')->name('searchmentor');
