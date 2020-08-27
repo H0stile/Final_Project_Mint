@@ -55,6 +55,7 @@
 @section('script')
 <script>
 $(document).ready(function () {
+    elem = $("#clone");
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
@@ -126,7 +127,6 @@ $(document).ready(function () {
     })
     //? Get and create mentor card using function
     routeUrlName = "{{url('')}}/initSearchMentorData";
-    elem = $("#clone");
     $.ajax({
         url: routeUrlName,
         method: 'GET',
