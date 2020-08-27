@@ -15,14 +15,14 @@
 @endforeach
 <hr>
 
-@if(Auth::user()->type == 'mentor')
+@if($canWriteRating)
 <form id="form" action="{{route('rating.create')}}" method="POST">
     @csrf
     <input type="hidden" name="target" value="{{$profile->id}}">
     <input type="hidden" name="writer" value="{{Auth::user()->id}}">
 
     <p>
-        <select name="score">
+        <select name="score" style="display: initial;">
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -39,32 +39,39 @@
         <input id="submitButton" type="submit" value="Submit">
     </div>
 </form>
+<br><br>
 @endif
 
+
+
+<!-- message part part -->
+@if(count($messages) >0)
 <h3>Messages:</h3>
 @foreach($messages as $message)
 <p>{{$message->message}}</p>
 <p>{{$message->writer->getFullName()}}</p>
 @endforeach
 <hr>
+@endif
 
-<form id="form" action="">
+@if($collaborator !== null)
+<form id="form2" action="{{route('message.create')}}" method="POST">
     @csrf
-    <label id="label" for="">Write a message</label>
+    {{ csrf_field() }}
+    <input type="hidden" name="writer" value="{{Auth::user()->id}}">
+    <input type="hidden" name="target" value="{{$collaborator->id}}">
+
+    <label id="labelMessage" for="message">Write a message</label>
     <br>
-    <textarea name="" id="textArea" placeholder="Add your text here"></textarea>
+    <textarea name="message" id="textAreaMessage" placeholder="Write your message here"></textarea>
     <br>
     <div id="button">
-        <input id="submitButton" type="submit" value="Submit">
+        <input id="submitButton2" type="submit" value="Send" name="form2">
     </div>
 </form>
+<br>
+@endif
 
-<section class="comment">
-    <div class='cloneComment'>
-        <img class="userImage" src="https://randomuser.me/api/portraits/men/29.jpg" alt="" style="width:60px">
-        <p class="commentText">Awesome !</p>
-    </div>
-</section>
 <!-- mentee part -->
 @if(Auth::user()->type == 'mentee')
 <hr>
@@ -72,6 +79,7 @@
 <br>
 <a href="#">Modify profile</a>
 
+<!-- API part -->
 <div>
     <h2>Job list</h2>
 
@@ -82,6 +90,7 @@
     <hr>
     @endforeach
 </div>
+
 @endif
 
 <!-- mentor part -->
@@ -89,43 +98,25 @@
 @if($collabRequestStatus == 'pending')
 <form action="" method="get">
     @csrf
-    <button name="accept-request">Accept invitation</button>
+    <button name="accept-request" value="{{$collabRequestId}}">Accept invitation</button>
 </form>
 <form action="{{route('mentor.connection.destroy', $collabRequestId)}}" method="post">
     @csrf
     @method('DELETE')
-    <button name="decline-request">Decline invitation</button>
+    <button name="decline-request" value="{{$collabRequestId}}">Decline invitation</button>
 </form>
 @else
 <form action="{{route('mentor.connection.destroy', $collabRequestId)}}" method="post">
     @csrf
     @method('DELETE')
-    <button name="disconnect">Disconnect</button>
-</form>
-
-@endif
-@endif
-
-<!-- admin part -->
-<hr>
-@if(Auth::user()->type == 'admin')
-
-<form action="{{route('mentee.destroy', $profile->id)}}" method="post">
-    @csrf
-    @method('DELETE')
-
-    <input type="hidden" value="{{$profile->id}}">
-    <button>Delete profile</button>
+    <button name="disconnect" value="{{$collabRequestId}}">Disconnect</button>
 </form>
 @endif
-
-@if(Auth::user()->type == 'mentor' || Auth::user()->type == 'mentee')
-
-<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+@section('script')
 <script>
     $(document).ready(function() {
-        function deleteCollaboration() {
-            routeUrl = "{{route('mentor.connection.destroy', $collabRequestId)}}";
+        function deleteCollaboration(collabId) {
+            routeUrl = "{{url('')}}/mentoracdisconnect/" + collabId;
             $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -145,7 +136,7 @@
         $("button[name='accept-request']").click(function(event) {
             event.preventDefault();
             if (confirm("Are you sure to accept this invitation?")) {
-                routeUrl = "{{route('mentor.invitation.accept', $collabRequestId)}}";
+                routeUrl = "{{url('')}}/mentoraiaccept/" + $(this).val();
                 $.ajaxSetup({
                     headers: {
                         'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
@@ -166,17 +157,31 @@
         $("button[name='decline-request']").click(function(event) {
             event.preventDefault();
             if (confirm("Are you sure to decline invitation?")) {
-                deleteCollaboration();
+                deleteCollaboration($(this).val());
             }
         });
         //? Button to break the connection
         $("button[name='disconnect']").click(function(event) {
             event.preventDefault();
             if (confirm("Are you sure to disconnect from this mentee?")) {
-                deleteCollaboration();
+                deleteCollaboration($(this).val());
             }
         });
     });
 </script>
+@endsection
+@endif
+
+<!-- admin part -->
+<hr>
+@if(Auth::user()->type == 'admin')
+
+<form action="{{route('mentee.destroy', $profile->id)}}" method="post">
+    @csrf
+    @method('DELETE')
+
+    <input type="hidden" value="{{$profile->id}}">
+    <button>Delete profile</button>
+</form>
 @endif
 @endsection

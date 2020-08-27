@@ -45,7 +45,7 @@ class LoginController extends Controller
                 return "/mentee/{$id}";
                 break;
             case 'mentor':
-                return "/mentorprofile/{$id}";
+                return "/mentor/{$id}";
                 break;
             case 'admin':
                 return '/admin';

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use App\Collaboration;
 use App\User;
 use App\Skill;
@@ -101,9 +102,36 @@ class searchmentorController extends Controller
         $languages = Language::all();
         return response()->json([$languages]);
     }
-    public function initMentorData()
+    public function initMentorData(request $request)
     {
-        $mentorsData = User::where('type', 'mentor')->get();
-        return response()->json([$mentorsData]);
+        $lang = $request->lang;
+        $skill = $request->skill;
+        $name = $request->name;
+        //TODO USE A WHERE CONDITION USING ARRAY TO FACILITATE THE QUERY >> https://stackoverflow.com/questions/30706603/can-i-do-model-whereid-array-multiple-where-conditions/61722255#61722255
+        if ($lang != null || $skill != null || $name != null) {
+            $conditions = array(
+                array('users.mentor_status', 'validate'),
+                array('users.type', 'mentor'),
+                array('languages', 'like', '%'.$lang.'%'),
+                array('skill', 'like', '%'.$skill.'%'),
+                array('lastname', 'like', '%'.$name.'%'),
+            );
+            $mentorsData = DB::table('users')->join('skills_intermediate', 'skills_intermediate.user_id', '=', 'users.id')->join('skills', 'skills.id', '=', 'skills_intermediate.skill_id')->join('languages_intermediate', 'languages_intermediate.user_id', '=', 'users.id')->join('languages', 'languages.id', '=', 'languages_intermediate.language_id')->where($conditions)->get();
+            return response()->json([$mentorsData]);
+            
+            // return response()->json(['lang' => $lang, 'skill' => $skill, 'name' => $name ]);
+        }else{
+            $conditions = array(
+                array('users.mentor_status', 'validate'),
+                array('users.type', 'mentor'),
+            );
+            $mentorsData = DB::table('users')->join('skills_intermediate', 'skills_intermediate.user_id', '=', 'users.id')->join('skills', 'skills.id', '=', 'skills_intermediate.skill_id')->join('languages_intermediate', 'languages_intermediate.user_id', '=', 'users.id')->join('languages', 'languages.id', '=', 'languages_intermediate.language_id')->where($conditions)->get();
+            //->where('users.type', 'mentor')
+            return response()->json([$mentorsData]);
+        }
+    }
+    public function getAllRateByMentor($id){
+        $mentorRating = DB::table('ratings')->select('score')->where('target_id', $id)->avg('score');
+        return response()->json(['rating' => intVal($mentorRating)]);
     }
 }

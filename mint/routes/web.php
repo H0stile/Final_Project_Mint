@@ -35,7 +35,7 @@ Route::get('/register_mentor_skill', 'Auth\RegisterMentorController@initSkill');
 Route::post('/register_mentee', 'Auth\RegisterMenteeController@validator')->name('register.mentee');
 Route::post('/register_mentor', 'Auth\RegisterMentorController@validator')->name('register.mentor');
 //Auth::routes(['verify' => true]);
-Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
+//Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
 // Jeyashree : ajax call route to submit the comment by mentee to the mentor for one time
 Route::get('/mentor/{id}', 'MentorController@show')->name('mentorprofile');
@@ -81,7 +81,7 @@ Route::get('/disconnect/{id}', 'MentorallconnectionController@destroy');
 // Mentee routes
 Route::get('/mentee/{id}', 'MenteeController@profile')
     ->name('mentee.profile')
-    ->middleware('mentee.profile');
+    ->middleware('mentee.profile')->middleware('auth');
 Route::delete('/mentee/{id}/destroy', 'MenteeController@destroy')
     ->name('mentee.destroy')
     ->middleware('admin');
@@ -89,19 +89,26 @@ Route::delete('/mentee/{id}/destroy', 'MenteeController@destroy')
 
 // ! Admin
 Route::get('/admin', 'AdminController@index')->name('admin')->middleware('admin');
+Route::get('/userCollaborations/{id}', 'AdminController@getUserCollabs')->middleware('admin');
 Route::put('/admin/update/{id}', 'AdminController@update');
 Route::delete('/admin/decline/{id}', 'AdminController@destroy');
 
 Route::get('/mentorac/{id}', 'MentorallconnectionController@index');
-Route::delete('/mentoracdisconnect/{id}', 'MentorallconnectionController@destroy')->name('mentor.connection.destroy');
+Route::get('/mentoracdisconnect/{id}', 'MentorallconnectionController@destroy')->name('mentor.connection.destroy');
 
 Route::get('/mentorai/{id}', 'MentorallinvitationController@index');
-Route::get('/mentoraidecline/{id}', 'MentorallinvitationController@destroy')->name('mentor.invitation.accept');
+Route::get('/mentoraidecline/{id}', 'MentorallinvitationController@destroy')->name('mentor.invitation.destroy');
 Route::get('/mentoraiaccept/{id}', 'MentorallinvitationController@update')->name('mentor.invitation.accept');
 
 Route::get('/jobs', 'JobsController@jobs');
 
-Route::get('/searchmentor/{id}', 'searchmentorController@index')->middleware('mentee.profile');
+//* Route for mentor all invitations - Matt
+Route::get('/mentorai/', 'MentorallinvitationController@index');
+// Route::get('/mentoraidecline/{id}', 'MentorallinvitationController@destroy');
+// Route::get('/mentoraiaccept/{id}', 'MentorallinvitationController@update');
+
+//* Route for mentor all Connections - Matt
+Route::get('/searchmentor/{id}', 'searchmentorController@index')->name('searchmentor');
 Route::get('/initSearchNames', 'searchmentorController@initName');
 Route::get('/initSearchSkills', 'searchmentorController@initSkill');
 Route::get('/initSearchLanguages', 'searchmentorController@initLanguage');
@@ -109,3 +116,5 @@ Route::get('/initSearchMentorData', 'searchmentorController@initMentorData');
 
 // Rating routes
 Route::post('/rating', 'RatingController@create')->name('rating.create');
+Route::post('/message', 'MessageController@create')->name('message.create');
+Route::get('/getRatingByMentor/{id}', 'searchmentorController@getAllRateByMentor');

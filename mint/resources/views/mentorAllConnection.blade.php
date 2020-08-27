@@ -42,7 +42,7 @@
                 });
                 $.ajax({
                     url: routeUrl,
-                    method: 'DELETE',
+                    method: 'GET',
                     dataType: 'json',
                     success: function(result) {
                         location.reload();

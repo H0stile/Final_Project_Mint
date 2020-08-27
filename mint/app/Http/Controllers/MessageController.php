@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Rating;
+use App\Message;
 use Illuminate\Http\Request;
 
-class RatingController extends Controller
+class MessageController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,14 +24,15 @@ class RatingController extends Controller
      */
     public function create(Request $request)
     {
-        $rating = new Rating();
-        $rating->writer_id = $request->writer;
-        $rating->target_id = $request->target;
-        $rating->score = $request->score;
-        $rating->comment = $request->comment;
-        $rating->save();
 
-        return redirect(route('mentee.profile', $request->target));
+        $message = new Message();
+
+        $message->writer_id = $request->writer;
+        $message->target_id = $request->target;
+        $message->message = $request->message;
+        // $message->time_msg = "2020-05-11 10:05:20";
+        $message->save();
+        return redirect()->back();
     }
 
     /**

@@ -39,17 +39,35 @@ class Handler extends ExceptionHandler
         parent::report($exception);
     }
 
+    // /**
+    //  * Render an exception into an HTTP response.
+    //  *
+    //  * @param  \Illuminate\Http\Request  $request
+    //  * @param  \Throwable  $exception
+    //  * @return \Symfony\Component\HttpFoundation\Response
+    //  *
+    //  * @throws \Throwable
+    //  */
+    // public function render($request, Throwable $exception)
+    // {
+    //     return parent::render($request, $exception);
+    // }
+
     /**
      * Render an exception into an HTTP response.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \Throwable  $exception
-     * @return \Symfony\Component\HttpFoundation\Response
-     *
-     * @throws \Throwable
+     * @param  \Exception  $exception
+     * @return \Illuminate\Http\Response
      */
     public function render($request, Throwable $exception)
     {
+        if ($this->isHttpException($exception)) {
+            if ($exception->getStatusCode() == 404) {
+                return response()->view('errors.' . '404', [], 404);
+            }
+        }
+
         return parent::render($request, $exception);
     }
 }
