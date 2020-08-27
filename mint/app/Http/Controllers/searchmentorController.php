@@ -89,7 +89,7 @@ class searchmentorController extends Controller
     }
     public function initName()
     {
-        $mentors = User::where('type', 'mentor')->get();
+        $mentors = User::where('type', 'mentor')->where('mentor_status', 'validate')->get();
         return response()->json([$mentors]);
     }
     public function initSkill()
