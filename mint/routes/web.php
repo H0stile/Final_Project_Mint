@@ -88,6 +88,7 @@ Route::delete('/mentee/{id}/destroy', 'MenteeController@destroy')
 
 // ! Admin
 Route::get('/admin', 'AdminController@index')->name('admin')->middleware('admin');
+Route::get('/userCollaborations/{id}', 'AdminController@getUserCollabs')->middleware('admin');
 Route::put('/admin/update/{id}', 'AdminController@update');
 Route::delete('/admin/decline/{id}', 'AdminController@destroy');
 
