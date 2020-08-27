@@ -51,13 +51,14 @@ class EditmentorprofileController extends Controller
      */
     public function show($id)
     {
+        //return ('editmentorprofile');
     }
 
-    // public function mentorskill()
-    // {
-    //     $skills = Skill::all();
-    //     return response()->json([$skills]);
-    // }
+    public function initSkill()
+    {
+        $skills = Skill::all();
+        return response()->json([$skills]);
+    }
     // public function mentorlanguages()
     // {
     //     $languages = language::all();
@@ -75,24 +76,38 @@ class EditmentorprofileController extends Controller
     {
         //
         $mentor = User::find($id);
-        //  $skills = User::find($id)->skills;
-        $allskills =
-            $skills = User::find($id)->skills;
-        $languages = language::all();
-        // $languages = language::find($id)->languages;
-        //dd($mentor);
-        //dd($skills);
-
-        // dd($languages)
 
 
-        if ($mentor->availability == 1) {
-            $mentorAvailable = 'Yes';
-        } else {
-            $mentorAvailable = 'No';
+        $languages = User::find($id)->languages;
+        $allLanguages =  Language::all();
+        $langChosen = collect();
+
+        foreach ($allLanguages as $lang) {
+            $chosen = false;
+            foreach ($languages as $mentorLang) {
+                if ($lang->id == $mentorLang->id) {
+                    $chosen = true;
+                }
+            }
+            $langChosen->push(['id' => $lang->id, 'language' => $lang->languages, 'chosen' => $chosen]);
         }
 
-        // return view('editmentorprofile', compact('mentor', 'skills');
+        $skills = User::find($id)->skills;
+        $allSkills = Skill::all();
+        $skillChosen = collect();
+
+        foreach ($allSkills as $skill) {
+
+            $chosen = false;
+            foreach ($skills as $mentorSkill) {
+                if ($skill->id == $mentorSkill->id) {
+                    $chosen = true;
+                }
+            }
+
+            $skillChosen->push(['id' => $skill->id, 'skill' => $skill->skill, 'chosen' => $chosen]);
+        }
+        return view('editmentorprofile', compact('mentor', 'skills', 'languages', 'langChosen', 'skillChosen'));
     }
 
     /**
@@ -105,6 +120,33 @@ class EditmentorprofileController extends Controller
     public function update(Request $request, $id)
     {
         //
+        DB::table('users')->where('id', $id)->update([
+            'firstname' => $request->firstname,
+            'lastname' => $request->lastname,
+            'linkedin' => $request->linkedin,
+            'pitch' => $request->pitch
+        ]);
+
+        // dd($request->skillChkBox);
+
+        // updating new mentor skills and languages
+        DB::table('skills_intermediate')->where('user_id', $id)->delete();
+        foreach ($request->skillChkBox as $skillId) {
+            DB::table('skills_intermediate')->insert([
+                'user_id' => $request->id,
+                'skill_id' => $skillId
+            ]);
+        }
+        DB::table('languages_intermediate')->where('user_id', $id)->delete();
+        foreach ($request->langChkBox as $langId) {
+            DB::table('languages_intermediate')->insert([
+                'user_id' => $request->id,
+                'language_id' => $langId
+            ]);
+        }
+        //dd($request->id);
+        return redirect("/mentor/" . $request->id);
+        //return redirect()->route('mentor', ['id' => $request->id]);
     }
 
     /**

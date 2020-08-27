@@ -44,10 +44,11 @@ Route::post('/mentor/{id}', 'MentorController@store');
 Route::delete('/mentor/delete/{id}', 'MentorController@destroy');
 
 
-//  : to show the mentor profile in the form -which have to be edited
+//  Jeyashree: to show the mentor profile in the form -which have to be edited
 Route::get('/mentor/edit/{id}', 'editmentorprofileController@edit');
-//  :to update the updated mentor profile into the database
-Route::post('/mentor/update/{id}', 'MentorController@update');
+//Route::get('/mentor/edit/{id}/skill', 'editmentorprofileController@initSkill');
+//  Jeyashree :to update the updated mentor profile into the database
+Route::post('/mentor/edit/{id}', 'editmentorprofileController@update');
 
 
 
