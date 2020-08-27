@@ -2,10 +2,10 @@
 -- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Aug 27, 2020 at 02:49 PM
--- Server version: 10.4.10-MariaDB
--- PHP Version: 7.4.0
+-- Hôte : 127.0.0.1:3306
+-- Généré le :  jeu. 27 août 2020 à 19:10
+-- Version du serveur :  10.4.10-MariaDB
+-- Version de PHP :  7.4.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `mint_db`
+-- Base de données :  `mint_db`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `collaboration`
+-- Structure de la table `collaboration`
 --
 
 DROP TABLE IF EXISTS `collaboration`;
@@ -38,12 +38,28 @@ CREATE TABLE IF NOT EXISTS `collaboration` (
   PRIMARY KEY (`id`),
   KEY `collaboration_mentor_id_foreign` (`mentor_id`),
   KEY `collaboration_mentee_id_foreign` (`mentee_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `collaboration`
+--
+
+INSERT INTO `collaboration` (`id`, `mentor_id`, `mentee_id`, `request_msg`, `status_rqs`) VALUES
+(1, 6, 11, 'Hello !!!!', 'pending'),
+(2, 6, 12, 'I want to learn PHP', 'pending'),
+(3, 6, 13, 'My request', 'pending'),
+(4, 7, 14, 'I want to learn Python', 'pending'),
+(5, 7, 15, 'Hello, I want to learn Cobol', 'pending'),
+(6, 8, 16, 'My request', 'connected'),
+(7, 9, 17, 'I want to learn JavaScript', 'connected'),
+(8, 9, 18, 'Hello', 'connected'),
+(9, 10, 19, 'I want to learn Ruby', 'connected'),
+(10, 10, 20, 'I want to learn C#', 'pending');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `failed_jobs`
+-- Structure de la table `failed_jobs`
 --
 
 DROP TABLE IF EXISTS `failed_jobs`;
@@ -60,7 +76,7 @@ CREATE TABLE IF NOT EXISTS `failed_jobs` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `languages`
+-- Structure de la table `languages`
 --
 
 DROP TABLE IF EXISTS `languages`;
@@ -71,7 +87,7 @@ CREATE TABLE IF NOT EXISTS `languages` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `languages`
+-- Déchargement des données de la table `languages`
 --
 
 INSERT INTO `languages` (`id`, `languages`) VALUES
@@ -83,7 +99,7 @@ INSERT INTO `languages` (`id`, `languages`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `languages_intermediate`
+-- Structure de la table `languages_intermediate`
 --
 
 DROP TABLE IF EXISTS `languages_intermediate`;
@@ -95,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `languages_intermediate` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `languages_intermediate`
+-- Déchargement des données de la table `languages_intermediate`
 --
 
 INSERT INTO `languages_intermediate` (`user_id`, `language_id`) VALUES
@@ -124,7 +140,7 @@ INSERT INTO `languages_intermediate` (`user_id`, `language_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `messages`
+-- Structure de la table `messages`
 --
 
 DROP TABLE IF EXISTS `messages`;
@@ -139,7 +155,7 @@ CREATE TABLE IF NOT EXISTS `messages` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `messages`
+-- Déchargement des données de la table `messages`
 --
 
 INSERT INTO `messages` (`id`, `message`, `writer_id`, `target_id`) VALUES
@@ -150,7 +166,7 @@ INSERT INTO `messages` (`id`, `message`, `writer_id`, `target_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `migrations`
+-- Structure de la table `migrations`
 --
 
 DROP TABLE IF EXISTS `migrations`;
@@ -162,7 +178,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `migrations`
+-- Déchargement des données de la table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -180,7 +196,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `password_resets`
+-- Structure de la table `password_resets`
 --
 
 DROP TABLE IF EXISTS `password_resets`;
@@ -194,7 +210,7 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ratings`
+-- Structure de la table `ratings`
 --
 
 DROP TABLE IF EXISTS `ratings`;
@@ -210,18 +226,18 @@ CREATE TABLE IF NOT EXISTS `ratings` (
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `ratings`
+-- Déchargement des données de la table `ratings`
 --
 
 INSERT INTO `ratings` (`id`, `writer_id`, `target_id`, `score`, `comment`) VALUES
-(1, 1, 2, 5, 'this is the first message'),
-(2, 1, 2, 3, 'this is the second message'),
-(3, 1, 2, 2, 'this is the third message');
+(1, 1, 6, 5, 'this is the first message'),
+(2, 1, 6, 3, 'this is the second message'),
+(3, 1, 6, 2, 'this is the third message');
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `skills`
+-- Structure de la table `skills`
 --
 
 DROP TABLE IF EXISTS `skills`;
@@ -232,7 +248,7 @@ CREATE TABLE IF NOT EXISTS `skills` (
 ) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `skills`
+-- Déchargement des données de la table `skills`
 --
 
 INSERT INTO `skills` (`id`, `skill`) VALUES
@@ -272,7 +288,7 @@ INSERT INTO `skills` (`id`, `skill`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `skills_intermediate`
+-- Structure de la table `skills_intermediate`
 --
 
 DROP TABLE IF EXISTS `skills_intermediate`;
@@ -284,7 +300,7 @@ CREATE TABLE IF NOT EXISTS `skills_intermediate` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `skills_intermediate`
+-- Déchargement des données de la table `skills_intermediate`
 --
 
 INSERT INTO `skills_intermediate` (`user_id`, `skill_id`) VALUES
@@ -302,7 +318,7 @@ INSERT INTO `skills_intermediate` (`user_id`, `skill_id`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Structure de la table `users`
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -327,7 +343,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 ) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `users`
+-- Déchargement des données de la table `users`
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `firstname`, `lastname`, `type`, `linkedin`, `mentor_status`, `profile_image`, `pitch`, `availability`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`) VALUES
@@ -354,39 +370,39 @@ INSERT INTO `users` (`id`, `email`, `password`, `firstname`, `lastname`, `type`,
 (21, 'admint.mint@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Admint', 'Mint', 'admin', NULL, 'validate', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
 
 --
--- Constraints for dumped tables
+-- Contraintes pour les tables déchargées
 --
 
 --
--- Constraints for table `collaboration`
+-- Contraintes pour la table `collaboration`
 --
 ALTER TABLE `collaboration`
   ADD CONSTRAINT `collaboration_mentee_id_foreign` FOREIGN KEY (`mentee_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `collaboration_mentor_id_foreign` FOREIGN KEY (`mentor_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `languages_intermediate`
+-- Contraintes pour la table `languages_intermediate`
 --
 ALTER TABLE `languages_intermediate`
   ADD CONSTRAINT `languages_intermediate_language_id_foreign` FOREIGN KEY (`language_id`) REFERENCES `languages` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `languages_intermediate_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `messages`
+-- Contraintes pour la table `messages`
 --
 ALTER TABLE `messages`
   ADD CONSTRAINT `messages_target_id_foreign` FOREIGN KEY (`target_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `messages_writer_id_foreign` FOREIGN KEY (`writer_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `ratings`
+-- Contraintes pour la table `ratings`
 --
 ALTER TABLE `ratings`
   ADD CONSTRAINT `ratings_target_id_foreign` FOREIGN KEY (`target_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `ratings_writer_id_foreign` FOREIGN KEY (`writer_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `skills_intermediate`
+-- Contraintes pour la table `skills_intermediate`
 --
 ALTER TABLE `skills_intermediate`
   ADD CONSTRAINT `skills_intermediate_skill_id_foreign` FOREIGN KEY (`skill_id`) REFERENCES `skills` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
