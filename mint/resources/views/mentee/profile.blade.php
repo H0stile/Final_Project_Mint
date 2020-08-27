@@ -75,7 +75,7 @@
 <!-- mentee part -->
 @if(Auth::user()->type == 'mentee')
 <hr>
-<a href="#">Look for a mentor</a>
+<a href="{{route('searchmentor', Auth::user()->id)}}">Look for a mentor</a>
 <br>
 <a href="#">Modify profile</a>
 
