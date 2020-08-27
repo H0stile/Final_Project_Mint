@@ -85,6 +85,9 @@ Route::get('/mentee/{id}', 'MenteeController@profile')
 Route::delete('/mentee/{id}/destroy', 'MenteeController@destroy')
     ->name('mentee.destroy')
     ->middleware('admin');
+Route::get('/mentee/edit/{id}', 'EditMenteeProfileController@edit')->middleware('mentee.profile')->middleware('auth');
+Route::post('/mentee/edit/{id}', 'EditMenteeProfileController@update')->middleware('mentee.profile')->middleware('auth');
+Route::delete('/mentee/delete/{id}', 'EditMenteeProfileController@destroy')->middleware('mentee.profile')->middleware('auth');
 
 
 // ! Admin
