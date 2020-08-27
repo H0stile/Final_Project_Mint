@@ -14,11 +14,19 @@ class CreateUsersTable extends Migration
     public function up()
     {
         Schema::create('users', function (Blueprint $table) {
+            // $table->engine = 'InnoDB';
             $table->id();
-            $table->string('name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->string('firstname');
+            $table->string('lastname');
+            $table->enum('type', ['mentor','mentee','admin']);
+            $table->string('linkedin')->nullable();
+            $table->enum('mentor_status', ['pending','validate'])->nullable();
+            $table->string('profile_image')->nullable();
+            $table->string('pitch')->nullable();
+            $table->boolean('availability')->nullable();
+            $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });
