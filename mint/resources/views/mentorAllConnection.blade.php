@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('css')
+<link href="{{asset('css/mentorAllConnection.css')}}" rel="stylesheet">
+@endsection
 @section('content')
 <div class="container">
     <div class="row">
@@ -9,15 +12,29 @@
             </div>
         </div>
         @endif
-        @foreach($menteeRequests as $menteeRequest)
+    </div>
+</div>
+<div class="container">
+    <section class="container height">
         <div>
-            <img src="{{asset('img/')}}/{{$menteeRequest->mentee->profile_image}}" style="width:60px">
-            <p>{{$menteeRequest->mentee->firstname}} {{$menteeRequest->mentee->lastname}}</p>
-            <button type="submit" name="getIdMentee" value="{{$menteeRequest->mentee->id}}">View profile</button>
-            <button type="submit" name="getIdCollab" value="{{$menteeRequest->id}}">Disconnect</button>
+            @foreach($menteeRequests as $menteeRequest)
+            <div class="cardBGC">
+                <div class="row valign-wrapper">
+                    <div class="col s2 center-align">
+                        <img class="responsive-img" src="{{asset('img/')}}/{{$menteeRequest->mentee->profile_image}}">
+                    </div>
+                    <div class="col s10 left-align">
+                        <p class="fontSize">{{$menteeRequest->mentee->firstname}} {{$menteeRequest->mentee->lastname}}</p>
+                    </div>
+                </div>
+                <button class="waves-effect waves-light btn buttonColorVP" type="submit" name="getIdMentee" value="{{$menteeRequest->mentee->id}}">View profile</button>
+                <button class="waves-effect waves-light btn buttonColorDC" type="submit" name="getIdCollab" value="{{$menteeRequest->id}}">Disconnect</button>
+            </div>
+            @endforeach
         </div>
-        <hr>
-        @endforeach
+    </section>
+    <div class="container">
+        <button class="waves-effect waves-light btn buttonColorVP margin" type="submit" name="goBackMentorView" value="{{Auth::user()->id}}">Go back to profile</button>
     </div>
 </div>
 @endsection
@@ -49,6 +66,12 @@
                     }
                 })
             }
+        });
+        //? Button to go to profile
+        $("button[name='goBackMentorView']").click(function (event) {
+            event.preventDefault();
+            routeUrl = "{{url('')}}/mentor/" + $(this).val();
+            window.location.href = routeUrl;
         });
     });
 </script>

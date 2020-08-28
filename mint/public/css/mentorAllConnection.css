@@ -1,0 +1,33 @@
+body{
+    background-color: #F7FFFF;
+}
+
+.cardBGC {
+    background-color: #579B9A;
+    padding: 8px;
+    margin: 2px 0;
+    border: 2px solid #f7ffff;
+}
+.margin {
+    margin: 8px 2px;
+}
+.height{
+    height: 600px;
+    overflow: auto;
+}
+.buttonColorVP{
+    background-color: #75D19E;
+}
+.buttonColorDC{
+    background-color: #EA4C4B;
+}
+.buttonColorGB{
+    background-color: #FFA83F;
+}
+.btn{
+    box-shadow: none;
+}
+.fontSize{
+    font-size: 2rem;
+    color : white;
+}

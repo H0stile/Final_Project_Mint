@@ -1,0 +1,25 @@
+
+body{
+    background-color:#F7FFFF;
+    color: #3B4A69;
+}
+.field{
+    padding:20px;
+}
+.image{
+    height: 100px;
+    margin-right: 20px;
+    /* border-radius: 50%; */
+}
+.maininfo{
+    display: flex;
+    align-items: center;
+}
+
+.bg{
+    padding: 10px;
+    background-color: #EBFEEA;
+}
+.rating{
+    display: flex;
+}
