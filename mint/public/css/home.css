@@ -1,0 +1,143 @@
+/* Charles : general customisation */
+
+body {
+    color: #3b4a69;
+    background-color: #f7ffff;
+}
+
+h4 {
+    font-family: "Work Sans", sans-serif;
+    font-weight: 300;
+    font-size: 5em;
+    border-bottom: 2px solid #3b4a69;
+    padding-bottom: 1em;
+}
+
+.flow-text {
+    font-size: 1.5em;
+}
+
+#top-content {
+    display: flex;
+    flex-direction: row-reverse;
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+}
+#top-content .top-element {
+    margin-left: 2.5em;
+    margin-right: 2.5em;
+    margin-bottom: 5em;
+}
+#top-content img {
+    width: 400px;
+}
+#top-content p {
+    padding-top: 2em;
+}
+
+#middle-jumbotron {
+    width: 100%;
+    background-color: #75d19e;
+    font-size: 1.5em;
+    text-align: center;
+    color: #f7ffff;
+    padding-top: 5em;
+    padding-bottom: 5em;
+    padding-left: 5em;
+    padding-right: 5em;
+    margin-bottom: 0;
+}
+
+#home-register {
+    width: 100%;
+}
+
+#register_col_1 {
+    text-align: center;
+    padding: 5em;
+    background-color: #ebfeea;
+    width: 50%;
+    margin-bottom: 0;
+}
+#register_col_2 {
+    text-align: center;
+    padding: 5em;
+    background-color: #b9f3c0;
+    width: 50%;
+    margin-bottom: 0;
+}
+#home-register {
+    margin-bottom: 0;
+    background-color: #ebfeea;
+}
+.btn {
+    box-shadow: none;
+    margin-left: 0;
+    border-radius: 30px;
+    margin-top: 3em;
+    margin-bottom: 3em;
+    background-color: #ffa83f;
+}
+.btn:hover {
+    background-color: #ea4c4b;
+    box-shadow: none;
+}
+
+/* Charles : responsive design part */
+
+@media only screen and (max-width: 1024px) {
+    #top-content {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    #top-content img {
+        width: 100%;
+    }
+    #top-content .top-element {
+        margin-left: 1em;
+        margin-right: 1em;
+        margin-bottom: 1.5em;
+    }
+    #top-content h4 {
+        border-bottom: none;
+        font-size: 2.5em;
+    }
+    #top-content p {
+        border-bottom: none;
+        font-size: 1em;
+    }
+    #home-register {
+        display: flex;
+        flex-direction: column;
+    }
+    img {
+        width: 100%;
+        height: auto;
+    }
+    #middle-jumbotron {
+        font-size: 1em;
+        padding-left: 2em;
+        padding-right: 2em;
+        padding-top: 5em;
+        padding-bottom: 5em;
+    }
+    #register_col_1 {
+        text-align: center;
+        padding: 1em;
+        width: 100%;
+        margin-bottom: 0;
+        padding-top: 5em;
+        padding-bottom: 5em;
+    }
+    #register_col_2 {
+        text-align: center;
+        padding: 1em;
+        width: 100%;
+        margin-bottom: 0;
+        padding-top: 5em;
+        padding-bottom: 5em;
+    }
+}
