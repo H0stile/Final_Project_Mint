@@ -18,6 +18,9 @@
         </div>
         <hr>
         @endforeach
+        <div>
+            <button type="submit" name="goBackMentorView" value="{{Auth::user()->id}}">Go back to profile</button>
+        </div>
     </div>
 </div>
 @endsection
@@ -49,6 +52,12 @@
                     }
                 })
             }
+        });
+        //? Button to go to profile
+        $("button[name='goBackMentorView']").click(function (event) {
+            event.preventDefault();
+            routeUrl = "{{url('')}}/mentor/" + $(this).val();
+            window.location.href = routeUrl;
         });
     });
 </script>
