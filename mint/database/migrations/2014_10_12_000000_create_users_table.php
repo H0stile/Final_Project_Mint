@@ -24,7 +24,7 @@ class CreateUsersTable extends Migration
             $table->string('linkedin')->nullable();
             $table->enum('mentor_status', ['pending','validate'])->nullable();
             $table->string('profile_image')->nullable();
-            $table->string('pitch')->nullable();
+            $table->string('pitch', 600)->nullable();
             $table->boolean('availability')->nullable();
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
