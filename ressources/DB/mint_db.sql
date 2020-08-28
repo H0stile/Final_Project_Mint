@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 28, 2020 at 07:12 AM
+-- Generation Time: Aug 28, 2020 at 07:45 AM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.4.0
 
@@ -359,15 +359,15 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `firstname`, `lastname`, `type`, `linkedin`, `mentor_status`, `profile_image`, `pitch`, `availability`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'witting.rudolph@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Witting', 'Rudolph', 'mentor', 'https://www.linkedin.com/in/john-doe', 'pending', 'defaultProfileLogo.png', 'Voluptatibus officiis commodi quia.', 0, NULL, NULL, NULL, NULL),
+(1, 'witting.rudolph@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Witting', 'Rudolph', 'mentor', 'https://www.linkedin.com/in/john-doe', 'pending', 'defaultProfileLogo.png', 'Voluptatibus officiis commodi quia.', 1, NULL, NULL, NULL, NULL),
 (2, 'melyna.rodriguez@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Melyna', 'Rodriguez', 'mentor', 'https://www.linkedin.com/in/john-doe', 'pending', 'defaultProfileLogo.png', 'Et animi voluptatem dolor possimus consequatur saepe. Rem consequatur error ut et amet iure.', 1, NULL, NULL, NULL, NULL),
 (3, 'jewell.lemke@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Jewell', 'Lemke', 'mentor', 'https://www.linkedin.com/in/john-doe', 'pending', 'defaultProfileLogo.png', 'Rerum laborum facilis et officia exercitationem magni.', 0, NULL, NULL, NULL, NULL),
 (4, 'kristofer.weimann@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Kristofer', 'Weimann', 'mentor', 'https://www.linkedin.com/in/john-doe', 'pending', 'defaultProfileLogo.png', 'Sequi maiores quibusdam rerum eum dolor culpa voluptas quae. Dolorem doloribus nam sit libero.', 0, NULL, NULL, NULL, NULL),
 (5, 'kara.keeling@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Kara', 'Keeling', 'mentor', 'https://www.linkedin.com/in/john-doe', 'pending', 'defaultProfileLogo.png', 'Omnis atque voluptatem placeat earum. Qui alias qui enim nobis.', 0, NULL, NULL, NULL, NULL),
 (6, 'shaina.labadie@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Shaina', 'Labadie', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Repellat ea ex unde modi nesciunt praesentium ut.', 1, NULL, NULL, NULL, NULL),
 (7, 'johathan.bergnaum@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Johathan', 'Bergnaum', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Repellendus qui molestias quas repellat consequatur velit in. Quasi itaque enim sit explicabo iusto ratione ut asperiores.', 1, NULL, NULL, NULL, NULL),
-(8, 'corine.bauch@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Corine', 'Bauch', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Officiis amet nisi aut accusamus excepturi cum aut eius.', 0, NULL, NULL, NULL, NULL),
-(9, 'frida.murzik@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Frida', 'Murazik', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Sit nam id beatae et quasi nihil.', 0, NULL, NULL, NULL, NULL),
+(8, 'corine.bauch@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Corine', 'Bauch', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Officiis amet nisi aut accusamus excepturi cum aut eius.', 1, NULL, NULL, NULL, NULL),
+(9, 'frida.murzik@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Frida', 'Murazik', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Sit nam id beatae et quasi nihil.', 1, NULL, NULL, NULL, NULL),
 (10, 'leopoldo.sipes@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Leopoldo', 'Sipes', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Sapiente beatae neque voluptas deleniti.', 1, NULL, NULL, NULL, NULL),
 (11, 'carlee.lakin@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Carlee', 'Lakin', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Esse architecto repellat voluptatem sapiente commodi.', 0, NULL, NULL, NULL, NULL),
 (12, 'houston.mann@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Houston', 'Mann', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Saepe aperiam est distinctio provident.', 1, NULL, NULL, NULL, NULL),
@@ -379,7 +379,7 @@ INSERT INTO `users` (`id`, `email`, `password`, `firstname`, `lastname`, `type`,
 (18, 'paolo.hagenes@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Paolo', 'Hagenes', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Dolore cupiditate voluptates itaque animi.', 1, NULL, NULL, NULL, NULL),
 (19, 'jakayla.wolff@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Jakayla', 'Wolff', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Velit dolor qui aut vel mollitia.', 1, NULL, NULL, NULL, NULL),
 (20, 'dora.jaskolski@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Dora', 'Jaskolski', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Quibusdam aut inventore corporis aut. Tenetur reiciendis ea corrupti ducimus quasi qui.', 0, NULL, NULL, NULL, NULL),
-(21, 'admint.mint@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Admint', 'Mint', 'admin', NULL, 'validate', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(21, 'admint.mint@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Admint', 'Mint', 'admin', NULL, 'validate', 'defaultProfileLogo.png', NULL, NULL, NULL, NULL, NULL, NULL);
 
 --
 -- Constraints for dumped tables
