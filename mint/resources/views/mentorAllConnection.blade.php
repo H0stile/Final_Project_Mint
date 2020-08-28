@@ -15,7 +15,7 @@
     </div>
 </div>
 <div class="container">
-    <section class="container scroll">
+    <section class="container height">
         <div>
             @foreach($menteeRequests as $menteeRequest)
             <div class="cardBGC">
@@ -24,17 +24,17 @@
                         <img class="responsive-img" src="{{asset('img/')}}/{{$menteeRequest->mentee->profile_image}}">
                     </div>
                     <div class="col s10 left-align">
-                        <p>{{$menteeRequest->mentee->firstname}} {{$menteeRequest->mentee->lastname}}</p>
+                        <p class="fontSize">{{$menteeRequest->mentee->firstname}} {{$menteeRequest->mentee->lastname}}</p>
                     </div>
                 </div>
-                <button class="btn-small buttonColorVP" type="submit" name="getIdMentee" value="{{$menteeRequest->mentee->id}}">View profile</button>
-                <button class="btn-small buttonColorDC" type="submit" name="getIdCollab" value="{{$menteeRequest->id}}">Disconnect</button>
+                <button class="waves-effect waves-light btn buttonColorVP" type="submit" name="getIdMentee" value="{{$menteeRequest->mentee->id}}">View profile</button>
+                <button class="waves-effect waves-light btn buttonColorDC" type="submit" name="getIdCollab" value="{{$menteeRequest->id}}">Disconnect</button>
             </div>
             @endforeach
         </div>
     </section>
     <div class="container">
-        <button class="btn-small buttonColorGB margin" type="submit" name="goBackMentorView" value="{{Auth::user()->id}}">Go back to profile</button>
+        <button class="waves-effect waves-light btn buttonColorVP margin" type="submit" name="goBackMentorView" value="{{Auth::user()->id}}">Go back to profile</button>
     </div>
 </div>
 @endsection
