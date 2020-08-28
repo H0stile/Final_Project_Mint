@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('css')
+<link rel="stylesheet" href="mint\public\css\mentorAllConnection.css">
+@endsection
 @section('content')
 <div class="container">
     <div class="row">
