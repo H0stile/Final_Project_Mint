@@ -1,12 +1,14 @@
 @extends('layouts.app')
 @section('css')
 <link rel="stylesheet" href="https://unpkg.com/materialize-stepper@3.1.0/dist/css/mstepper.min.css">
+<link href="{{ asset('css/register.css') }}" rel="stylesheet">
 @endsection
 @section('content')
 <div class="container">
     <div class="row">
         <div class="col s12 m10 offset-m1 l8 offset-l2">
             <div class="card">
+                <h1 id="title">Become our next mintee</h1>
                 <form method="POST" action="{{ route('register.mentee') }}" id="registerSubmit">
                     <div class="card-content">
                         {{ csrf_field() }}
@@ -75,7 +77,7 @@
                                 </div>
                             </li>
                             <li class="step">
-                                <div class="step-title waves-effect">Languages and skills</div>
+                                <div class="step-title waves-effect">Language</div>
                                 <div class="step-content">
                                     <div class="row">
                                         <div class="input-field col s12">
@@ -95,7 +97,7 @@
                                         <!-- Here goes your actions buttons -->
                                         <p>
                                             <button class="btn waves-effect waves-light" type="submit" name="action">{{ __('Register') }}
-                                                <i class="material-icons right">create</i>
+                                                <i class="material-icons right" id="register_icon">create</i>
                                             </button>
                                             <button class="waves-effect waves-dark btn-flat previous-step" type="button">BACK</button>
                                         </p>
