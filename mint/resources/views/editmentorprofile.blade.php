@@ -16,12 +16,26 @@
         <input type="text" name="linkedin" id="linkedin" placeholder="linkedin" value="{{$mentor->linkedin}}"><br>
 
         <label for="pitch">pitch:</label>
-        <textarea name="pitch" id="pitch" cols="30" rows="10" value="{{ $mentor->pitch }}"></textarea>
+        <textarea name="pitch" id="pitch" cols="30" rows="10">{{ $mentor->pitch }}</textarea>
+
+
+        <!-- Switch -->
+        <h3>{{$mentorAvailable}}</h3>
+        <div class="switch">
+            <label>
+                Not Available
+                <input name="available" type="Checkbox" @if($mentorAvailable=='Yes' ) checked @endif>
+                <span class="lever"></span>
+                Available
+            </label>
+
+        </div>
+
 
         <div class="row">
             <div class="input-field col s12">
                 <div class="row">
-                    <span class="card-title">{{ __('Languages  : ') }}</span><br>
+                    <span class="card-title">{{ __('Languages  : ***Chooose Only One Language') }}</span><br>
                     @foreach($langChosen as $choice)
                     <label><br>
                         <input type="checkbox" name="langChkBox[{{$choice['id']}}]" value="{{$choice['id']}}" @if($choice['chosen']) checked @endif />
@@ -34,7 +48,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <div class="row">
-                    <span class="card-title">{{ __('Skills : **Chooose Only One Skill') }}</span>
+                    <span class="card-title">{{ __('Skills : ***Chooose Only One Skill') }}</span>
                     <div style='height :200px;overflow:auto'>
                         @foreach($skillChosen as $choice)
                         <label><br>
