@@ -1,4 +1,8 @@
 @extends('layouts.app')
+@section('css')
+<link href="{{ asset('css/menteeProfile.css') }}" rel="stylesheet">
+@endsection
+
 @section('content')
 <img src="{{ asset('img/') }}/{{$profile->profile_image}}" height="100">
 <h1>{{$profile->getFullName()}}</h1>
