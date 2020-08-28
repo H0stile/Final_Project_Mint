@@ -9,7 +9,10 @@ body{
     border: 2px solid #f7ffff;
 }
 .margin {
-    margin: 8px 2px;
+    margin: 0.3em;
+}
+.margin2 {
+    margin: 1em;
 }
 .height{
     height: 600px;
@@ -24,7 +27,7 @@ body{
 .btn{
     box-shadow: none;
     width: 200px;
-    margin: 0.3em;
+
 }
 .fontSize{
     font-size: 1.5rem;
@@ -37,6 +40,11 @@ body{
     align-items: center;
 }
 .flex2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.flex3{
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -56,5 +64,8 @@ img{
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+.flex3{
+    flex-direction: row;
 }
 }
