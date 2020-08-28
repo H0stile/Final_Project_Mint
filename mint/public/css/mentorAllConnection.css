@@ -21,28 +21,40 @@ body{
 .buttonColorDC{
     background-color: #EA4C4B;
 }
-.buttonColorGB{
-    background-color: #FFA83F;
-}
 .btn{
     box-shadow: none;
     width: 200px;
     margin: 0.3em;
 }
 .fontSize{
+    font-size: 1.5rem;
+    color : white;
+    margin: 10px auto;
+}
+.flex{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.flex2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+img{
+    width: 60px;
+    margin: 10px auto;
+}
+
+@media screen and (min-width: 400px){
+.fontSize{
     font-size: 2rem;
     color : white;
     margin: 10px auto;
 }
-.responsive-img{
-    width: 60px;
-    margin: 0 10px;
-}
-
-@media screen and (max-width: 400px){
-.fontSize{
-    font-size: 1.5rem;
-    color : white;
-    margin: 10px auto;
+.flex2{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
 }
