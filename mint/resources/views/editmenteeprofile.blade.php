@@ -7,16 +7,16 @@
 
         @csrf
         <label for="firstname">Firstname :</label>
-        <input type="text" name="firstname" id="firstname" placeholder="firstname" value="{{ $mentor->firstname }}"><br>
+        <input type="text" name="firstname" id="firstname" placeholder="firstname" value="{{ $profile->firstname }}"><br>
 
         <label for="lastname">Lastname :</label>
-        <input type="text" name="lastname" id="lastname" placeholder="lastname" value="{{ $mentor->lastname }}"><br>
+        <input type="text" name="lastname" id="lastname" placeholder="lastname" value="{{ $profile->lastname }}"><br>
 
         <label for="linkedin">linkedin :</label>
-        <input type="text" name="linkedin" id="linkedin" placeholder="linkedin" value="{{$mentor->linkedin}}"><br>
+        <input type="text" name="linkedin" id="linkedin" placeholder="linkedin" value="{{$profile->linkedin}}"><br>
 
         <label for="pitch">pitch:</label>
-        <textarea name="pitch" id="pitch" cols="30" rows="10" value="{{ $mentor->pitch }}"></textarea>
+        <textarea name="pitch" id="pitch" cols="30" rows="10" value="{{ $profile->pitch }}"></textarea>
 
         <div class="row">
             <div class="input-field col s12">
@@ -34,7 +34,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <div class="row">
-                    <span class="card-title">{{ __('Skills : **Chooose Only One Skill') }}</span>
+                    <span class="card-title">{{ __('Skills : Please hooose Only One Skill') }}</span>
                     <div style='height :200px;overflow:auto'>
                         @foreach($skillChosen as $choice)
                         <label><br>
@@ -48,12 +48,12 @@
         </div>
 
         <p>
-            <button class="btn waves-effect waves-light" type="submitsave" name="action" value={{ $mentor->id }}>{{ __('Update & Show Profile') }}
+            <button class="btn waves-effect waves-light" type="submitsave" name="action" value={{ $profile->id }}>{{ __('Update & Show Profile') }}
                 <i class="material-icons right">create</i>
             </button>
         </p>
         <p>
-            <button name='deletebyadmin' class='deletebtn' value="{{$mentor->id}}">Delete the profile</button>
+            <button name='deletebyadmin' class='deletebtn' value="{{$profile->id}}">Delete the profile</button>
         </p>
 
 
@@ -70,7 +70,7 @@
         $("input[type='submitsave']").click(function(e) {
 
             e.preventDefault();
-            let route = '/mentor/edit/' + $(this).val();
+            let route = '/mentee/edit/' + $(this).val();
             $.ajax({
 
                 url: route,
@@ -94,7 +94,7 @@
 
 
         $(".deletebtn").click(function(e) {
-            let route = '/mentor/delete/' + $(this).val();
+            let route = '/mentee/delete/' + $(this).val();
             console.log('Route: ' + route);
             $.ajax({
                 url: route,
@@ -110,7 +110,7 @@
                 },
                 error: function(err) {
 
-                    alert('AJAX ERROR');
+                    alert('Some AJAX ERROR');
                 }
             });
         });

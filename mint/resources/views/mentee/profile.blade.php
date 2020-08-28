@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('content')
+<img src="{{ asset('img/') }}/{{$profile->profile_image}}" height="100">
 <h1>{{$profile->getFullName()}}</h1>
 <h4>{{$profile->type}}</h4>
 
@@ -75,9 +76,10 @@
 <!-- mentee part -->
 @if(Auth::user()->type == 'mentee')
 <hr>
-<a href="#">Look for a mentor</a>
+<a href="{{route('searchmentor', Auth::user()->id)}}">Look for a mentor</a>
 <br>
-<a href="#">Modify profile</a>
+<a href="{{route('editmenteeprofile', Auth::user()->id)}}">Modify profile</a>
+
 
 <!-- API part -->
 <div>
