@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('css')
+<link href="{{asset('css/mentorAllinvitation.css')}}" rel="stylesheet">
+@endsection
 @section('content')
 <div class="container">
     <div class="row">
@@ -9,27 +12,42 @@
             </div>
         </div>
         @endif
+    </div>
+</div>
+<div class="container">
+    <section class="container height">
         @foreach($menteeRequests as $menteeRequest)
-        <section class="invitCard">
-            <div>
-                <img src="{{asset('img/')}}/{{$menteeRequest->mentee->profile_image}}" style="width:60px">
-                <p>{{$menteeRequest->mentee->firstname}} {{$menteeRequest->mentee->lastname}}</p>
-                <button type="submit" name="getIdMentee" value="{{$menteeRequest->mentee->id}}">View profile</button>
-                <span>Message</span>
-                <textarea name="menteePitch" id="" cols="30" rows="5" readonly="true" style="resize:none">{{$menteeRequest->request_msg}}</textarea>
-                <button type="submit" name="getIdCollabAcc" value="{{$menteeRequest->id}}">Accept</button>
-                <button type="submit" name="getIdCollabDec" value="{{$menteeRequest->id}}">Decline</button>
+        <div class="cardBGC">
+            <div class="row valign-wrapper margin2">
+                <div class="col s2 center-align">
+                    <img class="responsive-img" src="{{asset('img/')}}/{{$menteeRequest->mentee->profile_image}}" style="width:60px">
+                </div>
+                <div class="col s10 left-align">
+                    <p class="fontSize">{{$menteeRequest->mentee->firstname}} {{$menteeRequest->mentee->lastname}}</p>
+                </div>
+                <button class="waves-effect waves-light btn buttonColorVP col s4" type="submit" name="getIdMentee" value="{{$menteeRequest->mentee->id}}">View profile</button>
             </div>
-            <hr>
-        </section>
+                <p class="fontSize3">Message : </p>
+                <textarea class="fontSize2" name="menteePitch" id="" cols="30" rows="5" readonly="true" style="resize:none">{{$menteeRequest->request_msg}}</textarea>
+                <button class="waves-effect waves-light btn buttonColorVP" type="submit" name="getIdCollabAcc" value="{{$menteeRequest->id}}">Accept</button>
+                <button class="waves-effect waves-light btn buttonColorDC" type="submit" name="getIdCollabDec" value="{{$menteeRequest->id}}">Decline</button>
+        </div>
         @endforeach
+    </section>
+    <div class="container">
+        <button class="waves-effect waves-light btn buttonColorVP margin" type="submit" name="goBackMentorView" value="{{Auth::user()->id}}">Go back to profile</button>
     </div>
 </div>
 @endsection
 @section('script')
 <script>
     $(document).ready(function () {
-
+        //? Button to go to profile
+        $("button[name='goBackMentorView']").click(function (event) {
+            event.preventDefault();
+            routeUrl = "{{url('')}}/mentor/" + $(this).val();
+            window.location.href = routeUrl;
+        });
         //? Button to go to profile
         $("button[name='getIdMentee']").click(function (event) {
             event.preventDefault();
