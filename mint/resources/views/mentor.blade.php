@@ -40,9 +40,9 @@
 
 <h2>Ratings</h2>
 @foreach($ratingsWithName as $rating)
-<h1>{{$rating[0]}}</h1>
-<h1>{{$rating[1]}}</h1>
-<h1>{{$rating[2]}}</h1>
+<h1>Mentee name:{{$rating[0]}}</h1>
+<h1>Rating:{{$rating[1]}}</h1>
+<h1>Message:{{$rating[2]}}</h1>
 @endforeach
 
 @if(!$ratingExists)
@@ -112,6 +112,9 @@
 
             success: function(result) {
                 console.log('data inserted successfully');
+                alert('Your final rating submitted');
+                location.reload();
+
             },
 
             error: function(err) {
