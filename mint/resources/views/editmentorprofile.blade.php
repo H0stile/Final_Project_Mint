@@ -20,7 +20,7 @@
 
 
         <!-- Switch -->
-        <h3>{{$mentorAvailable}}</h3>
+        <h3>Availability:</h3>
         <div class="switch">
             <label>
                 Not Available
