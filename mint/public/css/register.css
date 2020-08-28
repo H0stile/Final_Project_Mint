@@ -1,0 +1,53 @@
+/* Charles : general customisation */
+/*TODO : Ask Anna about the white/light blue */
+body {
+    color: #3b4a69;
+    background-color: #f7ffff;
+}
+
+.card {
+    background-color: #f7ffff;
+}
+
+/* Charles : not display pictures in skill list */
+.autocomplete-content li img {
+    display: none;
+}
+
+/* Charles : Stepper customisation */
+
+.card {
+    box-shadow: none;
+}
+
+.btn {
+    box-shadow: none;
+    background-color: #75d19e;
+}
+
+ul.stepper .step.active::before,
+ul.stepper .step.done::before {
+    background-color: #75d19e;
+}
+
+/* Title and texts */
+
+#title {
+    font-family: "Work Sans", sans-serif;
+    font-weight: 300;
+}
+#explanation {
+    margin-bottom: 200px;
+}
+
+#register_icon {
+    color: #f7ffff;
+}
+
+/* Responsive part */
+
+@media only screen and (max-width: 1024px) {
+    .card {
+        width: 100%;
+    }
+}
