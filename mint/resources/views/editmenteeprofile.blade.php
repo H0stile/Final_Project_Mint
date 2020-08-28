@@ -31,22 +31,6 @@
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="input-field col s12">
-                <div class="row">
-                    <span class="card-title">{{ __('Skills : Please hooose Only One Skill') }}</span>
-                    <div style='height :200px;overflow:auto'>
-                        @foreach($skillChosen as $choice)
-                        <label><br>
-                            <input type="checkbox" name="skillChkBox[{{$choice['id']}}]" value="{{$choice['id']}}" @if($choice['chosen']) checked @endif />
-                            <span>{{$choice['skill']}}</span>
-                        </label>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-        </div>
-
         <p>
             <button class="btn waves-effect waves-light" type="submitsave" name="action" value={{ $profile->id }}>{{ __('Update & Show Profile') }}
                 <i class="material-icons right">create</i>
@@ -99,7 +83,6 @@
             $.ajax({
                 url: route,
                 type: 'delete',
-                //dataType: 'json',
 
                 success: function(result) {
                     console.log(result.message);
