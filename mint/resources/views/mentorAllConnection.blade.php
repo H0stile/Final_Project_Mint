@@ -19,22 +19,26 @@
             @foreach($menteeRequests as $menteeRequest)
             <div class="cardBGC">
                 <div class="flex">
-                    <div>
-                        <img src="{{asset('img/')}}/{{$menteeRequest->mentee->profile_image}}">
-                    </div>
-                    <div>
-                        <p class="fontSize">{{$menteeRequest->mentee->firstname}} {{$menteeRequest->mentee->lastname}}</p>
+                    <div class="flex3">
+                        <div>
+                            <img class="margin" src="{{asset('img/')}}/{{$menteeRequest->mentee->profile_image}}">
+                        </div>
+                        <div>
+                            <p class="fontSize margin">{{$menteeRequest->mentee->firstname}} {{$menteeRequest->mentee->lastname}}</p>
+                        </div>
                     </div>
                     <div class="flex2">
-                        <button class="waves-effect waves-light btn buttonColorVP" type="submit" name="getIdMentee" value="{{$menteeRequest->mentee->id}}">View profile</button>
-                        <button class="waves-effect waves-light btn buttonColorDC" type="submit" name="getIdCollab" value="{{$menteeRequest->id}}">Disconnect</button>
+                        <button class="waves-effect waves-light btn buttonColorVP margin" type="submit" name="getIdMentee" value="{{$menteeRequest->mentee->id}}">View profile</button>
+                        <button class="waves-effect waves-light btn buttonColorDC margin" type="submit" name="getIdCollab" value="{{$menteeRequest->id}}">Disconnect</button>
                     </div>
                 </div>
             </div>
             @endforeach
     </section>
     <div class="container">
-        <button class="waves-effect waves-light btn buttonColorVP margin" type="submit" name="goBackMentorView" value="{{Auth::user()->id}}">Go back to profile</button>
+        <div class="flex">
+            <button class="waves-effect waves-light btn buttonColorVP margin2" type="submit" name="goBackMentorView" value="{{Auth::user()->id}}">Go back to profile</button>
+        </div>
     </div>
 </div>
 @endsection
