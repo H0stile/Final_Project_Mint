@@ -75,6 +75,9 @@ flex-direction: column;
     width: 100%;
     margin-left: 50px;
 }
+.spaceinside{
+    padding: 20px;
+}
 
 
 /* some changes to responsive design */

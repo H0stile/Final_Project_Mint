@@ -16,7 +16,7 @@
         <section class="flex">
             <section class="block">
                 <h5>Pitch:</h5>
-                <p class="bg">{{$profile->pitch}}</p>
+                <p class="bg spaceinside">{{$profile->pitch}}</p>
             </section>
             <section class="block">
                 <h5>Ratings:</h5>
