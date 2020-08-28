@@ -1,21 +1,25 @@
 @extends('layouts.app')
 @section('content')
+@section('css')
+<link href="{{ asset('css/mentorprofile.css') }}" rel="stylesheet">
+@endsection
 <div class="container">
 
-    <img src="{{ asset('img/') }}/{{ $mentor->profile_image }}" width="400" height="300">
+    <!-- <img src="{{ asset('img/') }}/{{ $mentor->profile_image }}" width="400" height="300">-->
     <h2>Fresh Mintor Profile</h2>
     <hr>
     <h4>FirstName : {{ $mentor->firstname }}</h4>
     <h4>LastName : {{ $mentor->lastname }}</h4>
     <h4>Pitch : {{ $mentor->pitch }}</h4>
-    <h4>linkedin : {{ $mentor->linkedin }}</h4>
+    <h4>Linkedin : {{ $mentor->linkedin }}</h4>
 
     <!-- <label for="checkboxyes">Available for mentorship</label>
     <input type="checkbox" id="checkbox" name="available" value="{{ $mentor->availability}}"> -->
-    <h4>Skills:</h4>
+
     @foreach($skills as $skill)
-    <h4>{{$skill->skill}}</h4>
+    <h4>Skills : {{$skill->skill}}</h4>
     @endforeach
+
     <hr>
 
     @if(Auth::user()->type == 'mentor')
@@ -36,24 +40,28 @@
     @endif
     @if(Auth::user()->type == 'mentee')
 
-    <h1>Available for mentorship : {{ $mentorAvailable }}</h1>
+    <h4>Available for mentorship : {{ $mentorAvailable }}</h4>
 
 
     <button class="waves-effect waves-light btn" name='applymentorship' value="{{$mentor->id}}">Apply for the mentorship</button>
 
-
+    <hr>
     <h2>Ratings</h2>
     @foreach($ratingsWithName as $rating)
-    <h1>Mentee name:{{$rating[0]}}</h1>
-    <h1>Rating:{{$rating[1]}}</h1>
-    <h1>Message:{{$rating[2]}}</h1>
+    <h5>Mintee Name : {{$rating[0]}}</h5>
+    <h5>Rating : {{$rating[1]}} / 5</h5>
+    <h5>Msg : {{$rating[2]}}</h5>
+    <hr>
     @endforeach
 
     @if(!$ratingExists)
     <form action="" method=" POST">
+
         @csrf
         <input name="writer_id" type="hidden" value="{{Auth::user()->id}}" />
         <input name="target_id" type="hidden" value="{{$mentor->id}}" />
+
+        <label for="comment">Msg To Your Mintee</label>
         <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
         <label for="score">Ratings:</label>
         <select id="score" name="score" class="browser-default">
