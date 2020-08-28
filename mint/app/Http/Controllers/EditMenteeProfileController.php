@@ -78,22 +78,7 @@ class EditMenteeProfileController extends Controller
             $langChosen->push(['id' => $lang->id, 'language' => $lang->languages, 'chosen' => $chosen]);
         }
 
-        $skills = User::find($id)->skills;
-        $allSkills = Skill::all();
-        $skillChosen = collect();
-
-        foreach ($allSkills as $skill) {
-
-            $chosen = false;
-            foreach ($skills as $menteeSkill) {
-                if ($skill->id == $menteeSkill->id) {
-                    $chosen = true;
-                }
-            }
-
-            $skillChosen->push(['id' => $skill->id, 'skill' => $skill->skill, 'chosen' => $chosen]);
-        }
-        return view('editmenteeprofile', compact('profile', 'skills', 'languages', 'langChosen', 'skillChosen'));
+        return view('editmenteeprofile', compact('profile', 'languages', 'langChosen'));
     }
 
     /**
@@ -113,14 +98,6 @@ class EditMenteeProfileController extends Controller
             'pitch' => $request->pitch
         ]);
 
-        // updating new mentor skills and languages
-        DB::table('skills_intermediate')->where('user_id', $id)->delete();
-        foreach ($request->skillChkBox as $skillId) {
-            DB::table('skills_intermediate')->insert([
-                'user_id' => $request->id,
-                'skill_id' => $skillId
-            ]);
-        }
         DB::table('languages_intermediate')->where('user_id', $id)->delete();
         foreach ($request->langChkBox as $langId) {
             DB::table('languages_intermediate')->insert([
