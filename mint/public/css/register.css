@@ -1,9 +1,10 @@
 /* Charles : general customisation */
 /*TODO : Ask Anna about the white/light blue */
-* {
+body {
     color: #3b4a69;
+    background-color: #f7ffff;
 }
-body,
+
 .card {
     background-color: #f7ffff;
 }
@@ -41,4 +42,12 @@ ul.stepper .step.done::before {
 
 #register_icon {
     color: #f7ffff;
+}
+
+/* Responsive part */
+
+@media only screen and (max-width: 1024px) {
+    .card {
+        width: 100%;
+    }
 }
