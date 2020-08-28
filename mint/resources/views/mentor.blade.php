@@ -1,20 +1,23 @@
 @extends('layouts.app')
 @section('content')
+@section('css')
+<link href="{{ asset('css/mentorprofile.css') }}" rel="stylesheet">
+@endsection
 <div class="container">
 
-    <img src="{{ asset('img/') }}/{{ $mentor->profile_image }}" width="400" height="300">
+    <!-- <img src="{{ asset('img/') }}/{{ $mentor->profile_image }}" width="400" height="300">-->
     <h2>Fresh Mintor Profile</h2>
     <hr>
     <h4>FirstName : {{ $mentor->firstname }}</h4>
     <h4>LastName : {{ $mentor->lastname }}</h4>
     <h4>Pitch : {{ $mentor->pitch }}</h4>
-    <h4>linkedin : {{ $mentor->linkedin }}</h4>
+    <h4>Linkedin : {{ $mentor->linkedin }}</h4>
 
     <!-- <label for="checkboxyes">Available for mentorship</label>
     <input type="checkbox" id="checkbox" name="available" value="{{ $mentor->availability}}"> -->
-    <h4>Skills:</h4>
+
     @foreach($skills as $skill)
-    <h4>{{$skill->skill}}</h4>
+    <h4>Skills : {{$skill->skill}}</h4>
     @endforeach
     <hr>
 
