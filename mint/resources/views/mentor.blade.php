@@ -53,11 +53,11 @@
     <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
     <label for="score">Ratings:</label>
     <select id="score" name="score" class="browser-default">
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
         <option value="5">5</option>
+        <option value="4">4</option>
+        <option value="3">3</option>
+        <option value="2">2</option>
+        <option value="1">1</option>
     </select>
     <br>
     <input type="submit" id="submit" value="submit">
@@ -132,10 +132,7 @@
             $.ajax({
                 url: route,
                 type: 'delete',
-                dataType: 'json',
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                },
+
                 success: function(result) {
                     console.log(result.message);
                     alert('Mentor Profile deleted');
