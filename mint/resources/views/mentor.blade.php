@@ -2,31 +2,32 @@
 @section('content')
 
 <img src="{{ asset('img/') }}/{{ $mentor->profile_image }}" width="400" height="300">
-<h1>FirstName : {{ $mentor->firstname }}</h1>
-<h1>LastName :{{ $mentor->lastname }}</h1>
-<h1>Pitch : {{ $mentor->pitch }}</h1>
-<h1>linkedin : {{ $mentor->linkedin }}</h1>
+<h2>Your Profile</h2>
+<h3>FirstName : {{ $mentor->firstname }}</h3>
+<h3>LastName :{{ $mentor->lastname }}</h3>
+<h3>Pitch : {{ $mentor->pitch }}</h3>
+<h3>linkedin : {{ $mentor->linkedin }}</h3>
 
 <!-- <label for="checkboxyes">Available for mentorship</label>
     <input type="checkbox" id="checkbox" name="available" value="{{ $mentor->availability}}"> -->
-<h1>Skills:</h1>
+<h3>Skills:</h3>
 @foreach($skills as $skill)
-<h1>{{$skill->skill}}</h1>
+<h3>{{$skill->skill}}</h3>
 @endforeach
 
 @if(Auth::user()->type == 'mentor')
 
-<h1>Available for mentorship : {{ $mentorAvailable }}</h1>
+<h3>Available for mentorship : {{ $mentorAvailable }}</h3>
 
-<button name="editbtn" value="{{$mentor->id}}">Edit the profile page</button>
-<button name="seeallinvitationbtn" value="{{$mentor->id}}">See all the invitation-request page</button>
-<button name="seeallconnectionbtn" value="{{$mentor->id}}">See all the connection page</button>
+<button class="waves-effect waves-light btn" name="editbtn" value="{{$mentor->id}}">Edit the profile page</button>
+<button class="waves-effect waves-light btn" name="seeallinvitationbtn" value="{{$mentor->id}}">See all the invitation-request page</button>
+<button class="waves-effect waves-light btn" name="seeallconnectionbtn" value="{{$mentor->id}}">See all the connection page</button>
 
 @endif
 
 @if(Auth::user()->type == 'admin')
 
-<button name='deletebyadmin' class='deletebtn' value="{{$mentor->id}}">Delete the profile</button>
+<button name='deletebyadmin' class='deletebtn waves-effect waves-light btn' value="{{$mentor->id}}">Delete the profile</button>
 
 
 @endif
@@ -35,7 +36,7 @@
 <h1>Available for mentorship : {{ $mentorAvailable }}</h1>
 
 
-<button name='applymentorship' value="{{$mentor->id}}">Apply for the mentorship</button>
+<button class="waves-effect waves-light btn" name='applymentorship' value="{{$mentor->id}}">Apply for the mentorship</button>
 
 
 <h2>Ratings</h2>
@@ -60,7 +61,7 @@
         <option value="1">1</option>
     </select>
     <br>
-    <input type="submit" id="submit" value="submit">
+    <input class="waves-effect waves-light btn" type="submit" id="submit" value="submit">
 
 
 </form>
