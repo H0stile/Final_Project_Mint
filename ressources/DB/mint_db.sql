@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 28, 2020 at 07:45 AM
+-- Generation Time: Aug 28, 2020 at 07:51 AM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.4.0
 
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `collaboration` (
   PRIMARY KEY (`id`),
   KEY `collaboration_mentor_id_foreign` (`mentor_id`),
   KEY `collaboration_mentee_id_foreign` (`mentee_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `collaboration`
@@ -54,7 +54,12 @@ INSERT INTO `collaboration` (`id`, `mentor_id`, `mentee_id`, `request_msg`, `sta
 (7, 9, 17, 'I want to learn JavaScript', 'connected'),
 (8, 9, 18, 'Hello', 'connected'),
 (9, 10, 19, 'I want to learn Ruby', 'connected'),
-(10, 10, 20, 'I want to learn C#', 'pending');
+(10, 10, 20, 'I want to learn C#', 'pending'),
+(11, 7, 17, 'accept me', 'pending'),
+(12, 8, 16, 'Accept me', 'pending'),
+(13, 8, 13, 'Hello', 'connected'),
+(14, 9, 11, 'I want to learn something', 'pending'),
+(15, 10, 15, 'Hello !!!', 'connected');
 
 -- --------------------------------------------------------
 
@@ -122,7 +127,6 @@ INSERT INTO `languages_intermediate` (`user_id`, `language_id`) VALUES
 (5, 1),
 (6, 2),
 (7, 3),
-(8, 4),
 (9, 1),
 (10, 2),
 (11, 3),
@@ -135,7 +139,8 @@ INSERT INTO `languages_intermediate` (`user_id`, `language_id`) VALUES
 (18, 2),
 (19, 3),
 (20, 4),
-(21, 1);
+(21, 1),
+(8, 3);
 
 -- --------------------------------------------------------
 
@@ -323,9 +328,9 @@ INSERT INTO `skills_intermediate` (`user_id`, `skill_id`) VALUES
 (5, 16),
 (6, 16),
 (7, 6),
-(8, 26),
 (9, 10),
-(10, 5);
+(10, 5),
+(8, 27);
 
 -- --------------------------------------------------------
 
@@ -366,7 +371,7 @@ INSERT INTO `users` (`id`, `email`, `password`, `firstname`, `lastname`, `type`,
 (5, 'kara.keeling@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Kara', 'Keeling', 'mentor', 'https://www.linkedin.com/in/john-doe', 'pending', 'defaultProfileLogo.png', 'Omnis atque voluptatem placeat earum. Qui alias qui enim nobis.', 0, NULL, NULL, NULL, NULL),
 (6, 'shaina.labadie@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Shaina', 'Labadie', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Repellat ea ex unde modi nesciunt praesentium ut.', 1, NULL, NULL, NULL, NULL),
 (7, 'johathan.bergnaum@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Johathan', 'Bergnaum', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Repellendus qui molestias quas repellat consequatur velit in. Quasi itaque enim sit explicabo iusto ratione ut asperiores.', 1, NULL, NULL, NULL, NULL),
-(8, 'corine.bauch@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Corine', 'Bauch', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Officiis amet nisi aut accusamus excepturi cum aut eius.', 1, NULL, NULL, NULL, NULL),
+(8, 'corine.bauch@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Corine', 'Bauch', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Officiis amet nisi aut accusamus excepturi cum aut eius.', 0, NULL, NULL, NULL, NULL),
 (9, 'frida.murzik@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Frida', 'Murazik', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Sit nam id beatae et quasi nihil.', 1, NULL, NULL, NULL, NULL),
 (10, 'leopoldo.sipes@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Leopoldo', 'Sipes', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Sapiente beatae neque voluptas deleniti.', 1, NULL, NULL, NULL, NULL),
 (11, 'carlee.lakin@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Carlee', 'Lakin', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Esse architecto repellat voluptatem sapiente commodi.', 0, NULL, NULL, NULL, NULL),
