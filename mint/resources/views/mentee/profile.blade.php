@@ -12,106 +12,128 @@
             <h5>{{$profile->type}}</h5>
         </section>
     </section>
-
-
-    <h5>Pitch:</h5>
-    <p class="bg">{{$profile->pitch}}</p>
-    <h5>Ratings:</h5>
-    <section class="scroll">
-        @foreach($profile->receiveRatings as $rating)
-        <div class="bg">
-            <h6>{{$rating->writer->getFullName()}}:</h6>
-            <section class="rating">
-                <p>{{$rating->score}}</p><i class="material-icons left star">star</i>
-                <p>{{$rating->comment}}</p>
+    <section class="menteepagelook">
+        <section class="flex">
+            <section class="block">
+                <h5>Pitch:</h5>
+                <p class="bg">{{$profile->pitch}}</p>
             </section>
-        </div>
-        @endforeach
-    </section>
+            <section class="block">
+                <h5>Ratings:</h5>
+                <section class="scroll">
+                    @foreach($profile->receiveRatings as $rating)
+                    <div class="bg">
+                        <h6>{{$rating->writer->getFullName()}}:</h6>
+                        <section class="rating">
+                            <p>{{$rating->score}}</p><i class="material-icons left star">star</i>
+                            <p>{{$rating->comment}}</p>
+                        </section>
+                    </div>
+                    @endforeach
+                </section>
+            </section>
 
-    @if($canWriteRating)
-    <form id="form" action="{{route('rating.create')}}" method="POST">
-        @csrf
-        <input type="hidden" name="target" value="{{$profile->id}}">
-        <input type="hidden" name="writer" value="{{Auth::user()->id}}">
-
-        <p>
-            <select name="score" style="display: initial;">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-        </p>
-
-        <label id="label" for="comment">Add a rating</label>
-        <br>
-        <textarea name="comment" id="textArea" placeholder="Add your text here"></textarea>
-        <br>
-        <div id="button">
-            <input id="submitButton" type="submit" value="Submit">
-        </div>
-    </form>
-    <br><br>
-    @endif
-
-
-
-    <!-- message part part -->
-    @if(count($messages) >0)
-    <h5>Messages:</h5>
-    @foreach($messages as $message)
-    <p>{{$message->message}}</p>
-    <p>{{$message->writer->getFullName()}}</p>
-    @endforeach
-    @endif
-
-    @if($collaborator !== null)
-    <div class="row">
-        <form id="form2" action="{{route('message.create')}}" method="POST" class="col s12">
-            <div class="input-field col s6 myrow">
+            @if($canWriteRating)
+            <form id="form" action="{{route('rating.create')}}" method="POST">
                 @csrf
-                {{ csrf_field() }}
+                <input type="hidden" name="target" value="{{$profile->id}}">
                 <input type="hidden" name="writer" value="{{Auth::user()->id}}">
-                <input type="hidden" name="target" value="{{$collaborator->id}}">
 
-                <textarea id="icon_prefix2" class="materialize-textarea" name="message"></textarea>
-                <label for="icon_prefix2">Write a message</label>
-                <!-- <label id="labelMessage" for="message">Write a message</label>
+                <p>
+                    <select name="score" style="display: initial;">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="4">4</option>
+                        <option value="5">5</option>
+                    </select>
+                </p>
+
+                <label id="label" for="comment">Add a rating</label>
                 <br>
-                <textarea name="message" id="textAreaMessage" placeholder="Write your message here"></textarea>
-                <br> -->
-                <div id="button" class="waves-effect waves-light btn-small sendbtn">
-                    <input id="submitButton2" type="submit" value="Send" name="form2" class='textbtn'>
+                <textarea name="comment" id="textArea" placeholder="Add your text here"></textarea>
+                <br>
+                <div id="button">
+                    <input id="submitButton" type="submit" value="Submit">
                 </div>
+            </form>
+            <br><br>
+            @endif
+
+
+
+            <!-- message part part -->
+            <section>
+                @if(count($messages) >0)
+                <h5>Messages:</h5>
+                <section class="scroll bg">
+                    @foreach($messages as $message)
+                    <section class="rating">
+                        <i class="material-icons left message messagemy">message</i>
+                        <h6>{{$message->writer->getFullName()}}:</h6>
+                    </section>
+                    <p>{{$message->message}}</p>
+                    @endforeach
+                </section>
+                @endif
+            </section>
+
+            @if($collaborator !== null)
+            <div class="row">
+                <form id="form2" action="{{route('message.create')}}" method="POST" class="col s12">
+                    <div class="input-field col s6 leftpad" id="pad">
+                        @csrf
+                        {{ csrf_field() }}
+                        <input type="hidden" name="writer" value="{{Auth::user()->id}}">
+                        <input type="hidden" name="target" value="{{$collaborator->id}}">
+
+                        <textarea id="icon_prefix2" class="materialize-textarea" name="message"></textarea>
+                        <label for="icon_prefix2">Write a message</label>
+                        <!-- <label id="labelMessage" for="message">Write a message</label>
+                        <br>
+                        <textarea name="message" id="textAreaMessage" placeholder="Write your message here"></textarea>
+                        <br> -->
+                        <div id="button" class="waves-effect waves-light btn-small sendbtn">
+                            <input id="submitButton2" type="submit" value="Send" name="form2" class='textbtn'>
+                        </div>
+                    </div>
+                </form>
             </div>
-        </form>
-    </div>
-    <br>
-    @endif
+            <br>
+            @endif
+        </section>
 
-    <!-- mentee part -->
-    @if(Auth::user()->type == 'mentee')
-    <hr>
-    <a href="{{route('searchmentor', Auth::user()->id)}}">Look for a mentor</a>
-    <br>
-    <a href="{{route('editmenteeprofile', Auth::user()->id)}}">Modify profile</a>
+        <section class="menteebtn flex rightsection">
+            <!-- mentee part -->
+            @if(Auth::user()->type == 'mentee')
+
+            <section class="searchbtn">
+                <div class="mybtn">
+                    <a href="{{route('searchmentor', Auth::user()->id)}}" class="btn waves-effect waves-light sendbtn">Look for a mentor</a>
+                </div>
+
+                <div class="mybtn">
+                    <a href="{{route('editmenteeprofile', Auth::user()->id)}}" class="btn waves-effect waves-light sendbtn">Modify profile</a>
+                </div>
+            </section>
 
 
-    <!-- API part -->
-    <div>
-        <h2>Job list</h2>
+            <!-- API part -->
+            <div>
+                <h5>Jobs:</h5>
 
-        @foreach($jobsData as $job)
-        <li>Job title: {{$job['title']}}</li>
-        <li>Company: {{$job['company_name']}}</li>
-        <li><a href="{{$job['url']}}">Details</a></li>
-        <hr>
-        @endforeach
-    </div>
-
-    @endif
+                <section class="scrollbig">
+                    @foreach($jobsData as $job)
+                    <li>Job title: {{$job['title']}}</li>
+                    <li>Company: {{$job['company_name']}}</li>
+                    <li><a href="{{$job['url']}}">Details</a></li>
+                    <hr>
+                    @endforeach
+                </section>
+            </div>
+            @endif
+        </section>
+    </section>
 
     <!-- mentor part -->
     @if(Auth::user()->type == 'mentor')

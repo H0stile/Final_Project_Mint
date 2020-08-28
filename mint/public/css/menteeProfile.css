@@ -12,7 +12,7 @@ body{
     margin-right: 20px;
     /* border-radius: 50%; */
 }
-.maininfo{
+.maininfo, .rating{
     display: flex;
     align-items: center;
 }
@@ -21,25 +21,71 @@ body{
     padding: 10px;
     background-color: #EBFEEA;
 }
-.rating{
-    display: flex;
-    align-items: center;
-}
 .star{
     color: #FFA83F;
 }
 .scroll{
     overflow:scroll; 
-    height: 300px
+    height: 200px;
+    margin-bottom: 0;
+}
+.scrollbig{
+    overflow:scroll; 
+    height: 400px;
+    margin-bottom: 0;
 }
 .sendbtn{
     box-shadow: none;
     background-color: #75D19E;
     color: #F7FFFF;
 }
-.myrow{
-    padding: 0px;
-}
+
 .textbtn{
     color: #F7FFFF;
+}
+.block{
+    margin-bottom: 50px;
+}
+.messagemy{
+    color: #75D19E;
+}
+#form2, #pad{
+    padding-left: 0; 
+}
+.menteebtn{
+display: flex;
+flex-direction: column;
+}
+.menteepagelook{
+    display: flex; 
+    justify-content: space-between;
+}
+.flex{
+    margin-bottom: auto;
+    justify-content: space-between;
+}
+.searchbtn{
+    display: block;
+    justify-content: center;
+}
+.mybtn{
+    margin-bottom: 20px;
+}
+.rightsection{
+    width: 100%;
+    margin-left: 50px;
+}
+
+
+/* some changes to responsive design */
+@media ( max-width:600px){
+   
+    .menteepagelook{
+        display: block; 
+        justify-content: space-between;
+    }
+    .flex{
+        width: 100%;
+        margin-bottom: auto;
+    }
 }
