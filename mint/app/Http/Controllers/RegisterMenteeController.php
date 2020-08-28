@@ -74,6 +74,7 @@ class RegisterMenteeController extends Controller
             'lastname' => $data['lastname'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
+            'profile_image' => 'defaultProfileLogo.png',
             'type' => 'mentee'
         ]);
 

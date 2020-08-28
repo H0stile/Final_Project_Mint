@@ -85,6 +85,7 @@ class RegisterMentorController extends Controller
                 'password' => Hash::make($data['password']),
                 'pitch' => $data['pitch'],
                 'linkedin' => $data['linkedin'],
+                'profile_image' => 'defaultProfileLogo.png',
                 'type' => 'mentor',
                 'mentor_status' => 'pending',
             ]);
