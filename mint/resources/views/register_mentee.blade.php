@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('css')
+<link href="{{ asset('css/register.css') }}" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/materialize-stepper@3.1.0/dist/css/mstepper.min.css">
 @endsection
 @section('content')

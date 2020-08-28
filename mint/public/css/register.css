@@ -1,0 +1,4 @@
+/* Charles : not display pictures in skill list */
+.autocomplete-content li img {
+    display: none;
+}
