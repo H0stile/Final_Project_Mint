@@ -17,8 +17,8 @@
 <div class="container">
     <section class="container height">
             @foreach($menteeRequests as $menteeRequest)
-            <div class="cardBGC">
-                <div class="flex">
+            <div>
+                <div class=" cardBGC flex">
                     <div class="flex3">
                         <div>
                             <img class="margin" src="{{asset('img/')}}/{{$menteeRequest->mentee->profile_image}}">
