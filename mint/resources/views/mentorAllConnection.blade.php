@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('css')
-<link rel="stylesheet" href="mint\public\css\mentorAllConnection.css">
+<link href="{{asset('css/mentorAllConnection.css')}}" rel="stylesheet">
 @endsection
 @section('content')
 <div class="container">
@@ -12,19 +12,28 @@
             </div>
         </div>
         @endif
+    </div>
+</div>
+<section class="container scroll">
+    <div>
         @foreach($menteeRequests as $menteeRequest)
-        <div>
-            <img src="{{asset('img/')}}/{{$menteeRequest->mentee->profile_image}}" style="width:60px">
-            <p>{{$menteeRequest->mentee->firstname}} {{$menteeRequest->mentee->lastname}}</p>
+        <div class="cardBGC">
+            <div class="row valign-wrapper">
+                <div class="col s2 center-align">
+                    <img class="responsive-img" src="{{asset('img/')}}/{{$menteeRequest->mentee->profile_image}}">
+                </div>
+                <div class="col s10 left-align">
+                    <p>{{$menteeRequest->mentee->firstname}} {{$menteeRequest->mentee->lastname}}</p>
+                </div>
+            </div>
             <button type="submit" name="getIdMentee" value="{{$menteeRequest->mentee->id}}">View profile</button>
             <button type="submit" name="getIdCollab" value="{{$menteeRequest->id}}">Disconnect</button>
         </div>
-        <hr>
         @endforeach
-        <div>
-            <button type="submit" name="goBackMentorView" value="{{Auth::user()->id}}">Go back to profile</button>
-        </div>
     </div>
+</section>
+<div class="container">
+    <button class="margin" type="submit" name="goBackMentorView" value="{{Auth::user()->id}}">Go back to profile</button>
 </div>
 @endsection
 @section('script')

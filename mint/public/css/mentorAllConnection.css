@@ -1,0 +1,23 @@
+body{
+    background-color: #F7FFFF;
+}
+
+.cardBGC {
+    background-color: #579B9A;
+    padding: 8px;
+    margin: 2px 0;
+    border: 2px solid #f7ffff;
+}
+
+.margin {
+    margin: 2px;
+}
+
+.scroll{
+    height: 500px;
+    overflow: auto;
+}
+
+.height {
+    height: 60px;
+}
