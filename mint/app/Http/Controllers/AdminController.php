@@ -6,6 +6,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactMe;
 
 class AdminController extends Controller
 {
@@ -21,7 +23,7 @@ class AdminController extends Controller
         $matchMentor = ['type' => 'mentor', 'mentor_status' => 'pending'];
         $pendingMentors = User::where($matchMentor)->paginate(2);
         //$mentorMentee = ['type' => 'mentee', 'mentor_status' => 'validate'];
-        $mentorMenteeList = User::where('type', 'mentee')->orWhere('mentor_status','validate')->paginate(5);
+        $mentorMenteeList = User::where('type', 'mentee')->orWhere('mentor_status','validate')->get();
         for ($i=0; $i < $mentorMenteeList->count(); $i++) {
             $userCollaborators[$i] = $mentorMenteeList[$i]->mentees;
         }
@@ -83,11 +85,22 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        User::where('id', $id)
+        
+            $mentor = User::where('id', $id)
           ->update(['mentor_status' => 'validate']);
-          return redirect('/admin');
-    }
 
+          if ($mentor) {
+              $mentor=User::find($id);
+            //request()->validate(['email' => 'required|email']);
+
+            $mentoremail = $mentor->email;
+            $mentorname = $mentor->firstname . " " . $mentor->lastname;
+
+            Mail::to($mentoremail)->send(new ContactMe($mentorname));
+        
+            return redirect('/admin')->with('message', 'mentor validated');
+        };
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -105,23 +118,26 @@ class AdminController extends Controller
         return redirect('/admin');
     }
 
-    /**
-     * Get User collaborators.
-     *
-     * 
-     * 
-     */
-    public function getUserCollabs($userId)
-    {
+    public function getUserCollabs($userId){
         $user = User::find($userId);
         
         if ($user->type === "mentor"){
-            return $user->mentees;
+            $menteeTable = $user->mentees;
+            if (count($menteeTable) != 0){
+                return $menteeTable;
+            }else{
+                return $user->id;
+            }
+                
         }
-
         if ($user->type === "mentee"){
-            return $user->mentors;
-        }
-
-    }
+            
+            $mentorTable = $user->mentors;
+            if (count($mentorTable!= 0)){
+                return $mentorTable;
+            }else{
+                return $user->id;
+            }
+        }  
+    } 
 }
