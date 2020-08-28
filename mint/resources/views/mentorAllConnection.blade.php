@@ -20,15 +20,17 @@
             @foreach($menteeRequests as $menteeRequest)
             <div class="cardBGC">
                 <div class="row valign-wrapper">
-                    <div class="col s2 center-align">
+                    <div class="center-align">
                         <img class="responsive-img" src="{{asset('img/')}}/{{$menteeRequest->mentee->profile_image}}">
                     </div>
-                    <div class="col s10 left-align">
+                    <div class="left-align">
                         <p class="fontSize">{{$menteeRequest->mentee->firstname}} {{$menteeRequest->mentee->lastname}}</p>
                     </div>
                 </div>
-                <button class="waves-effect waves-light btn buttonColorVP" type="submit" name="getIdMentee" value="{{$menteeRequest->mentee->id}}">View profile</button>
-                <button class="waves-effect waves-light btn buttonColorDC" type="submit" name="getIdCollab" value="{{$menteeRequest->id}}">Disconnect</button>
+                <div class="buttonBelow">
+                    <button class="waves-effect waves-light btn buttonColorVP" type="submit" name="getIdMentee" value="{{$menteeRequest->mentee->id}}">View profile</button>
+                    <button class="waves-effect waves-light btn buttonColorDC" type="submit" name="getIdCollab" value="{{$menteeRequest->id}}">Disconnect</button>
+                </div>
             </div>
             @endforeach
         </div>
