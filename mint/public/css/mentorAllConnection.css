@@ -18,6 +18,12 @@ body{
     overflow: auto;
 }
 
-.height {
-    height: 60px;
+.buttonColorVP{
+    background-color: #75D19E;
+}
+.buttonColorDC{
+    background-color: #EA4C4B;
+}
+.buttonColorGB{
+    background-color: #FFA83F;
 }

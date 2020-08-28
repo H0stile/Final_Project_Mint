@@ -14,26 +14,28 @@
         @endif
     </div>
 </div>
-<section class="container scroll">
-    <div>
-        @foreach($menteeRequests as $menteeRequest)
-        <div class="cardBGC">
-            <div class="row valign-wrapper">
-                <div class="col s2 center-align">
-                    <img class="responsive-img" src="{{asset('img/')}}/{{$menteeRequest->mentee->profile_image}}">
-                </div>
-                <div class="col s10 left-align">
-                    <p>{{$menteeRequest->mentee->firstname}} {{$menteeRequest->mentee->lastname}}</p>
-                </div>
-            </div>
-            <button type="submit" name="getIdMentee" value="{{$menteeRequest->mentee->id}}">View profile</button>
-            <button type="submit" name="getIdCollab" value="{{$menteeRequest->id}}">Disconnect</button>
-        </div>
-        @endforeach
-    </div>
-</section>
 <div class="container">
-    <button class="margin" type="submit" name="goBackMentorView" value="{{Auth::user()->id}}">Go back to profile</button>
+    <section class="container scroll">
+        <div>
+            @foreach($menteeRequests as $menteeRequest)
+            <div class="cardBGC">
+                <div class="row valign-wrapper">
+                    <div class="col s2 center-align">
+                        <img class="responsive-img" src="{{asset('img/')}}/{{$menteeRequest->mentee->profile_image}}">
+                    </div>
+                    <div class="col s10 left-align">
+                        <p>{{$menteeRequest->mentee->firstname}} {{$menteeRequest->mentee->lastname}}</p>
+                    </div>
+                </div>
+                <button class="btn-small buttonColorVP" type="submit" name="getIdMentee" value="{{$menteeRequest->mentee->id}}">View profile</button>
+                <button class="btn-small buttonColorDC" type="submit" name="getIdCollab" value="{{$menteeRequest->id}}">Disconnect</button>
+            </div>
+            @endforeach
+        </div>
+    </section>
+    <div class="container">
+        <button class="btn-small buttonColorGB margin" type="submit" name="goBackMentorView" value="{{Auth::user()->id}}">Go back to profile</button>
+    </div>
 </div>
 @endsection
 @section('script')
