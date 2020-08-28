@@ -9,7 +9,7 @@
 
 <!-- <label for="checkboxyes">Available for mentorship</label>
     <input type="checkbox" id="checkbox" name="available" value="{{ $mentor->availability}}"> -->
-
+<h1>Skills:</h1>
 @foreach($skills as $skill)
 <h1>{{$skill->skill}}</h1>
 @endforeach
@@ -51,14 +51,15 @@
     <input name="writer_id" type="hidden" value="{{Auth::user()->id}}" />
     <input name="target_id" type="hidden" value="{{$mentor->id}}" />
     <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
-    <label for="rating">Ratings:</label>
-    <select id="rating" name="score">
+    <label for="score">Ratings:</label>
+    <select id="score" name="score" class="browser-default">
         <option value="1">1</option>
         <option value="2">2</option>
         <option value="3">3</option>
         <option value="4">4</option>
         <option value="5">5</option>
     </select>
+    <br>
     <input type="submit" id="submit" value="submit">
 
 
@@ -68,8 +69,8 @@
 @endsection
 
 @section('script')
-<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
-
+<!--<script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+-->
 <script type="text/javascript">
     $("button[name='editbtn']").click(function(event) {
         event.preventDefault();
@@ -110,7 +111,7 @@
             data: $('form').serialize(),
 
             success: function(result) {
-                console.log('data inserted successfully')
+                console.log('data inserted successfully');
             },
 
             error: function(err) {
