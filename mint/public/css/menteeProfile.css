@@ -22,4 +22,8 @@ body{
 }
 .rating{
     display: flex;
+    align-items: center;
+}
+.star{
+    color: #FFA83F;
 }

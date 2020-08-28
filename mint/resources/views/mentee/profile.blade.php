@@ -18,9 +18,11 @@
     <p class="bg">{{$profile->pitch}}</p>
     <h4>Ratings:</h4>
     @foreach($profile->receiveRatings as $rating)
-    <div class="rating">
-        <p>{{$rating->writer->getFullName()}}</p>
-        <p>{{$rating->score}}</p><i class="material-icons left">star</i>
+    <div class="bg">
+        <h5>{{$rating->writer->getFullName()}}</h5>
+        <section class="rating">
+            <p>{{$rating->score}}</p><i class="material-icons left star">star</i>
+        </section>
         <p>{{$rating->comment}}</p>
     </div>
     @endforeach
