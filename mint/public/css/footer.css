@@ -12,7 +12,7 @@ main {
 
 .page-footer {
     background-color: #3b4a69;
-    color: white;
+    color: #f7ffff;
 }
 
 .page-footer h3 {
@@ -26,4 +26,7 @@ a {
 }
 
 @media only screen and (max-width: 1024px) {
+    .page-footer {
+        width: 100%;
+    }
 }

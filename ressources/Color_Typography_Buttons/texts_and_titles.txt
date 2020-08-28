@@ -1,0 +1,13 @@
+Design infos :
+
+- Do not use "*" selector for css, it will override the footer/navbar css
+
+- font color is : #3b4a69 (dark blue) or #f7ffff (white-light blue) depending on the background you use
+
+- Replace white (background, if you need for some text) by #f7ffff
+
+- Small buttons in #75d19e, important one (register) in #FFA83F with a bigger border radius (not defined ATM)
+
+- Big titles are in h1 with light "work sans" (300) weight / ATM the size is the default one
+
+- border radius for small buttons are 2px (default one from materialize) and bigger are 10px radius.
