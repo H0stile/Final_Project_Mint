@@ -1,8 +1,8 @@
 @extends('layouts.app')
 
 @section('css')
-<link href="{{ asset('css/register.css') }}" rel="stylesheet">
 <link rel="stylesheet" href="https://unpkg.com/materialize-stepper@3.1.0/dist/css/mstepper.min.css">
+<link href="{{ asset('css/register.css') }}" rel="stylesheet">
 @endsection
 
 @section('content')
@@ -10,6 +10,7 @@
     <div class="row">
         <div class="col s12 m10 offset-m1 l8 offset-l2">
             <div class="card">
+                <h1 id="title">Become our next mintor</h1>
                 <form method="POST" action="{{ route('register.mentor') }}" id="registerSubmit">
                     <div class="card-content">
                         {{ csrf_field() }}
@@ -78,7 +79,7 @@
                                 </div>
                             </li>
                             <li class="step">
-                                <div class="step-title waves-effect">Languages and skills</div>
+                                <div class="step-title waves-effect">Language and skill</div>
                                 <div class="step-content">
                                     <div class="row">
                                         <div class="input-field col s12">
@@ -116,9 +117,14 @@
                                 <div class="step-content">
                                     <div class="row">
                                         <div class="input-field col s12">
-                                            <i class="material-icons prefix">http</i>
+                                            <p id="explanations">Please provide us a valid linkedin url and tell us why do you want to become our next mintor</p>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="input-field col s12">
+                                            <!-- <i class="material-icons prefix">http</i> -->
                                             <input id="linkedin" type="text" name="linkedin" value="{{ old('linkedin') }}" class="{{ $errors->has('linkedin') ? 'invalid' : '' }}" required autofocus>
-                                            <label for="email">{{ __('Linkedin') }}</label>
+                                            <label for="linkedin">{{ __('Linkedin') }}</label>
                                             <span class="red-text">{{ $errors->has('linkedin') ? $errors->first('linkedin'): '' }}</span>
                                         </div>
                                     </div>
@@ -126,9 +132,9 @@
                                         <form class="col s12">
                                             <div class="row">
                                                 <div class="input-field col s12">
-                                                    <i class="material-icons prefix">comment</i>
+                                                    <!-- <i class="material-icons prefix">comment</i> -->
                                                     <textarea id="pitch" class="materialize-textarea" name="pitch" required></textarea>
-                                                    <label for="pitch">Why do you want to become a mintor ?</label>
+                                                    <label for="pitch">A short pitch</label>
                                                 </div>
                                             </div>
                                         </form>
@@ -138,7 +144,7 @@
                                         <!-- Here goes your actions buttons -->
                                         <p>
                                             <button class="btn waves-effect waves-light" type="submit" name="action">{{ __('Register') }}
-                                                <i class="material-icons right">create</i>
+                                                <i class="material-icons right" id="register_icon">create</i>
                                             </button>
                                             <button class="waves-effect waves-dark btn-flat previous-step" type="button">BACK</button>
                                         </p>
