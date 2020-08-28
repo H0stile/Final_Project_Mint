@@ -103,7 +103,13 @@ class EditmentorprofileController extends Controller
 
             $skillChosen->push(['id' => $skill->id, 'skill' => $skill->skill, 'chosen' => $chosen]);
         }
-        return view('editmentorprofile', compact('mentor', 'skills', 'languages', 'langChosen', 'skillChosen'));
+
+        if ($mentor->availability == 1) {
+            $mentorAvailable = 'Yes';
+        } else {
+            $mentorAvailable = 'No';
+        }
+        return view('editmentorprofile', compact('mentor', 'skills', 'languages', 'langChosen', 'skillChosen', 'mentorAvailable'));
     }
 
     /**
@@ -116,11 +122,20 @@ class EditmentorprofileController extends Controller
     public function update(Request $request, $id)
     {
         //
+        //dd($request->available);
+        if ($request->available == "on") {
+            $availability = 1;
+        } else {
+            $availability = 0;
+        }
         DB::table('users')->where('id', $id)->update([
             'firstname' => $request->firstname,
             'lastname' => $request->lastname,
             'linkedin' => $request->linkedin,
-            'pitch' => $request->pitch
+            'pitch' => $request->pitch,
+            'availability' => $availability
+
+
         ]);
 
         // dd($request->skillChkBox);

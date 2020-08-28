@@ -112,6 +112,7 @@ class searchmentorController extends Controller
             $conditions = array(
                 array('users.mentor_status', 'validate'),
                 array('users.type', 'mentor'),
+                array('users.availability', true),
                 array('languages', 'like', '%'.$lang.'%'),
                 array('skill', 'like', '%'.$skill.'%'),
                 array('lastname', 'like', '%'.$name.'%'),
@@ -122,6 +123,7 @@ class searchmentorController extends Controller
             $conditions = array(
                 array('users.mentor_status', 'validate'),
                 array('users.type', 'mentor'),
+                array('users.availability', true),
             );
             $mentorsData = DB::table('users')->join('skills_intermediate', 'skills_intermediate.user_id', '=', 'users.id')->join('skills', 'skills.id', '=', 'skills_intermediate.skill_id')->join('languages_intermediate', 'languages_intermediate.user_id', '=', 'users.id')->join('languages', 'languages.id', '=', 'languages_intermediate.language_id')->orderBy('lastname', 'asc')->where($conditions)->get();
             return response()->json([$mentorsData]);
