@@ -6,6 +6,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\User;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\ContactMe;
 
 class AdminController extends Controller
 {
@@ -83,12 +85,22 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        User::where('id', $id)
+        
+            $mentor = User::where('id', $id)
           ->update(['mentor_status' => 'validate']);
-          return redirect('/admin')
-          ->with('message', 'mentor validated');
-    }
 
+          if ($mentor) {
+              $mentor=User::find($id);
+            //request()->validate(['email' => 'required|email']);
+
+            $mentoremail = $mentor->email;
+            $mentorname = $mentor->firstname . " " . $mentor->lastname;
+
+            Mail::to($mentoremail)->send(new ContactMe($mentorname));
+        
+            return redirect('/admin')->with('message', 'mentor validated');
+        };
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -106,12 +118,6 @@ class AdminController extends Controller
         return redirect('/admin');
     }
 
-    /**
-     * Get User collaborators.
-     *
-     * 
-     * 
-     */
     public function getUserCollabs($userId){
         $user = User::find($userId);
         

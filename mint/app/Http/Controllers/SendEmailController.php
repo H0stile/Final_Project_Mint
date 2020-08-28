@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
-use App\Mail\TestMail;
 use App\User;
+use App\Mail\ContactMe;
 
 class SendEmailController extends Controller
 {
@@ -19,14 +19,15 @@ class SendEmailController extends Controller
 
         request()->validate(['email' => 'required|email']);
 
-        $email = request('email');
-
-        Mail::raw('It works!', function($message){
+        //$email = request('email');
+        $text = request('text');
+        //dd($text);
+        
+        Mail::raw($text, function($message){
             $message->to(request('email'))
-            ->subject('Hello There');
+            ->subject('Hello');
         });
         
-
         return redirect('/admin');
           
     }

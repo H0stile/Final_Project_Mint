@@ -10,6 +10,10 @@
                     <div>{{ $message }}</div>
                 @enderror
             </div>
+            <div class="input-field col s6">
+                <label for="text">text</label>
+                <input type="text" id="text" name="text">    
+            </div>
             
         </div>
     <button type="submit">Submit</button>      
