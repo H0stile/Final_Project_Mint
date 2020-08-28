@@ -4,24 +4,26 @@
 <link href="{{ asset('css/applymentorship.css') }}" rel="stylesheet">
 @endsection
 <div class="container">
-    <img src="{{ asset('img/') }}/{{ $mentor->profile_image }}" width="400" height="300">
-    <h1>FirstName : {{ $mentor->firstname }}</h1>
-    <h1>LastName :{{ $mentor->lastname }}</h1>
-    <h1>Pitch : {{ $mentor->pitch }}</h1>
+    <h2>Apply to Mintor</h2>
+    <!--<img src="{{ asset('img/') }}/{{ $mentor->profile_image }}" width="400" height="300">-->
+    <h4>FirstName : {{ $mentor->firstname }}</h4>
+    <h4>LastName :{{ $mentor->lastname }}</h4>
+    <h4>Pitch : {{ $mentor->pitch }}</h4>
+    <hr>
 
     <form action="" method="POST">
 
         @csrf
 
-        <input name="mentor_id" type="hidden" value="{{Auth::user()->id}}" />
-        <input name="mentee_id" type="hidden" value="{{$mentor->id}}" />
+        <input name="mentor_id" type="hidden" value="{{$mentor->id}}" />
+        <input name="mentee_id" type="hidden" value="{{Auth::user()->id}}" />
         <h4>Send Your Request message</h4>
         <label for="request_msg"></label>
         <textarea name="request_msg" id="request_msg" cols="20" rows="10"></textarea>
 
         <input name="status_rqs" type="hidden" value="pending" />
 
-        <input class="waves-effect waves-light btn" type="submit" name="submit" value="submit">
+        <button class="waves-effect waves-light btn" type="submit" name="submit">submit</button>
 
         <button class="waves-effect waves-light btn" type="submit" name="backtomentorprofile" value="{{$mentor->id}}">Go Back</button>
 
@@ -44,7 +46,7 @@
         });
 
 
-        $("input[type='submit']").click(function(e) {
+        $("button[name='submit']").click(function(e) {
             e.preventDefault();
             $.ajax({
                 //url:'/rating',
@@ -54,6 +56,7 @@
                 success: function(result) {
                     console.log('data inserted successfully')
                     alert('Your form submitted');
+                    location.reload();
                 },
                 error: function(err) {
                     // If ajax errors happens
