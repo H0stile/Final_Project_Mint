@@ -36,3 +36,7 @@ nav ul {
     margin-top: -5em;
 }
 
+/* Charles : modify this if navbar is overlapping */
+.py-4 {
+    margin-top: 5em;
+}
