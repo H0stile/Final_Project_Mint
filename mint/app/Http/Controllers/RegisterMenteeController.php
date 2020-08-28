@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use App\Language;
 use Auth;
 
@@ -75,6 +76,7 @@ class RegisterMenteeController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'profile_image' => 'defaultProfileLogo.png',
+            'created_at'  => Carbon::now()->timestamp,
             'type' => 'mentee'
         ]);
 
