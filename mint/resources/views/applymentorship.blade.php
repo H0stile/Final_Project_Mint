@@ -15,8 +15,8 @@
 
         @csrf
 
-        <input name="mentor_id" type="hidden" value="{{Auth::user()->id}}" />
-        <input name="mentee_id" type="hidden" value="{{$mentor->id}}" />
+        <input name="mentor_id" type="hidden" value="{{$mentor->id}}" />
+        <input name="mentee_id" type="hidden" value="{{Auth::user()->id}}" />
         <h4>Send Your Request message</h4>
         <label for="request_msg"></label>
         <textarea name="request_msg" id="request_msg" cols="20" rows="10"></textarea>
@@ -56,6 +56,7 @@
                 success: function(result) {
                     console.log('data inserted successfully')
                     alert('Your form submitted');
+                    location.reload();
                 },
                 error: function(err) {
                     // If ajax errors happens
