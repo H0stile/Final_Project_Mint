@@ -12,120 +12,158 @@
             <h5>{{$profile->type}}</h5>
         </section>
     </section>
+    <section class="menteepagelook mrgtop">
+        <section class="flex leftsection">
+            <section class="block">
+                <h5>Pitch:</h5>
+                <p class="bg spaceinside">{{$profile->pitch}}</p>
+            </section>
+            <section class="block">
+                <h5>Ratings:</h5>
+                <section class="scroll">
+                    @foreach($profile->receiveRatings as $rating)
+                    <div class="bg">
+                        <h6>{{$rating->writer->getFullName()}}:</h6>
+                        <section class="rating">
+                            <p>{{$rating->score}}</p><i class="material-icons left star">star</i>
+                            <p>{{$rating->comment}}</p>
+                        </section>
+                    </div>
+                    @endforeach
+                </section>
+            </section>
+
+            @if($canWriteRating)
+            <section class="db myform">
+                <div>
+                    <form id="form" action="{{route('rating.create')}}" method="POST">
+                        @csrf
+                        <p class="col s2">
+                            <select name="score" style="display: initial;">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5" selected="selected">5</option>
+                            </select>
+                        </p>
+                        <div class="input-field col s6 leftpad">
+                            <input type="hidden" name="target" value="{{$profile->id}}">
+                            <input type="hidden" name="writer" value="{{Auth::user()->id}}">
+                            <textarea name="comment" id="textArea" class="materialize-textarea"></textarea>
+                            <label id="label" for="comment">Add a feedback</label>
+                        </div>
+                        <div id="button" class="waves-effect waves-light btn-small sendbtn">
+                            <input id="submitButton" type="submit" value="Submit" class='textbtn'>
+                        </div>
 
 
-    <h4>Pitch:</h4>
-    <p class="bg">{{$profile->pitch}}</p>
-    <h4>Ratings:</h4>
-    @foreach($profile->receiveRatings as $rating)
-    <div class="bg">
-        <h5>{{$rating->writer->getFullName()}}</h5>
-        <section class="rating">
-            <p>{{$rating->score}}</p><i class="material-icons left star">star</i>
+                    </form>
+                </div>
+            </section>
+            @endif
+
+
+
+            <!-- message part part -->
+            <section>
+                @if(count($messages) >0)
+                <h5>Messages:</h5>
+                <section class="scroll bg">
+                    @foreach($messages as $message)
+                    <section class="rating">
+                        <i class="material-icons left message messagemy">message</i>
+                        <h6>{{$message->writer->getFullName()}}:</h6>
+                    </section>
+                    <p>{{$message->message}}</p>
+                    @endforeach
+                </section>
+                @endif
+            </section>
+
+            @if($collaborator !== null)
+            <div class="row mrgtop">
+                <form id="form2" action="{{route('message.create')}}" method="POST" class="col s12">
+                    <div class="input-field col s12 leftpad" id="pad">
+                        @csrf
+                        {{ csrf_field() }}
+                        <input type="hidden" name="writer" value="{{Auth::user()->id}}">
+                        <input type="hidden" name="target" value="{{$collaborator->id}}">
+
+                        <textarea id="icon_prefix2" class="materialize-textarea" name="message"></textarea>
+                        <label for="icon_prefix2">Write a message</label>
+                        <!-- <label id="labelMessage" for="message">Write a message</label>
+                        <br>
+                        <textarea name="message" id="textAreaMessage" placeholder="Write your message here"></textarea>
+                        <br> -->
+                        <div id="button" class="waves-effect waves-light btn-small sendbtn">
+                            <input id="submitButton2" type="submit" value="Send" name="form2" class='textbtn'>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <br>
+            @endif
         </section>
-        <p>{{$rating->comment}}</p>
-    </div>
-    @endforeach
-    <hr>
 
-    @if($canWriteRating)
-    <form id="form" action="{{route('rating.create')}}" method="POST">
-        @csrf
-        <input type="hidden" name="target" value="{{$profile->id}}">
-        <input type="hidden" name="writer" value="{{Auth::user()->id}}">
+        <section class="menteebtn flex rightsection">
+            <!-- mentee part -->
+            @if(Auth::user()->type == 'mentee')
 
-        <p>
-            <select name="score" style="display: initial;">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
-        </p>
+            <section class="searchbtn">
+                <div class="mybtn">
+                    <a href="{{route('searchmentor', Auth::user()->id)}}" class="btn waves-effect waves-light sendbtn amy">Look for a mentor</a>
+                </div>
 
-        <label id="label" for="comment">Add a rating</label>
-        <br>
-        <textarea name="comment" id="textArea" placeholder="Add your text here"></textarea>
-        <br>
-        <div id="button">
-            <input id="submitButton" type="submit" value="Submit">
-        </div>
-    </form>
-    <br><br>
-    @endif
+                <div class="mybtn">
+                    <a href="{{route('editmenteeprofile', Auth::user()->id)}}" class="btn waves-effect waves-light sendbtn amy">Modify profile</a>
+                </div>
+            </section>
 
 
+            <!-- API part -->
+            <div>
+                <h5>Jobs:</h5>
 
-    <!-- message part part -->
-    @if(count($messages) >0)
-    <h3>Messages:</h3>
-    @foreach($messages as $message)
-    <p>{{$message->message}}</p>
-    <p>{{$message->writer->getFullName()}}</p>
-    @endforeach
-    <hr>
-    @endif
+                <section class="scrollbig">
+                    @foreach($jobsData as $job)
+                    <!-- <i class="material-icons left motion_photos_on messagemy">motion_photos_on</i> -->
+                    <h6 class="jobtitle">{{$job['title']}}</h6>
+                    <p>Company: {{$job['company_name']}}</p>
+                    <a href="{{$job['url']}}" class="mybtn">Details</a>
+                    <hr>
+                    @endforeach
+                </section>
+            </div>
+            @endif
+        </section>
 
-    @if($collaborator !== null)
-    <form id="form2" action="{{route('message.create')}}" method="POST">
-        @csrf
-        {{ csrf_field() }}
-        <input type="hidden" name="writer" value="{{Auth::user()->id}}">
-        <input type="hidden" name="target" value="{{$collaborator->id}}">
+        <!-- mentor part -->
+        @if(Auth::user()->type == 'mentor')
+        @if($collabRequestStatus == 'pending')
+        <section class="menteebtn">
+            <section class="searchbtn ">
+                <form action="" method="get" class="mybtn">
+                    @csrf
+                    <button name="accept-request" value="{{$collabRequestId}}" class="btn waves-effect waves-light sendbtn amy">Accept invitation</button>
+                </form>
+                <form action="{{route('mentor.connection.destroy', $collabRequestId)}}" method="post" class="mybtn">
+                    @csrf
+                    @method('DELETE')
+                    <button name="decline-request" value="{{$collabRequestId}}" class="btn waves-effect waves-light sendbtn amy">Decline invitation</button>
+                </form>
+            </section>
+            @else
+            <form action="{{route('mentor.connection.destroy', $collabRequestId)}}" method="post" class="mybtn">
+                @csrf
+                @method('DELETE')
+                <button name="disconnect" value="{{$collabRequestId}}" class="btn waves-effect waves-light sendbtn amy">Disconnect</button>
+            </form>
+        </section>
+        @endif
+    </section>
 
-        <label id="labelMessage" for="message">Write a message</label>
-        <br>
-        <textarea name="message" id="textAreaMessage" placeholder="Write your message here"></textarea>
-        <br>
-        <div id="button">
-            <input id="submitButton2" type="submit" value="Send" name="form2">
-        </div>
-    </form>
-    <br>
-    @endif
 
-    <!-- mentee part -->
-    @if(Auth::user()->type == 'mentee')
-    <hr>
-    <a href="{{route('searchmentor', Auth::user()->id)}}">Look for a mentor</a>
-    <br>
-    <a href="{{route('editmenteeprofile', Auth::user()->id)}}">Modify profile</a>
-
-
-    <!-- API part -->
-    <div>
-        <h2>Job list</h2>
-
-        @foreach($jobsData as $job)
-        <li>Job title: {{$job['title']}}</li>
-        <li>Company: {{$job['company_name']}}</li>
-        <li><a href="{{$job['url']}}">Details</a></li>
-        <hr>
-        @endforeach
-    </div>
-
-    @endif
-
-    <!-- mentor part -->
-    @if(Auth::user()->type == 'mentor')
-    @if($collabRequestStatus == 'pending')
-    <form action="" method="get">
-        @csrf
-        <button name="accept-request" value="{{$collabRequestId}}">Accept invitation</button>
-    </form>
-    <form action="{{route('mentor.connection.destroy', $collabRequestId)}}" method="post">
-        @csrf
-        @method('DELETE')
-        <button name="decline-request" value="{{$collabRequestId}}">Decline invitation</button>
-    </form>
-    @else
-    <form action="{{route('mentor.connection.destroy', $collabRequestId)}}" method="post">
-        @csrf
-        @method('DELETE')
-        <button name="disconnect" value="{{$collabRequestId}}">Disconnect</button>
-    </form>
-    @endif
     @section('script')
     <script>
         $(document).ready(function() {
@@ -187,7 +225,7 @@
     @endif
 
     <!-- admin part -->
-    <hr>
+
     @if(Auth::user()->type == 'admin')
 
     <form action="{{route('mentee.destroy', $profile->id)}}" method="post">

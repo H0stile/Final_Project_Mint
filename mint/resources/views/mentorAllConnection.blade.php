@@ -14,27 +14,33 @@
         @endif
     </div>
 </div>
-<div class="container">
-    <section class="container height">
-        <div>
-            @foreach($menteeRequests as $menteeRequest)
-            <div class="cardBGC">
-                <div class="row valign-wrapper">
-                    <div class="col s2 center-align">
-                        <img class="responsive-img" src="{{asset('img/')}}/{{$menteeRequest->mentee->profile_image}}">
-                    </div>
-                    <div class="col s10 left-align">
-                        <p class="fontSize">{{$menteeRequest->mentee->firstname}} {{$menteeRequest->mentee->lastname}}</p>
+<div class="globalWidth">
+    <div>
+        <section id="test" class="height">
+                @foreach($menteeRequests as $menteeRequest)
+                <div>
+                    <div class=" cardBGC flex">
+                        <div class="flex3">
+                            <div>
+                                <img class="margin" src="{{asset('img/')}}/{{$menteeRequest->mentee->profile_image}}">
+                            </div>
+                            <div>
+                                <p class="fontSize margin">{{$menteeRequest->mentee->firstname}} {{$menteeRequest->mentee->lastname}}</p>
+                            </div>
+                        </div>
+                        <div class="flex2">
+                            <button class="waves-effect waves-light btn buttonColorVP margin" type="submit" name="getIdMentee" value="{{$menteeRequest->mentee->id}}">View profile</button>
+                            <button class="waves-effect waves-light btn buttonColorDC margin" type="submit" name="getIdCollab" value="{{$menteeRequest->id}}">Disconnect</button>
+                        </div>
                     </div>
                 </div>
-                <button class="waves-effect waves-light btn buttonColorVP" type="submit" name="getIdMentee" value="{{$menteeRequest->mentee->id}}">View profile</button>
-                <button class="waves-effect waves-light btn buttonColorDC" type="submit" name="getIdCollab" value="{{$menteeRequest->id}}">Disconnect</button>
+                @endforeach
+        </section>
+        <div class="globalWidth">
+            <div class="flex spacer">
+                <button class="waves-effect waves-light btn buttonColorVP margin2" type="submit" name="goBackMentorView" value="{{Auth::user()->id}}">Go back to profile</button>
             </div>
-            @endforeach
         </div>
-    </section>
-    <div class="container">
-        <button class="waves-effect waves-light btn buttonColorVP margin" type="submit" name="goBackMentorView" value="{{Auth::user()->id}}">Go back to profile</button>
     </div>
 </div>
 @endsection
