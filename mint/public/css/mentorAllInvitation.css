@@ -5,6 +5,10 @@ img{
     width: 60px;
     margin: 10px auto;
 }
+textarea{
+    border: 0;
+    width: 80%;
+}
 
 .cardBGC {
     background-color: #F7FFFF;
@@ -18,6 +22,9 @@ img{
 }
 .margin2 {
     margin: 1em;
+}
+.margin3 {
+    margin: 2em;
 }
 /** HERE for the scroll bar, need to use overlay to keep all things, aligned */
 .height{
@@ -47,6 +54,9 @@ img{
     color : #3B4A69;
     margin: 10px auto;
 }
+.fontSize2{
+    color : #3B4A69;
+}
 .flex{
     display: flex;
     flex-direction: column;
@@ -59,7 +69,7 @@ img{
 }
 .flex3{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
 }
 /** HERE THE 3 PARTS NEEDED TO HAVE THE CUSTOM SCROLL BAR */
@@ -90,7 +100,7 @@ img{
     align-items: center;
 }
 .flex3{
-    flex-direction: row;
+    flex-direction: column;
 }
 }
 @media screen and (max-width: 568px){
