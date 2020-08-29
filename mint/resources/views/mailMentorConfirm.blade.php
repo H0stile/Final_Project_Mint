@@ -18,21 +18,21 @@
             padding: 0;
             border: 0;
         }
-        /* ***** BODY STYLING ***** */
+        
         section {
             margin: 50px;
             background-color: #EBFEEA;
-            color : black;
+            font-family: "Nunito";
         }
         article {
             padding: 25px;
         }
         #greeting {
             font-size: 24px;
+            
             padding-bottom: 20px;
         }
         p {
-            font-family: "Roboto Slab";
             line-height: 2;
         }
         #cheers {
@@ -41,7 +41,6 @@
         #closing {
             font-size: 18px;
         }
- 
         #copyrightContainer {
             text-align: center;
         }
@@ -49,6 +48,7 @@
             font-size: 14px;
             line-height: 1;
         }
+        /* ***** END FOOTER STYLING ***** */
     </style>
 </head>
 <body>
@@ -59,7 +59,7 @@
             <article>
                 <h1 id="greeting">Hi, {{ $name }}  </h1>
                 <p>Your demande at Mint has been approved! You can check you profile. Thank you for using Mint!</p>
-                <p>If you have further questions, feel free to reach out to us at "donotreply.mint@gmail.com"></a>.</p>
+                <p>If you have further questions, feel free to reach out to us at donotreply.mint@gmail.com</a>.</p>
                 <p id="cheers">Cheers,</p>
                 <p id="closing">The Mint Team</p>
             </article>

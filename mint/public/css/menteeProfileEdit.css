@@ -1,0 +1,29 @@
+textarea {
+    width: 100%;
+    height: 120px;
+  }
+.field{
+    margin: 20px 0;
+    display: block;
+}
+.textfield{
+    flex-direction: column;
+    margin-bottom: 15px;
+}
+.pitcharea{
+    padding: 20px;
+    font-size: 1em;
+}
+.redbtn{
+    background-color: #EA4C4B;
+    box-shadow: none;
+    color: #F7FFFF;
+}
+.greenbtn{
+    background-color: #75D19E;
+    box-shadow: none;
+    color: #F7FFFF; 
+}
+.editbtn{
+    margin-bottom: 50px;
+}
