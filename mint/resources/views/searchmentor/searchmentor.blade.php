@@ -4,58 +4,60 @@
 @endsection
 @section('content')
 
-<h2>Filter</h2>
-<section id="searchField">
-    <div class="row">
-        <div class="col s2">
-          <div class="row">
-            <div class="input-field col s12">
-              <i class="material-icons prefix">search</i>
-              <input type="text" id="language-input" class="autocomplete">
-              <label for="language-input">Languages</label>
+<section class="globalWidth flex">
+    <section id="searchField">
+        <h2>Filter</h2>
+        <div class="row">
+            <div class="col s10">
+              <div class="row">
+                <div class="input-field col s12">
+                  <i class="material-icons prefix">search</i>
+                  <input type="text" id="language-input" class="autocomplete">
+                  <label for="language-input">Languages</label>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col s2">
           <div class="row">
-            <div class="input-field col s12">
-              <i class="material-icons prefix">search</i>
-              <input type="text" id="technologie-input" class="autocomplete">
-              <label for="technologie-input">Technologie</label>
+            <div class="col s10">
+              <div class="row">
+                <div class="input-field col s12">
+                  <i class="material-icons prefix">search</i>
+                  <input type="text" id="technologie-input" class="autocomplete">
+                  <label for="technologie-input">Technologie</label>
+                </div>
+              </div>
             </div>
           </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col s2">
           <div class="row">
-            <div class="input-field col s12">
-              <i class="material-icons prefix">search</i>
-              <input type="text" id="name-input" class="autocomplete">
-              <label for="name-input">Name</label>
+            <div class="col s10">
+              <div class="row">
+                <div class="input-field col s12">
+                  <i class="material-icons prefix">search</i>
+                  <input type="text" id="name-input" class="autocomplete">
+                  <label for="name-input">Name</label>
+                </div>
+              </div>
             </div>
           </div>
+    </section>
+    <section class="cardBlock">
+        <!-- CLONE ELEMENT -->
+            <div id="clone" class="hide">
+                <img id="img" src="" style="width:60px">
+                <p id="mentorName"></p>
+                <p id="mentroScore"></p>
+                <p id="skill"></p>
+                <p id="language"></p>
+                <button type="submit" id="goToMentorProfile" name="goToMentorProfile" value="">View profile</button>
+                <button type="submit" id="goToApply" name="goToApply" value="">Apply to mentor</button>
+            </div>
+        <!-- CLONE ELEMENT -->
+        <div id="loaderContainer">
+            <div id="loaderPart" class="loader"></div>
         </div>
-      </div>
-</section>
-<section class="cardBlock">
-    <!-- CLONE ELEMENT -->
-        <div id="clone">
-            <img id="img" src="" style="width:60px">
-            <p id="mentorName"></p>
-            <p id="mentroScore"></p>
-            <p id="skill"></p>
-            <p id="language"></p>
-            <button type="submit" id="goToMentorProfile" name="goToMentorProfile" value="">View profile</button>
-            <button type="submit" id="goToApply" name="goToApply" value="">Apply to mentor</button>
-        </div>
-    <!-- CLONE ELEMENT -->
-    <div id="loaderContainer">
-        <div id="loaderPart" class="loader"></div>
-    </div>
-    <section id="mentorList">
+        <section id="mentorList">
+        </section>
     </section>
 </section>
 
@@ -65,7 +67,7 @@
 $(document).ready(function () {
     elem = $("#clone");
     $( "#loaderPart" ).addClass( "loader" );
-    $( "#loaderPart" ).removeClass( "none" );
+    $( "#loaderPart" ).removeClass( "hide" );
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
@@ -174,19 +176,20 @@ $(document).ready(function () {
                     clone.find('#goToMentorProfile').val(mentorProfile);
                     clone.find('#goToApply').val(applyToMentor);
                     //TODO : Add a remove class to unhide the card
+                    clone.removeClass( "hide" );
                     clone.appendTo('#mentorList');
                 })
             });
         }
     })
-    $( "#loaderPart" ).addClass( "none" );
+    $( "#loaderPart" ).addClass( "hide" );
     $( "#loaderPart" ).removeClass( "loader" );
 
     //? Evenlistener to check the search field
     $('#searchField').change(function (){
         // console.log("Oki, something changed !!!");
         $( "#loaderPart" ).addClass( "loader" );
-        $( "#loaderPart" ).removeClass( "none" );
+        $( "#loaderPart" ).removeClass( "hide" );
 
         routeUrlName = "{{url('')}}/initSearchMentorData";
         initLanguageVal = $('#language-input').val();
@@ -231,12 +234,13 @@ $(document).ready(function () {
                     clone.find('#goToMentorProfile').val(mentorProfile);
                     clone.find('#goToApply').val(applyToMentor);
                     //TODO : Add a remove class to unhide the card
+                    clone.removeClass( "hide" );
                     clone.appendTo('#mentorList');
                 })
             })
         }
         })
-        $( "#loaderPart" ).addClass( "none" );
+        $( "#loaderPart" ).addClass( "hide" );
         $( "#loaderPart" ).removeClass( "loader" );
     })
 

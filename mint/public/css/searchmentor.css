@@ -1,6 +1,16 @@
 .cardContainer {
     position: relative;
 }
+.globalWidth {
+    width: 90%;
+    margin: auto;
+}
+.flex {
+    display: flex;
+}
+#searchField {
+    width: 600px;
+}
 .hide{
     display: none;
 }
@@ -17,8 +27,8 @@
     height: 64px;
     margin: 8px;
     border-radius: 50%;
-    border: 6px solid rgb(0, 0, 0);
-    border-color: rgb(0, 0, 0) transparent rgb(0, 0, 0) transparent;
+    border: 6px solid #579B9A;
+    border-color: #579B9A transparent #579B9A transparent;
     animation: loader 1.2s linear infinite;
 }
 @keyframes loader {
