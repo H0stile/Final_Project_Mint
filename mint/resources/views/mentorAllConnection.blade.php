@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('css')
+<link href="{{asset('css/mentorAllConnection.css')}}" rel="stylesheet">
+@endsection
 @section('content')
 <div class="container">
     <div class="row">
@@ -9,15 +12,35 @@
             </div>
         </div>
         @endif
-        @foreach($menteeRequests as $menteeRequest)
-        <div>
-            <img src="{{asset('img/')}}/{{$menteeRequest->mentee->profile_image}}" style="width:60px">
-            <p>{{$menteeRequest->mentee->firstname}} {{$menteeRequest->mentee->lastname}}</p>
-            <button type="submit" name="getIdMentee" value="{{$menteeRequest->mentee->id}}">View profile</button>
-            <button type="submit" name="getIdCollab" value="{{$menteeRequest->id}}">Disconnect</button>
+    </div>
+</div>
+<div class="globalWidth">
+    <div>
+        <section id="scroll" class="height">
+                @foreach($menteeRequests as $menteeRequest)
+                <div>
+                    <div class="cardBGC flex">
+                        <div class="flex3">
+                            <div>
+                                <img class="margin" src="{{asset('img/')}}/{{$menteeRequest->mentee->profile_image}}">
+                            </div>
+                            <div>
+                                <p class="fontSize margin">{{$menteeRequest->mentee->firstname}} {{$menteeRequest->mentee->lastname}}</p>
+                            </div>
+                        </div>
+                        <div class="flex2">
+                            <button class="waves-effect waves-light btn buttonColorVP margin" type="submit" name="getIdMentee" value="{{$menteeRequest->mentee->id}}">View profile</button>
+                            <button class="waves-effect waves-light btn buttonColorDC margin" type="submit" name="getIdCollab" value="{{$menteeRequest->id}}">Disconnect</button>
+                        </div>
+                    </div>
+                </div>
+                @endforeach
+        </section>
+        <div class="globalWidth">
+            <div class="flex spacer">
+                <button class="waves-effect waves-light btn buttonColorVP margin2" type="submit" name="goBackMentorView" value="{{Auth::user()->id}}">Go back to profile</button>
+            </div>
         </div>
-        <hr>
-        @endforeach
     </div>
 </div>
 @endsection
@@ -49,6 +72,12 @@
                     }
                 })
             }
+        });
+        //? Button to go to profile
+        $("button[name='goBackMentorView']").click(function (event) {
+            event.preventDefault();
+            routeUrl = "{{url('')}}/mentor/" + $(this).val();
+            window.location.href = routeUrl;
         });
     });
 </script>

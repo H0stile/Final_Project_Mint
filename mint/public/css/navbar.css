@@ -1,0 +1,51 @@
+/* Charles : Navbar customisation */
+
+nav {
+    height: 100px; /* Charles : need to check for height of content if overlapping */
+    line-height: 100px;
+    padding-top: 2em;
+    background-color: #3b4a69;
+    color: #f7ffff;
+}
+nav ul {
+    line-height: 54px;
+    vertical-align: 54px;
+}
+
+.btn-large {
+    background-color: #ffa83f;
+    border-radius: 30px;
+    margin-right: 5em;
+    margin-left: 3em;
+    box-shadow: none;
+}
+.btn-large:hover {
+    background-color: #ea4c4b;
+    box-shadow: none;
+}
+.btn-large a {
+    padding-left: 1em;
+    padding-right: 1em;
+}
+#register_button {
+    padding: 0;
+    margin: 0;
+}
+
+#mint_logo {
+    margin-top: -5em;
+}
+
+/* Charles : modify this if navbar is overlapping */
+.py-4 {
+    margin-top: 5em;
+}
+
+/* Charles : Responsive part */
+
+@media only screen and (max-width: 1024px) {
+    .brand-logo {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}

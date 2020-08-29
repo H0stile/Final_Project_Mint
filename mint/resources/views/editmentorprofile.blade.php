@@ -67,7 +67,7 @@
             </button>
         </p>
         <p>
-            <button name='deletebyadmin' class='deletebtn' value="{{$mentor->id}}">Delete the profile</button>
+            <button name='deletebyadmin' class='deletebtn waves-effect waves-light btn' value="{{$mentor->id}}">Delete My Profile</button>
         </p>
 
 

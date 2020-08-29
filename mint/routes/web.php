@@ -91,10 +91,13 @@ Route::delete('/mentee/delete/{id}', 'EditMenteeProfileController@destroy')->mid
 
 
 // ! Admin
-Route::get('/admin', 'AdminController@index')->name('admin')->middleware('admin')->middleware('auth');
-Route::get('/userCollaborations/{id}', 'AdminController@getUserCollabs')->middleware('admin')->middleware('auth');
-Route::put('/admin/update/{id}', 'AdminController@update')->middleware('auth');
-Route::delete('/admin/decline/{id}', 'AdminController@destroy')->middleware('auth');
+Route::get('/admin', 'AdminController@index')->name('admin')->middleware('admin');
+Route::get('/userCollaborations/{id}', 'AdminController@getUserCollabs')->middleware('admin');
+Route::put('/admin/update/{id}', 'AdminController@update');
+Route::delete('/admin/decline/{id}', 'AdminController@destroy');
+Route::get('/contactUser/{id}', 'SendEmailController@show');
+Route::post('/contactUser', 'SendEmailController@store');
+
 
 Route::get('/mentorac/{id}', 'MentorallconnectionController@index')->middleware('auth');
 Route::get('/mentoracdisconnect/{id}', 'MentorallconnectionController@destroy')->name('mentor.connection.destroy')->middleware('auth');

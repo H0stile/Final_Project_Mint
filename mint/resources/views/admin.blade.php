@@ -38,6 +38,11 @@
                                     @method('put')
                                     <a class="waves-effect waves-light btn-small"><input  name="acceptMentor" type="submit" value="Accept"></a>
                                     <input type="hidden" name="acceptMentor" value="{{ $pendingMentor->id }}">
+                                    @if(session('message'))
+                                    <div>
+                                        {{session('message')}}
+                                    </div>
+                                    @endif
                                 </form>
                             </td>
                             @if ($message = Session::get('success'))
@@ -73,7 +78,7 @@
     </div>
 
         <!-- show all mentors validated and mentee registered-->
-    <div class="container">
+    <div class="container" style="overflow: scroll; height: 300px">
         <div class="row">
             <div class="col l12">
                 <table class="centered">
@@ -87,7 +92,10 @@
                             </th>
                             <th>
                                 Status
-                            </th>    
+                            </th>
+                            <th>
+                            <span><i class="material-icons">email</i>Contact</span>
+                            </th>      
                         </tr>
                     </thead>
                     <tbody >
@@ -99,6 +107,8 @@
                                 <td><a href="{{ url('')}}/{{ $user->type}}/{{$user->id}}" class="userName" >{{$user->firstname}} {{$user->lastname}}</a></td>
                                 <td>{{ $user->type }}</td>
                                 <td><button class="showCollaborations"  name="showCollaborations" value="{{$user->id}}">Show Collaborations</button></td>
+                                <td><a href="{{ url('')}}/contactUser/{{$user->id}}">send email</a></td>
+                                
                             </tr>
                             <tr id="rowShowUserCollab{{ $user->id }}" class = "rowShowUserCollab" style="display: none;">
                                 <td colspan=4>
@@ -113,11 +123,12 @@
                         @endif        
                     </tbody>
                 </table>
-                {{ $mentorMenteeList->links() }}
             </div>
         </div>
     </div>
-   
+
+    
+
     @endsection
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script> 
     <script>
@@ -153,9 +164,11 @@
                 method: 'GET',
                 dataType: 'json',
                 success: function (result) {
+                   
                     $(".rowShowUserCollab").hide(".rowShowUserCollab");
-                    var finalHtml = ""
-                    var userId = ""
+                    let finalHtml = ""
+                    if (typeof(result) == "object"){
+                    let userId = ""
                     $.each(result, function(i, item) {
                         finalHtml += "<tr class='collaborators-list'>"
                         finalHtml += "<td>"+ item.firstname +"</td><td>"
@@ -168,37 +181,38 @@
                                 userId = item.pivot.mentee_id
                             }
                     });
-                    if (userId != ""){
                         $("#showUserCollab"+ userId).html(finalHtml);
                         $("#rowShowUserCollab"+ userId).show("#rowShowUserCollab"+ userId);
-                    }
                     
+
+                    }
+                    if (typeof(result) == "number"){
+                        console.log(result);
+                        finalHtml += "<tr class='collaborators-list'>"+result+"</tr>"
+                        $("#showUserCollab"+ result).html(finalHtml);
+                        $("#rowShowUserCollab"+ result).show("#rowShowUserCollab"+ result);
+                    }  
                 }
-            })
-            
+            }) 
         });  
-
-
     });
-
     </script>
     <script>
+/************************************/
+// Sorting 
+/************************************/
         function searchFunction(){
            let searchValue = document.getElementById("search").value.toUpperCase();
            let userList = document.getElementsByClassName("users-list");
-           
            for (i = 0; i < userList.length; i++) {
                 let userName = userList[i].getElementsByClassName("userName")[0].textContent    ;
                 if (userName.toUpperCase().indexOf(searchValue) > -1) {
                     userList[i].style.display = "";
                 } else {
-                    userList[i].style.display = "none";
-                    
+                    userList[i].style.display = "none";                  
                 }
             }
         }
-
-
     </script>
   
 
