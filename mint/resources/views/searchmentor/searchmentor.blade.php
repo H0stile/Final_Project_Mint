@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('css')
+<link href="{{asset('css/searchmentor.css')}}" rel="stylesheet">
+@endsection
 @section('content')
 
 <h2>Filter</h2>
@@ -37,18 +40,23 @@
         </div>
       </div>
 </section>
-<!-- CLONE ELEMENT -->
-    <div id="clone">
-        <img id="img" src="" style="width:60px">
-        <p id="mentorName"></p>
-        <p id="mentroScore"></p>
-        <p id="skill"></p>
-        <p id="language"></p>
-        <button type="submit" id="goToMentorProfile" name="goToMentorProfile" value="">View profile</button>
-        <button type="submit" id="goToApply" name="goToApply" value="">Apply to mentor</button>
+<section class="cardBlock">
+    <!-- CLONE ELEMENT -->
+        <div id="clone">
+            <img id="img" src="" style="width:60px">
+            <p id="mentorName"></p>
+            <p id="mentroScore"></p>
+            <p id="skill"></p>
+            <p id="language"></p>
+            <button type="submit" id="goToMentorProfile" name="goToMentorProfile" value="">View profile</button>
+            <button type="submit" id="goToApply" name="goToApply" value="">Apply to mentor</button>
+        </div>
+    <!-- CLONE ELEMENT -->
+    <div id="loaderContainer">
+        <div id="loaderPart" class="loader"></div>
     </div>
-<!-- CLONE ELEMENT -->
-<section id="mentorList">
+    <section id="mentorList">
+    </section>
 </section>
 
 @endsection
@@ -56,6 +64,8 @@
 <script>
 $(document).ready(function () {
     elem = $("#clone");
+    $( "#loaderPart" ).addClass( "loader" );
+    $( "#loaderPart" ).removeClass( "none" );
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
@@ -169,10 +179,14 @@ $(document).ready(function () {
             });
         }
     })
+    $( "#loaderPart" ).addClass( "none" );
+    $( "#loaderPart" ).removeClass( "loader" );
 
     //? Evenlistener to check the search field
     $('#searchField').change(function (){
-        console.log("Oki, something changed !!!");
+        // console.log("Oki, something changed !!!");
+        $( "#loaderPart" ).addClass( "loader" );
+        $( "#loaderPart" ).removeClass( "none" );
 
         routeUrlName = "{{url('')}}/initSearchMentorData";
         initLanguageVal = $('#language-input').val();
@@ -221,7 +235,9 @@ $(document).ready(function () {
                 })
             })
         }
-        })    
+        })
+        $( "#loaderPart" ).addClass( "none" );
+        $( "#loaderPart" ).removeClass( "loader" );
     })
 
     //? even to go to mentor profile
