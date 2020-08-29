@@ -19,8 +19,13 @@ img{
 .margin2 {
     margin: 1em;
 }
+/** HERE for the scroll bar, need to use overlay to keep all things, aligned */
 .height{
     height: 600px;
+    overflow: hidden;
+}
+/** the over to display the scroll bar as overlay the card */
+.height:hover{
     overflow: overlay;
 }
 .globalWidth{
@@ -57,7 +62,7 @@ img{
     flex-direction: column;
     align-items: center;
 }
-
+/** HERE THE 3 PARTS NEEDED TO HAVE THE CUSTOM SCROLL BAR */
 #test::-webkit-scrollbar-track{
     border-radius: 10px;
 	background-color: #edf5f5;
