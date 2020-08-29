@@ -16,7 +16,7 @@
         <input type="text" name="linkedin" id="linkedin" placeholder="linkedin" value="{{$profile->linkedin}}"><br>
 
         <label for="pitch">pitch:</label>
-        <textarea name="pitch" id="pitch" cols="30" rows="10" value="{{ $profile->pitch }}"></textarea>
+        <textarea type="text" name="pitch" id="pitch">{{$profile->pitch}}</textarea>
 
         <div class="row">
             <div class="input-field col s12">
