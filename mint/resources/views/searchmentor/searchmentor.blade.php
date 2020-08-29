@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('css')
+<link href="{{asset('css/searchmentor.css')}}" rel="stylesheet">
+@endsection
 @section('content')
 
 <h2>Filter</h2>
@@ -48,6 +51,9 @@
         <button type="submit" id="goToApply" name="goToApply" value="">Apply to mentor</button>
     </div>
 <!-- CLONE ELEMENT -->
+<div id="loaderContainer">
+    <div class="loader"></div>
+</div>
 <section id="mentorList">
 </section>
 
