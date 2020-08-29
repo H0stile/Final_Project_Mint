@@ -63,15 +63,15 @@ img{
     align-items: center;
 }
 /** HERE THE 3 PARTS NEEDED TO HAVE THE CUSTOM SCROLL BAR */
-#test::-webkit-scrollbar-track{
+#scroll::-webkit-scrollbar-track{
     border-radius: 10px;
 	background-color: #edf5f5;
 }
-#test::-webkit-scrollbar{
+#scroll::-webkit-scrollbar{
 	width: 8px;
 	background-color: #edf5f5;
 }
-#test::-webkit-scrollbar-thumb{
+#scroll::-webkit-scrollbar-thumb{
 	border-radius: 10px;
 	background-color: #579B9A;
 }

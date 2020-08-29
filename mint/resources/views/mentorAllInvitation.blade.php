@@ -14,23 +14,25 @@
         @endif
     </div>
 </div>
-<div class="container">
-    <section class="container height">
+<div class="globalWidth">
+    <section id="scroll" class="height">
         @foreach($menteeRequests as $menteeRequest)
-        <div class="cardBGC">
-            <div class="row valign-wrapper margin2">
-                <div class="col s2 center-align">
-                    <img class="responsive-img" src="{{asset('img/')}}/{{$menteeRequest->mentee->profile_image}}" style="width:60px">
+        <div class="cardBGC flex">
+            <div class="flex3">
+                <div>
+                    <img class="margin" src="{{asset('img/')}}/{{$menteeRequest->mentee->profile_image}}" style="width:60px">
                 </div>
-                <div class="col s10 left-align">
-                    <p class="fontSize">{{$menteeRequest->mentee->firstname}} {{$menteeRequest->mentee->lastname}}</p>
+                <div>
+                    <p class="fontSize margin">{{$menteeRequest->mentee->firstname}} {{$menteeRequest->mentee->lastname}}</p>
                 </div>
                 <button class="waves-effect waves-light btn buttonColorVP col s4" type="submit" name="getIdMentee" value="{{$menteeRequest->mentee->id}}">View profile</button>
             </div>
-                <p class="fontSize3">Message : </p>
-                <textarea class="fontSize2" name="menteePitch" id="" cols="30" rows="5" readonly="true" style="resize:none">{{$menteeRequest->request_msg}}</textarea>
-                <button class="waves-effect waves-light btn buttonColorVP" type="submit" name="getIdCollabAcc" value="{{$menteeRequest->id}}">Accept</button>
-                <button class="waves-effect waves-light btn buttonColorDC" type="submit" name="getIdCollabDec" value="{{$menteeRequest->id}}">Decline</button>
+                <p>Message</p>
+                <textarea class="fontSize2 margin" name="menteePitch" id="" cols="30" rows="5" readonly="true" style="resize:none">{{$menteeRequest->request_msg}}</textarea>
+                <div class="flex2">
+                    <button class="waves-effect waves-light btn buttonColorVP margin" type="submit" name="getIdCollabAcc" value="{{$menteeRequest->id}}">Accept</button>
+                    <button class="waves-effect waves-light btn buttonColorDC margin" type="submit" name="getIdCollabDec" value="{{$menteeRequest->id}}">Decline</button>
+                </div>
         </div>
         @endforeach
     </section>

@@ -1,22 +1,36 @@
 body{
     background-color: #F7FFFF;
 }
-
-.cardBGC {
-    background-color: #579B9A;
-    padding: 8px;
-    margin: 2px 0;
-    border: 2px solid #f7ffff;
-}
-.margin {
-    margin: 8px 2px;
-}
-.margin2{
+img{
+    width: 60px;
     margin: 10px auto;
 }
+
+.cardBGC {
+    background-color: #F7FFFF;
+    padding: 8px;
+    margin: 30px auto;
+    width: 80%;
+    box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.10);
+}
+.margin {
+    margin: 0.3em;
+}
+.margin2 {
+    margin: 1em;
+}
+/** HERE for the scroll bar, need to use overlay to keep all things, aligned */
 .height{
     height: 600px;
-    overflow: auto;
+    overflow: hidden;
+}
+/** the over to display the scroll bar as overlay the card */
+.height:hover{
+    overflow: overlay;
+}
+.globalWidth{
+    width: 50%;
+    margin: auto;
 }
 .buttonColorVP{
     background-color: #75D19E;
@@ -24,26 +38,63 @@ body{
 .buttonColorDC{
     background-color: #EA4C4B;
 }
-.buttonColorGB{
-    background-color: #FFA83F;
-}
 .btn{
     box-shadow: none;
+    width: 200px;
 }
 .fontSize{
-    font-size: 2rem;
-    color : white;
-    margin: 10px auto;
-}
-.fontSize2{
-    font-size: 1rem;
-    color : white;
-}
-.fontSize3{
     font-size: 1.5rem;
-    color : white;
+    color : #3B4A69;
     margin: 10px auto;
 }
-textarea{
-    border: none;
+.flex{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.flex2{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.flex3{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+/** HERE THE 3 PARTS NEEDED TO HAVE THE CUSTOM SCROLL BAR */
+#scroll::-webkit-scrollbar-track{
+    border-radius: 10px;
+	background-color: #edf5f5;
+}
+#scroll::-webkit-scrollbar{
+	width: 8px;
+	background-color: #edf5f5;
+}
+#scroll::-webkit-scrollbar-thumb{
+	border-radius: 10px;
+	background-color: #579B9A;
+}
+.spacer{
+    margin: 32px 0px;
+}
+
+@media screen and (max-width: 1055px){
+.fontSize{
+    font-size: 2rem;
+    margin: 10px auto;
+}
+.flex2{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.flex3{
+    flex-direction: row;
+}
+}
+@media screen and (max-width: 568px){
+.globalWidth{
+        width: 95%;
+}
 }

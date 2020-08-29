@@ -16,10 +16,10 @@
 </div>
 <div class="globalWidth">
     <div>
-        <section id="test" class="height">
+        <section id="scroll" class="height">
                 @foreach($menteeRequests as $menteeRequest)
                 <div>
-                    <div class=" cardBGC flex">
+                    <div class="cardBGC flex">
                         <div class="flex3">
                             <div>
                                 <img class="margin" src="{{asset('img/')}}/{{$menteeRequest->mentee->profile_image}}">
