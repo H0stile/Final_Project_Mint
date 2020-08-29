@@ -34,30 +34,33 @@
             </section>
 
             @if($canWriteRating)
-            <form id="form" action="{{route('rating.create')}}" method="POST">
-                @csrf
-                <input type="hidden" name="target" value="{{$profile->id}}">
-                <input type="hidden" name="writer" value="{{Auth::user()->id}}">
+            <section class="db myform">
+                <div>
+                    <form id="form" action="{{route('rating.create')}}" method="POST">
+                        @csrf
+                        <p class="col s2">
+                            <select name="score" style="display: initial;">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5" selected="selected">5</option>
+                            </select>
+                        </p>
+                        <div class="input-field col s6 leftpad">
+                            <input type="hidden" name="target" value="{{$profile->id}}">
+                            <input type="hidden" name="writer" value="{{Auth::user()->id}}">
+                            <textarea name="comment" id="textArea" class="materialize-textarea"></textarea>
+                            <label id="label" for="comment">Add a feedback</label>
+                        </div>
+                        <div id="button" class="waves-effect waves-light btn-small sendbtn">
+                            <input id="submitButton" type="submit" value="Submit" class='textbtn'>
+                        </div>
 
-                <p>
-                    <select name="score" style="display: initial;">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                </p>
 
-                <label id="label" for="comment">Add a rating</label>
-                <br>
-                <textarea name="comment" id="textArea" placeholder="Add your text here"></textarea>
-                <br>
-                <div id="button">
-                    <input id="submitButton" type="submit" value="Submit">
+                    </form>
                 </div>
-            </form>
-            <br><br>
+            </section>
             @endif
 
 
@@ -81,7 +84,7 @@
             @if($collaborator !== null)
             <div class="row mrgtop">
                 <form id="form2" action="{{route('message.create')}}" method="POST" class="col s12">
-                    <div class="input-field col s6 leftpad" id="pad">
+                    <div class="input-field col s12 leftpad" id="pad">
                         @csrf
                         {{ csrf_field() }}
                         <input type="hidden" name="writer" value="{{Auth::user()->id}}">
@@ -134,27 +137,33 @@
             </div>
             @endif
         </section>
+
+        <!-- mentor part -->
+        @if(Auth::user()->type == 'mentor')
+        @if($collabRequestStatus == 'pending')
+        <section class="menteebtn">
+            <section class="searchbtn ">
+                <form action="" method="get" class="mybtn">
+                    @csrf
+                    <button name="accept-request" value="{{$collabRequestId}}" class="btn waves-effect waves-light sendbtn amy">Accept invitation</button>
+                </form>
+                <form action="{{route('mentor.connection.destroy', $collabRequestId)}}" method="post" class="mybtn">
+                    @csrf
+                    @method('DELETE')
+                    <button name="decline-request" value="{{$collabRequestId}}" class="btn waves-effect waves-light sendbtn amy">Decline invitation</button>
+                </form>
+            </section>
+            @else
+            <form action="{{route('mentor.connection.destroy', $collabRequestId)}}" method="post" class="mybtn">
+                @csrf
+                @method('DELETE')
+                <button name="disconnect" value="{{$collabRequestId}}" class="btn waves-effect waves-light sendbtn amy">Disconnect</button>
+            </form>
+        </section>
+        @endif
     </section>
 
-    <!-- mentor part -->
-    @if(Auth::user()->type == 'mentor')
-    @if($collabRequestStatus == 'pending')
-    <form action="" method="get">
-        @csrf
-        <button name="accept-request" value="{{$collabRequestId}}">Accept invitation</button>
-    </form>
-    <form action="{{route('mentor.connection.destroy', $collabRequestId)}}" method="post">
-        @csrf
-        @method('DELETE')
-        <button name="decline-request" value="{{$collabRequestId}}">Decline invitation</button>
-    </form>
-    @else
-    <form action="{{route('mentor.connection.destroy', $collabRequestId)}}" method="post">
-        @csrf
-        @method('DELETE')
-        <button name="disconnect" value="{{$collabRequestId}}">Disconnect</button>
-    </form>
-    @endif
+
     @section('script')
     <script>
         $(document).ready(function() {

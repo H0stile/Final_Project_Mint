@@ -47,7 +47,7 @@ class MenteeController extends Controller
             $messageUserIds[] = $collaborator->id;
         }
         $messages = Message::whereIn('writer_id', $messageUserIds, 'and')
-            ->whereIn('target_id', $messageUserIds)->get();
+            ->whereIn('target_id', $messageUserIds)->orderBy('id', 'desc')->get();
 
         return view(
             'mentee/profile',

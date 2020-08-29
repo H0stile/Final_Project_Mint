@@ -68,12 +68,18 @@ flex-direction: column;
     display: block;
     justify-content: center;
 }
+.db{
+   justify-content: space-between;
+}
 .mybtn{
     margin-bottom: 20px;
     margin-left: 0;
 }
 .mybtn:hover{
     color: #FFA83F;
+}
+.myform{
+    margin-bottom: 100px;  
 }
 
 .leftsection{
