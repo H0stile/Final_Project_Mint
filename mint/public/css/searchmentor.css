@@ -1,7 +1,9 @@
 .cardContainer {
     position: relative;
 }
-
+.hide{
+    display: none;
+}
 .loader {
     position: absolute;
     display: inline-block;
