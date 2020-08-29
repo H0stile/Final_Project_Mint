@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 27, 2020 at 02:49 PM
+-- Generation Time: Aug 28, 2020 at 07:51 AM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.4.0
 
@@ -38,7 +38,28 @@ CREATE TABLE IF NOT EXISTS `collaboration` (
   PRIMARY KEY (`id`),
   KEY `collaboration_mentor_id_foreign` (`mentor_id`),
   KEY `collaboration_mentee_id_foreign` (`mentee_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `collaboration`
+--
+
+INSERT INTO `collaboration` (`id`, `mentor_id`, `mentee_id`, `request_msg`, `status_rqs`) VALUES
+(1, 6, 11, 'Hello !!!!', 'pending'),
+(2, 6, 12, 'I want to learn PHP', 'pending'),
+(3, 6, 13, 'My request', 'pending'),
+(4, 7, 14, 'I want to learn Python', 'pending'),
+(5, 7, 15, 'Hello, I want to learn Cobol', 'pending'),
+(6, 8, 16, 'My request', 'connected'),
+(7, 9, 17, 'I want to learn JavaScript', 'connected'),
+(8, 9, 18, 'Hello', 'connected'),
+(9, 10, 19, 'I want to learn Ruby', 'connected'),
+(10, 10, 20, 'I want to learn C#', 'pending'),
+(11, 7, 17, 'accept me', 'pending'),
+(12, 8, 16, 'Accept me', 'pending'),
+(13, 8, 13, 'Hello', 'connected'),
+(14, 9, 11, 'I want to learn something', 'pending'),
+(15, 10, 15, 'Hello !!!', 'connected');
 
 -- --------------------------------------------------------
 
@@ -106,7 +127,6 @@ INSERT INTO `languages_intermediate` (`user_id`, `language_id`) VALUES
 (5, 1),
 (6, 2),
 (7, 3),
-(8, 4),
 (9, 1),
 (10, 2),
 (11, 3),
@@ -119,7 +139,8 @@ INSERT INTO `languages_intermediate` (`user_id`, `language_id`) VALUES
 (18, 2),
 (19, 3),
 (20, 4),
-(21, 1);
+(21, 1),
+(8, 3);
 
 -- --------------------------------------------------------
 
@@ -207,16 +228,28 @@ CREATE TABLE IF NOT EXISTS `ratings` (
   PRIMARY KEY (`id`),
   KEY `ratings_writer_id_foreign` (`writer_id`),
   KEY `ratings_target_id_foreign` (`target_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `ratings`
 --
 
 INSERT INTO `ratings` (`id`, `writer_id`, `target_id`, `score`, `comment`) VALUES
-(1, 1, 2, 5, 'this is the first message'),
-(2, 1, 2, 3, 'this is the second message'),
-(3, 1, 2, 2, 'this is the third message');
+(1, 1, 6, 5, 'this is the first message'),
+(2, 1, 6, 3, 'this is the second message'),
+(3, 1, 6, 2, 'this is the third message'),
+(4, 20, 7, 4, 'nice mentor, with experience'),
+(5, 15, 7, 2, 'Problem for meeting'),
+(6, 19, 7, 5, 'Woaw, great mentor'),
+(7, 11, 8, 3, 'Good'),
+(8, 12, 8, 5, 'A really great mentor'),
+(9, 13, 8, 3, 'I learn a lot'),
+(10, 14, 9, 1, 'To much basic level'),
+(11, 15, 9, 4, 'Great'),
+(12, 17, 9, 3, 'Good'),
+(13, 20, 10, 4, 'Good'),
+(14, 19, 10, 2, 'His level is to basic'),
+(15, 18, 10, 0, 'Not came to the rdv');
 
 -- --------------------------------------------------------
 
@@ -295,9 +328,9 @@ INSERT INTO `skills_intermediate` (`user_id`, `skill_id`) VALUES
 (5, 16),
 (6, 16),
 (7, 6),
-(8, 26),
 (9, 10),
-(10, 5);
+(10, 5),
+(8, 27);
 
 -- --------------------------------------------------------
 
@@ -331,7 +364,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `firstname`, `lastname`, `type`, `linkedin`, `mentor_status`, `profile_image`, `pitch`, `availability`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'witting.rudolph@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Witting', 'Rudolph', 'mentor', 'https://www.linkedin.com/in/john-doe', 'pending', 'defaultProfileLogo.png', 'Voluptatibus officiis commodi quia.', 0, NULL, NULL, NULL, NULL),
+(1, 'witting.rudolph@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Witting', 'Rudolph', 'mentor', 'https://www.linkedin.com/in/john-doe', 'pending', 'defaultProfileLogo.png', 'Voluptatibus officiis commodi quia.', 1, NULL, NULL, NULL, NULL),
 (2, 'melyna.rodriguez@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Melyna', 'Rodriguez', 'mentor', 'https://www.linkedin.com/in/john-doe', 'pending', 'defaultProfileLogo.png', 'Et animi voluptatem dolor possimus consequatur saepe. Rem consequatur error ut et amet iure.', 1, NULL, NULL, NULL, NULL),
 (3, 'jewell.lemke@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Jewell', 'Lemke', 'mentor', 'https://www.linkedin.com/in/john-doe', 'pending', 'defaultProfileLogo.png', 'Rerum laborum facilis et officia exercitationem magni.', 0, NULL, NULL, NULL, NULL),
 (4, 'kristofer.weimann@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Kristofer', 'Weimann', 'mentor', 'https://www.linkedin.com/in/john-doe', 'pending', 'defaultProfileLogo.png', 'Sequi maiores quibusdam rerum eum dolor culpa voluptas quae. Dolorem doloribus nam sit libero.', 0, NULL, NULL, NULL, NULL),
@@ -339,7 +372,7 @@ INSERT INTO `users` (`id`, `email`, `password`, `firstname`, `lastname`, `type`,
 (6, 'shaina.labadie@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Shaina', 'Labadie', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Repellat ea ex unde modi nesciunt praesentium ut.', 1, NULL, NULL, NULL, NULL),
 (7, 'johathan.bergnaum@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Johathan', 'Bergnaum', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Repellendus qui molestias quas repellat consequatur velit in. Quasi itaque enim sit explicabo iusto ratione ut asperiores.', 1, NULL, NULL, NULL, NULL),
 (8, 'corine.bauch@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Corine', 'Bauch', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Officiis amet nisi aut accusamus excepturi cum aut eius.', 0, NULL, NULL, NULL, NULL),
-(9, 'frida.murzik@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Frida', 'Murazik', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Sit nam id beatae et quasi nihil.', 0, NULL, NULL, NULL, NULL),
+(9, 'frida.murzik@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Frida', 'Murazik', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Sit nam id beatae et quasi nihil.', 1, NULL, NULL, NULL, NULL),
 (10, 'leopoldo.sipes@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Leopoldo', 'Sipes', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Sapiente beatae neque voluptas deleniti.', 1, NULL, NULL, NULL, NULL),
 (11, 'carlee.lakin@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Carlee', 'Lakin', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Esse architecto repellat voluptatem sapiente commodi.', 0, NULL, NULL, NULL, NULL),
 (12, 'houston.mann@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Houston', 'Mann', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Saepe aperiam est distinctio provident.', 1, NULL, NULL, NULL, NULL),
@@ -351,7 +384,7 @@ INSERT INTO `users` (`id`, `email`, `password`, `firstname`, `lastname`, `type`,
 (18, 'paolo.hagenes@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Paolo', 'Hagenes', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Dolore cupiditate voluptates itaque animi.', 1, NULL, NULL, NULL, NULL),
 (19, 'jakayla.wolff@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Jakayla', 'Wolff', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Velit dolor qui aut vel mollitia.', 1, NULL, NULL, NULL, NULL),
 (20, 'dora.jaskolski@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Dora', 'Jaskolski', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Quibusdam aut inventore corporis aut. Tenetur reiciendis ea corrupti ducimus quasi qui.', 0, NULL, NULL, NULL, NULL),
-(21, 'admint.mint@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Admint', 'Mint', 'admin', NULL, 'validate', NULL, NULL, NULL, NULL, NULL, NULL, NULL);
+(21, 'admint.mint@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Admint', 'Mint', 'admin', NULL, 'validate', 'defaultProfileLogo.png', NULL, NULL, NULL, NULL, NULL, NULL);
 
 --
 -- Constraints for dumped tables
