@@ -70,18 +70,34 @@ flex-direction: column;
 }
 .mybtn{
     margin-bottom: 20px;
+    margin-left: 0;
 }
-.rightsection{
-    width: 100%;
-    margin-left: 50px;
+.mybtn:hover{
+    color: #FFA83F;
+}
+
+.leftsection{
+    width: 80%;
+    margin-right: 50px;
 }
 .spaceinside{
     padding: 20px;
 }
+.amy{
+    margin-left: 0;
+}
+.mrgtop{
+    margin-top: 50px;
+}
+
+.jobtitle{
+    color: #FFA83F;
+    font-weight: bold;
+}
 
 
 /* some changes to responsive design */
-@media ( max-width:600px){
+@media ( max-width:992px){
    
     .menteepagelook{
         display: block; 

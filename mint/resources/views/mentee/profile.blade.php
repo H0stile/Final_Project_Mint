@@ -12,8 +12,8 @@
             <h5>{{$profile->type}}</h5>
         </section>
     </section>
-    <section class="menteepagelook">
-        <section class="flex">
+    <section class="menteepagelook mrgtop">
+        <section class="flex leftsection">
             <section class="block">
                 <h5>Pitch:</h5>
                 <p class="bg spaceinside">{{$profile->pitch}}</p>
@@ -79,7 +79,7 @@
             </section>
 
             @if($collaborator !== null)
-            <div class="row">
+            <div class="row mrgtop">
                 <form id="form2" action="{{route('message.create')}}" method="POST" class="col s12">
                     <div class="input-field col s6 leftpad" id="pad">
                         @csrf
@@ -109,11 +109,11 @@
 
             <section class="searchbtn">
                 <div class="mybtn">
-                    <a href="{{route('searchmentor', Auth::user()->id)}}" class="btn waves-effect waves-light sendbtn">Look for a mentor</a>
+                    <a href="{{route('searchmentor', Auth::user()->id)}}" class="btn waves-effect waves-light sendbtn amy">Look for a mentor</a>
                 </div>
 
                 <div class="mybtn">
-                    <a href="{{route('editmenteeprofile', Auth::user()->id)}}" class="btn waves-effect waves-light sendbtn">Modify profile</a>
+                    <a href="{{route('editmenteeprofile', Auth::user()->id)}}" class="btn waves-effect waves-light sendbtn amy">Modify profile</a>
                 </div>
             </section>
 
@@ -124,9 +124,10 @@
 
                 <section class="scrollbig">
                     @foreach($jobsData as $job)
-                    <li>Job title: {{$job['title']}}</li>
-                    <li>Company: {{$job['company_name']}}</li>
-                    <li><a href="{{$job['url']}}">Details</a></li>
+                    <!-- <i class="material-icons left motion_photos_on messagemy">motion_photos_on</i> -->
+                    <h6 class="jobtitle">{{$job['title']}}</h6>
+                    <p>Company: {{$job['company_name']}}</p>
+                    <a href="{{$job['url']}}" class="mybtn">Details</a>
                     <hr>
                     @endforeach
                 </section>
@@ -215,7 +216,7 @@
     @endif
 
     <!-- admin part -->
-    <hr>
+
     @if(Auth::user()->type == 'admin')
 
     <form action="{{route('mentee.destroy', $profile->id)}}" method="post">
