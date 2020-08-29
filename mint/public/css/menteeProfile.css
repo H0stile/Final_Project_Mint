@@ -31,7 +31,7 @@ body{
 }
 .scrollbig{
     overflow:scroll; 
-    height: 400px;
+    height: 500px;
     margin-bottom: 0;
 }
 .sendbtn{
@@ -112,5 +112,12 @@ flex-direction: column;
     .flex{
         width: 100%;
         margin-bottom: auto;
+    }
+}
+@media ( max-width:768px){
+   
+    .field{
+        width: 90%;
+        margin: auto;
     }
 }
