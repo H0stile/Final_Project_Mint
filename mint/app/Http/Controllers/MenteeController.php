@@ -38,7 +38,7 @@ class MenteeController extends Controller
                 // Assuming that mentee can have just one mentor
                 $collaborator = $collaborators[0];
             }
-            $jobsData = Http::get('http://remotive.io/api/remote-jobs?limit=5')->json();
+            $jobsData = Http::get('http://remotive.io/api/remote-jobs?limit=15')->json();
             $jobsData = $jobsData['jobs'];
         }
 
@@ -47,7 +47,7 @@ class MenteeController extends Controller
             $messageUserIds[] = $collaborator->id;
         }
         $messages = Message::whereIn('writer_id', $messageUserIds, 'and')
-            ->whereIn('target_id', $messageUserIds)->get();
+            ->whereIn('target_id', $messageUserIds)->orderBy('id', 'desc')->get();
 
         return view(
             'mentee/profile',
