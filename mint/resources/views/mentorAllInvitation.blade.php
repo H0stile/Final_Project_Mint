@@ -20,15 +20,15 @@
         <div class="cardBGC flex">
             <div class="flex3">
                 <div>
-                    <img class="margin3" src="{{asset('img/')}}/{{$menteeRequest->mentee->profile_image}}" style="width:60px">
+                    <img class="margin" src="{{asset('img/')}}/{{$menteeRequest->mentee->profile_image}}" style="width:60px">
                 </div>
                 <div>
-                    <p class="fontSize margin3">{{$menteeRequest->mentee->firstname}} {{$menteeRequest->mentee->lastname}}</p>
+                    <p class="fontSize margin">{{$menteeRequest->mentee->firstname}} {{$menteeRequest->mentee->lastname}}</p>
                 </div>
-                <button class="waves-effect waves-light btn buttonColorVP margin3" type="submit" name="getIdMentee" value="{{$menteeRequest->mentee->id}}">View profile</button>
+                <button class="waves-effect waves-light btn buttonColorVP margin" type="submit" name="getIdMentee" value="{{$menteeRequest->mentee->id}}">View profile</button>
             </div>
-                <!-- <p class="fontSize2">Message</p> -->
-                <textarea class="fontSize2 margin" name="menteePitch" id="" cols="30" rows="5" readonly="true" style="resize:none">{{$menteeRequest->request_msg}}</textarea>
+                <!-- <p class="fontSize2">Request</p> -->
+                <textarea class="fontSize2 margin2" name="menteePitch" id="" cols="30" rows="5" readonly="true" style="resize:none">{{$menteeRequest->request_msg}}</textarea>
                 <div class="flex2">
                     <button class="waves-effect waves-light btn buttonColorVP margin" type="submit" name="getIdCollabAcc" value="{{$menteeRequest->id}}">Accept</button>
                     <button class="waves-effect waves-light btn buttonColorDC margin" type="submit" name="getIdCollabDec" value="{{$menteeRequest->id}}">Decline</button>

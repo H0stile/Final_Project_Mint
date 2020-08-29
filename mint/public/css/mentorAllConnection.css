@@ -89,10 +89,6 @@ img{
     flex-direction: column;
     align-items: center;
 }
-.flex3{
-    flex-direction: row;
-    justify-content: space-between;
-}
 }
 @media screen and (max-width: 568px){
 .globalWidth{

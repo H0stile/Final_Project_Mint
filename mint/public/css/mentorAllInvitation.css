@@ -23,9 +23,7 @@ textarea{
 .margin2 {
     margin: 1em;
 }
-.margin3 {
-    margin: 2em;
-}
+
 /** HERE for the scroll bar, need to use overlay to keep all things, aligned */
 .height{
     height: 600px;
@@ -69,7 +67,7 @@ textarea{
 }
 .flex3{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
 }
 /** HERE THE 3 PARTS NEEDED TO HAVE THE CUSTOM SCROLL BAR */
@@ -98,9 +96,6 @@ textarea{
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-.flex3{
-    flex-direction: column;
 }
 }
 @media screen and (max-width: 568px){
