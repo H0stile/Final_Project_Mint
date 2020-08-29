@@ -16,7 +16,6 @@
 </div>
 <div class="globalWidth">
     <div>
-    <!-- <div class="container"> -->
         <section id="test" class="height">
                 @foreach($menteeRequests as $menteeRequest)
                 <div>
