@@ -4,7 +4,8 @@ body{
     color: #3B4A69;
 }
 .field{
-    padding:20px;
+    width: 90%;
+    margin: auto;
 }
 .image{
     height: 100px;
@@ -26,4 +27,19 @@ body{
 }
 .star{
     color: #FFA83F;
+}
+.scroll{
+    overflow:scroll; 
+    height: 300px
+}
+.sendbtn{
+    box-shadow: none;
+    background-color: #75D19E;
+    color: #F7FFFF;
+}
+.myrow{
+    padding: 0px;
+}
+.textbtn{
+    color: #F7FFFF;
 }

@@ -14,19 +14,20 @@
     </section>
 
 
-    <h4>Pitch:</h4>
+    <h5>Pitch:</h5>
     <p class="bg">{{$profile->pitch}}</p>
-    <h4>Ratings:</h4>
-    @foreach($profile->receiveRatings as $rating)
-    <div class="bg">
-        <h5>{{$rating->writer->getFullName()}}</h5>
-        <section class="rating">
-            <p>{{$rating->score}}</p><i class="material-icons left star">star</i>
-        </section>
-        <p>{{$rating->comment}}</p>
-    </div>
-    @endforeach
-    <hr>
+    <h5>Ratings:</h5>
+    <section class="scroll">
+        @foreach($profile->receiveRatings as $rating)
+        <div class="bg">
+            <h6>{{$rating->writer->getFullName()}}:</h6>
+            <section class="rating">
+                <p>{{$rating->score}}</p><i class="material-icons left star">star</i>
+                <p>{{$rating->comment}}</p>
+            </section>
+        </div>
+        @endforeach
+    </section>
 
     @if($canWriteRating)
     <form id="form" action="{{route('rating.create')}}" method="POST">
@@ -59,29 +60,34 @@
 
     <!-- message part part -->
     @if(count($messages) >0)
-    <h3>Messages:</h3>
+    <h5>Messages:</h5>
     @foreach($messages as $message)
     <p>{{$message->message}}</p>
     <p>{{$message->writer->getFullName()}}</p>
     @endforeach
-    <hr>
     @endif
 
     @if($collaborator !== null)
-    <form id="form2" action="{{route('message.create')}}" method="POST">
-        @csrf
-        {{ csrf_field() }}
-        <input type="hidden" name="writer" value="{{Auth::user()->id}}">
-        <input type="hidden" name="target" value="{{$collaborator->id}}">
+    <div class="row">
+        <form id="form2" action="{{route('message.create')}}" method="POST" class="col s12">
+            <div class="input-field col s6 myrow">
+                @csrf
+                {{ csrf_field() }}
+                <input type="hidden" name="writer" value="{{Auth::user()->id}}">
+                <input type="hidden" name="target" value="{{$collaborator->id}}">
 
-        <label id="labelMessage" for="message">Write a message</label>
-        <br>
-        <textarea name="message" id="textAreaMessage" placeholder="Write your message here"></textarea>
-        <br>
-        <div id="button">
-            <input id="submitButton2" type="submit" value="Send" name="form2">
-        </div>
-    </form>
+                <textarea id="icon_prefix2" class="materialize-textarea" name="message"></textarea>
+                <label for="icon_prefix2">Write a message</label>
+                <!-- <label id="labelMessage" for="message">Write a message</label>
+                <br>
+                <textarea name="message" id="textAreaMessage" placeholder="Write your message here"></textarea>
+                <br> -->
+                <div id="button" class="waves-effect waves-light btn-small sendbtn">
+                    <input id="submitButton2" type="submit" value="Send" name="form2" class='textbtn'>
+                </div>
+            </div>
+        </form>
+    </div>
     <br>
     @endif
 
