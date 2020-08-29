@@ -33,6 +33,7 @@ class UserSeeder extends Seeder
                 'profile_image' => 'defaultProfileLogo.png',
                 'pitch' => $faker->paragraph($nbSentences = 1, $variableNbSentences = true),
                 'availability' => array_rand($availability),
+                'created_at' => $faker->dateTimeBetween('-300 days','now'),
             ]);
         }
         //creation of unique user admin
