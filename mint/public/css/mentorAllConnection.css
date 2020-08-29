@@ -23,6 +23,10 @@ img{
     height: 600px;
     overflow: auto;
 }
+.globalWidth{
+    width: 50%;
+    margin: auto;
+}
 .buttonColorVP{
     background-color: #75D19E;
 }
@@ -32,7 +36,6 @@ img{
 .btn{
     box-shadow: none;
     width: 200px;
-
 }
 .fontSize{
     font-size: 1.5rem;
@@ -46,7 +49,7 @@ img{
 }
 .flex2{
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
 }
 .flex3{
@@ -57,29 +60,34 @@ img{
 
 #test::-webkit-scrollbar-track{
     border-radius: 10px;
-	background-color: #e2e2e2;
+	background-color: #edf5f5;
 }
 #test::-webkit-scrollbar{
 	width: 8px;
-	background-color: #F5F5F5;
+	background-color: #edf5f5;
 }
 #test::-webkit-scrollbar-thumb{
 	border-radius: 10px;
-	background-color: #888888;
+	background-color: #579B9A;
 }
 
 
-@media screen and (min-width: 720px){
+@media screen and (max-width: 1055px){
 .fontSize{
     font-size: 2rem;
     margin: 10px auto;
 }
 .flex2{
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
 }
 .flex3{
     flex-direction: row;
+}
+}
+@media screen and (max-width: 568px){
+.globalWidth{
+        width: 95%;
 }
 }
