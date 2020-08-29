@@ -75,7 +75,9 @@ img{
 	border-radius: 10px;
 	background-color: #579B9A;
 }
-
+.spacer{
+    margin: 32px 0px;
+}
 
 @media screen and (max-width: 1055px){
 .fontSize{

@@ -37,7 +37,7 @@
                 @endforeach
         </section>
         <div class="globalWidth">
-            <div class="flex">
+            <div class="flex spacer">
                 <button class="waves-effect waves-light btn buttonColorVP margin2" type="submit" name="goBackMentorView" value="{{Auth::user()->id}}">Go back to profile</button>
             </div>
         </div>
