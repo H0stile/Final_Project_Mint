@@ -6,7 +6,7 @@
 @section('content')
 <div class="row" id="top-content">
     <div class="top-element">
-        <img src="https://img.cuisineaz.com/660x660/2015-06-02/i87290-cocktail-au-whisky-the-vert-citron-et-menthe.jpg" alt="">
+        <img src="img\main_img.png" alt="mint">
     </div>
 
     <div class="top-element">
@@ -24,7 +24,7 @@
 <div class="row" id="home-register">
     <div class="col s6" id="register_col_1">
 
-        <img src="https://www.thespruceeats.com/thmb/721kkzdDKgQ4FnJpdCaXVgwttUI=/1816x1362/smart/filters:no_upscale()/easy-fresh-mint-tea-recipe-766391-6_preview-5b291f95ba61770036733329.jpeg" style="height: 400px">
+        <img src="img\mentee.png" alt="mentee" style="height: 400px">
         <h5>A fresh mintee</h5>
 
 
@@ -37,7 +37,7 @@
     </div>
     <div class="col s6" id="register_col_2">
 
-        <img src="https://www.thespruceeats.com/thmb/721kkzdDKgQ4FnJpdCaXVgwttUI=/1816x1362/smart/filters:no_upscale()/easy-fresh-mint-tea-recipe-766391-6_preview-5b291f95ba61770036733329.jpeg" style="height: 400px">
+        <img src="img\mentor.png" alt="mentor" style="height: 400px">
         <h5>A green and experienced mintor</h5>
 
 
