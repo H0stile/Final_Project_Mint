@@ -41,7 +41,7 @@
             </div>
           </div>
     </section>
-    <section class="cardBlock">
+    <section class="cardBlock height">
         <!-- CLONE ELEMENT -->
             <div id="clone" class="hide cardBGC flex2">
                 <img id="img" src="" style="width:60px">
@@ -56,7 +56,7 @@
         <div id="loaderContainer">
             <div id="loaderPart" class="loader"></div>
         </div>
-        <section id="mentorList" class="height">
+        <section id="mentorList">
         </section>
     </section>
 </section>
