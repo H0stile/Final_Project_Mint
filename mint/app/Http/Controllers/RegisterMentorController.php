@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
 use App\Language;
 use App\Skill;
 use Auth;
@@ -85,6 +86,8 @@ class RegisterMentorController extends Controller
                 'password' => Hash::make($data['password']),
                 'pitch' => $data['pitch'],
                 'linkedin' => $data['linkedin'],
+                'profile_image' => 'defaultProfileLogo.png',
+                'created_at'  => Carbon::now()->timestamp,
                 'type' => 'mentor',
                 'mentor_status' => 'pending',
             ]);

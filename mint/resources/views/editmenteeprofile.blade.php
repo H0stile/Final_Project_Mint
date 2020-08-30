@@ -1,4 +1,7 @@
 @extends('layouts.app')
+@section('css')
+<link href="{{ asset('css/menteeProfileEdit.css') }}" rel="stylesheet">
+@endsection
 
 @section('content')
 <div class="container">
@@ -6,22 +9,32 @@
     <form action="" method="POST">
 
         @csrf
-        <label for="firstname">Firstname :</label>
-        <input type="text" name="firstname" id="firstname" placeholder="firstname" value="{{ $profile->firstname }}"><br>
+        <section class="field">
+            <label for="firstname">Firstname:</label>
+            <input type="text" name="firstname" id="firstname" placeholder="firstname" value="{{ $profile->firstname }}">
+        </section>
 
-        <label for="lastname">Lastname :</label>
-        <input type="text" name="lastname" id="lastname" placeholder="lastname" value="{{ $profile->lastname }}"><br>
+        <section class="field">
+            <label for="lastname">Lastname:</label>
+            <input type="text" name="lastname" id="lastname" placeholder="lastname" value="{{ $profile->lastname }}">
+        </section>
 
-        <label for="linkedin">linkedin :</label>
-        <input type="text" name="linkedin" id="linkedin" placeholder="linkedin" value="{{$profile->linkedin}}"><br>
+        <section class="field">
+            <label for="linkedin">LinkedIn:</label>
+            <input type="text" name="linkedin" id="linkedin" placeholder="linkedin" value="{{$profile->linkedin}}">
+        </section>
 
-        <label for="pitch">pitch:</label>
-        <textarea name="pitch" id="pitch" cols="30" rows="10" value="{{ $profile->pitch }}"></textarea>
+        <section class="field">
+            <section class="textfield">
+                <label for="pitch" class="textfield">Pitch:</label><br>
+            </section>
+            <textarea type="text" name="pitch" id="pitch" class="pitcharea">{{$profile->pitch}}</textarea>
+        </section>
 
         <div class="row">
             <div class="input-field col s12">
                 <div class="row">
-                    <span class="card-title">{{ __('Languages  : ') }}</span><br>
+                    <span class="card-title">{{ __('Languages: ') }}</span><br>
                     @foreach($langChosen as $choice)
                     <label><br>
                         <input type="checkbox" name="langChkBox[{{$choice['id']}}]" value="{{$choice['id']}}" @if($choice['chosen']) checked @endif />
@@ -32,13 +45,17 @@
             </div>
         </div>
         <p>
-            <button class="btn waves-effect waves-light" type="submitsave" name="action" value={{ $profile->id }}>{{ __('Update & Show Profile') }}
+            <button class="btn waves-effect waves-light greenbtn" type="submitsave" name="action" value={{ $profile->id }}>{{ __('Update & Show Profile') }}
                 <i class="material-icons right">create</i>
             </button>
         </p>
-        <p>
-            <button name='deletebyadmin' class='deletebtn' value="{{$profile->id}}">Delete the profile</button>
-        </p>
+        <section class="editbtn">
+            <p>
+                <button name='deletebyadmin' class='deletebtn btn waves-effect waves-light redbtn' value="{{$profile->id}}">Delete profile
+                    <i class="material-icons right">delete_forever</i>
+                </button>
+            </p>
+        </section>
 
 
 

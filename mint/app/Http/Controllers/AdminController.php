@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactMe;
+use App\Charts\UserChart;
+use Illuminate\Support\Facades\DB;
 
 class AdminController extends Controller
 {
@@ -27,10 +29,23 @@ class AdminController extends Controller
         for ($i=0; $i < $mentorMenteeList->count(); $i++) {
             $userCollaborators[$i] = $mentorMenteeList[$i]->mentees;
         }
-        
+        /////////
+        //charts
+        ////////
 
+        $users = User::select(DB::raw("COUNT(*) as count"))
+        ->whereYear('created_at', date('Y'))
+        ->groupBy(DB::raw("Month(created_at)"))
+        ->pluck('count');
 
-        return view('admin', compact('pendingMentors', 'admin', 'mentorMenteeList','userCollaborators'));
+        $chart = new UserChart;
+        $chart->labels(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']);
+        $chart->dataset('New User Register Chart', 'line', $users)->options([
+        'fill' => 'true',
+        'borderColor' => '#51C1C0'
+        ]);
+
+        return view('admin', compact('pendingMentors','chart', 'admin', 'mentorMenteeList','userCollaborators'));
     }
 
     /**
