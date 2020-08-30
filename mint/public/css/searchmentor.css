@@ -48,12 +48,17 @@ body{
 }
 .cardBGC {
     background-color: #F7FFFF;
-    /* background-color: #B9F3C0; */
+    /* background-color: white; */
     padding: 8px;
     margin: 20px 20px;
     width: 225px;
     height: 300px;
-    box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.20);
+    box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.10);
+    transition-duration: 0.3s;
+}
+.cardBGC:hover{
+    transform: translateY(-10px);
+    box-shadow: 0px 15px 10px 0px rgba(0,0,0,0.20);
 }
 /** HERE for the scroll bar, need to use overlay to keep all things, aligned */
 .height{
