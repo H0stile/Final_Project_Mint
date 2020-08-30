@@ -1,7 +1,7 @@
 body{
     background-color: #F7FFFF;
 }
-.cardContainer {
+.loaderContainer {
     position: relative;
 }
 .globalWidth {
@@ -26,6 +26,9 @@ body{
     display: inline-block;
     width: 80px;
     height: 80px;
+    top: 50%;
+    left: 50%;
+    transform: translate(50%, -50%);
 }
 .loader:after {
     content: " ";
@@ -48,11 +51,10 @@ body{
 }
 .cardBGC {
     background-color: #F7FFFF;
-    /* background-color: white; */
     padding: 8px;
     margin: 10px 10px;
     width: 225px;
-    height: 300px;
+    /* height: 300px; */
     box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.10);
     transition-duration: 0.3s;
 }
@@ -63,8 +65,10 @@ body{
 /** HERE for the scroll bar, need to use overlay to keep all things, aligned */
 .height{
     height: 600px;
+    /* width: 100%; */
     overflow: hidden;
     border-left: 1px solid #579B9A;
+    /* background-color: grey; */
 }
 /** the over to display the scroll bar as overlay the card */
 .height:hover{
@@ -94,4 +98,20 @@ body{
     font-size: 1.5rem;
     color : #3B4A69;
     margin: 10px auto;
+}
+.buttonColorVP{
+    background-color: #75D19E;
+}
+.buttonColorAPP{
+    background-color: #FFAB3F;
+}
+.btn{
+    box-shadow: none;
+    width: 200px;
+}
+.margin {
+    margin: 0.3em;
+}
+.margin2 {
+    margin: 1em;
 }

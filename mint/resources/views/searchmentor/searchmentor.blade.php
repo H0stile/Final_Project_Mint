@@ -49,8 +49,8 @@
                 <p id="mentroScore"></p>
                 <p id="skill"></p>
                 <p id="language"></p>
-                <button type="submit" id="goToMentorProfile" name="goToMentorProfile" value="">View profile</button>
-                <button type="submit" id="goToApply" name="goToApply" value="">Apply to mentor</button>
+                <button class="btn buttonColorVP margin" type="submit" id="goToMentorProfile" name="goToMentorProfile" value="">View profile</button>
+                <button class="btn buttonColorAPP margin" type="submit" id="goToApply" name="goToApply" value="">Apply to mentor</button>
             </div>
         <!-- CLONE ELEMENT -->
         <div id="loaderContainer">
