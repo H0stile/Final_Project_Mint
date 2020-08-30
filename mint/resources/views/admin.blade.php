@@ -5,43 +5,45 @@
 @endsection
 @section('content')
 
-<section id="titleDate">
+<section class="titleDate">
     <h2>Dashborad</h2>
-    <p id="CurrentDate">Today  <b>{{date('Y-m-d')}}</b></p>
+    <p class="currentDate">Today  <b>{{date('Y-m-d')}}</b></p>
 </section>
-<section id="adminInfo">
-    <div class="info">
-        
-    <p><img class ="picture" src="{{asset('img/')}}/{{$admin->profile_image}}" style="width:60px"></p>
-    <p>Welcome back<span> {{$admin->firstname}} {{$admin->lastname}}</span></p>    
+<section class="adminInfo">
+    <div class="info">   
+        <p class="pic"><img class ="picture" src="{{asset('img/')}}/{{$admin->profile_image}}" style="width:60px"></p>
+        <div class="number">
+            <p>Welcome back</p>
+            <p ><b> {{$admin->firstname}} {{$admin->lastname}}</b></p>    
+        </div>
     </div>
     <div class="summery">
         <div>
-            <p>Active Users</p>
-            <p><b>{{$userNumber}}</b></p>
+            <p class="number">Active Users</p>
+            <p class="number"><b>{{$userNumber}}</b></p>
         </div>
-        <p><i class="Medium material-icons ">account_circle</i></p>
+        <p class="pic" ><i class="Medium material-icons ">account_circle</i></p>
     </div>
     
     <div class="userNumber">
         <div>
-            <p>Pending request</p>
-            <p><b>{{$pendingReqCount}}</b></p>
+            <p class="number">Pending request</p>
+            <p class="number"><b>{{$pendingReqCount}}</b></p>
         </div>
         
-        <p><i class=" Medium material-icons ">person_add</i></p>
+        <p class="pic"><i class=" Medium material-icons ">person_add</i></p>
     </div>
     <div class="interactionNumber">
         <div>
-            <p>Number of interactions</p>
-            <p><b>{{$messages}}</b></p>
+            <p class="number">Interactions</p>
+            <p class="number"><b>{{$messages}}</b></p>
         </div>
-        <p><i class="Medium material-icons ">mode_comment</i></p> 
+        <p class="pic"><i class="Medium material-icons ">mode_comment</i></p> 
     </div>
 </section>
 
 <section class="chartSript">
-    <h3>User register Charts</h3>
+    <h3>User register Chart 2020</h3>
 <div id="charts" >
             {!! $chart->container() !!}
 </div>
@@ -62,7 +64,7 @@
                             <th>Picture</th>
                             <th>Name</th>
                             <th>Status</th>
-                            <th>register date</th>
+                            <th>Register date</th>
                             <th>Details</th>
                             <th>Accept</th>
                             <th>Decline</th>
@@ -75,6 +77,8 @@
                             <td><img class ="picture" src="{{asset('img/')}}/{{$pendingMentor->profile_image}}" style="width:60px"></td>
                             <td>{{$pendingMentor->firstname}} {{$pendingMentor->lastname}}</td>
                             <td>{{$pendingMentor->mentor_status}}</td>
+                            
+
                             <td>{{$pendingMentor->created_at->format('d-m-Y')}}</td>
 
                             <td class="editbtn">
@@ -85,7 +89,7 @@
                                 <form action="/admin/update/{{ $pendingMentor->id }}" method="post">
                                     @csrf
                                     @method('put')
-                                    <button  name="acceptMentor" class="btn waves-effect waves-light" type="submit" value="{{ $pendingMentor->id }}" >Accept<i class="material-icons ">person_add</i></button>
+                                    <button  name="acceptMentor" class="btn waves-effect waves-light acceptbtn" type="submit" value="{{ $pendingMentor->id }}" ><a onclick="M.toast({html: 'You Accepted new Mentor !'})">Accept</a><i class="material-icons ">person_add</i></button>
                                     @if(session('message'))
                                     <div>
                                         {{session('message')}}
@@ -93,29 +97,41 @@
                                     @endif
                                 </form>
                             </td>
-                            <td class="deletebtn">
-                                <form action="/admin/decline/{{ $pendingMentor->id }}" method="post">
-                                    @csrf
-                                    @method('DELETE')
-                                    <button  name="declineMentor" class=" btn waves-effect waves-light redbtn"  type="submit" value="{{ $pendingMentor->id }}"><a onclick="M.toast({html: 'you delete mentor request'})">Decline<i class="material-icons ">delete_forever</i></a></button>
-                                </form>
-                                
+                            <td class="deletebtn toast-init-btn">
+                            <button class=" btn waves-effect waves-light redbtn" >Decline</button>
+                                <div class="toast-container">
+                                    <div class="toast-new-message">
+                                        <div class="toast-header-flex-container">
+                                            Are you sure to decline this request ?
+                                            <div class="toast-close">
+                                        </div>
+                                        <div class="toast-body-flex-container">
+                                            <div class="toast-content">
+                                                <form action="/admin/decline/{{ $pendingMentor->id }}" method="post">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button  name="declineMentor" class=" btn waves-effect waves-light redbtn"  type="submit" value="{{ $pendingMentor->id }}"><a onclick="M.toast({html: 'you delete mentor request'})">Yes<i class="material-icons ">delete_forever</i></a></button>
+                                                    
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>                             
                             </td>
                         </tr>
                         <tr id="rowShowResultMentor{{ $pendingMentor->id }}" class = "rowShowResultMentor" style="display: none;">
-                            <td colspan="6" style="text-align: center;">
+                            <td colspan="7" style="text-align: center;">
                                 <div id="showResultMentor{{ $pendingMentor->id }}" class="showResultMentor"></div>
                             </td>
                         <tr>
                         @endforeach
                         @else
                         <tr>
-                            <td colspan="6">There are no data.</td>
+                            <td colspan="7"><b>There are no data</b></td>
                         </tr>
                         @endif
                     </tbody>
                 </table>
-                {{ $pendingMentors->links() }}
             </div>
         </div>
     </div>
@@ -130,7 +146,7 @@
                             <th>Picture</th>
                             <th>
                                 <i class="material-icons ">
-                                    <input type="text" id="search" onkeyup= "searchFunction()" placeholder="Search "/>
+                                    <input type="text" id="searchUser" onkeyup= "searchFunction()" placeholder="Search "/>
                                 </i>
                             </th>
                             <th>
@@ -150,21 +166,20 @@
                             @foreach($mentorMenteeList as $user)
                             <tr class="users-list">
                                 <td><a href="{{ url('')}}/{{ $user->type}}/{{$user->id}}" ><img class ="picture" src="{{asset('img/')}}/{{$user->profile_image}}" style="width:60px"></a></td>
-                                <td><a href="{{ url('')}}/{{ $user->type}}/{{$user->id}}" class="userName" >{{$user->firstname}} {{$user->lastname}}</a></td>
-                                <td>{{ $user->type }}</td>
-                                <td><button class="showCollaborations"  name="showCollaborations" value="{{$user->id}}">Collaborations</button></td>
-                                <td><a href="{{ url('')}}/contactUser/{{$user->id}}">send email</a></td>
-                                
+                                <td><a href="{{ url('')}}/{{ $user->type}}/{{$user->id}}" class="userName" ><b>{{$user->firstname}} {{$user->lastname}}</b></a></td>
+                                <td class="{{ $user->type =='mentor' ? 'mentor' : 'mentee' }}"><b>{{ $user->type }}</b></td>
+                                <td><button class="btn waves-effect waves-light showCollaborations"  name="showCollaborations" value="{{$user->id}}">Collaborations</button></td>
+                                <td><a href="{{ url('')}}/contactUser/{{$user->id}}"><b>Send email</b></a></td>  
                             </tr>
                             <tr id="rowShowUserCollab{{ $user->id }}" class = "rowShowUserCollab" style="display: none;">
-                                <td colspan=4>
+                                <td colspan=5>
                                     <div id="showUserCollab{{ $user->id }}" class="showUserCollab"></div>
                                 </td>
                             <tr>
                             @endforeach
                         @else
                             <tr>
-                                <td colspan="10">There are no data.</td>
+                                <td colspan="10">NO new request.</td>
                             </tr>
                         @endif        
                     </tbody>
@@ -178,18 +193,27 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script> 
     <script>
+    
+    $("form[name='yes']").click(function(e) {
+        alert('YES');
+    });
 
+    
     $(document).ready(function () {
 /****************************************/
 // Get details of mentors to be validated
 /****************************************/
+    $('.toast-init-btn, .toast-close').click(function() {
+    $('.toast-container').toggleClass('open-toast');
+    });
+
         $(".moreDetails").click(function(event){
             //$(".showResultMentor").hide("#showResultMentor");
             $(".rowShowResultMentor").hide(".rowShowResultMentor");
             var selectedMentor = $( this ).val();
             var objMentor = jQuery.parseJSON(selectedMentor);
-            var result = "<p><div class='firstname'>"+ objMentor.firstname +" "
-                + objMentor.lastname + "</div><div class='linkedin'><i class='fab fa-linkedin-in'></i>"
+            var result = "<p><div class='firstname'><b>"+ objMentor.firstname +" "
+                + objMentor.lastname + "</b></div><div class='linkedin'><i class='fab fa-linkedin-in'></i>"
                 + objMentor.linkedin + "</div><div class='pitch'>"
                 + objMentor.pitch + "</div><div class='img'> ";
             $temp = "#showResultMentor"+objMentor.id;
@@ -213,27 +237,27 @@
                     $(".rowShowUserCollab").hide(".rowShowUserCollab");
                     let finalHtml = ""
                     if (typeof(result) == "object"){
-                    let userId = ""
-                    $.each(result, function(i, item) {
-                        finalHtml += "<tr class='collaborators-list'>"
-                        finalHtml += "<td>"+ item.firstname +"</td><td>"
-                            + item.lastname + "</td><td>"
-                            + item.pivot.status_rqs + "</td>"
-                            + "</tr>";
-                            if (item.pivot.mentee_id === item.id){
-                                userId = item.pivot.mentor_id
-                            }else{
-                                userId = item.pivot.mentee_id
-                            }
-                    });
+                        let userId = ""
+                        $.each(result, function(i, item) {
+                            finalHtml += "<tr class='collaborators-list'>"
+                            finalHtml += "<td>"+ item.firstname +"</td><td>"
+                                + item.lastname + "</td><td>"
+                                + item.pivot.status_rqs + "</td>"
+                                + "</tr>";
+                                if (item.pivot.mentee_id === item.id){
+                                    userId = item.pivot.mentor_id
+                                }else{
+                                    userId = item.pivot.mentee_id
+                                }
+                        });
                         $("#showUserCollab"+ userId).html(finalHtml);
                         $("#rowShowUserCollab"+ userId).show("#rowShowUserCollab"+ userId);
-                    
+                        
 
                     }
                     if (typeof(result) == "number"){
                         console.log(result);
-                        finalHtml += "<tr class='collaborators-list'>"+result+"</tr>"
+                        finalHtml = "<div class='redbtn'>No collaboration</div>"
                         $("#showUserCollab"+ result).html(finalHtml);
                         $("#rowShowUserCollab"+ result).show("#rowShowUserCollab"+ result);
                     }  
@@ -247,7 +271,7 @@
 // Sorting 
 /************************************/
         function searchFunction(){
-           let searchValue = document.getElementById("search").value.toUpperCase();
+           let searchValue = document.getElementById("searchUser").value.toUpperCase();
            let userList = document.getElementsByClassName("users-list");
            for (i = 0; i < userList.length; i++) {
                 let userName = userList[i].getElementsByClassName("userName")[0].textContent    ;
