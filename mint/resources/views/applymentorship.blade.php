@@ -4,11 +4,11 @@
 <link href="{{ asset('css/applymentorship.css') }}" rel="stylesheet">
 @endsection
 <div class="container">
-    <h2>Apply to Mintor</h2>
+    <h3>Apply to Mintor</h3>
     <!--<img src="{{ asset('img/') }}/{{ $mentor->profile_image }}" width="400" height="300">-->
-    <h4>FirstName : {{ $mentor->firstname }}</h4>
-    <h4>LastName :{{ $mentor->lastname }}</h4>
-    <h4>Pitch : {{ $mentor->pitch }}</h4>
+    <h5>FirstName : {{ $mentor->firstname }}</h5>
+    <h5>LastName :{{ $mentor->lastname }}</h5>
+    <h5>Pitch : {{ $mentor->pitch }}</h5>
     <hr>
 
     <form action="" method="POST">
@@ -17,7 +17,7 @@
 
         <input name="mentor_id" type="hidden" value="{{$mentor->id}}" />
         <input name="mentee_id" type="hidden" value="{{Auth::user()->id}}" />
-        <h4>Send Your Request message</h4>
+        <h5>Send Your Request message</h5>
         <label for="request_msg"></label>
         <textarea name="request_msg" id="request_msg" cols="20" rows="10"></textarea>
 

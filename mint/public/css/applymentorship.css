@@ -1,5 +1,6 @@
 body{
     background-color: #f7ffff;   
+    color: #3B4A69;  
 }
 .btn{
     background-color: #75D19E;
@@ -7,8 +8,6 @@ body{
     box-shadow: none;
     color: #3b4a69;
 }
-h2 {
-    font-family: "Work Sans", sans-serif;
-    font-weight: 300;
+.btn:hover{
+    background-color: #FFA83F;
 }
-

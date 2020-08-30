@@ -1,6 +1,9 @@
 @extends('layouts.app')
 
 @section('content')
+@section('css')
+<link href="{{ asset('css/editmentorprofile.css') }}" rel="stylesheet">
+@endsection
 <div class="container">
 
     <form action="" method="POST">
@@ -12,15 +15,15 @@
         <label for="lastname">Lastname :</label>
         <input type="text" name="lastname" id="lastname" placeholder="lastname" value="{{ $mentor->lastname }}"><br>
 
-        <label for="linkedin">linkedin :</label>
+        <label for="linkedin">Linkedin :</label>
         <input type="text" name="linkedin" id="linkedin" placeholder="linkedin" value="{{$mentor->linkedin}}"><br>
 
-        <label for="pitch">pitch:</label>
-        <textarea name="pitch" id="pitch" cols="30" rows="10">{{ $mentor->pitch }}</textarea>
+        <label for="pitch">Pitch:</label>
+        <textarea name="pitch" id="pitch" cols="30" rows="10" placeholder="Edit Pitch">{{ $mentor->pitch }}</textarea>
 
 
         <!-- Switch -->
-        <h3>Availability:</h3>
+        <h5>Availability:</h5>
         <div class="switch">
             <label>
                 Not Available
@@ -62,12 +65,12 @@
         </div>
 
         <p>
-            <button class="btn waves-effect waves-light" type="submitsave" name="action" value={{ $mentor->id }}>{{ __('Update & Show Profile') }}
+            <button class="btn waves-effect waves-light greenbutton" type="submitsave" name="action" value={{ $mentor->id }}>{{ __('Update & Show Profile') }}
                 <i class="material-icons right">create</i>
             </button>
         </p>
         <p>
-            <button name='deletebyadmin' class='deletebtn waves-effect waves-light btn' value="{{$mentor->id}}">Delete My Profile</button>
+            <button name='deletebymentor' class='deletebtn waves-effect waves-light btn' value="{{$mentor->id}}">Delete My Profile</button>
         </p>
 
 

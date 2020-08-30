@@ -1,0 +1,18 @@
+body{
+    background-color: #f7ffff; 
+    color: #3B4A69;  
+}
+.deletebtn{
+    background-color: #EA4C4B;
+    box-shadow: none;
+    color: #F7FFFF;
+}
+
+.greenbutton{
+    background-color: #75D19E;
+    box-shadow: none;
+    color: #F7FFFF; 
+}
+.btn:hover{
+    background-color: #FFA83F;
+}
