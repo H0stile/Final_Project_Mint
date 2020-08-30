@@ -12,6 +12,11 @@ img{
     margin: 30px auto;
     width: 80%;
     box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.10);
+    transition-duration: 0.3s;
+}
+.cardBGC:hover{
+    transform: translateY(-10px);
+    box-shadow: 0px 10px 15px 0px rgba(0,0,0,0.30);
 }
 .margin {
     margin: 0.3em;
