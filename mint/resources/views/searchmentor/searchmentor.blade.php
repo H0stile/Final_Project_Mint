@@ -56,7 +56,7 @@
         <div id="loaderContainer">
             <div id="loaderPart" class="loader"></div>
         </div>
-        <section id="mentorList">
+        <section id="mentorList" class="height">
         </section>
     </section>
 </section>

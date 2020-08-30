@@ -71,14 +71,18 @@ body{
 /** HERE for the scroll bar, need to use overlay to keep all things, aligned */
 .height{
     height: 600px;
-    /* width: 100%; */
     overflow: hidden;
     border-left: 1px solid #579B9A;
-    /* background-color: grey; */
 }
 /** the over to display the scroll bar as overlay the card */
 .height:hover{
     overflow: overlay;
+}
+#mentorList{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 10px;
 }
 /** HERE THE 3 PARTS NEEDED TO HAVE THE CUSTOM SCROLL BAR */
 #mentorList::-webkit-scrollbar-track{
@@ -93,13 +97,7 @@ body{
 	border-radius: 10px;
 	background-color: #579B9A;
 }
-#mentorList{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    /* justify-content: space-between; */
-    padding: 10px;
-}
+
 .fontSize{
     font-size: 1.5rem;
     color : #3B4A69;
