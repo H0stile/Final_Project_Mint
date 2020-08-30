@@ -88,7 +88,7 @@ body{
     flex-direction: row;
     flex-wrap: wrap;
     /* justify-content: space-between; */
-    padding: 5px;
+    padding: 10px;
 }
 .fontSize{
     font-size: 1.5rem;
