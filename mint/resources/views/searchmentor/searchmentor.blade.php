@@ -10,7 +10,7 @@
 
 <section class="globalWidth flex">
     <section id="searchField" class="fontSize">
-        <h4 class="SYM">Search your mentor</h4>
+        <h4 class="SYM">Search your mintor</h4>
         <div class="row">
             <div class="col s10">
               <div class="row">
@@ -54,7 +54,7 @@
                 <p id="mentroScore" class="fontSize2"></p>
                 <span id="skill" class="fontSize2"></span>
                 <button class="btn buttonColorVP margin" type="submit" id="goToMentorProfile" name="goToMentorProfile" value="">View profile</button>
-                <button class="btn buttonColorAPP margin" type="submit" id="goToApply" name="goToApply" value="">Apply to mentor</button>
+                <button class="btn buttonColorAPP margin" type="submit" id="goToApply" name="goToApply" value="">Apply to mintor</button>
             </div>
         <!-- CLONE ELEMENT -->
         <section id="mentorList" class="height">
