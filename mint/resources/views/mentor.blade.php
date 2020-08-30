@@ -55,13 +55,14 @@
     @endforeach
 
     @if(!$ratingExists)
+    @if($writeRating)
     <form action="" method=" POST">
 
         @csrf
         <input name="writer_id" type="hidden" value="{{Auth::user()->id}}" />
         <input name="target_id" type="hidden" value="{{$mentor->id}}" />
 
-        <label for="comment">Msg To Your Mintee</label>
+        <label for="comment">Msg To Your Mintor</label>
         <textarea name="comment" id="comment" cols="30" rows="10"></textarea>
         <label for="score">Ratings:</label>
         <select id="score" name="score" class="browser-default">
@@ -73,9 +74,8 @@
         </select>
         <br>
         <input class="waves-effect waves-light btn" type="submit" id="submit" value="submit">
-
-
     </form>
+    @endif
     @endif
     @endif
     @endsection

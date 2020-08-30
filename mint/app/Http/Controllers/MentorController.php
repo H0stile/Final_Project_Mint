@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Collaboration;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
@@ -26,6 +27,11 @@ class MentorController extends Controller
         $mentor = User::find($id);
         $skills = User::find($id)->skills;
         $ratings = User::find($id)->receiveRatings;
+        $menteeId = Auth::user()->id;
+        $mentorId = User::find($id)->id;
+
+        $collab = Collaboration::where('mentor_id', $mentorId)
+            ->where('mentee_id', $menteeId)->first();
 
 
         /*
@@ -60,6 +66,15 @@ class MentorController extends Controller
         } else {
             $mentorAvailable = 'No';
         }
+
+        $writeRating = false;
+        if ($collab !== null) {
+            if ($collab->status_rqs == 'connected') {
+                $writeRating = true;
+            } else {
+                $writeRating = false;
+            }
+        }
         // dd($ratingsWithName);
 
         //dd($mentor->firstname);
@@ -68,7 +83,7 @@ class MentorController extends Controller
         //dd(Auth::user()->id);
         //dd($ratingExists);
         //return view('mentor', ['mentor' => $mentor],['skills' => $skills],['ratings' => $ratings]);   
-        return view('mentor', compact('mentor', 'skills', 'ratingExists', 'ratingsWithName', 'mentorAvailable'));
+        return view('mentor', compact('mentor', 'skills', 'ratingExists', 'ratingsWithName', 'mentorAvailable', 'writeRating'));
     }
     /**
      * Show the form for creating a new resource.

@@ -25,5 +25,6 @@ class MentorProfileAccess
         if ($loggedInUser->type === 'mentor' && $loggedInUser->id !== (int) $request->id) {
             return response()->view("unauthorized");
         }
+        return $next($request);
     }
 }
