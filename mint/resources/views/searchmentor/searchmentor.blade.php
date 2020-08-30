@@ -4,9 +4,13 @@
 @endsection
 @section('content')
 
+<div id="loaderContainer">
+    <div id="loaderPart" class="loader"></div>
+</div>
+
 <section class="globalWidth flex">
     <section id="searchField" class="fontSize">
-        <h4>Search your mentor</h4>
+        <h4 class="SYM">Search your mentor</h4>
         <div class="row">
             <div class="col s10">
               <div class="row">
@@ -53,9 +57,6 @@
                 <button class="btn buttonColorAPP margin" type="submit" id="goToApply" name="goToApply" value="">Apply to mentor</button>
             </div>
         <!-- CLONE ELEMENT -->
-        <div id="loaderContainer">
-            <div id="loaderPart" class="loader"></div>
-        </div>
         <section id="mentorList" class="height">
         </section>
     </section>

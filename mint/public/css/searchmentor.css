@@ -1,13 +1,13 @@
 body{
     background-color: #F7FFFF;
 }
-.loaderContainer {
-    position: relative;
-}
 .globalWidth {
     width: 90%;
     height: 650px;
     margin: auto;
+}
+#loaderContainer{
+    position: relative;
 }
 .flex {
     display: flex;
@@ -33,7 +33,7 @@ body{
     height: 80px;
     top: 50%;
     left: 50%;
-    transform: translate(50%, -50%);
+    transform: translate(100%, 300%);
 }
 .loader:after {
     content: " ";
@@ -146,12 +146,19 @@ body{
     .height{
         border-left: 0;
         border-top: 1px solid #579B9A;
-        height: 600px;
+        height: 90%;
+        justify-content: center;
     }
     .cardBGC{
-        margin: 10px auto;
+        margin: 10px;
     }
     .globalWidth{
         height: 900px;
+    }
+    .SYM{
+        text-align: center;
+    }
+    .loader{
+        transform: translate(-50%, 220%);
     }
 }
