@@ -22,7 +22,7 @@
                     <div class="cardBGC flex">
                         <div class="flex3">
                             <div>
-                                <img class="margin" src="{{asset('img/')}}/{{$menteeRequest->mentee->profile_image}}">
+                                <img id="img" class="margin" src="{{asset('img/')}}/{{$menteeRequest->mentee->profile_image}}">
                             </div>
                             <div>
                                 <p class="fontSize margin">{{$menteeRequest->mentee->firstname}} {{$menteeRequest->mentee->lastname}}</p>
