@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactMe;
 use App\Charts\UserChart;
 use Illuminate\Support\Facades\DB;
+use App\Message;
 
 class AdminController extends Controller
 {
@@ -45,7 +46,13 @@ class AdminController extends Controller
         'borderColor' => '#51C1C0'
         ]);
 
-        return view('admin', compact('pendingMentors','chart', 'admin', 'mentorMenteeList','userCollaborators'));
+        $userNumber = User::where('mentor_status', 'validate')->count();
+        $pendingReqCount = User::where('mentor_status', 'pending')->count();  
+        
+        $messages = Message::count();
+
+
+        return view('admin', compact('messages','pendingReqCount','userNumber','pendingMentors','chart', 'admin', 'mentorMenteeList','userCollaborators'));
     }
 
     /**

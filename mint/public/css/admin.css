@@ -1,0 +1,122 @@
+         #adminPgae,
+         #adminInfo,
+         h3 {
+             color: #3B4A69;
+         }
+         
+         h3 {
+             text-align: center;
+             margin: 40px 0;
+         }
+         
+         #charts {
+             width: 80%;
+             margin: auto;
+             border: 1px solid black;
+         }
+         
+         .chartSript {
+             margin: 100px 0;
+         }
+         
+         #titleDate {
+             background-color: #75D19E;
+             color: white;
+             /*border: 1px solid blue;*/
+             display: flex;
+             justify-content: space-between;
+             height: 25vh;
+             align-items: flex-start;
+             position: relative;
+         }
+         
+         #adminInfo {
+             display: flex;
+             margin: auto;
+             position: relative;
+             width: 90%;
+             top: -30px;
+         }
+         
+         .info,
+         .summery,
+         .userNumber,
+         .interactionNumber {
+             display: flex;
+             justify-content: space-around;
+             border-radius: 5px;
+             background-color: #fff;
+             border: 1px solid black;
+             width: 300px;
+             margin: 0 20px;
+         }
+         
+         .Medium {
+             color: #FFA83F;
+         }
+         
+         #CurrentDate {
+             margin: 1.5rem;
+             padding: 1rem;
+             /*border: 1px solid red;*/
+         }
+         
+         .userTable {
+             overflow: scroll;
+             height: 70vh;
+         }
+         
+         .container {
+             width: 100%;
+         }
+         
+         table {
+             color: #3B4A69;
+         }
+         
+         thead {
+             border-bottom: 1px solid lightgray;
+         }
+         
+         .picture {
+             border-radius: 2rem;
+             border: 2px solid #3B4A69;
+         }
+         
+         .redbtn {
+             background-color: #EA4C4B;
+             box-shadow: none;
+             color: #F7FFFF;
+         }
+         
+         .greenbtn {
+             background-color: #75D19E;
+             box-shadow: none;
+             color: #F7FFFF;
+         }
+         
+         .editbtn {
+             margin-bottom: 50px;
+         }
+         
+         .fa-linkedin-in {
+             background-color: blue;
+             color: white;
+             padding: 3px;
+             margin-right: 5px;
+             border-radius: 3px;
+         }
+         
+         i {
+             padding-bottom: 0;
+         }
+         
+         .accept {
+             border: 1px solid blue;
+         }
+         
+         .deletebtn a {
+             color: white;
+         }
+         
+         @media ( max-width:600px) {}
