@@ -24,7 +24,7 @@
 <div class="row" id="home-register">
     <div class="col s6" id="register_col_1">
 
-        <img src="img\mentee.png" alt="mentee" style="height: 400px">
+        <img src="img\mentee.png" alt="mentee">
         <h5>A fresh mintee</h5>
 
 
@@ -37,7 +37,7 @@
     </div>
     <div class="col s6" id="register_col_2">
 
-        <img src="img\mentor.png" alt="mentor" style="height: 400px">
+        <img src="img\mentor.png" alt="mentor">
         <h5>A green and experienced mintor</h5>
 
 
