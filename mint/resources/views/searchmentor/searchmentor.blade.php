@@ -188,7 +188,6 @@ $(document).ready(function () {
 
     //? Evenlistener to check the search field
     $('#searchField').change(function (){
-        // console.log("Oki, something changed !!!");
         $( "#loaderPart" ).addClass( "loader" );
         $( "#loaderPart" ).removeClass( "hide" );
 
@@ -203,7 +202,6 @@ $(document).ready(function () {
         data: {lang: initLanguageVal, skill: initSkillVal, name: initNameVal}, 
         dataType: 'json',
         success: function (result) {
-            console.log(result);
             $('#mentorList').html('');
             $.each(result, function(i, item) {
                 nameData = {};

@@ -28,7 +28,8 @@
                 <button class="waves-effect waves-light btn buttonColorVP margin" type="submit" name="getIdMentee" value="{{$menteeRequest->mentee->id}}">View profile</button>
             </div>
                 <!-- <p class="fontSize2">Request</p> -->
-                <textarea class="fontSize2 margin2" name="menteePitch" id="" cols="30" rows="5" readonly="true" style="resize:none">{{$menteeRequest->request_msg}}</textarea>
+                <p class="fontSize2 margin2" name="menteePitch" id="">{{$menteeRequest->request_msg}}</p>
+                <!-- <textarea class="fontSize2 margin2" name="menteePitch" id="" cols="30" rows="5" readonly="true" style="resize:none">{{$menteeRequest->request_msg}}</textarea> -->
                 <div class="flex2">
                     <button class="waves-effect waves-light btn buttonColorVP margin" type="submit" name="getIdCollabAcc" value="{{$menteeRequest->id}}">Accept</button>
                     <button class="waves-effect waves-light btn buttonColorDC margin" type="submit" name="getIdCollabDec" value="{{$menteeRequest->id}}">Decline</button>
