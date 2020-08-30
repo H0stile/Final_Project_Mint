@@ -12,6 +12,11 @@ body{
 .flex {
     display: flex;
 }
+.flex2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 #searchField {
     min-width: 20%;
 }
@@ -51,7 +56,8 @@ body{
 }
 .cardBGC {
     background-color: #F7FFFF;
-    padding: 8px;
+    color : #3B4A69;
+    padding: 12px;
     margin: 10px 10px;
     width: 225px;
     /* height: 300px; */
@@ -100,6 +106,7 @@ body{
     margin: 10px auto;
 }
 .buttonColorVP{
+    background-color: #579B9A;
     background-color: #75D19E;
 }
 .buttonColorAPP{
@@ -114,4 +121,23 @@ body{
 }
 .margin2 {
     margin: 1em;
+}
+#skill{
+    background-color: #B9F3C0;
+    padding: 5px;
+    border-radius: 5px;
+    display: inline-block;
+}
+.fontSize{
+    font-size: 1.5rem;
+    color : #3B4A69;
+    margin: 10px auto;
+}
+.fontSize2{
+    font-size: 0.8rem;
+    margin: 6px auto;
+}
+.fontSize3{
+    font-size: 1rem;
+    margin: 6px auto;
 }

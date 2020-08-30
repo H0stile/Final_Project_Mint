@@ -43,12 +43,12 @@
     </section>
     <section class="cardBlock">
         <!-- CLONE ELEMENT -->
-            <div id="clone" class="hide cardBGC">
+            <div id="clone" class="hide cardBGC flex2">
                 <img id="img" src="" style="width:60px">
-                <p id="mentorName"></p>
-                <p id="mentroScore"></p>
-                <p id="skill"></p>
+                <p id="mentorName" class="fontSize"></p>
                 <p id="language"></p>
+                <p id="mentroScore" class="fontSize2"></p>
+                <span id="skill" class="fontSize2"></span>
                 <button class="btn buttonColorVP margin" type="submit" id="goToMentorProfile" name="goToMentorProfile" value="">View profile</button>
                 <button class="btn buttonColorAPP margin" type="submit" id="goToApply" name="goToApply" value="">Apply to mentor</button>
             </div>
@@ -171,7 +171,7 @@ $(document).ready(function () {
                     clone.find('#img').attr('src', imgUrl);
                     clone.find('#mentorName').text(result[i][a].firstname+" "+result[i][a].lastname);
                     clone.find('#skill').text(result[i][a].skill);
-                    clone.find('#mentroScore').text(avgRating+"/5");
+                    clone.find('#mentroScore').text("Rating : "+avgRating+"/5");
                     clone.find('#language').text(result[i][a].languages);
                     clone.find('#goToMentorProfile').val(mentorProfile);
                     clone.find('#goToApply').val(applyToMentor);
@@ -229,7 +229,7 @@ $(document).ready(function () {
                     clone.find('#img').attr('src', imgUrl);
                     clone.find('#mentorName').text(result[i][a].firstname+" "+result[i][a].lastname);
                     clone.find('#skill').text(result[i][a].skill);
-                    clone.find('#mentroScore').text(avgRating+"/5");
+                    clone.find('#mentroScore').text("Rating : "+avgRating+"/5");
                     clone.find('#language').text(result[i][a].languages);
                     clone.find('#goToMentorProfile').val(mentorProfile);
                     clone.find('#goToApply').val(applyToMentor);
