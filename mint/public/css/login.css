@@ -1,0 +1,12 @@
+/* Charles : hide the register button */
+
+#register_button {
+    display: none;
+}
+.btn-large {
+    display: none;
+}
+
+nav ul {
+    margin-right: 5em;
+}
