@@ -9,7 +9,7 @@
     display: flex;
 }
 #searchField {
-    width: 600px;
+    width: 400px;
 }
 .hide{
     display: none;
