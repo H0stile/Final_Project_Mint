@@ -5,8 +5,8 @@
 @section('content')
 
 <section class="globalWidth flex">
-    <section id="searchField">
-        <h2>Filter</h2>
+    <section id="searchField" class="fontSize">
+        <h4>Search your mentor</h4>
         <div class="row">
             <div class="col s10">
               <div class="row">
@@ -43,7 +43,7 @@
     </section>
     <section class="cardBlock">
         <!-- CLONE ELEMENT -->
-            <div id="clone" class="hide">
+            <div id="clone" class="hide cardBGC">
                 <img id="img" src="" style="width:60px">
                 <p id="mentorName"></p>
                 <p id="mentroScore"></p>
@@ -56,7 +56,7 @@
         <div id="loaderContainer">
             <div id="loaderPart" class="loader"></div>
         </div>
-        <section id="mentorList">
+        <section id="mentorList" class="height">
         </section>
     </section>
 </section>
