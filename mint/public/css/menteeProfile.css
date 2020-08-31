@@ -25,9 +25,24 @@ body{
     color: #FFA83F;
 }
 .scroll{
-    overflow:scroll; 
+    overflow: hidden; 
+    border-left: 1px solid #579B9A;
     height: 200px;
     margin-bottom: 0;
+}
+
+/** HERE THE 3 PARTS NEEDED TO HAVE THE CUSTOM SCROLL BAR */
+#ratingList::-webkit-scrollbar-track{
+    border-radius: 10px;
+	background-color: #edf5f5;
+}
+#ratingList::-webkit-scrollbar{
+	width: 8px;
+	background-color: #edf5f5;
+}
+#ratingList::-webkit-scrollbar-thumb{
+	border-radius: 10px;
+	background-color: #579B9A;
 }
 .scrollbig{
     overflow:scroll; 

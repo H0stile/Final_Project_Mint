@@ -20,7 +20,7 @@
             </section>
             <section class="block">
                 <h5>Ratings:</h5>
-                <section class="scroll">
+                <section class="scroll" id="ratingList">
                     @foreach($profile->receiveRatings as $rating)
                     <div class="bg">
                         <h6>{{$rating->writer->getFullName()}}:</h6>
