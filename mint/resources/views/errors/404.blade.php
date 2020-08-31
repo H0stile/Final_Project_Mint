@@ -8,7 +8,7 @@
     <h5 id="error-text">
         We are sorry but the page you are looking for is not available ...
     </h5>
-    <a href="/home" class="waves-effect waves-light btn" id="error-button">Go back</a>
+    <button class="waves-effect waves-light btn" id="error-button" onclick="goBack()">Go back</button>
 
 </div>
 
@@ -16,4 +16,11 @@
 maybe put a half transparent logo ?
 button to go back ?
 -->
+@endsection
+@section('script')
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
 @endsection
