@@ -103,6 +103,7 @@
          .picture {
              border-radius: 2rem;
              border: 2px solid #3B4A69;
+             width: 60px;
          }
          
          .pic {
@@ -223,6 +224,10 @@
              margin-right: 8px;
          }
          
+         .submit {
+             margin-top: 18px;
+         }
+         
          @media ( max-width:600px) {
              .info,
              .summery,
@@ -232,5 +237,15 @@
              }
              .desktop {
                  display: none;
+             }
+             .mobile {
+                 display: block;
+                 margin: auto;
+             }
+             .pic {
+                 display: none;
+             }
+             .submit {
+                 margin-top: 18px;
              }
          }
