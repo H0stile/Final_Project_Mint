@@ -6,7 +6,10 @@
 <div class="container">
     <div class="picnname">
         <img src="{{ asset('img/') }}/{{ $mentor->profile_image }}" class="image circle">
-        <h4 class="name"> {{ $mentor->firstname }} {{ $mentor->lastname }}</h4>
+        <section id="column-display">
+            <h2 class="name"> {{ $mentor->firstname }} {{ $mentor->lastname }}</h2>
+            <h5>mentor</h5>
+        </section>
     </div>
 
     <div class="space">
@@ -31,7 +34,7 @@
     @if(Auth::user()->type == 'mentor')
     <div class="space">
         <hr>
-        <h5>Available For Mentorship :<b> {{ $mentorAvailable }}</b></h5>
+        <h5 id="availability">Available For Mentorship :<b> {{ $mentorAvailable }}</b></h5>
 
         <button class="waves-effect waves-light btn" name="editbtn" value="{{$mentor->id}}">Edit My Profile</button>
         <button class="waves-effect waves-light btn" name="seeallinvitationbtn" value="{{$mentor->id}}">Mentorships Request</button>
@@ -39,15 +42,17 @@
 
     </div>
     <hr>
-    <h5>Ratings</h5>
+    <h5>Ratings:</h5>
+    @foreach($ratingsWithName as $rating)
     <div class="rate">
-        @foreach($ratingsWithName as $rating)
-        <h5>Mintee Name : {{$rating[0]}}</h5>
-        <h5>Rating : {{$rating[1]}} <i class="material-icons star">star</i> </h5>
-        <h5>Msg : {{$rating[2]}}</h5>
-        <hr>
-        @endforeach
+        <h6>{{$rating[0]}}:</h6>
+        <section class="rating-part">
+            <p>{{$rating[1]}}</p>
+            <i class="material-icons star">star</i>
+            <p>{{$rating[2]}}</p>
+        </section>
     </div>
+    @endforeach
 
     @endif
 
@@ -58,21 +63,24 @@
     @if(Auth::user()->type == 'mentee')
 
     <div class="space">
-        <h5>Available for mentorship : <b>{{ $mentorAvailable }}</b></h5>
+        <h5 id="availability">Available for mentorship : <b>{{ $mentorAvailable }}</b></h5>
         <button class="waves-effect waves-light btn" name='applymentorship' value="{{$mentor->id}}">Apply for the mentorship</button>
     </div>
 
     <hr>
 
-    <h5>Ratings</h5>
+    <h5>Ratings:</h5>
+    @foreach($ratingsWithName as $rating)
     <div class="rate">
-        @foreach($ratingsWithName as $rating)
-        <h5>Mintee Name : {{$rating[0]}}</h5>
-        <h5>Rating : {{$rating[1]}} <i class="material-icons star">star</i> </h5>
-        <h5>Msg : {{$rating[2]}}</h5>
+        <h6>{{$rating[0]}}</h6>
+        <section class="rating-part">
+            <p>{{$rating[1]}}</p>
+            <i class="material-icons star">star</i>
+            <p>{{$rating[2]}}</p>
+        </section>
         <hr>
-        @endforeach
     </div>
+    @endforeach
 
     @if(!$ratingExists)
     @if($writeRating)

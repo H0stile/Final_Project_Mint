@@ -1,34 +1,69 @@
-body{
-    background-color: #f7ffff; 
-    color: #3B4A69;  
+body {
+    background-color: #f7ffff;
+    color: #3b4a69;
 }
-.btn{
-    background-color: #75D19E;
+.btn {
+    background-color: #75d19e;
     margin-bottom: 30px;
     box-shadow: none;
     color: #f7ffff;
 }
-h2 {
-    font-family: "Work Sans", sans-serif;
-    font-weight: 300;
+
+.star {
+    color: #ffa83f;
 }
-.star{
-    color: #FFA83F;
-}
-.picnname{
-    display: flex;
-}
-.image{
+
+.image {
     height: 100px;
     margin-right: 20px;
 }
-.name{
+.name {
     margin-bottom: 4px;
-    align-items: center
+    align-items: center;
 }
-.pitch,.avai,.linkedin,.skills,.rate{
-    background-color:  #EBFEEA;
+.pitch,
+.avai,
+.linkedin,
+.skills,
+.rate {
+    background-color: #ebfeea;
+    padding: 20px;
+    border-radius: 2px;
 }
-.picnname,.space{
-    margin-top :50px;
+.picnname,
+.space {
+    margin-top: 50px;
+}
+
+/*Charles : my modifications */
+
+#column-display {
+    display: flex;
+    flex-direction: column;
+}
+.picnname {
+    display: flex;
+
+    align-content: center;
+    align-items: center;
+}
+hr {
+    margin-bottom: 50px;
+}
+
+#availability {
+    margin-bottom: 50px;
+}
+.rate {
+    margin-bottom: 20px;
+}
+
+.rating-part {
+    display: flex;
+    align-content: center;
+    align-items: center;
+}
+
+.material-icons {
+    margin-right: 15px;
 }
