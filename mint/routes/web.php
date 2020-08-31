@@ -38,7 +38,7 @@ Route::post('/register_mentor', 'Auth\RegisterMentorController@validator')->name
 //Route::get('/home', 'HomeController@index')->name('home')->middleware('verified');
 
 // Jeyashree : ajax call route to submit the comment by mentee to the mentor for one time
-Route::get('/mentor/{id}', 'MentorController@show')->name('mentorprofile')->middleware('auth');
+Route::get('/mentor/{id}', 'MentorController@show')->name('mentorprofile')->middleware('mentorprofile')->middleware('auth');
 Route::post('/mentor/{id}', 'MentorController@store')->middleware('auth');
 // Jeyashree :to delete the mentor profile from the database by admin
 Route::delete('/mentor/delete/{id}', 'MentorController@destroy')->middleware('auth');

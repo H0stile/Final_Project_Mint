@@ -58,7 +58,7 @@
         <section>
             <article>
                 <h1 id="greeting">Hi, {{ $name }}  </h1>
-                <p>Your demande at Mint has been approved! You can check you profile. Thank you for using Mint!</p>
+                <p>Your demand at Mint has been approved! You can check you profile. Thank you for using Mint!</p>
                 <p>If you have further questions, feel free to reach out to us at donotreply.mint@gmail.com</a>.</p>
                 <p id="cheers">Cheers,</p>
                 <p id="closing">The Mint Team</p>

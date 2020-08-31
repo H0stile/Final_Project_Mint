@@ -1,5 +1,32 @@
-.cardContainer {
+body{
+    background-color: #F7FFFF;
+}
+#img{
+    width: 60px;
+    margin: 10px auto;
+    border-radius: 50%;
+}
+.globalWidth {
+    width: 90%;
+    height: 650px;
+    margin: auto;
+}
+#loaderContainer{
     position: relative;
+}
+.flex {
+    display: flex;
+}
+.flex2 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+#searchField {
+    min-width: 20%;
+}
+.cardBlock{
+    min-width: 80%;
 }
 .hide{
     display: none;
@@ -9,6 +36,9 @@
     display: inline-block;
     width: 80px;
     height: 80px;
+    top: 50%;
+    left: 50%;
+    transform: translate(100%, 300%);
 }
 .loader:after {
     content: " ";
@@ -17,8 +47,8 @@
     height: 64px;
     margin: 8px;
     border-radius: 50%;
-    border: 6px solid rgb(0, 0, 0);
-    border-color: rgb(0, 0, 0) transparent rgb(0, 0, 0) transparent;
+    border: 6px solid #579B9A;
+    border-color: #579B9A transparent #579B9A transparent;
     animation: loader 1.2s linear infinite;
 }
 @keyframes loader {
@@ -27,5 +57,113 @@
     }
     100% {
         transform: rotate(360deg);
+    }
+}
+.cardBGC {
+    background-color: #F7FFFF;
+    color : #3B4A69;
+    padding: 12px;
+    margin: 10px 10px;
+    width: 225px;
+    height: 380px;
+    box-shadow: 0px 5px 10px 0px rgba(0,0,0,0.10);
+    transition-duration: 0.3s;
+}
+.cardBGC:hover{
+    transform: translateY(-10px);
+    box-shadow: 0px 10px 15px 0px rgba(0,0,0,0.30);
+}
+/** HERE for the scroll bar, need to use overlay to keep all things, aligned */
+.height{
+    height: 600px;
+    overflow: hidden;
+    border-left: 1px solid #579B9A;
+}
+/** the over to display the scroll bar as overlay the card */
+.height:hover{
+    overflow: overlay;
+}
+#mentorList{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 10px;
+}
+/** HERE THE 3 PARTS NEEDED TO HAVE THE CUSTOM SCROLL BAR */
+#mentorList::-webkit-scrollbar-track{
+    border-radius: 10px;
+	background-color: #edf5f5;
+}
+#mentorList::-webkit-scrollbar{
+	width: 8px;
+	background-color: #edf5f5;
+}
+#mentorList::-webkit-scrollbar-thumb{
+	border-radius: 10px;
+	background-color: #579B9A;
+}
+
+.fontSize{
+    font-size: 1.5rem;
+    color : #3B4A69;
+    margin: 10px auto;
+}
+.buttonColorVP{
+    background-color: #579B9A;
+    background-color: #75D19E;
+}
+.buttonColorAPP{
+    background-color: #FFAB3F;
+}
+.btn{
+    box-shadow: none;
+    width: 200px;
+}
+.margin {
+    margin: 0.3em;
+}
+.margin2 {
+    margin: 1em;
+}
+#skill{
+    background-color: #B9F3C0;
+    padding: 5px;
+    border-radius: 5px;
+    display: inline-block;
+}
+.fontSize{
+    font-size: 1.5rem;
+    color : #3B4A69;
+    margin: 10px auto;
+}
+.fontSize2{
+    font-size: 0.8rem;
+    margin: 6px auto;
+}
+.fontSize3{
+    font-size: 1rem;
+    margin: 6px auto;
+}
+@media screen and (max-width: 1055px){
+    .flex{
+        flex-direction: column;
+    }
+    .height{
+        border-left: 0;
+        border-top: 1px solid #579B9A;
+        height: 90%;
+        justify-content: center;
+    }
+    .cardBGC{
+        margin: 10px;
+    }
+    .globalWidth{
+        height: 900px;
+    }
+    .SYM{
+        text-align: center;
+    }
+    .loader{
+        transform: translate(-50%, 220%);
     }
 }

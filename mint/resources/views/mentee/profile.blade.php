@@ -20,7 +20,7 @@
             </section>
             <section class="block">
                 <h5>Ratings:</h5>
-                <section class="scroll">
+                <section class="scroll" id="ratingList">
                     @foreach($profile->receiveRatings as $rating)
                     <div class="bg">
                         <h6>{{$rating->writer->getFullName()}}:</h6>
@@ -69,7 +69,7 @@
             <section>
                 @if(count($messages) >0)
                 <h5>Messages:</h5>
-                <section class="scroll bg">
+                <section class="scroll bg" id="messagegList">
                     @foreach($messages as $message)
                     <section class="rating">
                         <i class="material-icons left message messagemy">message</i>
@@ -125,7 +125,7 @@
             <div>
                 <h5>Jobs:</h5>
 
-                <section class="scrollbig">
+                <section class="scrollbig" id="jobList">
                     @foreach($jobsData as $job)
                     <!-- <i class="material-icons left motion_photos_on messagemy">motion_photos_on</i> -->
                     <h6 class="jobtitle">{{$job['title']}}</h6>

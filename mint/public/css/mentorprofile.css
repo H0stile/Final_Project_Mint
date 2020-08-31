@@ -1,5 +1,6 @@
 body{
-    background-color: #f7ffff;   
+    background-color: #f7ffff; 
+    color: #3B4A69;  
 }
 .btn{
     background-color: #75D19E;
@@ -11,4 +12,13 @@ h2 {
     font-family: "Work Sans", sans-serif;
     font-weight: 300;
 }
-
+.btn:hover{
+    background-color: #FFA83F;
+}
+.star{
+    color: #FFA83F;
+}
+.image{
+    height: 200px;
+    margin-right: 50px;
+}
