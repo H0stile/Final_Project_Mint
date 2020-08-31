@@ -6,30 +6,28 @@
 <div class="container">
     <h3>Apply To Mintor</h3>
     <div class="picnname">
-        <img src="{{ asset('img/mintlogo.png') }}/{{ $mentor->profile_image }}" class="image circle">
+        <img src="{{ asset('img/') }}/{{ $mentor->profile_image }}" class="image circle">
         <h5 class="name"> {{ $mentor->firstname }} {{ $mentor->lastname }}</h5>
     </div>
     <h5>Pitch : </h5>
     <p class="pitch">{{ $mentor->pitch }}</p>
     <hr>
 
+
+    @if(!$writeMsg)
     <form action="" method="POST">
-
         @csrf
-
         <input name="mentor_id" type="hidden" value="{{$mentor->id}}" />
         <input name="mentee_id" type="hidden" value="{{Auth::user()->id}}" />
+
         <h5>Send Your Request message</h5>
         <label for="request_msg"></label>
         <textarea name="request_msg" id="request_msg" cols="20" rows="10"></textarea>
-
         <input name="status_rqs" type="hidden" value="pending" />
-
         <button class="waves-effect waves-light btn" type="submit" name="submit">submit</button>
-
-        <button class="waves-effect waves-light btn" type="submit" name="backtomentorprofile" value="{{$mentor->id}}">Go Back</button>
-
     </form>
+    @endif
+    <button class="waves-effect waves-light btn" type="submit" name="backtomentorprofile" value="{{$mentor->id}}">Go Back</button>
     @endsection
 
     @section('script')

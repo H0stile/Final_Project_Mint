@@ -38,7 +38,27 @@ class ApplymentorshipController extends Controller
         $mentor = User::find($id);
         $skills = User::find($id)->skills;
         //dd(Auth::user()->id);
-        return view('applymentorship', compact('mentor', 'skills'));
+
+
+        $menteeId = Auth::user()->id;
+        $mentorId = User::find($id)->id;
+
+        $collab = Collaboration::where('mentor_id', $mentorId)
+            ->where('mentee_id', $menteeId)->first();
+
+
+        $writeMsg = false;
+        if ($collab !== null) {
+            if (($collab->mentee_id == Auth::user()->id) && ($collab->mentor_id == $id)) {
+                $writeMsg = true;
+            } else {
+                $writeMsg = false;
+            }
+        }
+
+
+
+        return view('applymentorship', compact('mentor', 'skills', 'writeMsg'));
     }
 
     /**
