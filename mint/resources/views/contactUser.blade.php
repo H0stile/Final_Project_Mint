@@ -18,7 +18,10 @@
                     <input type="text" id="text" name="text">    
                 </div>
             </div>
-        <button class="btn waves-effect waves-light" type="submit">Submit</button>      
+        <button class="btn waves-effect waves-light" type="submit">Submit</button>   
+        <a href="{{ url('')}}/admin" >Go back</a>   
     </form>
+   
+    
 </div>
 @endsection

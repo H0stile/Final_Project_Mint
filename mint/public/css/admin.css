@@ -224,4 +224,11 @@
              margin-right: 8px;
          }
          
-         @media ( max-width:600px) {}
+         @media ( max-width:600px) {
+             .info,
+             .summery,
+             .userNumber,
+             .interactionNumber {
+                 display: none;
+             }
+         }
