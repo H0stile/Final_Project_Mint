@@ -38,7 +38,7 @@
         <button class="waves-effect waves-light btn" name="seeallconnectionbtn" value="{{$mentor->id}}">Connected Mintees</button>
 
     </div>
-
+    <hr>
     <h5>Ratings</h5>
     <div class="rate">
         @foreach($ratingsWithName as $rating)
