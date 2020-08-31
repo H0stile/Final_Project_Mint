@@ -4,12 +4,9 @@ body{
 }
 .btn{
     background-color: #75D19E;
-    margin-bottom: 40px;
+    margin-bottom: 20px;
     box-shadow: none;
     color:  #f7ffff;
-}
-.btn:hover{
-    background-color: #FFA83F;
 }
 .image{
     height: 100px;
