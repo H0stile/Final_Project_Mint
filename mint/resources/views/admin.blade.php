@@ -2,6 +2,7 @@
 @section('css')
 <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
 
+
 @endsection
 @section('content')
 
@@ -27,7 +28,7 @@
     
     <div class="userNumber">
         <div>
-            <p class="number">Pending request</p>
+            <p class="number">Pending mentor</p>
             <p class="number"><b>{{$pendingReqCount}}</b></p>
         </div>
         
@@ -56,15 +57,13 @@
     <section id="adminPgae">
     <div class="container">
         <h3>Waiting request</h3>
-        <div class="row">
-            <div class="">
-                <table class="scroll striped">
+                <table class="striped">
                     <thead>
                         <tr>
-                            <th>Picture</th>
+                            <th class="pic">Picture</th>
                             <th>Name</th>
                             <th>Status</th>
-                            <th>Register date</th>
+                            <th class="pic">Register date</th>
                             <th>Details</th>
                             <th>Accept</th>
                             <th>Decline</th>
@@ -74,22 +73,20 @@
                         @if(!empty($pendingMentors) && $pendingMentors->count())
                         @foreach($pendingMentors as $pendingMentor)
                         <tr>
-                            <td><img class ="picture" src="{{asset('img/')}}/{{$pendingMentor->profile_image}}" style="width:60px"></td>
+                            <td class="pic"><img class="picture" src="{{asset('img/')}}/{{$pendingMentor->profile_image}}" ></td>
                             <td>{{$pendingMentor->firstname}} {{$pendingMentor->lastname}}</td>
                             <td>{{$pendingMentor->mentor_status}}</td>
-                            
-
-                            <td>{{$pendingMentor->created_at->format('d-m-Y')}}</td>
-
+                            <td class="pic">{{$pendingMentor->created_at->format('d-m-Y')}}</td>
                             <td class="editbtn">
-                                <button  class="moreDetails btn waves-effect waves-light"  name="moreDetails" value="{{$pendingMentor}}">More Details</button>
+                                <button  class="moreDetails btn waves-effect waves-light desktop"  name="moreDetails" value="{{$pendingMentor}}">More Details</button>
+                                <button  name="acceptMentor" class="mobile btn-floating  moreDetails waves-effect waves-light  " type="submit" value="{{ $pendingMentor->id }}" ><i class="material-icons">add</i></button>
                             </td>
-
-                            <td class="editbtn">
+                            <td>
                                 <form action="/admin/update/{{ $pendingMentor->id }}" method="post">
                                     @csrf
                                     @method('put')
-                                    <button  name="acceptMentor" class="btn waves-effect waves-light acceptbtn" type="submit" value="{{ $pendingMentor->id }}" ><a onclick="M.toast({html: 'You Accepted new Mentor !'})">Accept</a><i class="material-icons ">person_add</i></button>
+                                    <button  name="acceptMentor" class="btn waves-effect waves-light desktop submit" type="submit" value="{{ $pendingMentor->id }}" >Accept</button>
+                                    <button  name="acceptMentor" class="mobile btn-floating waves-effect waves-light submit" type="submit" value="{{ $pendingMentor->id }}" ><i class="material-icons">person_add</i></button>
                                     @if(session('message'))
                                     <div>
                                         {{session('message')}}
@@ -98,7 +95,8 @@
                                 </form>
                             </td>
                             <td class="deletebtn toast-init-btn">
-                            <button class=" btn waves-effect waves-light redbtn" >Decline</button>
+                            <button class=" btn waves-effect waves-light redbtn desktop">Decline</button>
+                            <button class="mobile btn-floating  waves-effect waves-light red" type="submit" ><i class="material-icons">close</i></button>
                                 <div class="toast-container">
                                     <div class="toast-new-message">
                                         <div class="toast-header-flex-container">
@@ -132,8 +130,6 @@
                         @endif
                     </tbody>
                 </table>
-            </div>
-        </div>
     </div>
 
         <!-- show all mentors validated and mentee registered-->
@@ -143,20 +139,20 @@
                 <table class="striped">
                     <thead>
                         <tr>
-                            <th>Picture</th>
+                            <th class="pic">Picture</th>
                             <th>
                                 <i class="material-icons ">
                                     <input type="text" id="searchUser" onkeyup= "searchFunction()" placeholder="Search "/>
                                 </i>
                             </th>
                             <th>
-                                <span>Status</span>
+                                <span>STATUS</span>
                             </th>
                             <th>
-                            <span>More details</span>
+                            <span>DETAILS</span>
                             </th>  
                             <th>
-                            <span>Contact</span>
+                            <span>CONTACT</span>
                             </th>    
                         </tr>
                     </thead>
@@ -165,10 +161,11 @@
                         @if(!empty($mentorMenteeList) && $mentorMenteeList->count())
                             @foreach($mentorMenteeList as $user)
                             <tr class="users-list">
-                                <td><a href="{{ url('')}}/{{ $user->type}}/{{$user->id}}" ><img class ="picture" src="{{asset('img/')}}/{{$user->profile_image}}" style="width:60px"></a></td>
+                                <td class="pic"><a href="{{ url('')}}/{{ $user->type}}/{{$user->id}}" ><img class ="picture" src="{{asset('img/')}}/{{$user->profile_image}}" style="width:60px"></a></td>
                                 <td><a href="{{ url('')}}/{{ $user->type}}/{{$user->id}}" class="userName" ><b>{{$user->firstname}} {{$user->lastname}}</b></a></td>
                                 <td class="{{ $user->type =='mentor' ? 'mentor' : 'mentee' }}"><b>{{ $user->type }}</b></td>
-                                <td><button class="btn waves-effect waves-light showCollaborations"  name="showCollaborations" value="{{$user->id}}">Collaborations</button></td>
+                                <td><button class="btn waves-effect waves-light showCollaborations desktop"  name="showCollaborations" value="{{$user->id}}">Collaborations</button>
+                                <button  name="showCollaborations" class="mobile btn-floating waves-effect showCollaborations" type="submit" value="{{$user->id}}" ><i class="material-icons">add</i></button></td>
                                 <td><a href="{{ url('')}}/contactUser/{{$user->id}}"><b>Send email</b></a></td>  
                             </tr>
                             <tr id="rowShowUserCollab{{ $user->id }}" class = "rowShowUserCollab" style="display: none;">
@@ -190,6 +187,7 @@
     
 </section>
     @endsection
+   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script> 
     <script>

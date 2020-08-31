@@ -50,13 +50,7 @@ class AdminController extends Controller
         /////////
         //chartUserRegister
         ////////
-        
-
-        $users = User::select(DB::raw("COUNT(*) as count"))
-        ->whereYear('created_at', date('Y'))
-        ->groupBy(DB::raw("Month(created_at)"))
-        ->pluck('count');
-
+     
 
         $userNumber = User::where('mentor_status', 'validate')->count();
         $pendingReqCount = User::where('mentor_status', 'pending')->count();  
