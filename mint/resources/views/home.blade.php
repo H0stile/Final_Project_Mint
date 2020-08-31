@@ -11,8 +11,8 @@
 
     <div class="top-element">
         <h4>Keep your skills fresh with Mint !</h4>
-        <p class="flow-text">Mint is a luxembourg-based plateform that connects motivated people with dedicated mintors in the IT field, quickly and accurately. Become one of our mintees,
-            browse through our mintors catalog and chose a mentor that catch your interest. Get connected and you'll get some fresh insights on how to progress ! You can also become a mintor and
+        <p class="flow-text">Mint is a luxembourg-based platform that connects motivated people with dedicated mintors in the IT field, quickly and accurately. Become one of our mintees,
+            browse through our mintors catalog and choose a mentor that catch your interest. Get connected and you'll get some fresh insights on how to progress ! You can also become a mintor and
             enjoy helping your mintee get some new cool skills and experience !</p>
     </div>
 </div>
