@@ -1,0 +1,32 @@
+/* Charles : footer customisation */
+
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+.page-footer {
+    background-color: #3b4a69;
+    color: #f7ffff;
+}
+
+.page-footer h3 {
+    font-size: 2em;
+    color: #ffa83f;
+}
+
+a {
+    margin-left: 2em;
+    color: #75d19e;
+}
+
+@media only screen and (max-width: 1024px) {
+    .page-footer {
+        width: 100%;
+    }
+}

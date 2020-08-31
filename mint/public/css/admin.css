@@ -1,0 +1,234 @@
+         #adminPgae,
+         .adminInfo,
+         h3 {
+             color: #3B4A69;
+         }
+         
+         h3 {
+             text-align: center;
+             margin: 100px auto;
+         }
+         
+         .info,
+         .summery,
+         .userNumber,
+         .interactionNumber {
+             display: flex;
+             justify-content: space-around;
+             border-radius: 5px;
+             background-color: #fff;
+             border: 1px solid lightgray;
+             width: 300px;
+             margin: 0 20px;
+             height: 100px;
+         }
+         
+         #charts {
+             width: 80%;
+             margin: auto;
+             border: 1px solid black;
+         }
+         
+         .chartSript {
+             margin: 100px 0;
+         }
+         
+         .titleDate {
+             background-color: #75D19E;
+             color: white;
+             /*border: 1px solid blue;*/
+             display: flex;
+             justify-content: space-between;
+             height: 25vh;
+             align-items: flex-start;
+             position: relative;
+         }
+         
+         .adminInfo {
+             display: flex;
+             margin: auto;
+             position: relative;
+             width: 90%;
+             top: -30px;
+         }
+         
+         .Medium {
+             color: #FFA83F;
+         }
+         
+         .currentDate {
+             margin: 1.5rem;
+             padding: 1rem;
+             /*border: 1px solid red;*/
+         }
+         
+         .userTable {
+             /*overflow: scroll;
+             height: 90vh;*/
+             margin-bottom: 100px;
+         }
+         
+         .container {
+             width: 100%;
+         }
+         
+         table {
+             color: #3B4A69;
+         }
+         
+         thead {
+             border-bottom: 1px solid lightgray;
+         }
+         
+         th,
+         td {
+             text-align: center;
+         }
+         
+         th {
+             z-index: -10;
+             position: sticky;
+             top: 0;
+             background-color: rgb(242, 241, 241);
+         }
+         
+         .mentor {
+             color: #FFA83F;
+         }
+         
+         .mentee {
+             color: #579BA9;
+         }
+         
+         .picture {
+             border-radius: 2rem;
+             border: 2px solid #3B4A69;
+         }
+         
+         .pic {
+             padding-top: 15px;
+         }
+         
+         .redbtn {
+             background-color: #EA4C4B;
+             box-shadow: none;
+             color: #F7FFFF;
+         }
+         
+         .redbtn:hover {
+             background-color: #EA4C4B;
+         }
+         
+         .number {
+             font-size: 1.5rem;
+         }
+         
+         .number,
+         p {
+             margin-bottom: 30px;
+         }
+         
+         .greenbtn {
+             background-color: #75D19E;
+             box-shadow: none;
+             color: #F7FFFF;
+         }
+         
+         .editbtn {
+             margin-bottom: 50px;
+         }
+         
+         .fa-linkedin-in {
+             background-color: #0e76a8;
+             color: white;
+             padding: 3px;
+             margin-right: 5px;
+             border-radius: 3px;
+         }
+         
+         i {
+             padding-bottom: 0;
+         }
+         
+         .accept {
+             border: 1px solid blue;
+         }
+         
+         .deletebtn a,
+         .acceptbtn a {
+             color: white;
+         }
+         /*toast*/
+         
+         .toast-container {
+             position: fixed;
+             display: block;
+             width: 300px;
+             height: auto;
+             bottom: 20px;
+             left: -400px;
+             background-color: #fff;
+             box-shadow: 0 3px 4px 0 rgba(210, 210, 210, 0.5);
+             border-radius: 6px;
+             transition: all 0.2s ease-in-out;
+         }
+         
+         .open-toast {
+             left: 20px;
+         }
+         
+         .toast-close {
+             cursor: pointer;
+         }
+         
+         .toast-new-message {
+             background-color: #fff;
+             padding: 10px;
+         }
+         
+         .toast-header-flex-container {
+             background-color: #FFA83F;
+             padding: 6px 10px;
+             border-radius: 6px 6px 0 0;
+             color: #fff;
+             display: flex;
+             flex-direction: row;
+             align-items: center;
+             justify-content: space-between;
+         }
+         
+         .toast-body-flex-container {
+             display: flex;
+             padding: 15px 10px 20px 10px;
+             flex-direction: row;
+             align-items: flex-end;
+         }
+         
+         .toast-content {
+             margin-right: 20px;
+         }
+         
+         p {
+             margin: 0;
+             color: #4E4D4B;
+             line-height: 120%;
+         }
+         
+         p.bold {
+             color: #000;
+             font-weight: 700;
+             margin: 0 0 5px 0;
+         }
+         
+         .toast-message-type i {
+             margin-right: 8px;
+         }
+         
+         @media ( max-width:600px) {
+             .info,
+             .summery,
+             .userNumber,
+             .interactionNumber {
+                 display: none;
+             }
+         }

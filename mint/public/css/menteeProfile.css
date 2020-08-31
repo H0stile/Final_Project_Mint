@@ -1,0 +1,169 @@
+
+body{
+    background-color:#F7FFFF;
+    color: #3B4A69;
+}
+.field{
+    width: 90%;
+    margin: auto;
+}
+.image{
+    height: 100px;
+    margin-right: 20px;
+    /* border-radius: 50%; */
+}
+.maininfo, .rating{
+    display: flex;
+    align-items: center;
+}
+
+.bg{
+    padding: 10px;
+    background-color: #EBFEEA;
+}
+.star{
+    color: #FFA83F;
+}
+.scroll{
+    overflow: hidden; 
+    height: 200px;
+    margin-bottom: 0;
+}
+.scroll:hover{
+    overflow: overlay;
+}
+
+/** HERE THE 3 PARTS NEEDED TO HAVE THE CUSTOM SCROLL BAR */
+#ratingList::-webkit-scrollbar-track{
+    border-radius: 10px;
+	background-color: #edf5f5;
+}
+#ratingList::-webkit-scrollbar{
+	width: 8px;
+	background-color: #edf5f5;
+}
+#ratingList::-webkit-scrollbar-thumb{
+	border-radius: 10px;
+	background-color: #579B9A;
+}
+.scrollbig{
+    overflow: hidden;
+    height: 500px;
+    margin-bottom: 0;
+}
+.scrollbig:hover{
+    overflow: overlay;
+}
+
+#messagegList::-webkit-scrollbar-track{
+    border-radius: 10px;
+	background-color: #edf5f5;
+}
+#messagegList::-webkit-scrollbar{
+	width: 8px;
+	background-color: #edf5f5;
+}
+#messagegList::-webkit-scrollbar-thumb{
+	border-radius: 10px;
+	background-color: #579B9A;
+}
+
+.sendbtn{
+    box-shadow: none;
+    background-color: #75D19E;
+    color: #F7FFFF;
+}
+#jobList::-webkit-scrollbar-track{
+    border-radius: 10px;
+	background-color: #edf5f5;
+}
+#jobList::-webkit-scrollbar{
+	width: 8px;
+	background-color: #edf5f5;
+}
+#jobList::-webkit-scrollbar-thumb{
+	border-radius: 10px;
+	background-color: #579B9A;
+}
+
+.textbtn{
+    color: #F7FFFF;
+}
+.block{
+    margin-bottom: 50px;
+}
+.messagemy{
+    color: #75D19E;
+}
+#form2, #pad{
+    padding-left: 0; 
+}
+.menteebtn{
+display: flex;
+flex-direction: column;
+}
+.menteepagelook{
+    display: flex; 
+    justify-content: space-between;
+}
+.flex{
+    margin-bottom: auto;
+    justify-content: space-between;
+}
+.searchbtn{
+    display: block;
+    justify-content: center;
+}
+.db{
+   justify-content: space-between;
+}
+.mybtn{
+    margin-bottom: 20px;
+    margin-left: 0;
+}
+.mybtn:hover{
+    color: #FFA83F;
+}
+.myform{
+    margin-bottom: 100px;  
+}
+
+.leftsection{
+    width: 80%;
+    margin-right: 50px;
+}
+.spaceinside{
+    padding: 20px;
+}
+.amy{
+    margin-left: 0;
+}
+.mrgtop{
+    margin-top: 50px;
+}
+
+.jobtitle{
+    color: #FFA83F;
+    font-weight: bold;
+}
+
+
+/* some changes to responsive design */
+@media ( max-width:992px){
+   
+    .menteepagelook{
+        display: block; 
+        justify-content: space-between;
+    }
+    .flex{
+        width: 100%;
+        margin-bottom: auto;
+    }
+}
+@media ( max-width:768px){
+   
+    .field{
+        width: 90%;
+        margin: auto;
+    }
+}

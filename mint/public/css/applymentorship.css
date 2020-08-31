@@ -1,0 +1,20 @@
+body{
+    background-color: #f7ffff;   
+    color: #3B4A69;  
+}
+.btn{
+    background-color: #75D19E;
+    margin-bottom: 40px;
+    box-shadow: none;
+    color:  #f7ffff;
+}
+.btn:hover{
+    background-color: #FFA83F;
+}
+.image{
+    height: 100px;
+    margin-right: 20px;
+}
+.pitch{
+    background-color:  #EBFEEA;
+}

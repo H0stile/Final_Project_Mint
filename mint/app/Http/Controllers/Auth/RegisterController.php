@@ -8,6 +8,9 @@ use App\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Http\Request;
+use App\Language;
+
 
 class RegisterController extends Controller
 {
@@ -38,7 +41,9 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        //$this->middleware('guest');
+        //$this->middleware('guest', ['except' => 'logout']);
+        //$this->middleware('ajax', ['only' => 'register']);
     }
 
     /**
@@ -50,9 +55,12 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
+            'firstname' => ['required', 'string', 'max:255'],
+            'lastname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'linkedin' => ['required', 'string', 'max:255'],
+            'pitch' => ['required', 'string', 'max:1000'],
         ]);
     }
 
@@ -64,10 +72,44 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        $contains = $data['linkedin']::contains("linkedin.com/in/");
+        if ($contains){
+            /*return User::create([
+                'firstname' => $data['firstname'],
+                'lastname' => $data['lastname'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+                'linkedin' => $data['linkedin'],
+                'pitch' => $data['pitch'],
+                'language' => $data['chck'],
+                'skills' => $data['skills'],
+                'type' => 'mentor',
+                'mentor_status' => 'pending',
+            ]);*/
+
+            $user = new User([
+                'firstname' => $data['firstname'],
+                'lastname' => $data['lastname'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+                'linkedin' => $data['linkedin'],
+                'pitch' => $data['pitch'],
+                'type' => 'mentor',
+                'mentor_status' => 'pending',
+            ]);
+
+            foreach ($data['chck'] as $key => $id) {
+                $lang = Language::find($id);
+                $user->languages[] = $lang;
+            }
+
+            return $user->save();
+        }
     }
+        public function index()
+        {
+            $languages = language::all();
+            return view('auth.register', ['languages' => $languages]);
+        }
+
 }

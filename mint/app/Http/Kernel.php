@@ -2,6 +2,8 @@
 
 namespace App\Http;
 
+use App\Http\Middleware\MenteeProfileAccess;
+use App\Http\Middleware\MentorProfileAccess;
 use Illuminate\Foundation\Http\Kernel as HttpKernel;
 
 class Kernel extends HttpKernel
@@ -63,5 +65,10 @@ class Kernel extends HttpKernel
         'signed' => \Illuminate\Routing\Middleware\ValidateSignature::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
         'verified' => \Illuminate\Auth\Middleware\EnsureEmailIsVerified::class,
+        'mentee.profile' => \App\Http\Middleware\MenteeProfileAccess::class,
+        'mentorprofile' => \App\Http\Middleware\MentorProfileAccess::class,
+        'mentor.search' => \App\Http\Middleware\MentorSearch::class,
+        'admin' => \App\Http\Middleware\Admin::class,
+
     ];
 }

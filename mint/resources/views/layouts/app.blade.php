@@ -1,80 +1,110 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>{{ config('app.name', 'Laravel') }}</title>
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.gstatic.com">
-    <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
-
     <!-- Styles -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400&display=swap" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/navbar.css') }}" rel="stylesheet">
+    @yield('css')
+
 </head>
+
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
-                </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+    <div class="navbar-fixed">
+        <nav>
+            <div id="app">
+                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                    @csrf
+                </form>
+                @auth
+                <ul id="dropdown1" class="dropdown-content">
+                    <li><a href="{{ route('logout') }}" class="logout">{{ __('Logout') }}</a></li>
+                </ul>
+                @endauth
+                <div class="nav-wrapper">
+                    <!--left side of navbar-->
+                    <a class="brand-logo" href="{{ url('home') }}"><img src="{{ asset('img/') }}/square_logo.png" alt="logo" id="mint_logo">
+                        <!--{{ config('app.name', 'Mint') }}--></a>
+                    <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+                    <!--right side of navbar-->
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
 
-                    </ul>
 
-                    <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
-                        <!-- Authentication Links -->
                         @guest
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item dropdown">
-                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
+                        <li class="{{ Request::is('home') ? 'active ' : '' }}"><a href="{{ route('home') }}">{{ __('Home') }}</a></li>
+                        <li class="{{ Request::is('login') ? 'active' : '' }}"><a href="{{ route('login') }}">{{ __('Login') }}</a></li>
+                        <!--@if (Route::has('register'))-->
+                        <li class=" waves-effect waves-light btn-large {{ Request::is('register') ? 'active' : '' }}"><a href="#home-register" id="register_button">{{ __('Register') }}</a></li>
 
-                                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
-
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                        @csrf
-                                    </form>
-                                </div>
-                            </li>
+                        <!--@endif-->
                         @endguest
+                        @auth
+                        <!--<li><a id="navbarDropdown" class="nav-name nav-link dropdown-toggle text-capitalize" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    {{ Auth::user()->name }} <span class="caret"></span></a></li>-->
+                        <li><a href="#!" class="dropdown-trigger" data-target="dropdown1">{{ Auth::user()->firstname }} {{ Auth::user()->lastname }}<i class="material-icons right">arrow_drop_down</i></a></li>
+                        @if (Auth::user()->type == 'admin')
+                        <li class="{{ Request::is('admin') ? 'active' : '' }}"><a href="{{ url('/admin')}}">Admin Dashboard</a></li>
+                        @endif
+                        @if (Auth::user()->type == 'mentor')
+                        <li class="{{ Request::is('mentor') ? 'active' : '' }}"><a href="/mentor/{{Auth::user()->id}}"> My profile</a></li>
+                        @endif
+                        @if (Auth::user()->type == 'mentee')
+                        <li class="{{ Request::is('mentee') ? 'active' : '' }}"><a href="/mentee/{{Auth::user()->id}}"> My profile</a></li>
+                        <li class="{{ Request::is('searchmentor') ? 'active' : '' }}"><a href="/searchmentor/{{Auth::user()->id}}">Mentors</a></li>
+                        @endif
+                        @endauth
                     </ul>
                 </div>
-            </div>
         </nav>
-
-        <main class="py-4">
-            @yield('content')
-        </main>
     </div>
+    <main class="py-4">
+        @yield('content')
+    </main>
+
+
+    <ul class="sidenav" id="mobile-demo">
+        @guest
+        <li><a href="{{ route('login') }}">{{ __('Login') }}</a></li>
+        <li><a href="{{ route('register') }}">{{ __('Register') }}</a></li>
+        @else
+        <li><a href="{{ route('logout') }}" class="logout">{{ __('Logout') }}</a></li>
+        @endguest
+    </ul>
+    </div>
+    @include('footer')
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script>
+        $(document).ready(function() {
+            $('.sidenav').sidenav();
+            $('.dropdown-trigger').dropdown();
+            $('.logout').click(function(e) {
+                e.preventDefault();
+                $('#logout-form').submit();
+            });
+
+            $("ul li").click(function() {
+                $('li').removeClass("active");
+                $(this).addClass("active");
+            });
+        });
+        $(document).ready(function() {
+            $('.carousel').carousel();
+        });
+    </script>
+
+    @yield('script')
 </body>
+
 </html>
