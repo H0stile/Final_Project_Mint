@@ -1,9 +1,14 @@
 @extends('layouts.app')
+@section('css')
+<link href="{{ asset('css/unautorized.css') }}" rel="stylesheet">
+@endsection
 @section('content')
+<div style="text-align:center ; margin-top: 200px">
+    <img src="{{asset('img/')}}/unautorize.png" alt="unautorized page" id="error-pic">
+    <h5 id="error-text">
+        You are not authorized to access this page.
+    </h5>
+    <a href="/home" class="waves-effect waves-light btn" id="error-button">Go back</a>
 
-<div>
-    <h3>You are not authorized to access this content.</h3>
-    <img src="https://image.noelshack.com/fichiers/2020/35/3/1598446072-kisspng-mint-julep-ice-cube-menthol-mint-ice-fast-material-picture-5a850cac098e37-1528204615186689720392.png" alt="">
-    <a href="/home" class="waves-effect waves-light btn">HOME</a>
 </div>
 @endsection
