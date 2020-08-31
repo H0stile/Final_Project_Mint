@@ -26,9 +26,11 @@ body{
 }
 .scroll{
     overflow: hidden; 
-    border-left: 1px solid #579B9A;
     height: 200px;
     margin-bottom: 0;
+}
+.scroll:hover{
+    overflow: overlay;
 }
 
 /** HERE THE 3 PARTS NEEDED TO HAVE THE CUSTOM SCROLL BAR */
