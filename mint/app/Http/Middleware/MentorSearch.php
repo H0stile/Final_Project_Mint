@@ -17,7 +17,7 @@ class MentorSearch
 
     {
         $loggedInUser = $request->user();
-        if ($loggedInUser->type === 'mentor' && $loggedInUser->id == (int) $request->id) {
+        if ($loggedInUser->type === 'mentor') {
             return response()->view("unauthorized");
         }
         return $next($request);
