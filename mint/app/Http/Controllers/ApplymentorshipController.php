@@ -73,7 +73,7 @@ class ApplymentorshipController extends Controller
         DB::table('collaboration')->insert([
             'mentor_id' => $request->mentor_id,
             'mentee_id' => $request->mentee_id,
-            'request_msg' => $request->request_msg,
+            'request_msg' => htmlspecialchars(strip_tags($request->request_msg), ENT_QUOTES, 'UTF-8'),
             'status_rqs' => $request->status_rqs,
         ]);
         //return redirect("/mentorprofile/$request->id");
