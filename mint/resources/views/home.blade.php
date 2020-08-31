@@ -26,6 +26,7 @@
         <img class="carousel-item" src="img\vue.png">
     </div>
     <h2>Learn some of the finest and most popular technologies with your mintor</h2>
+    <p id="subtext">Here's a quickview of technologies you can learn on Mint, but there is a lot more than what is shown here, so don't forget to check our mintors catalog !</p>
 </div>
 
 <div class="row" id="home-register">

@@ -14,7 +14,11 @@ h4 {
 }
 h2 {
     color: #f7ffff;
-    font-size: 1em;
+    font-size: 1.25em;
+}
+
+#subtext {
+    font-size: 0.75em;
     margin-bottom: 50px;
 }
 
