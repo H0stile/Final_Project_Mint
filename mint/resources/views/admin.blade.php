@@ -2,6 +2,7 @@
 @section('css')
 <link href="{{ asset('css/admin.css') }}" rel="stylesheet">
 
+
 @endsection
 @section('content')
 
@@ -27,7 +28,7 @@
     
     <div class="userNumber">
         <div>
-            <p class="number">Pending request</p>
+            <p class="number">Pending mentor</p>
             <p class="number"><b>{{$pendingReqCount}}</b></p>
         </div>
         
@@ -82,14 +83,16 @@
                             <td>{{$pendingMentor->created_at->format('d-m-Y')}}</td>
 
                             <td class="editbtn">
-                                <button  class="moreDetails btn waves-effect waves-light"  name="moreDetails" value="{{$pendingMentor}}">More Details</button>
+                                <button  class="moreDetails btn waves-effect waves-light desktop"  name="moreDetails" value="{{$pendingMentor}}">More Details</button>
+
                             </td>
 
-                            <td class="editbtn">
+                            <td>
                                 <form action="/admin/update/{{ $pendingMentor->id }}" method="post">
                                     @csrf
                                     @method('put')
-                                    <button  name="acceptMentor" class="btn waves-effect waves-light acceptbtn" type="submit" value="{{ $pendingMentor->id }}" ><a onclick="M.toast({html: 'You Accepted new Mentor !'})">Accept</a><i class="material-icons ">person_add</i></button>
+                                    <button  name="acceptMentor" class="btn waves-effect waves-light " type="submit" value="{{ $pendingMentor->id }}" >Accept</button>
+                                    <a class=" mobile btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
                                     @if(session('message'))
                                     <div>
                                         {{session('message')}}
@@ -190,6 +193,7 @@
     
 </section>
     @endsection
+   
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script> 
     <script>

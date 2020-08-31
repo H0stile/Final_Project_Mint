@@ -154,9 +154,8 @@
              border: 1px solid blue;
          }
          
-         .deletebtn a,
-         .acceptbtn a {
-             color: white;
+         .mobile {
+             display: none;
          }
          /*toast*/
          
@@ -229,6 +228,9 @@
              .summery,
              .userNumber,
              .interactionNumber {
+                 display: none;
+             }
+             .desktop {
                  display: none;
              }
          }
