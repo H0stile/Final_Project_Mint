@@ -18,7 +18,14 @@
 </div>
 
 <div class="row" id="middle-jumbotron">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam lobortis vitae sapien id varius. Maecenas massa diam, dignissim eget magna et, tincidunt elementum nulla. Mauris pulvinar, urna tempus dignissim mollis, ligula ligula tincidunt libero, nec finibus felis libero vel neque. Pellentesque a ipsum eget tellus laoreet faucibus. Aenean euismod sollicitudin lectus, sed vehicula magna sagittis sit amet. Fusce velit velit, mollis at gravida id, consectetur ut lacus. Suspendisse potenti. Mauris porttitor dolor in dolor convallis aliquam. Nulla in.</p>
+    <div class="carousel">
+        <img class="carousel-item" src="img\javascript.png">
+        <img class="carousel-item" src="img\react.png">
+        <img class="carousel-item" src="img\java.png">
+        <img class="carousel-item" src="img\php.png">
+        <img class="carousel-item" src="img\vue.png">
+    </div>
+    <h2>Learn some of the finest and most popular technologies with your mintor</h2>
 </div>
 
 <div class="row" id="home-register">

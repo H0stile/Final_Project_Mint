@@ -99,6 +99,9 @@
                 $(this).addClass("active");
             });
         });
+        $(document).ready(function() {
+            $('.carousel').carousel();
+        });
     </script>
 
     @yield('script')
