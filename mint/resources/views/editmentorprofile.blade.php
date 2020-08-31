@@ -1,9 +1,9 @@
 @extends('layouts.app')
 
-@section('content')
 @section('css')
 <link href="{{ asset('css/editmentorprofile.css') }}" rel="stylesheet">
 @endsection
+@section('content')
 <div class="container">
 
     <form action="" method="POST">
@@ -39,7 +39,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <div class="row">
-                    <span class="card-title">{{ __('Languages  : ***Chooose Only One Language') }}</span><br>
+                    <span class="card-title">{{ __('Languages  : choose only one language') }}</span><br>
                     @foreach($langChosen as $choice)
                     <label><br>
                         <input type="checkbox" name="langChkBox[{{$choice['id']}}]" value="{{$choice['id']}}" @if($choice['chosen']) checked @endif />
@@ -52,7 +52,7 @@
         <div class="row">
             <div class="input-field col s12">
                 <div class="row">
-                    <span class="card-title">{{ __('Skills : ***Chooose Only One Skill') }}</span>
+                    <span class="card-title">{{ __('Skills : choose only one skill') }}</span>
                     <div style='height :200px;overflow:auto'>
                         @foreach($skillChosen as $choice)
                         <label><br>
@@ -66,7 +66,7 @@
         </div>
 
         <p>
-            <button class="btn waves-effect waves-light greenbutton" type="submitsave" name="action" value={{ $mentor->id }}>{{ __('Update & Show Profile') }}
+            <button class="btn waves-effect waves-light greenbutton" type="submitsave" name="action" value={{ $mentor->id }}>{{ __('Update & show profile') }}
                 <i class="material-icons right">create</i>
             </button>
         </p>

@@ -1,19 +1,37 @@
-body{
-    background-color: #f7ffff; 
-    color: #3B4A69;  
+body {
+    background-color: #f7ffff;
+    color: #3b4a69;
 }
-.deletebtn{
-    background-color: #EA4C4B;
+.deletebtn {
+    background-color: #ea4c4b;
     box-shadow: none;
-    color: #F7FFFF;
+    color: #f7ffff;
     margin-bottom: 300px;
 }
-.greenbutton{
-    background-color: #75D19E;
+.greenbutton {
+    background-color: #75d19e;
     box-shadow: none;
-    color: #F7FFFF; 
+    color: #f7ffff;
     margin-top: 30px;
 }
-textarea{
+textarea {
     height: 5rem;
+}
+
+/*Charles : doesnt seem to work*/
+::-webkit-input-placeholder {
+    /* Chrome/Opera/Safari */
+    color: #3b4a69;
+}
+::-moz-placeholder {
+    /* Firefox 19+ */
+    color: #3b4a69;
+}
+:-ms-input-placeholder {
+    /* IE 10+ */
+    color: #3b4a69;
+}
+:-moz-placeholder {
+    /* Firefox 18- */
+    color: #3b4a69;
 }
