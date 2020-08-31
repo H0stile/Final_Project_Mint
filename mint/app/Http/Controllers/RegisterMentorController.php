@@ -80,11 +80,11 @@ class RegisterMentorController extends Controller
             ]);
             //* Charles : I'll create those fields in my DB
             $user = new User([
-                'firstname' => $data['firstname'],
-                'lastname' => $data['lastname'],
-                'email' => $data['email'],
+                'firstname' => htmlspecialchars(strip_tags($data['firstname']), ENT_QUOTES, 'UTF-8'),
+                'lastname' => htmlspecialchars(strip_tags($data['lastname']), ENT_QUOTES, 'UTF-8'),
+                'email' => filter_var($data['email'], FILTER_VALIDATE_EMAIL),
                 'password' => Hash::make($data['password']),
-                'pitch' => $data['pitch'],
+                'pitch' => htmlspecialchars(strip_tags($data['pitch']), ENT_QUOTES, 'UTF-8'),
                 'linkedin' => $data['linkedin'],
                 'profile_image' => 'defaultProfileLogo.png',
                 'created_at'  => Carbon::now()->timestamp,
@@ -96,7 +96,7 @@ class RegisterMentorController extends Controller
             $user->languages()->sync($data['language']);
 
             //* Explode and send id ?
-            $resultID = explode(' - ', $data['skills']);
+            $resultID = explode(' - ', htmlspecialchars(strip_tags($data['skills']), ENT_QUOTES, 'UTF-8'));
 
             $user->skills()->sync($resultID[0]);
 

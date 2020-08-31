@@ -71,16 +71,14 @@ class RegisterMenteeController extends Controller
         ]);
 
         $user = new User([
-            'firstname' => $data['firstname'],
-            'lastname' => $data['lastname'],
-            'email' => $data['email'],
+            'firstname' => htmlspecialchars(strip_tags($data['firstname']), ENT_QUOTES, 'UTF-8'),
+            'lastname' => htmlspecialchars(strip_tags($data['lastname']), ENT_QUOTES, 'UTF-8'),
+            'email' => filter_var($data['email'], FILTER_VALIDATE_EMAIL),
             'password' => Hash::make($data['password']),
-            'profile_image' => 'defaultProfileLogo.png',
+            'profile_image' => 'mintlogo.png',
             'created_at'  => Carbon::now()->timestamp,
             'type' => 'mentee'
         ]);
-
-
 
         $user->save();
         $user->languages()->sync($data['language']);
