@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 28, 2020 at 07:51 AM
+-- Generation Time: Aug 31, 2020 at 08:05 AM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.4.0
 
@@ -38,28 +38,7 @@ CREATE TABLE IF NOT EXISTS `collaboration` (
   PRIMARY KEY (`id`),
   KEY `collaboration_mentor_id_foreign` (`mentor_id`),
   KEY `collaboration_mentee_id_foreign` (`mentee_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `collaboration`
---
-
-INSERT INTO `collaboration` (`id`, `mentor_id`, `mentee_id`, `request_msg`, `status_rqs`) VALUES
-(1, 6, 11, 'Hello !!!!', 'pending'),
-(2, 6, 12, 'I want to learn PHP', 'pending'),
-(3, 6, 13, 'My request', 'pending'),
-(4, 7, 14, 'I want to learn Python', 'pending'),
-(5, 7, 15, 'Hello, I want to learn Cobol', 'pending'),
-(6, 8, 16, 'My request', 'connected'),
-(7, 9, 17, 'I want to learn JavaScript', 'connected'),
-(8, 9, 18, 'Hello', 'connected'),
-(9, 10, 19, 'I want to learn Ruby', 'connected'),
-(10, 10, 20, 'I want to learn C#', 'pending'),
-(11, 7, 17, 'accept me', 'pending'),
-(12, 8, 16, 'Accept me', 'pending'),
-(13, 8, 13, 'Hello', 'connected'),
-(14, 9, 11, 'I want to learn something', 'pending'),
-(15, 10, 15, 'Hello !!!', 'connected');
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- --------------------------------------------------------
 
@@ -114,33 +93,6 @@ CREATE TABLE IF NOT EXISTS `languages_intermediate` (
   KEY `languages_intermediate_user_id_foreign` (`user_id`),
   KEY `languages_intermediate_language_id_foreign` (`language_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `languages_intermediate`
---
-
-INSERT INTO `languages_intermediate` (`user_id`, `language_id`) VALUES
-(1, 1),
-(2, 2),
-(3, 3),
-(4, 4),
-(5, 1),
-(6, 2),
-(7, 3),
-(9, 1),
-(10, 2),
-(11, 3),
-(12, 4),
-(13, 1),
-(14, 2),
-(15, 3),
-(16, 4),
-(17, 1),
-(18, 2),
-(19, 3),
-(20, 4),
-(21, 1),
-(8, 3);
 
 -- --------------------------------------------------------
 
@@ -228,28 +180,16 @@ CREATE TABLE IF NOT EXISTS `ratings` (
   PRIMARY KEY (`id`),
   KEY `ratings_writer_id_foreign` (`writer_id`),
   KEY `ratings_target_id_foreign` (`target_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `ratings`
 --
 
 INSERT INTO `ratings` (`id`, `writer_id`, `target_id`, `score`, `comment`) VALUES
-(1, 1, 6, 5, 'this is the first message'),
-(2, 1, 6, 3, 'this is the second message'),
-(3, 1, 6, 2, 'this is the third message'),
-(4, 20, 7, 4, 'nice mentor, with experience'),
-(5, 15, 7, 2, 'Problem for meeting'),
-(6, 19, 7, 5, 'Woaw, great mentor'),
-(7, 11, 8, 3, 'Good'),
-(8, 12, 8, 5, 'A really great mentor'),
-(9, 13, 8, 3, 'I learn a lot'),
-(10, 14, 9, 1, 'To much basic level'),
-(11, 15, 9, 4, 'Great'),
-(12, 17, 9, 3, 'Good'),
-(13, 20, 10, 4, 'Good'),
-(14, 19, 10, 2, 'His level is to basic'),
-(15, 18, 10, 0, 'Not came to the rdv');
+(1, 1, 2, 5, 'this is the first message'),
+(2, 1, 2, 3, 'this is the second message'),
+(3, 1, 2, 2, 'this is the third message');
 
 -- --------------------------------------------------------
 
@@ -316,22 +256,6 @@ CREATE TABLE IF NOT EXISTS `skills_intermediate` (
   KEY `skills_intermediate_skill_id_foreign` (`skill_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Dumping data for table `skills_intermediate`
---
-
-INSERT INTO `skills_intermediate` (`user_id`, `skill_id`) VALUES
-(1, 6),
-(2, 18),
-(3, 22),
-(4, 14),
-(5, 16),
-(6, 16),
-(7, 6),
-(9, 10),
-(10, 5),
-(8, 27);
-
 -- --------------------------------------------------------
 
 --
@@ -349,7 +273,7 @@ CREATE TABLE IF NOT EXISTS `users` (
   `linkedin` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `mentor_status` enum('pending','validate') COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `profile_image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
-  `pitch` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `pitch` varchar(600) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `availability` tinyint(1) DEFAULT NULL,
   `email_verified_at` timestamp NULL DEFAULT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
@@ -357,34 +281,54 @@ CREATE TABLE IF NOT EXISTS `users` (
   `updated_at` timestamp NULL DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `users`
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `firstname`, `lastname`, `type`, `linkedin`, `mentor_status`, `profile_image`, `pitch`, `availability`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'witting.rudolph@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Witting', 'Rudolph', 'mentor', 'https://www.linkedin.com/in/john-doe', 'pending', 'defaultProfileLogo.png', 'Voluptatibus officiis commodi quia.', 1, NULL, NULL, NULL, NULL),
-(2, 'melyna.rodriguez@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Melyna', 'Rodriguez', 'mentor', 'https://www.linkedin.com/in/john-doe', 'pending', 'defaultProfileLogo.png', 'Et animi voluptatem dolor possimus consequatur saepe. Rem consequatur error ut et amet iure.', 1, NULL, NULL, NULL, NULL),
-(3, 'jewell.lemke@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Jewell', 'Lemke', 'mentor', 'https://www.linkedin.com/in/john-doe', 'pending', 'defaultProfileLogo.png', 'Rerum laborum facilis et officia exercitationem magni.', 0, NULL, NULL, NULL, NULL),
-(4, 'kristofer.weimann@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Kristofer', 'Weimann', 'mentor', 'https://www.linkedin.com/in/john-doe', 'pending', 'defaultProfileLogo.png', 'Sequi maiores quibusdam rerum eum dolor culpa voluptas quae. Dolorem doloribus nam sit libero.', 0, NULL, NULL, NULL, NULL),
-(5, 'kara.keeling@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Kara', 'Keeling', 'mentor', 'https://www.linkedin.com/in/john-doe', 'pending', 'defaultProfileLogo.png', 'Omnis atque voluptatem placeat earum. Qui alias qui enim nobis.', 0, NULL, NULL, NULL, NULL),
-(6, 'shaina.labadie@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Shaina', 'Labadie', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Repellat ea ex unde modi nesciunt praesentium ut.', 1, NULL, NULL, NULL, NULL),
-(7, 'johathan.bergnaum@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Johathan', 'Bergnaum', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Repellendus qui molestias quas repellat consequatur velit in. Quasi itaque enim sit explicabo iusto ratione ut asperiores.', 1, NULL, NULL, NULL, NULL),
-(8, 'corine.bauch@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Corine', 'Bauch', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Officiis amet nisi aut accusamus excepturi cum aut eius.', 0, NULL, NULL, NULL, NULL),
-(9, 'frida.murzik@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Frida', 'Murazik', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Sit nam id beatae et quasi nihil.', 1, NULL, NULL, NULL, NULL),
-(10, 'leopoldo.sipes@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Leopoldo', 'Sipes', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Sapiente beatae neque voluptas deleniti.', 1, NULL, NULL, NULL, NULL),
-(11, 'carlee.lakin@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Carlee', 'Lakin', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Esse architecto repellat voluptatem sapiente commodi.', 0, NULL, NULL, NULL, NULL),
-(12, 'houston.mann@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Houston', 'Mann', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Saepe aperiam est distinctio provident.', 1, NULL, NULL, NULL, NULL),
-(13, 'alan.kshlerin@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Alan', 'Kshlerin', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Suscipit aut dolores ex qui laboriosam sit.', 1, NULL, NULL, NULL, NULL),
-(14, 'virginie.jast@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Virginie', 'Jast', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Non alias nihil nihil aut facilis dolore.', 1, NULL, NULL, NULL, NULL),
-(15, 'felipa.fisher@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Felipa', 'Fisher', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Doloribus expedita sunt earum nobis aut non placeat expedita.', 0, NULL, NULL, NULL, NULL),
-(16, 'shyanne.ebert@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Shyanne', 'Ebert', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Aut libero tempora eligendi et.', 0, NULL, NULL, NULL, NULL),
-(17, 'ashly.harber@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Ashly', 'Harber', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Dolores expedita exercitationem repudiandae est veritatis autem dolorem nemo. Enim odio voluptas assumenda id dolor qui.', 1, NULL, NULL, NULL, NULL),
-(18, 'paolo.hagenes@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Paolo', 'Hagenes', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Dolore cupiditate voluptates itaque animi.', 1, NULL, NULL, NULL, NULL),
-(19, 'jakayla.wolff@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Jakayla', 'Wolff', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Velit dolor qui aut vel mollitia.', 1, NULL, NULL, NULL, NULL),
-(20, 'dora.jaskolski@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Dora', 'Jaskolski', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'defaultProfileLogo.png', 'Quibusdam aut inventore corporis aut. Tenetur reiciendis ea corrupti ducimus quasi qui.', 0, NULL, NULL, NULL, NULL),
-(21, 'admint.mint@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Admint', 'Mint', 'admin', NULL, 'validate', 'defaultProfileLogo.png', NULL, NULL, NULL, NULL, NULL, NULL);
+(1, 'elmore.schuster@gmail.com', '$2y$10$rkTqYFeEt3TjXVma1tg4auEMlxiFUUffo0jfTJqS22312wH91MhFm', 'Makenzie', 'Welch', 'mentor', 'https://www.linkedin.com/in/john-doe', 'pending', 'mintlogo.png', 'Dolor sapiente vel omnis et temporibus. Quasi nisi reprehenderit qui porro sed sed autem eligendi.', 0, NULL, NULL, '2019-11-05 07:41:40', NULL),
+(2, 'jkautzer@hotmail.com', '$2y$10$W992Y3SDetcZ1eNTD9O6jOt2bqT2X0HhrXpZoN3rnQIF.bQI0HciO', 'Loyce', 'Senger', 'mentor', 'https://www.linkedin.com/in/john-doe', 'pending', 'mintlogo.png', 'Qui amet modi velit incidunt. Dicta est veniam facilis mollitia exercitationem maxime aut.', 0, NULL, NULL, '2020-04-04 22:38:31', NULL),
+(3, 'saufderhar@gmail.com', '$2y$10$zLu9kTNqrEEOHS6doD.VNOW7auJlT9EzlAx3KuaMr1eEbItfKItg2', 'Sarina', 'Strosin', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Architecto dolores et sapiente corporis sit.', 1, NULL, NULL, '2020-03-06 10:53:39', NULL),
+(4, 'gennaro.hoeger@hotmail.com', '$2y$10$sxFJoLhdpxsVMiYCxTNYAeEQA0Ef84zUSE0iZe2BkC6sTB7Q7NqSy', 'Rosella', 'Fadel', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Incidunt reprehenderit sunt ex necessitatibus fuga voluptatem sint dolorem. Optio accusamus dolorem ab magnam.', 1, NULL, NULL, '2020-08-14 02:28:52', NULL),
+(5, 'pgleason@hotmail.com', '$2y$10$TO0rQ91.xKhbQJKNjW5pSO2oSv2khB8N7SjODvvtogGjc60PP4iZK', 'Clarissa', 'Runolfsdottir', 'mentor', 'https://www.linkedin.com/in/john-doe', 'pending', 'mintlogo.png', 'Voluptatem earum provident laborum delectus. Est quis saepe reprehenderit ducimus sint.', 1, NULL, NULL, '2020-07-05 09:11:39', NULL),
+(6, 'kbaumbach@gmail.com', '$2y$10$7a.uQISsKACKTc9.BHSjK.pb52FqDWqng5fFhLQK8z.eyUuK3jcoG', 'Lucinda', 'Gibson', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Quos adipisci placeat vel eos distinctio dolorum.', 1, NULL, NULL, '2019-12-30 17:31:05', NULL),
+(7, 'matilde39@yahoo.com', '$2y$10$g1UTamzGVZJx7pr5x/ZJTOGiKokkrBlsSCFAA6hu5gcZCHqTpxkgi', 'Geovany', 'Heaney', 'mentor', 'https://www.linkedin.com/in/john-doe', 'pending', 'mintlogo.png', 'Enim quis officia sunt ut numquam.', 0, NULL, NULL, '2019-12-23 18:10:54', NULL),
+(8, 'adenesik@hotmail.com', '$2y$10$O7lMVZrkydgCc4q0M604bu1bpIYoKB9v/jVjm8T3oFU5.esLNWwi6', 'Arnaldo', 'Schamberger', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Iusto voluptate impedit excepturi nam necessitatibus accusamus vitae. Maiores harum dolores aut sed.', 0, NULL, NULL, '2020-08-27 07:28:29', NULL),
+(9, 'ettie.rohan@yahoo.com', '$2y$10$LTkgal0QGMMeJ0IP7Qpg6.XaiNEQDVRvvcoOcWyuqmN5.qNmcL/3C', 'America', 'Hackett', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Iure quo at eius quos.', 1, NULL, NULL, '2020-01-12 14:45:50', NULL),
+(10, 'urban.johnson@yahoo.com', '$2y$10$Oxa0UMSc050Ncj2f3Toonu0JqnwAx6KVpt0E4RbPlvPqmPrmNgGvO', 'Green', 'Weimann', 'mentor', 'https://www.linkedin.com/in/john-doe', 'pending', 'mintlogo.png', 'Eum et aliquid quos occaecati temporibus unde qui. Vel nisi voluptatem itaque dolorem velit.', 0, NULL, NULL, '2020-02-27 01:01:24', NULL),
+(11, 'hickle.finn@gmail.com', '$2y$10$8Ech3u9bP54eYnQYQmejB.4cS7Jbp7n..TQWUCRW/DxB3ff.n7TDS', 'Preston', 'Pouros', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Ut in fuga qui id perferendis veniam.', 1, NULL, NULL, '2020-04-01 07:40:32', NULL),
+(12, 'wolf.allie@yahoo.com', '$2y$10$/axr/SbZKiqBu9mzsvCbmuNGfi5HjpIdOdOuxN74HxSjO4Fpktf8S', 'Johan', 'Terry', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Nulla quo aut iste aliquam saepe.', 1, NULL, NULL, '2019-12-25 23:27:05', NULL),
+(13, 'millie92@gmail.com', '$2y$10$4X/hMJg5IajjUmFIwtiJpO212sQzUMAJtqBp1oNJO6GgGoXjDSU9G', 'Anya', 'Zulauf', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Aut unde voluptatem sequi quaerat nulla. Labore veritatis numquam quaerat ratione a saepe repellendus.', 1, NULL, NULL, '2020-03-04 20:34:14', NULL),
+(14, 'wgreenfelder@hotmail.com', '$2y$10$4rv/4E8njxOBJcvJQMr0xufRbAc4oJCJMVM1BbJofxKwRlbA8qlZ.', 'Isobel', 'Bailey', 'mentor', 'https://www.linkedin.com/in/john-doe', 'pending', 'mintlogo.png', 'Nesciunt fugit dicta et enim. Quia illum vel explicabo sed illum.', 0, NULL, NULL, '2019-12-09 12:18:16', NULL),
+(15, 'pearl16@gmail.com', '$2y$10$23KwSFaQU8J6oLRWfcRUxuVnacVuP/a0yKBVoBFW.4Fh5.l7SfCsu', 'Milton', 'Smith', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Temporibus inventore dolore et voluptas. Natus dolores delectus ut sed qui fuga.', 0, NULL, NULL, '2019-12-05 10:34:07', NULL),
+(16, 'mellie.quigley@hotmail.com', '$2y$10$LyG1mJ9nI2nbt4/N/nK68ehDB4yzX/HgOf.4ahV.U4T13MpKlwh3K', 'Brionna', 'Mayer', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Esse et qui est rerum veniam atque sed necessitatibus.', 0, NULL, NULL, '2020-04-12 00:57:29', NULL),
+(17, 'odeckow@hotmail.com', '$2y$10$WJH18Kr2oOUUJILDCQ6i7exT8sL8QTv7fVOLv7Fiow9ofDpeUIkGq', 'Yesenia', 'Larkin', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Consectetur provident aut aut.', 0, NULL, NULL, '2020-07-20 20:49:35', NULL),
+(18, 'andreane83@hotmail.com', '$2y$10$cn/4883sFRcdg60dhduYjuyHKo7PhAK6rp2BN7uK3ft6CsQDOCVVK', 'Emory', 'Bins', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Quidem inventore molestias eum placeat nemo iusto officia. Unde deserunt sit error dolores adipisci minima totam.', 0, NULL, NULL, '2020-07-02 08:19:08', NULL),
+(19, 'bhessel@gmail.com', '$2y$10$fBc4ecAKucRJ7ljD3SsX5uUbC7Hva79tGmIw00ee..2/2IpejQt/u', 'Dolores', 'Kerluke', 'mentor', 'https://www.linkedin.com/in/john-doe', 'pending', 'mintlogo.png', 'Ut ratione voluptatem consequuntur id nihil. Sit quod nobis est alias.', 1, NULL, NULL, '2020-08-09 12:03:27', NULL),
+(20, 'maybelle03@hotmail.com', '$2y$10$nIh7wpFz2DBuJ1UEW3xP3.7zilDMFsr09Cfn2aejj0B64ReJJQ6Gy', 'Barney', 'Reichert', 'mentor', 'https://www.linkedin.com/in/john-doe', 'pending', 'mintlogo.png', 'Ut natus nemo harum quae labore. Sunt et beatae error nihil non animi.', 1, NULL, NULL, '2020-02-11 11:09:05', NULL),
+(21, 'verna.beatty@hotmail.com', '$2y$10$Q/hhA8nRaWrtz86x.RH90uYpWSWfGz/tzfHT74axorVV9AzyfMQ6i', 'Romaine', 'Hessel', 'mentee', 'https://www.linkedin.com/in/john-doe', 'pending', 'mintlogo.png', 'Corrupti quae dolorum ratione architecto et cupiditate. Quasi et quo mollitia cupiditate.', 0, NULL, NULL, '2019-12-02 10:15:17', NULL),
+(22, 'mharber@gmail.com', '$2y$10$065tvWxhFY/2zwzRBhQ1u.q/9N6jjQdq2NosBzu0hZdfBrRlFLD4y', 'Braxton', 'Murazik', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Eius officia commodi non dolorem nihil distinctio labore tempore.', 1, NULL, NULL, '2019-12-30 03:10:10', NULL),
+(23, 'armstrong.anabel@yahoo.com', '$2y$10$Djk9nJyl03RRzflncr9/7ODU9KGRMSN4kcQsvSaCDY6H4gBxwlXCW', 'Camron', 'Greenfelder', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Voluptates molestiae excepturi rerum qui alias et.', 0, NULL, NULL, '2020-04-22 07:39:52', NULL),
+(24, 'art.herman@yahoo.com', '$2y$10$qzeqHueoJ1F99Mwq3XPoOOhXc3.ohr80DIxgF7na/ZxC71WZvJPLm', 'Abraham', 'Turcotte', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Aut corporis aut et mollitia esse. Unde corporis explicabo voluptatibus cum.', 1, NULL, NULL, '2020-08-16 12:27:33', NULL),
+(25, 'lavinia.nienow@yahoo.com', '$2y$10$nFTAFuRvUsy2NIfYizOuZO72MRE3ZLCEenMyBPj6XMUBpioPdVAZu', 'Grover', 'Klein', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Accusantium sunt eos optio deleniti ipsa.', 0, NULL, NULL, '2020-04-28 04:24:02', NULL),
+(26, 'rodrick09@yahoo.com', '$2y$10$mF.hOIfVN0jy5B52eTrDBOYllMjuYbgtQxPmfnDGOy8OQU4xPknaS', 'Antone', 'Kshlerin', 'mentee', 'https://www.linkedin.com/in/john-doe', 'pending', 'mintlogo.png', 'Pariatur architecto fugit qui laudantium necessitatibus debitis quae. Occaecati rerum itaque qui omnis et.', 0, NULL, NULL, '2020-01-28 14:56:05', NULL),
+(27, 'purdy.payton@gmail.com', '$2y$10$M9WhcaSyTBvG0YsxWBqyoeLPt9qmjCkayCgB2q/vIydmxzwAUHooC', 'Cassidy', 'O\'Reilly', 'mentee', 'https://www.linkedin.com/in/john-doe', 'pending', 'mintlogo.png', 'Quo rem eius est magni minus occaecati.', 1, NULL, NULL, '2020-01-14 01:23:28', NULL),
+(28, 'maxine03@gmail.com', '$2y$10$vVeF2t7Kgy8JaDHLWRj6eegu8TFrBNk/HyWJo1WlpMLuTeoZw2Ja2', 'Kristoffer', 'Fahey', 'mentee', 'https://www.linkedin.com/in/john-doe', 'pending', 'mintlogo.png', 'Nostrum quia quidem sint occaecati.', 1, NULL, NULL, '2020-01-22 13:42:36', NULL),
+(29, 'larkin.liana@yahoo.com', '$2y$10$NjDYhr..ZQ7DjgmOOk1lc.rPMyVBXN4B3Mo.KZ7lpY0hIUFysKZ/q', 'Joshuah', 'Langworth', 'mentee', 'https://www.linkedin.com/in/john-doe', 'pending', 'mintlogo.png', 'Ipsa eum facilis est debitis eum.', 0, NULL, NULL, '2020-04-06 07:20:35', NULL),
+(30, 'polly.prohaska@hotmail.com', '$2y$10$2iMZxvU2Xqe3YvrMKSOa0.WJXbp0CORvzAnbe/NrOIXZvUVmkOL3C', 'Albin', 'Mills', 'mentee', 'https://www.linkedin.com/in/john-doe', 'pending', 'mintlogo.png', 'Nam similique nesciunt dolor dignissimos voluptatem et. Repellat porro voluptatem aut reprehenderit qui rerum.', 0, NULL, NULL, '2019-12-18 10:33:35', NULL),
+(31, 'brandy.ondricka@hotmail.com', '$2y$10$kWQZm5cZE0xyX8PKN6CuSurUPjsEqAytYk7cHDeP7ZR0RKJDMe45i', 'Timmy', 'Gusikowski', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Est reiciendis quo delectus libero fugiat enim.', 0, NULL, NULL, '2020-05-11 14:20:27', NULL),
+(32, 'minerva18@gmail.com', '$2y$10$zT1Zf/DObvkvPSysyLjJde5LlpP/NcVKEPqWlnmnTrxsp8mzMMqEK', 'Jordan', 'Hayes', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Voluptate pariatur tempore perferendis facere. Ab totam natus ex velit eaque odio.', 0, NULL, NULL, '2020-02-06 01:52:52', NULL),
+(33, 'qhalvorson@yahoo.com', '$2y$10$q3hY1Vnah3BSyPUdsowhVunJHptI3DcRvYgKB533tHHiUxKj9ibpi', 'Itzel', 'DuBuque', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Officiis error illo recusandae tempora. Placeat nostrum accusantium possimus sunt fugit debitis.', 1, NULL, NULL, '2020-01-25 06:41:28', NULL),
+(34, 'yhickle@hotmail.com', '$2y$10$zRCBuQxl4EoFqQZboeCoy.RPYvta05yqNEMecdJ9FdZSIEk7YkAXu', 'Keshawn', 'Cruickshank', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'In eum aliquid unde voluptas iste sed ut rerum. Maiores nihil accusamus consequatur aut ut explicabo odio.', 1, NULL, NULL, '2020-04-27 17:30:08', NULL),
+(35, 'norris85@gmail.com', '$2y$10$At1cPZ8Km8Qu0xke2zB4FuZ76iSWLauC2CCWRW/T0XAhDpc897Ou2', 'Laurence', 'Bailey', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Eos rerum in dolores consectetur. Vel consectetur deserunt amet.', 0, NULL, NULL, '2020-05-18 13:35:44', NULL),
+(36, 'welch.deshaun@yahoo.com', '$2y$10$DFgPLlzqoGZOQM/lp0/rDOExtt1EQLKqwQKlC.B4lO/EdwKLdrDLG', 'Amparo', 'Kunde', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Ad veritatis in tempore labore illum impedit. Natus voluptatum dolorem sunt reiciendis.', 0, NULL, NULL, '2020-03-19 09:47:28', NULL),
+(37, 'jody61@yahoo.com', '$2y$10$FnoqBxzPYMqMltlUgARF3O2FmZZPM5my9sPi2esRyQ65SzXGyuYLi', 'Chandler', 'Johns', 'mentee', 'https://www.linkedin.com/in/john-doe', 'pending', 'mintlogo.png', 'Corrupti repudiandae ut numquam quod qui illo.', 1, NULL, NULL, '2020-06-06 05:50:36', NULL),
+(38, 'uhauck@gmail.com', '$2y$10$mYVq7L8pqKSa0/i.kGyCwepyCjzPnN3lL/.ZMVLeA7iD/Cl.eH9jq', 'Ruthe', 'Rath', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Aut dolor fugiat et omnis rem est.', 1, NULL, NULL, '2020-07-19 04:54:08', NULL),
+(39, 'gerlach.jessyca@gmail.com', '$2y$10$0va9HRyWhidM8TyjZqGP1OWuqNSaDQ/u0JiY5sEJQm1G.iLLsShCa', 'Donato', 'Romaguera', 'mentee', 'https://www.linkedin.com/in/john-doe', 'pending', 'mintlogo.png', 'Consequatur consequuntur qui et quasi et.', 1, NULL, NULL, '2019-11-20 02:03:12', NULL),
+(40, 'leffler.morton@gmail.com', '$2y$10$kMA5fUUmvPOuJlDMkhAv8OdzQsg1iSPmFtpJEEh1LO/QQ53CrvkLC', 'Jaylen', 'Gottlieb', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Odio aut at reiciendis praesentium ex.', 0, NULL, NULL, '2020-04-02 15:41:50', NULL),
+(41, 'admint@mint.com', '$2y$10$8SJz7ty0CJDaBZS6IaN.EuCgdOjgtfJiA3B0Wu5TtnL66gSAynNC6', 'Derrick', 'Carter', 'admin', NULL, NULL, 'mintlogo.png', NULL, NULL, NULL, NULL, NULL, NULL);
 
 --
 -- Constraints for dumped tables
