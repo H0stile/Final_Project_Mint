@@ -47,14 +47,43 @@ body{
 	background-color: #579B9A;
 }
 .scrollbig{
-    overflow:scroll; 
+    overflow: hidden;
     height: 500px;
     margin-bottom: 0;
 }
+.scrollbig:hover{
+    overflow: overlay;
+}
+
+#messagegList::-webkit-scrollbar-track{
+    border-radius: 10px;
+	background-color: #edf5f5;
+}
+#messagegList::-webkit-scrollbar{
+	width: 8px;
+	background-color: #edf5f5;
+}
+#messagegList::-webkit-scrollbar-thumb{
+	border-radius: 10px;
+	background-color: #579B9A;
+}
+
 .sendbtn{
     box-shadow: none;
     background-color: #75D19E;
     color: #F7FFFF;
+}
+#jobList::-webkit-scrollbar-track{
+    border-radius: 10px;
+	background-color: #edf5f5;
+}
+#jobList::-webkit-scrollbar{
+	width: 8px;
+	background-color: #edf5f5;
+}
+#jobList::-webkit-scrollbar-thumb{
+	border-radius: 10px;
+	background-color: #579B9A;
 }
 
 .textbtn{
