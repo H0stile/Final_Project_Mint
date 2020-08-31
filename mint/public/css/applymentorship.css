@@ -6,8 +6,15 @@ body{
     background-color: #75D19E;
     margin-bottom: 40px;
     box-shadow: none;
-    color: #3b4a69;
+    color:  #f7ffff;
 }
 .btn:hover{
     background-color: #FFA83F;
+}
+.image{
+    height: 100px;
+    margin-right: 20px;
+}
+.pitch{
+    background-color:  #EBFEEA;
 }

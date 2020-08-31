@@ -19,21 +19,22 @@
         <input type="text" name="linkedin" id="linkedin" placeholder="linkedin" value="{{$mentor->linkedin}}"><br>
 
         <label for="pitch">Pitch:</label>
-        <textarea name="pitch" id="pitch" cols="30" rows="10" placeholder="Edit Pitch">{{ $mentor->pitch }}</textarea>
+        <textarea name="pitch" id="pitch" cols="30" rows="20" placeholder="Edit Pitch">{{ $mentor->pitch }}</textarea><br><br>
 
 
         <!-- Switch -->
-        <h5>Availability:</h5>
-        <div class="switch">
-            <label>
-                Not Available
-                <input name="available" type="Checkbox" @if($mentorAvailable=='Yes' ) checked @endif>
-                <span class="lever"></span>
-                Available
-            </label>
+        <h6>Availability:</h6>
+        <div class="row">
 
+            <div class="switch">
+                <label>
+                    Not Available
+                    <input name="available" type="Checkbox" @if($mentorAvailable=='Yes' ) checked @endif>
+                    <span class="lever"></span>
+                    Available
+                </label>
+            </div>
         </div>
-
 
         <div class="row">
             <div class="input-field col s12">

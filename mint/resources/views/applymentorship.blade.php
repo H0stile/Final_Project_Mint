@@ -4,11 +4,13 @@
 <link href="{{ asset('css/applymentorship.css') }}" rel="stylesheet">
 @endsection
 <div class="container">
-    <h3>Apply to Mintor</h3>
-    <!--<img src="{{ asset('img/') }}/{{ $mentor->profile_image }}" width="400" height="300">-->
-    <h5>FirstName : {{ $mentor->firstname }}</h5>
-    <h5>LastName :{{ $mentor->lastname }}</h5>
-    <h5>Pitch : {{ $mentor->pitch }}</h5>
+    <h3>Apply To Mintor</h3>
+    <div class="picnname">
+        <img src="{{ asset('img/mintlogo.png') }}/{{ $mentor->profile_image }}" class="image circle">
+        <h5 class="name"> {{ $mentor->firstname }} {{ $mentor->lastname }}</h5>
+    </div>
+    <h5>Pitch : </h5>
+    <p class="pitch">{{ $mentor->pitch }}</p>
     <hr>
 
     <form action="" method="POST">
