@@ -6,13 +6,14 @@ body{
     background-color: #EA4C4B;
     box-shadow: none;
     color: #F7FFFF;
+    margin-bottom: 300px;
 }
-
 .greenbutton{
     background-color: #75D19E;
     box-shadow: none;
     color: #F7FFFF; 
+    margin-top: 30px;
 }
-.btn:hover{
-    background-color: #FFA83F;
+textarea{
+    height: 5rem;
 }

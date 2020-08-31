@@ -16,8 +16,9 @@
             enjoy helping your mintee get some new cool skills and experience !</p>
     </div>
 </div>
+<div id="arrow"></div>
 
-<div class="row" id="middle-jumbotron">
+<div class="row shadow" id="middle-jumbotron">
     <div class="carousel">
         <img class="carousel-item" src="img\javascript.png">
         <img class="carousel-item" src="img\react.png">
@@ -26,6 +27,7 @@
         <img class="carousel-item" src="img\vue.png">
     </div>
     <h2>Learn some of the finest and most popular technologies with your mintor</h2>
+    <p id="subtext">Here's a quickview of technologies you can learn on Mint, but there is a lot more than what is shown here, so don't forget to check our mintors catalog !</p>
 </div>
 
 <div class="row" id="home-register">

@@ -4,21 +4,31 @@ body{
 }
 .btn{
     background-color: #75D19E;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     box-shadow: none;
-    color: #3b4a69;
+    color: #f7ffff;
 }
 h2 {
     font-family: "Work Sans", sans-serif;
     font-weight: 300;
 }
-.btn:hover{
-    background-color: #FFA83F;
-}
 .star{
     color: #FFA83F;
 }
+.picnname{
+    display: flex;
+}
 .image{
-    height: 200px;
-    margin-right: 50px;
+    height: 100px;
+    margin-right: 20px;
+}
+.name{
+    margin-bottom: 4px;
+    align-items: center
+}
+.pitch,.avai,.linkedin,.skills,.rate{
+    background-color:  #EBFEEA;
+}
+.picnname,.space{
+    margin-top :50px;
 }
