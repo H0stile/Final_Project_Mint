@@ -27,6 +27,7 @@
 
 
 
+
     @if(Auth::user()->type == 'mentor')
     <div class="space">
         <hr>
@@ -37,6 +38,17 @@
         <button class="waves-effect waves-light btn" name="seeallconnectionbtn" value="{{$mentor->id}}">Connected Mintees</button>
 
     </div>
+
+    <h5>Ratings</h5>
+    <div class="rate">
+        @foreach($ratingsWithName as $rating)
+        <h5>Mintee Name : {{$rating[0]}}</h5>
+        <h5>Rating : {{$rating[1]}} <i class="material-icons star">star</i> </h5>
+        <h5>Msg : {{$rating[2]}}</h5>
+        <hr>
+        @endforeach
+    </div>
+
     @endif
 
     @if(Auth::user()->type == 'admin')
