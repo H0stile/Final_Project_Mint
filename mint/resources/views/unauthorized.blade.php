@@ -4,7 +4,7 @@
 @endsection
 @section('content')
 <div style="text-align:center ; margin-top: 200px">
-    <img src="img\404.png" alt="unautorized page" id="error-pic">
+    <img src="{{asset('img/')}}/unautorize.png" alt="unautorized page" id="error-pic">
     <h5 id="error-text">
         You are not authorized to access this page.
     </h5>
