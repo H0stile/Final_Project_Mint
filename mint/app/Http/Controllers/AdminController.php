@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\ContactMe;
 use App\Charts\UserChart;
 use Illuminate\Support\Facades\DB;
+use App\Message;
 
 class AdminController extends Controller
 {
@@ -23,14 +24,15 @@ class AdminController extends Controller
         //$admin = User::where('type','=','admin')->first();
         $admin = Auth::user();
         $matchMentor = ['type' => 'mentor', 'mentor_status' => 'pending'];
-        $pendingMentors = User::where($matchMentor)->paginate(2);
+        $pendingMentors = User::where($matchMentor)->get();
         //$mentorMentee = ['type' => 'mentee', 'mentor_status' => 'validate'];
         $mentorMenteeList = User::where('type', 'mentee')->orWhere('mentor_status','validate')->get();
+        
         for ($i=0; $i < $mentorMenteeList->count(); $i++) {
             $userCollaborators[$i] = $mentorMenteeList[$i]->mentees;
         }
         /////////
-        //charts
+        //chartUserRegister
         ////////
 
         $users = User::select(DB::raw("COUNT(*) as count"))
@@ -45,7 +47,24 @@ class AdminController extends Controller
         'borderColor' => '#51C1C0'
         ]);
 
-        return view('admin', compact('pendingMentors','chart', 'admin', 'mentorMenteeList','userCollaborators'));
+        /////////
+        //chartUserRegister
+        ////////
+        
+
+        $users = User::select(DB::raw("COUNT(*) as count"))
+        ->whereYear('created_at', date('Y'))
+        ->groupBy(DB::raw("Month(created_at)"))
+        ->pluck('count');
+
+
+        $userNumber = User::where('mentor_status', 'validate')->count();
+        $pendingReqCount = User::where('mentor_status', 'pending')->count();  
+        
+        $messages = Message::count();
+
+
+        return view('admin', compact('messages','pendingReqCount','userNumber','pendingMentors','chart', 'admin', 'mentorMenteeList','userCollaborators'));
     }
 
     /**
@@ -145,14 +164,14 @@ class AdminController extends Controller
             }
                 
         }
-        if ($user->type === "mentee"){
-            
+        if ($user->type === "mentee"){       
             $mentorTable = $user->mentors;
-            if (count($mentorTable!= 0)){
+            if (count($mentorTable)!= 0){
                 return $mentorTable;
             }else{
                 return $user->id;
             }
+
         }  
     } 
 }
