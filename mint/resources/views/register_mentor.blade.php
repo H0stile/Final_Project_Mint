@@ -10,6 +10,15 @@
     <div class="row">
         <div class="col s12 m10 offset-m1 l8 offset-l2">
             <div class="card">
+                @if ($errors->any())
+                <div class="alert alert-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                        <li class="errors-display">{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+                @endif
                 <h1 id="title">Become our next mintor</h1>
                 <form method="POST" action="{{ route('register.mentor') }}" id="registerSubmit">
                     <div class="card-content">
@@ -155,15 +164,6 @@
                     </div>
                 </form>
             </div>
-            @if ($errors->any())
-            <div class="alert alert-danger">
-                <ul>
-                    @foreach ($errors->all() as $error)
-                    <li>{{ $error }}</li>
-                    @endforeach
-                </ul>
-            </div>
-            @endif
         </div>
     </div>
 </div>

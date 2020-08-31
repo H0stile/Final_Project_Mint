@@ -33,7 +33,7 @@
                 @endauth
                 <div class="nav-wrapper">
                     <!--left side of navbar-->
-                    <a class="brand-logo" href="{{ url('home') }}"><img src="{{ asset('img/') }}/logo.png" alt="logo" id="mint_logo">
+                    <a class="brand-logo" href="{{ url('home') }}"><img src="{{ asset('img/') }}/square_logo.png" alt="logo" id="mint_logo">
                         <!--{{ config('app.name', 'Mint') }}--></a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
