@@ -114,7 +114,7 @@ Route::get('/mentorai/', 'MentorallinvitationController@index')->middleware('aut
 // Route::get('/mentoraiaccept/{id}', 'MentorallinvitationController@update');
 
 //* Route for mentor all Connections - Matt
-Route::get('/searchmentor/{id}', 'searchmentorController@index')->name('searchmentor')->middleware('auth');
+Route::get('/searchmentor/{id}', 'searchmentorController@index')->name('searchmentor')->middleware('mentor.search')->middleware('auth');
 Route::get('/initSearchNames', 'searchmentorController@initName')->middleware('auth');
 Route::get('/initSearchSkills', 'searchmentorController@initSkill')->middleware('auth');
 Route::get('/initSearchLanguages', 'searchmentorController@initLanguage')->middleware('auth');

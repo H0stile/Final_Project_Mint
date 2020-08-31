@@ -8,7 +8,13 @@
     <h5 id="error-text">
         You are not authorized to access this page.
     </h5>
-    <a href="/home" class="waves-effect waves-light btn" id="error-button">Go back</a>
-
+    <button class="waves-effect waves-light btn" id="error-button" onclick="goBack()">Go back</button>
 </div>
+@endsection
+@section('script')
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
 @endsection
