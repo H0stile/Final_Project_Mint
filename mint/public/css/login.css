@@ -1,0 +1,34 @@
+/* Charles : hide the register button */
+
+#register_button {
+    display: none;
+}
+.btn-large {
+    display: none;
+}
+
+nav ul {
+    margin-right: 5em;
+}
+
+/* Charles : general customisation */
+
+body {
+    color: #3b4a69;
+    background-color: #f7ffff;
+}
+
+.card {
+    background-color: #f7ffff;
+}
+
+/* Charles : Stepper customisation */
+
+.card {
+    box-shadow: none;
+}
+
+.btn {
+    box-shadow: none;
+    background-color: #75d19e;
+}

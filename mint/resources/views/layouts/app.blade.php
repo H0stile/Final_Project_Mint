@@ -10,6 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css" integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog==" crossorigin="anonymous" />
     <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@300;400&display=swap" rel="stylesheet">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/footer.css') }}" rel="stylesheet">
@@ -32,7 +33,7 @@
                 @endauth
                 <div class="nav-wrapper">
                     <!--left side of navbar-->
-                    <a class="brand-logo" href="{{ url('home') }}"><img src="{{ asset('img/') }}/logo.png" alt="logo" id="mint_logo">
+                    <a class="brand-logo" href="{{ url('home') }}"><img src="{{ asset('img/') }}/square_logo.png" alt="logo" id="mint_logo">
                         <!--{{ config('app.name', 'Mint') }}--></a>
                     <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
 
@@ -97,6 +98,9 @@
                 $('li').removeClass("active");
                 $(this).addClass("active");
             });
+        });
+        $(document).ready(function() {
+            $('.carousel').carousel();
         });
     </script>
 

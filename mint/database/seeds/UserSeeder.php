@@ -19,7 +19,7 @@ class UserSeeder extends Seeder
         $mentorStatus = ['pending','validate'];
         $availability = array(true, false);
 
-        $count = 20;
+        $count = 40;
 
         for ($i=0; $i < $count; $i++) { 
             DB::table('users')->insert([
@@ -30,7 +30,7 @@ class UserSeeder extends Seeder
                 'type' => $type[rand(0,1)],
                 'linkedin' => 'https://www.linkedin.com/in/john-doe',
                 'mentor_status' => $mentorStatus[rand(0,1)],
-                'profile_image' => 'defaultProfileLogo.png',
+                'profile_image' => 'mintlogo.png',
                 'pitch' => $faker->paragraph($nbSentences = 1, $variableNbSentences = true),
                 'availability' => array_rand($availability),
                 'created_at' => $faker->dateTimeBetween('-300 days','now'),

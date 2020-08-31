@@ -1,12 +1,14 @@
 @extends('layouts.app')
-
+@section('css')
+<link href="{{ asset('css/404.css') }}" rel="stylesheet">
+@endsection
 @section('content')
 <div style="text-align:center ; margin-top: 200px">
-    <img src="https://image.noelshack.com/fichiers/2020/35/3/1598446072-kisspng-mint-julep-ice-cube-menthol-mint-ice-fast-material-picture-5a850cac098e37-1528204615186689720392.png" alt="">
-    <p>
-        The page your looking for is not available ... Here's something to cool your brain off.
-    </p>
-    <a href="/home" class="waves-effect waves-light btn">Go back</a>
+    <img src="img\404.png" alt="error 404" id="error-pic">
+    <h5 id="error-text">
+        We are sorry but the page you are looking for is not available ...
+    </h5>
+    <a href="/home" class="waves-effect waves-light btn" id="error-button">Go back</a>
 
 </div>
 

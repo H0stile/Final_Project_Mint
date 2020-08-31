@@ -6,7 +6,7 @@
 @section('content')
 <div class="row" id="top-content">
     <div class="top-element">
-        <img src="https://img.cuisineaz.com/660x660/2015-06-02/i87290-cocktail-au-whisky-the-vert-citron-et-menthe.jpg" alt="">
+        <img src="img\main_img.png" alt="mint">
     </div>
 
     <div class="top-element">
@@ -16,15 +16,24 @@
             enjoy helping your mintee get some new cool skills and experience !</p>
     </div>
 </div>
+<div id="arrow"></div>
 
-<div class="row" id="middle-jumbotron">
-    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam lobortis vitae sapien id varius. Maecenas massa diam, dignissim eget magna et, tincidunt elementum nulla. Mauris pulvinar, urna tempus dignissim mollis, ligula ligula tincidunt libero, nec finibus felis libero vel neque. Pellentesque a ipsum eget tellus laoreet faucibus. Aenean euismod sollicitudin lectus, sed vehicula magna sagittis sit amet. Fusce velit velit, mollis at gravida id, consectetur ut lacus. Suspendisse potenti. Mauris porttitor dolor in dolor convallis aliquam. Nulla in.</p>
+<div class="row shadow" id="middle-jumbotron">
+    <div class="carousel">
+        <img class="carousel-item" src="img\javascript.png">
+        <img class="carousel-item" src="img\react.png">
+        <img class="carousel-item" src="img\java.png">
+        <img class="carousel-item" src="img\php.png">
+        <img class="carousel-item" src="img\vue.png">
+    </div>
+    <h2>Learn some of the finest and most popular technologies with your mintor</h2>
+    <p id="subtext">Here's a quickview of technologies you can learn on Mint, but there is a lot more than what is shown here, so don't forget to check our mintors catalog !</p>
 </div>
 
 <div class="row" id="home-register">
     <div class="col s6" id="register_col_1">
 
-        <img src="https://www.thespruceeats.com/thmb/721kkzdDKgQ4FnJpdCaXVgwttUI=/1816x1362/smart/filters:no_upscale()/easy-fresh-mint-tea-recipe-766391-6_preview-5b291f95ba61770036733329.jpeg" style="height: 400px">
+        <img src="img\mentee.png" alt="mentee">
         <h5>A fresh mintee</h5>
 
 
@@ -37,7 +46,7 @@
     </div>
     <div class="col s6" id="register_col_2">
 
-        <img src="https://www.thespruceeats.com/thmb/721kkzdDKgQ4FnJpdCaXVgwttUI=/1816x1362/smart/filters:no_upscale()/easy-fresh-mint-tea-recipe-766391-6_preview-5b291f95ba61770036733329.jpeg" style="height: 400px">
+        <img src="img\mentor.png" alt="mentor">
         <h5>A green and experienced mintor</h5>
 
 
