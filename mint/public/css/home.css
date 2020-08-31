@@ -17,6 +17,19 @@ h2 {
     font-size: 1.25em;
 }
 
+#arrow {
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    left: 50%;
+    background-color: #f7ffff;
+    transform: translate(-50%, -15px) rotate(45deg);
+}
+
+.shadow {
+    box-shadow: inset 1px 20px 9px -6px rgba(0, 0, 0, 0.1);
+}
+
 #subtext {
     font-size: 0.75em;
     margin-bottom: 50px;
