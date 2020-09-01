@@ -61,6 +61,7 @@
                             <li class="step">
                                 <div class="step-title waves-effect">Password</div>
                                 <div class="step-content">
+                                    <p id="explanations">Password should be 8 characters minimum and should not include any special character</p>
                                     <div class="row">
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">lock</i>
