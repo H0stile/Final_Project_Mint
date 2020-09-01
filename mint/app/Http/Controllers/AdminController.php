@@ -50,21 +50,16 @@ class AdminController extends Controller
         /////////
         //chartUserRegister
         ////////
-        
-
-        $users = User::select(DB::raw("COUNT(*) as count"))
-        ->whereYear('created_at', date('Y'))
-        ->groupBy(DB::raw("Month(created_at)"))
-        ->pluck('count');
-
 
         $userNumber = User::where('mentor_status', 'validate')->count();
-        $pendingReqCount = User::where('mentor_status', 'pending')->count();  
-        
+        $pendingReqCount = User::where('mentor_status', 'pending')->count(); 
+        $Mentorcoun = ['type' => 'mentor', 'mentor_status' => 'validate']; 
+        $mentorCount = number_format(((User::where($Mentorcoun)->count())*100)/$userNumber);
+        $Menteecoun = ['type' => 'mentee', 'mentor_status' => 'validate']; 
+        $menteeCount = number_format(((User::where($Menteecoun)->count())*100)/$userNumber);
         $messages = Message::count();
 
-
-        return view('admin', compact('messages','pendingReqCount','userNumber','pendingMentors','chart', 'admin', 'mentorMenteeList','userCollaborators'));
+        return view('admin', compact('mentorCount','menteeCount','messages','pendingReqCount','userNumber','pendingMentors','chart', 'admin', 'mentorMenteeList','userCollaborators'));
     }
 
     /**

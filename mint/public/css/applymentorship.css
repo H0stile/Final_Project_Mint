@@ -14,4 +14,11 @@ body{
 }
 .pitch{
     background-color:  #EBFEEA;
+    padding: 10px;
+}
+.textarea{
+    margin-bottom: 20px;
+}
+.goback{
+    margin-bottom: 50px;
 }

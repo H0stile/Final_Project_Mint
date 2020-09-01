@@ -28,7 +28,7 @@ class RatingController extends Controller
         $rating->writer_id = $request->writer;
         $rating->target_id = $request->target;
         $rating->score = $request->score;
-        $rating->comment = $request->comment;
+        $rating->comment = htmlspecialchars(strip_tags($request->comment), ENT_QUOTES, 'UTF-8');
         $rating->save();
 
         return redirect(route('mentee.profile', $request->target));
