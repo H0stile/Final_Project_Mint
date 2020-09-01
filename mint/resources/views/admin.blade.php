@@ -10,59 +10,59 @@
     <h2>DASHBOARD</h2>
     <p class="currentDate">Today  <b>{{date('d-m-Y')}}</b></p>
 </section>
-<section class="adminInfo">
+<section class="adminInfo fontColor">
     <div class="info">   
-        <p class="pic"><img class ="picture" src="{{asset('img/')}}/{{$admin->profile_image}}" style="width:60px"></p>
+        <p class="pic p"><img class ="picture" src="{{asset('img/')}}/{{$admin->profile_image}}" style="width:60px"></p>
         <div class="number">
-            <p>Welcome back</p>
-            <p ><b> {{$admin->firstname}} {{$admin->lastname}}</b></p>    
+            <p class="p">Welcome back</p>
+            <p class="p"><b> {{$admin->firstname}} {{$admin->lastname}}</b></p>    
         </div>
     </div>
     <div class="summery">
         <div>
-            <p class="number">Active Users</p>
-            <p class="number"><b>{{$userNumber}}</b></p>
+            <p class="number p">Active Users</p>
+            <p class="number p"><b>{{$userNumber}}</b></p>
         </div>
         <p class="pic" ><i class="Medium material-icons ">account_circle</i></p>
     </div>
     
     <div class="userNumber">
         <div>
-            <p class="number">Pending mentor</p>
-            <p class="number"><b>{{$pendingReqCount}}</b></p>
+            <p class="number p">Pending mentor</p>
+            <p class="number p"><b>{{$pendingReqCount}}</b></p>
         </div>
         
-        <p class="pic"><i class=" Medium material-icons ">person_add</i></p>
+        <p class="pic p"><i class=" Medium material-icons ">person_add</i></p>
     </div>
     <div class="interactionNumber">
         <div>
-            <p class="number">Interactions</p>
-            <p class="number"><b>{{$messages}}</b></p>
+            <p class="number p">Interactions</p>
+            <p class="number p"><b>{{$messages}}</b></p>
         </div>
-        <p class="pic"><i class="Medium material-icons ">mode_comment</i></p> 
+        <p class="pic p"><i class="Medium material-icons ">mode_comment</i></p> 
     </div>
 </section>
-<section class="adminInfos">
+<section class="adminInfos fontColor">
     <div class="summery">
         <div>
-            <p class="number">Active mentors</p>
-            <p class="number"><b>{{$mentorCount}} %</b></p>
+            <p class="number p">Active mentors</p>
+            <p class="number p"><b>{{$mentorCount}} %</b></p>
         </div>
-        <p class="pic" ><i class="Medium material-icons ">account_circle</i></p>
+        <p class="pic p" ><i class="Medium material-icons ">account_circle</i></p>
     </div>
     
     <div class="summery">
         <div>
-            <p class="number">Active mentees</p>
-            <p class="number"><b>{{$menteeCount}} %</b></p>
+            <p class="number p">Active mentees</p>
+            <p class="number p"><b>{{$menteeCount}} %</b></p>
         </div>
-        <p class="pic" ><i class="Medium material-icons ">account_circle</i></p>
+        <p class="pic p" ><i class="Medium material-icons ">account_circle</i></p>
     </div>
     
 </section>
 
 <section class="chartSript">
-    <h3>User register Chart 2020</h3>
+    <h3 class="h3">User register Chart 2020</h3>
 <div id="charts" >
             {!! $chart->container() !!}
 </div>
@@ -74,7 +74,7 @@
 
     <section id="adminPgae">
     <div class="container">
-        <h3>Waiting request</h3>
+        <h3 class="h3">Waiting request</h3>
                 <table class="striped">
                     <thead>
                         <tr>
@@ -147,8 +147,8 @@
 
         <!-- show all mentors validated and mentee registered-->
     <div class="container" >
-        <h3>Mentors and Mentees</h3>
-            <div class="userTable">
+        <h3 class="h3">Mentors and Mentees</h3>
+            <div id="scroll" class="userTable">
                 <table class="striped">
                     <thead>
                         <tr>
@@ -218,7 +218,7 @@
             $(".rowShowResultMentor").hide(".rowShowResultMentor");
             var selectedMentor = $( this ).val();
             var objMentor = jQuery.parseJSON(selectedMentor);
-            var result = "<p><div class='firstname'><b>"+ objMentor.firstname +" "
+            var result = "<p class=\"p\"><div class='firstname'><b>"+ objMentor.firstname +" "
                 + objMentor.lastname + "</b></div><div class='linkedin'><i class='fab fa-linkedin-in'></i>"
                 + objMentor.linkedin + "</div><div class='pitch'>"
                 + objMentor.pitch + "</div><div class='img'> ";
