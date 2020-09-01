@@ -11,7 +11,7 @@
     </div>
     <h5>Pitch : </h5>
     <p class="pitch">{{ $mentor->pitch }}</p>
-    <hr>
+
 
 
     @if(!$writeMsg)
@@ -22,12 +22,12 @@
 
         <h5>Send Your Request message</h5>
         <label for="request_msg"></label>
-        <textarea name="request_msg" id="request_msg" cols="20" rows="10"></textarea>
+        <textarea class="textarea" name="request_msg" id="request_msg" cols="20" rows="10"></textarea>
         <input name="status_rqs" type="hidden" value="pending" />
         <button class="waves-effect waves-light btn" type="submit" name="submit">submit</button>
     </form>
     @endif
-    <button class="waves-effect waves-light btn" type="submit" name="backtomentorprofile" value="{{$mentor->id}}">Go Back</button>
+    <button class="waves-effect waves-light btn goback" type="submit" name="backtomentorprofile" value="{{$mentor->id}}">Go Back</button>
     @endsection
 
     @section('script')
