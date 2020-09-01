@@ -1,11 +1,12 @@
          #adminPgae,
-         .adminInfo
-         {
+         .adminInfo {
              color: #3B4A69;
          }
-         .fontColor{
-            color: #3B4A69;
+         
+         .fontColor {
+             color: #3B4A69;
          }
+         
          .h3 {
              color: #3B4A69;
              text-align: center;
@@ -79,18 +80,22 @@
              height: 600px;
              margin-bottom: 100px;
          }
-        #scroll::-webkit-scrollbar-track{
-            border-radius: 10px;
-            background-color: #edf5f5;
-        }
-        #scroll::-webkit-scrollbar{
-            width: 8px;
-            background-color: #edf5f5;
-        }
-        #scroll::-webkit-scrollbar-thumb{
-            border-radius: 10px;
-            background-color: #579B9A;
-        }
+         
+         #scroll::-webkit-scrollbar-track {
+             border-radius: 10px;
+             background-color: #edf5f5;
+         }
+         
+         #scroll::-webkit-scrollbar {
+             width: 8px;
+             background-color: #edf5f5;
+         }
+         
+         #scroll::-webkit-scrollbar-thumb {
+             border-radius: 10px;
+             background-color: #579B9A;
+         }
+         
          .container {
              width: 100%;
          }
@@ -113,6 +118,14 @@
              position: sticky;
              top: 0;
              background-color: rgb(242, 241, 241);
+         }
+         
+         .tostify {
+             color: white;
+         }
+         
+         .form {
+             margin: 0;
          }
          
          .mentor {

@@ -100,17 +100,17 @@
                                 <button  name="acceptMentor" class="mobile btn-floating  moreDetails waves-effect waves-light  " type="submit" value="{{ $pendingMentor->id }}" ><i class="material-icons">add</i></button>
                             </td>
                             <td>
-                                <form action="/admin/update/{{ $pendingMentor->id }}" method="post">
+                                <form  action="/admin/update/{{ $pendingMentor->id }}" method="post">
                                     @csrf
                                     @method('put')
                                     <button  name="acceptMentor" class="btn waves-effect waves-light desktop submit" onclick="M.toast({html: 'You accepted mentor request !'})" type="submit" value="{{ $pendingMentor->id }}" >Accept</button>
                                     <button  name="acceptMentor" class="mobile btn-floating waves-effect waves-light submit" onclick="M.toast({html: 'You accepted mentor request !'})" type="submit" value="{{ $pendingMentor->id }}" ><i class="material-icons">person_add</i></button>
                                 </form>
                             </td>
-                            <td class="deletebtn toast-init-btn">
-                            <button class=" btn waves-effect waves-light redbtn desktop">Decline</button>
+                            <!--<td class="deletebtn toast-init-btn">
+                            <button class=" btn waves-effect waves-light  redbtn desktop toast-init" value="{{ $pendingMentor->id }}">Decline</button>
                             <button class="mobile btn-floating  waves-effect waves-light red" type="submit" ><i class="material-icons">close</i></button>
-                                <div class="toast-container">
+                            <div class="toast-container">
                                     <div class="toast-new-message">
                                         <div class="toast-header-flex-container">
                                             Are you sure to decline this request ?
@@ -128,6 +128,15 @@
                                         </div>
                                     </div>
                                 </div>                             
+                            </td>-->
+                            <td>
+                                <form  class="form" action="/admin/decline/{{ $pendingMentor->id }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <!--<button  name="declineMentor" class=" btn waves-effect waves-light redbtn"  type="submit" value="{{ $pendingMentor->id }}"><a onclick="M.toast({html: 'you delete mentor request'})">Yes<i class="material-icons ">delete_forever</i></a></button>-->
+                                    <button  name="declineMentor" class=" btn waves-effect waves-light  redbtn desktop" type="submit" value="{{ $pendingMentor->id }}"><a class ="tostify" onclick="M.toast({html: 'you delete mentor request'})">Decline</a></button>
+                                    <button name="declineMentor" class="mobile btn-floating  waves-effect waves-light red" type="submit" ><a onclick="M.toast({html: 'you delete mentor request'})"></a><i class="material-icons">close</i></button>                
+                                </form>
                             </td>
                         </tr>
                         <tr id="rowShowResultMentor{{ $pendingMentor->id }}" class = "rowShowResultMentor" style="display: none;">
@@ -196,21 +205,21 @@
                 </table>
             </div>
     </div>
-
-    
 </section>
     @endsection
    
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script> 
-    <script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js" charset="utf-8"></script>
+<script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script> 
+<script>
     
     $(document).ready(function () {
 /****************************************/
 // Get details of mentors to be validated
 /****************************************/
-    $('.toast-init-btn, .toast-close').click(function() {
-    $('.toast-container').toggleClass('open-toast');
+    $('.toast-init, .toast-close').click(function() {
+        var selectedMentor = $( this ).val();
+        console.log(selectedMentor);
+        $('.toast-container').toggleClass('open-toast');
     });
 
         $(".moreDetails").click(function(event){
@@ -275,19 +284,19 @@
 /************************************/
 // Sorting 
 /************************************/
-        function searchFunction(){
-           let searchValue = document.getElementById("searchUser").value.toUpperCase();
-           let userList = document.getElementsByClassName("users-list");
-           for (i = 0; i < userList.length; i++) {
-                let userName = userList[i].getElementsByClassName("userName")[0].textContent    ;
-                if (userName.toUpperCase().indexOf(searchValue) > -1) {
-                    userList[i].style.display = "";
-                } else {
-                    userList[i].style.display = "none";                  
-                }
+    function searchFunction(){
+        let searchValue = document.getElementById("searchUser").value.toUpperCase();
+        let userList = document.getElementsByClassName("users-list");
+        for (i = 0; i < userList.length; i++) {
+            let userName = userList[i].getElementsByClassName("userName")[0].textContent    ;
+            if (userName.toUpperCase().indexOf(searchValue) > -1) {
+                userList[i].style.display = "";
+            } else {
+                userList[i].style.display = "none";                  
             }
         }
-    </script>
+    }
+</script>
   
 
     
