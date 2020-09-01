@@ -48,6 +48,7 @@
              display: flex;
              margin: auto;
              position: relative;
+             justify-content: space-between;
              width: 90%;
              top: -30px;
          }
@@ -56,6 +57,7 @@
              display: flex;
              margin: auto;
              position: relative;
+             justify-content: space-evenly;
              width: 50%;
          }
          
@@ -70,8 +72,8 @@
          }
          
          .userTable {
-             /*overflow: scroll;
-             height: 90vh;*/
+             overflow: scroll;
+             height: 100vh;
              margin-bottom: 100px;
          }
          
