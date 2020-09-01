@@ -26,41 +26,41 @@ class AdminController extends Controller
         $matchMentor = ['type' => 'mentor', 'mentor_status' => 'pending'];
         $pendingMentors = User::where($matchMentor)->get();
         //$mentorMentee = ['type' => 'mentee', 'mentor_status' => 'validate'];
-        $mentorMenteeList = User::where('type', 'mentee')->orWhere('mentor_status','validate')->get();
-        
-        for ($i=0; $i < $mentorMenteeList->count(); $i++) {
+        $mentorMenteeList = User::where('type', 'mentee')->orWhere('mentor_status', 'validate')->get();
+
+        for ($i = 0; $i < $mentorMenteeList->count(); $i++) {
             $userCollaborators[$i] = $mentorMenteeList[$i]->mentees;
         }
         /////////
         //chartUserRegister
         ////////
 
-        /*$users = User::select(DB::raw("COUNT(*) as count"))
-        ->whereYear('created_at', date('Y'))
-        ->groupBy(DB::raw("Month(created_at)"))
-        ->pluck('count');
+        $users = User::select(DB::raw("COUNT(*) as count"))
+            ->whereYear('created_at', date('Y'))
+            ->groupBy(DB::raw("Month(created_at)"))
+            ->pluck('count');
 
         $chart = new UserChart;
         $chart->labels(['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']);
         $chart->dataset('New User Register Chart', 'line', $users)->options([
-        'fill' => 'true',
-        'borderColor' => '#51C1C0'
-        ]);*/
+            'fill' => 'true',
+            'borderColor' => '#51C1C0'
+        ]);
 
         /////////
         //chartUserRegister
         ////////
 
         $userNumber = User::where('mentor_status', 'validate')->count();
-        $pendingReqCount = User::where('mentor_status', 'pending')->count(); 
-        $Mentorcoun = ['type' => 'mentor', 'mentor_status' => 'validate']; 
-        $mentorCount = number_format(((User::where($Mentorcoun)->count())*100)/$userNumber);
-        $Menteecoun = ['type' => 'mentee', 'mentor_status' => 'validate']; 
-        $menteeCount = number_format(((User::where($Menteecoun)->count())*100)/$userNumber);
+        $pendingReqCount = User::where('mentor_status', 'pending')->count();
+        $Mentorcoun = ['type' => 'mentor', 'mentor_status' => 'validate'];
+        $mentorCount = number_format(((User::where($Mentorcoun)->count()) * 100) / $userNumber);
+        $Menteecoun = ['type' => 'mentee', 'mentor_status' => 'validate'];
+        $menteeCount = number_format(((User::where($Menteecoun)->count()) * 100) / $userNumber);
         $messages = Message::count();
 
-        //return view('admin', compact('mentorCount','menteeCount','messages','pendingReqCount','userNumber','pendingMentors','chart', 'admin', 'mentorMenteeList','userCollaborators'));
-        return view('admin', compact('mentorCount','menteeCount','messages','pendingReqCount','userNumber','pendingMentors', 'admin', 'mentorMenteeList','userCollaborators'));
+        return view('admin', compact('mentorCount', 'menteeCount', 'messages', 'pendingReqCount', 'userNumber', 'pendingMentors', 'chart', 'admin', 'mentorMenteeList', 'userCollaborators'));
+        //return view('admin', compact('mentorCount','menteeCount','messages','pendingReqCount','userNumber','pendingMentors', 'admin', 'mentorMenteeList','userCollaborators'));
     }
 
     /**
@@ -115,19 +115,19 @@ class AdminController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
-            $mentor = User::where('id', $id)
-          ->update(['mentor_status' => 'validate']);
 
-          if ($mentor) {
-              $mentor=User::find($id);
+        $mentor = User::where('id', $id)
+            ->update(['mentor_status' => 'validate']);
+
+        if ($mentor) {
+            $mentor = User::find($id);
             //request()->validate(['email' => 'required|email']);
 
             $mentoremail = $mentor->email;
             $mentorname = $mentor->firstname . " " . $mentor->lastname;
 
             Mail::to($mentoremail)->send(new ContactMe($mentorname));
-        
+
             return redirect('/admin')->with('message', 'mentor validated');
         };
     }
@@ -148,26 +148,25 @@ class AdminController extends Controller
         return redirect('/admin');
     }
 
-    public function getUserCollabs($userId){
+    public function getUserCollabs($userId)
+    {
         $user = User::find($userId);
-        
-        if ($user->type === "mentor"){
-            $menteeTable = $user->mentees;
-            if (count($menteeTable) != 0){
-                return $menteeTable;
-            }else{
-                return $user->id;
-            }
-                
-        }
-        if ($user->type === "mentee"){       
-            $mentorTable = $user->mentors;
-            if (count($mentorTable)!= 0){
-                return $mentorTable;
-            }else{
-                return $user->id;
-            }
 
-        }  
-    } 
+        if ($user->type === "mentor") {
+            $menteeTable = $user->mentees;
+            if (count($menteeTable) != 0) {
+                return $menteeTable;
+            } else {
+                return $user->id;
+            }
+        }
+        if ($user->type === "mentee") {
+            $mentorTable = $user->mentors;
+            if (count($mentorTable) != 0) {
+                return $mentorTable;
+            } else {
+                return $user->id;
+            }
+        }
+    }
 }
