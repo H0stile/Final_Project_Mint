@@ -61,16 +61,7 @@
     
 </section>
 
-<section class="chartSript">
-    <h3 class="h3">User register Chart 2020</h3>
-<div id="charts" >
-            {!! $chart->container() !!}
-</div>
- <div class="chartSript">
-    {!! $chart->script() !!}
- </div>       
-      
-</section>
+
 
     <section id="adminPgae">
     <div class="container">

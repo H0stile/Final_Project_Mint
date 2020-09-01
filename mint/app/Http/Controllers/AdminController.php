@@ -35,7 +35,7 @@ class AdminController extends Controller
         //chartUserRegister
         ////////
 
-        $users = User::select(DB::raw("COUNT(*) as count"))
+        /*$users = User::select(DB::raw("COUNT(*) as count"))
         ->whereYear('created_at', date('Y'))
         ->groupBy(DB::raw("Month(created_at)"))
         ->pluck('count');
@@ -45,7 +45,7 @@ class AdminController extends Controller
         $chart->dataset('New User Register Chart', 'line', $users)->options([
         'fill' => 'true',
         'borderColor' => '#51C1C0'
-        ]);
+        ]);*/
 
         /////////
         //chartUserRegister
@@ -59,7 +59,8 @@ class AdminController extends Controller
         $menteeCount = number_format(((User::where($Menteecoun)->count())*100)/$userNumber);
         $messages = Message::count();
 
-        return view('admin', compact('mentorCount','menteeCount','messages','pendingReqCount','userNumber','pendingMentors','chart', 'admin', 'mentorMenteeList','userCollaborators'));
+        //return view('admin', compact('mentorCount','menteeCount','messages','pendingReqCount','userNumber','pendingMentors','chart', 'admin', 'mentorMenteeList','userCollaborators'));
+        return view('admin', compact('mentorCount','menteeCount','messages','pendingReqCount','userNumber','pendingMentors', 'admin', 'mentorMenteeList','userCollaborators'));
     }
 
     /**

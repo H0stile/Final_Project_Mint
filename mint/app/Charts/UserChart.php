@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Charts;
+/*namespace App\Charts;
 
 use ConsoleTVs\Charts\Classes\ChartJs\Chart;
 
@@ -11,8 +11,8 @@ class UserChart extends Chart
      *
      * @return void
      */
-    public function __construct()
+    /*public function __construct()
     {
         parent::__construct();
     }
-}
+}*/
