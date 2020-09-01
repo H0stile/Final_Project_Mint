@@ -70,7 +70,7 @@
                     </div>
                     <div class="col 4">
                         <h3>Contact us</h3>
-                        <p>hello@mint.com</p>
+                        <p>donotreply.mint@gmail.com</p>
                     </div>
                 </div>
             </div>
