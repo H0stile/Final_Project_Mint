@@ -7,8 +7,8 @@
 @section('content')
 
 <section class="titleDate">
-    <h2>Dashborad</h2>
-    <p class="currentDate">Today  <b>{{date('Y-m-d')}}</b></p>
+    <h2>DASHBOARD</h2>
+    <p class="currentDate">Today  <b>{{date('d-m-Y')}}</b></p>
 </section>
 <section class="adminInfo">
     <div class="info">   
@@ -41,6 +41,24 @@
         </div>
         <p class="pic"><i class="Medium material-icons ">mode_comment</i></p> 
     </div>
+</section>
+<section class="adminInfos">
+    <div class="summery">
+        <div>
+            <p class="number">Active mentors</p>
+            <p class="number"><b>{{$mentorCount}} %</b></p>
+        </div>
+        <p class="pic" ><i class="Medium material-icons ">account_circle</i></p>
+    </div>
+    
+    <div class="summery">
+        <div>
+            <p class="number">Active mentees</p>
+            <p class="number"><b>{{$menteeCount}} %</b></p>
+        </div>
+        <p class="pic" ><i class="Medium material-icons ">account_circle</i></p>
+    </div>
+    
 </section>
 
 <section class="chartSript">
@@ -85,13 +103,8 @@
                                 <form action="/admin/update/{{ $pendingMentor->id }}" method="post">
                                     @csrf
                                     @method('put')
-                                    <button  name="acceptMentor" class="btn waves-effect waves-light desktop submit" type="submit" value="{{ $pendingMentor->id }}" >Accept</button>
-                                    <button  name="acceptMentor" class="mobile btn-floating waves-effect waves-light submit" type="submit" value="{{ $pendingMentor->id }}" ><i class="material-icons">person_add</i></button>
-                                    @if(session('message'))
-                                    <div>
-                                        {{session('message')}}
-                                    </div>
-                                    @endif
+                                    <button  name="acceptMentor" class="btn waves-effect waves-light desktop submit" onclick="M.toast({html: 'You accepted mentor request !'})" type="submit" value="{{ $pendingMentor->id }}" >Accept</button>
+                                    <button  name="acceptMentor" class="mobile btn-floating waves-effect waves-light submit" onclick="M.toast({html: 'You accepted mentor request !'})" type="submit" value="{{ $pendingMentor->id }}" ><i class="material-icons">person_add</i></button>
                                 </form>
                             </td>
                             <td class="deletebtn toast-init-btn">
@@ -192,11 +205,6 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script> 
     <script>
     
-    $("form[name='yes']").click(function(e) {
-        alert('YES');
-    });
-
-    
     $(document).ready(function () {
 /****************************************/
 // Get details of mentors to be validated
@@ -263,8 +271,7 @@
             }) 
         });  
     });
-    </script>
-    <script>
+
 /************************************/
 // Sorting 
 /************************************/
