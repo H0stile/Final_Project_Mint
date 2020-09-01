@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1:3306
--- Generation Time: Aug 31, 2020 at 11:50 AM
+-- Generation Time: Sep 01, 2020 at 01:11 PM
 -- Server version: 10.4.10-MariaDB
 -- PHP Version: 7.4.0
 
@@ -38,7 +38,7 @@ CREATE TABLE IF NOT EXISTS `collaboration` (
   PRIMARY KEY (`id`),
   KEY `collaboration_mentor_id_foreign` (`mentor_id`),
   KEY `collaboration_mentee_id_foreign` (`mentee_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=92 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `collaboration`
@@ -134,7 +134,8 @@ INSERT INTO `collaboration` (`id`, `mentor_id`, `mentee_id`, `request_msg`, `sta
 (87, 20, 27, 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.', 'pending'),
 (88, 20, 28, '', 'connected'),
 (89, 20, 29, '', 'connected'),
-(90, 20, 30, '', 'connected');
+(90, 20, 30, '', 'connected'),
+(91, 10, 22, 'Hello, I want to be your mentee', 'pending');
 
 -- --------------------------------------------------------
 
@@ -195,11 +196,8 @@ CREATE TABLE IF NOT EXISTS `languages_intermediate` (
 --
 
 INSERT INTO `languages_intermediate` (`user_id`, `language_id`) VALUES
-(1, 1),
 (2, 2),
 (3, 3),
-(4, 4),
-(5, 1),
 (6, 2),
 (7, 3),
 (8, 4),
@@ -253,15 +251,6 @@ CREATE TABLE IF NOT EXISTS `messages` (
   KEY `messages_writer_id_foreign` (`writer_id`),
   KEY `messages_target_id_foreign` (`target_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Dumping data for table `messages`
---
-
-INSERT INTO `messages` (`id`, `message`, `writer_id`, `target_id`) VALUES
-(1, 'Text message number 1', 1, 2),
-(2, 'Text message number 2', 2, 1),
-(3, 'Text message number 3', 1, 3);
 
 -- --------------------------------------------------------
 
@@ -456,11 +445,8 @@ CREATE TABLE IF NOT EXISTS `skills_intermediate` (
 --
 
 INSERT INTO `skills_intermediate` (`user_id`, `skill_id`) VALUES
-(1, 1),
 (2, 1),
 (3, 2),
-(4, 3),
-(5, 2),
 (6, 4),
 (7, 5),
 (8, 6),
@@ -509,12 +495,9 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `email`, `password`, `firstname`, `lastname`, `type`, `linkedin`, `mentor_status`, `profile_image`, `pitch`, `availability`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'makenzie.welch@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Makenzie', 'Welch', 'mentor', 'https://www.linkedin.com/in/john-doe', 'pending', 'mintlogo.png', 'Dolor sapiente vel omnis et temporibus. Quasi nisi reprehenderit qui porro sed sed autem eligendi.', 1, NULL, NULL, NULL, NULL),
 (2, 'loyce.senger@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Loyce', 'Senger', 'mentor', 'https://www.linkedin.com/in/john-doe', 'pending', 'mintlogo.png', 'Qui amet modi velit incidunt. Dicta est veniam facilis mollitia exercitationem maxime aut.', 1, NULL, NULL, '2020-04-04 22:38:31', NULL),
 (3, 'sarina.strosin@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Sarina', 'Strosin', 'mentor', 'https://www.linkedin.com/in/john-doe', 'pending', 'mintlogo.png', 'Architecto dolores et sapiente corporis sit.', 1, NULL, NULL, '2020-03-06 10:53:39', NULL),
-(4, 'rosella.fadel@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Rosella', 'Fadel', 'mentor', 'https://www.linkedin.com/in/john-doe', 'pending', 'mintlogo.png', 'Incidunt reprehenderit sunt ex necessitatibus fuga voluptatem sint dolorem. Optio accusamus dolorem ab magnam.', 1, NULL, NULL, '2020-08-14 02:28:52', NULL),
-(5, 'clarissa.runolfsdottir@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Clarissa', 'Runolfsdottir', 'mentor', 'https://www.linkedin.com/in/john-doe', 'pending', 'mintlogo.png', 'Voluptatem earum provident laborum delectus. Est quis saepe reprehenderit ducimus sint.', 1, NULL, NULL, '2020-07-05 09:11:39', NULL),
-(6, 'lucinda.gibson@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Lucinda', 'Gibson', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Quos adipisci placeat vel eos distinctio dolorum.', 1, NULL, NULL, '2019-12-30 17:31:05', NULL),
+(6, 'johnson@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Michael', 'Johnson', 'mentor', 'https://www.linkedin.com/in/mjohnson/\r\n', 'validate', 'mintlogo.png', ' Happy to help if anyone has questions around mobile engineering and engineering\r\nmanagement best practices! I trained as an engineering physicist turned to software engineer,\r\nteacher, mentor, and consultant.\r\n', 1, NULL, NULL, '2019-12-30 17:31:05', NULL),
 (7, 'geovany.heaney@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Geovany', 'Heaney', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Enim quis officia sunt ut numquam.', 1, NULL, NULL, '2019-12-23 18:10:54', NULL),
 (8, 'arnaldo.berger@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Arnaldo', 'berger', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Iusto voluptate impedit excepturi nam necessitatibus accusamus vitae. Maiores harum dolores aut sed.', 1, NULL, NULL, '2020-08-27 07:28:29', NULL),
 (9, 'america.hackett@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'America', 'Hackett', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Iure quo at eius quos.', 1, NULL, NULL, '2020-01-12 14:45:50', NULL),
@@ -548,7 +531,7 @@ INSERT INTO `users` (`id`, `email`, `password`, `firstname`, `lastname`, `type`,
 (37, 'chandler.johns@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Chandler', 'Johns', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Corrupti repudiandae ut numquam quod qui illo.', 1, NULL, NULL, '2020-06-06 05:50:36', NULL),
 (38, 'ruthe.rath@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Ruthe', 'Rath', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Aut dolor fugiat et omnis rem est.', 1, NULL, NULL, '2020-07-19 04:54:08', NULL),
 (39, 'donato.romaguera@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Donato', 'Romaguera', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Consequatur consequuntur qui et quasi et.', 1, NULL, NULL, '2019-11-20 02:03:12', NULL),
-(40, 'jaylen.gottlieb@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Jaylen', 'Gottlieb', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Odio aut at reiciendis praesentium ex.', 1, NULL, NULL, '2020-04-02 15:41:50', NULL),
+(40, 'brown@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Linda', 'Brown', 'mentee', 'https://www.linkedin.com/in/lindabrown/\r\n', 'validate', 'mintlogo.png', 'My name is Linda Brown and I am a 2nd-year undergraduate student from\r\nLuxembourg. I am a self-motivated and resourceful individual.g work ethic and the ability\r\nto work within a group is something important to me. My excellent track of attendance\r\nduring my work experience and studies demonstrate that I am reliable and disciplined.\r\n', 1, NULL, NULL, '2020-04-02 15:41:50', NULL),
 (41, 'admint@mint.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Derrick', 'Carter', 'admin', NULL, 'validate', 'mintlogo.png', NULL, 1, NULL, NULL, '2020-04-02 15:41:50', NULL);
 
 --
