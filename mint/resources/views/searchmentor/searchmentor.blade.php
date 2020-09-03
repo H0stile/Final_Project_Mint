@@ -50,7 +50,7 @@
             <div id="clone" class="hide cardBGC flex2">
                 <img id="img" src="" style="width:60px">
                 <p id="mentorName" class="fontSize"></p>
-                <ul id="language"></ul>
+                <div id="language"></div>
                 <p id="mentroScore" class="fontSize2"></p>
                 <div id="skill"></div>
                 <button class="btn buttonColorVP margin" type="submit" id="goToMentorProfile" name="goToMentorProfile" value="">View profile</button>
@@ -166,7 +166,7 @@ $(document).ready(function () {
                     clone.find('#mentroScore').text("Rating : "+result[i][a].Rating+"/5");
                     $.each(result[i][a].Language, function(b, btem){
                         // console.log(result[i][a].Language[b].languages);
-                        clone.find('#language').append("<span>"+result[i][a].Language[b].languages+"</span>");
+                        clone.find('#language').append("<span class=\"language\">"+result[i][a].Language[b].languages+"</span>");
                     })
 
                     clone.find('#goToMentorProfile').val(mentorProfile);
@@ -218,7 +218,7 @@ $(document).ready(function () {
                     clone.find('#mentroScore').text("Rating : "+result[i][a].Rating+"/5");
                     $.each(result[i][a].Language, function(b, btem){
                         // console.log(result[i][a].Language[b].languages);
-                        clone.find('#language').append("<span>"+result[i][a].Language[b].languages+"</span>");
+                        clone.find('#language').append("<span class=\"language\">"+result[i][a].Language[b].languages+"</span>");
                     })
                     clone.find('#goToMentorProfile').val(mentorProfile);
                     clone.find('#goToApply').val(applyToMentor);
