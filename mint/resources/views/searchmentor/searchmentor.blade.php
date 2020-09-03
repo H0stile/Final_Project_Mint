@@ -76,7 +76,7 @@ $(document).ready(function () {
         data: {
             _token: $('meta[name="csrf-token"]').attr('content')
         },
-        async: false,
+        // async: false,
     });
     //? Get and put the data for language
     routeUrlLanguages = "{{url('')}}/initSearchLanguages";
@@ -145,42 +145,42 @@ $(document).ready(function () {
         method: 'GET',
         dataType: 'json',
         success: function (result) {
-            // console.log(result);
+            console.log(result);
             $('#mentorList').html('');
-            $.each(result, function(i, item) {
-                nameData = {};
-                $.each(result[i], function(a, atem){
-                    //*INIT VARIABLES
-                    imgUrl = "{{asset('img/')}}/"+result[i][a].profile_image;
-                    //TODO Check also in other link !!!
-                    mentorProfile = "{{url('')}}/mentor/"+result[i][a].user_id;
-                    applyToMentor = "{{url('')}}/mentor/apply/"+result[i][a].user_id;
-                    getRatingMentorAvg = "{{url('')}}/getRatingByMentor/"+result[i][a].user_id;
-                    avgRating = 0;
+            // $.each(result, function(i, item) {
+            //     nameData = {};
+            //     $.each(result[i], function(a, atem){
+            //         //*INIT VARIABLES
+            //         imgUrl = "{{asset('img/')}}/"+result[i][a].profile_image;
+            //         //TODO Check also in other link !!!
+            //         mentorProfile = "{{url('')}}/mentor/"+result[i][a].user_id;
+            //         applyToMentor = "{{url('')}}/mentor/apply/"+result[i][a].user_id;
+            //         getRatingMentorAvg = "{{url('')}}/getRatingByMentor/"+result[i][a].user_id;
+            //         avgRating = 0;
 
-                    //*AJAX Call for getting all rating and have the average
-                    $.ajax({
-                        url: getRatingMentorAvg,
-                        method: 'GET',
-                        dataType: 'json',
-                        success: function (result) {
-                            avgRating = result.rating;
-                        }
-                        })
-                    //* CLONE THE CARD
-                    clone = elem.clone(true);
-                    clone.find('#img').attr('src', imgUrl);
-                    clone.find('#mentorName').text(result[i][a].firstname+" "+result[i][a].lastname);
-                    clone.find('#skill').text(result[i][a].skill);
-                    clone.find('#mentroScore').text("Rating : "+avgRating+"/5");
-                    clone.find('#language').text(result[i][a].languages);
-                    clone.find('#goToMentorProfile').val(mentorProfile);
-                    clone.find('#goToApply').val(applyToMentor);
-                    //TODO : Add a remove class to unhide the card
-                    clone.removeClass( "hide" );
-                    clone.appendTo('#mentorList');
-                })
-            });
+            //         //*AJAX Call for getting all rating and have the average
+            //         $.ajax({
+            //             url: getRatingMentorAvg,
+            //             method: 'GET',
+            //             dataType: 'json',
+            //             success: function (result) {
+            //                 avgRating = result.rating;
+            //             }
+            //             })
+            //         //* CLONE THE CARD
+            //         clone = elem.clone(true);
+            //         clone.find('#img').attr('src', imgUrl);
+            //         clone.find('#mentorName').text(result[i][a].firstname+" "+result[i][a].lastname);
+            //         clone.find('#skill').text(result[i][a].skill);
+            //         clone.find('#mentroScore').text("Rating : "+avgRating+"/5");
+            //         clone.find('#language').text(result[i][a].languages);
+            //         clone.find('#goToMentorProfile').val(mentorProfile);
+            //         clone.find('#goToApply').val(applyToMentor);
+            //         //TODO : Add a remove class to unhide the card
+            //         clone.removeClass( "hide" );
+            //         clone.appendTo('#mentorList');
+            //     })
+            // });
         }
     })
     $( "#loaderPart" ).addClass( "hide" );

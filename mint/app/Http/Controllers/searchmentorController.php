@@ -117,7 +117,19 @@ class searchmentorController extends Controller
                 array('skill', 'like', '%'.$skill.'%'),
                 array('lastname', 'like', '%'.$name.'%'),
             );
-            $mentorsData = DB::table('users')->join('skills_intermediate', 'skills_intermediate.user_id', '=', 'users.id')->join('skills', 'skills.id', '=', 'skills_intermediate.skill_id')->join('languages_intermediate', 'languages_intermediate.user_id', '=', 'users.id')->join('languages', 'languages.id', '=', 'languages_intermediate.language_id')->orderBy('lastname', 'asc')->where($conditions)->get();
+            // $mentorsData = DB::table('users')->join('skills_intermediate', 'skills_intermediate.user_id', '=', 'users.id')->join('skills', 'skills.id', '=', 'skills_intermediate.skill_id')->join('languages_intermediate', 'languages_intermediate.user_id', '=', 'users.id')->join('languages', 'languages.id', '=', 'languages_intermediate.language_id')->orderBy('lastname', 'asc')->where($conditions)->get();
+            $users = user::where($conditions)->get();
+            $mentorsData = array();
+            foreach ($users as $user) {
+                $userData = array(
+                    'Name' => $user->getFullName,
+                    'Language' => $user->languages,
+                    'Rating' => DB::table('ratings')->select('score')->where('target_id', $id)->avg('score'),
+                    'Skills' => $user->skills,
+                );
+                array_push($mentorsData, $userData);
+            }
+            // dd($mentorsData);
             return response()->json([$mentorsData]);
         }else{
             $conditions = array(
@@ -125,7 +137,20 @@ class searchmentorController extends Controller
                 array('users.type', 'mentor'),
                 array('users.availability', true),
             );
-            $mentorsData = DB::table('users')->join('skills_intermediate', 'skills_intermediate.user_id', '=', 'users.id')->join('skills', 'skills.id', '=', 'skills_intermediate.skill_id')->join('languages_intermediate', 'languages_intermediate.user_id', '=', 'users.id')->join('languages', 'languages.id', '=', 'languages_intermediate.language_id')->orderBy('lastname', 'asc')->where($conditions)->get();
+            // $mentorsData = DB::table('users')->join('skills_intermediate', 'skills_intermediate.user_id', '=', 'users.id')->join('skills', 'skills.id', '=', 'skills_intermediate.skill_id')->join('languages_intermediate', 'languages_intermediate.user_id', '=', 'users.id')->join('languages', 'languages.id', '=', 'languages_intermediate.language_id')->orderBy('lastname', 'asc')->where($conditions)->get();
+            // return response()->json([$mentorsData]);
+            $users = user::where($conditions)->get();
+            $mentorsData = array();
+            foreach ($users as $user) {
+                $userData = array(
+                    'Name' => $user->firstname." ".$user->lastname,
+                    'Language' => $user->languages,
+                    'Rating' => intVal(DB::table('ratings')->select('score')->where('target_id', $user->id)->avg('score')),
+                    'Skills' => $user->skills,
+                );
+                array_push($mentorsData, $userData);
+            }
+            // dd($mentorsData);
             return response()->json([$mentorsData]);
         }
     }
