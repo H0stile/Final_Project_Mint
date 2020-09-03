@@ -118,9 +118,9 @@ Route::get('/searchmentor/{id}', 'searchmentorController@index')->name('searchme
 Route::get('/initSearchNames', 'searchmentorController@initName')->middleware('auth');
 Route::get('/initSearchSkills', 'searchmentorController@initSkill')->middleware('auth');
 Route::get('/initSearchLanguages', 'searchmentorController@initLanguage')->middleware('auth');
-Route::get('/initSearchMentorData', 'searchmentorController@initMentorData')->middleware('auth');
+Route::post('/initSearchMentorData', 'searchmentorController@initMentorData')->middleware('auth');
 
 // Rating routes
 Route::post('/rating', 'RatingController@create')->name('rating.create')->middleware('auth');
 Route::post('/message', 'MessageController@create')->name('message.create')->middleware('auth');
-Route::get('/getRatingByMentor/{id}', 'searchmentorController@getAllRateByMentor')->middleware('auth');
+// Route::get('/getRatingByMentor/{id}', 'searchmentorController@getAllRateByMentor')->middleware('auth');

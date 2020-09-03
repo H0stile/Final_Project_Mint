@@ -50,9 +50,9 @@
             <div id="clone" class="hide cardBGC flex2">
                 <img id="img" src="" style="width:60px">
                 <p id="mentorName" class="fontSize"></p>
-                <p id="language"></p>
+                <ul id="language"></ul>
                 <p id="mentroScore" class="fontSize2"></p>
-                <span id="skill" class="fontSize2"></span>
+                <div id="skill"></div>
                 <button class="btn buttonColorVP margin" type="submit" id="goToMentorProfile" name="goToMentorProfile" value="">View profile</button>
                 <button class="btn buttonColorAPP margin" type="submit" id="goToApply" name="goToApply" value="">Apply to mintor</button>
             </div>
@@ -142,45 +142,40 @@ $(document).ready(function () {
     routeUrlName = "{{url('')}}/initSearchMentorData";
     $.ajax({
         url: routeUrlName,
-        method: 'GET',
+        method: 'POST',
         dataType: 'json',
         success: function (result) {
-            console.log(result);
             $('#mentorList').html('');
-            // $.each(result, function(i, item) {
-            //     nameData = {};
-            //     $.each(result[i], function(a, atem){
-            //         //*INIT VARIABLES
-            //         imgUrl = "{{asset('img/')}}/"+result[i][a].profile_image;
-            //         //TODO Check also in other link !!!
-            //         mentorProfile = "{{url('')}}/mentor/"+result[i][a].user_id;
-            //         applyToMentor = "{{url('')}}/mentor/apply/"+result[i][a].user_id;
-            //         getRatingMentorAvg = "{{url('')}}/getRatingByMentor/"+result[i][a].user_id;
-            //         avgRating = 0;
+            $.each(result, function(i, item) {
+                $.each(result[i], function(a, atem){
+                    // console.log(result[i][a].Language);
+                    //*INIT VARIABLES
+                    imgUrl = "{{asset('img/')}}/"+result[i][a].profile_image;
+                    mentorProfile = "{{url('')}}/mentor/"+result[i][a].Id;
+                    applyToMentor = "{{url('')}}/mentor/apply/"+result[i][a].Id;
+                    Languages = "";
+                    //* CLONE THE CARD
+                    clone = elem.clone(true);
+                    clone.find('#img').attr('src', imgUrl);
+                    clone.find('#mentorName').text(result[i][a].Name);
+                    // clone.find('#skill').text(result[i][a].skill);
+                    $.each(result[i][a].Skills, function(b, btem){
+                        // console.log(result[i][a].Skills[b]);
+                        clone.find('#skill').append("<span class=\"fontSize2 skill\">"+result[i][a].Skills[b].skill+"</span>");
+                    })
+                    clone.find('#mentroScore').text("Rating : "+result[i][a].Rating+"/5");
+                    $.each(result[i][a].Language, function(b, btem){
+                        // console.log(result[i][a].Language[b].languages);
+                        clone.find('#language').append("<span>"+result[i][a].Language[b].languages+"</span>");
+                    })
 
-            //         //*AJAX Call for getting all rating and have the average
-            //         $.ajax({
-            //             url: getRatingMentorAvg,
-            //             method: 'GET',
-            //             dataType: 'json',
-            //             success: function (result) {
-            //                 avgRating = result.rating;
-            //             }
-            //             })
-            //         //* CLONE THE CARD
-            //         clone = elem.clone(true);
-            //         clone.find('#img').attr('src', imgUrl);
-            //         clone.find('#mentorName').text(result[i][a].firstname+" "+result[i][a].lastname);
-            //         clone.find('#skill').text(result[i][a].skill);
-            //         clone.find('#mentroScore').text("Rating : "+avgRating+"/5");
-            //         clone.find('#language').text(result[i][a].languages);
-            //         clone.find('#goToMentorProfile').val(mentorProfile);
-            //         clone.find('#goToApply').val(applyToMentor);
-            //         //TODO : Add a remove class to unhide the card
-            //         clone.removeClass( "hide" );
-            //         clone.appendTo('#mentorList');
-            //     })
-            // });
+                    clone.find('#goToMentorProfile').val(mentorProfile);
+                    clone.find('#goToApply').val(applyToMentor);
+                    //TODO : Add a remove class to unhide the card
+                    clone.removeClass( "hide" );
+                    clone.appendTo('#mentorList');
+                })
+            });
         }
     })
     $( "#loaderPart" ).addClass( "hide" );
@@ -198,46 +193,41 @@ $(document).ready(function () {
 
         $.ajax({
         url: routeUrlName,
-        method: 'GET',
+        method: 'POSt',
         data: {lang: initLanguageVal, skill: initSkillVal, name: initNameVal}, 
         dataType: 'json',
         success: function (result) {
+            console.log(result);
             $('#mentorList').html('');
             $.each(result, function(i, item) {
-                nameData = {};
                 $.each(result[i], function(a, atem){
                     //*INIT VARIABLES
                     imgUrl = "{{asset('img/')}}/"+result[i][a].profile_image;
-                    //TODO Check also in other link !!!
-                    mentorProfile = "{{url('')}}/mentor/"+result[i][a].user_id;
-                    applyToMentor = "{{url('')}}/mentor/apply/"+result[i][a].user_id;
-                    getRatingMentorAvg = "{{url('')}}/getRatingByMentor/"+result[i][a].user_id;
-                    avgRating = 0;
-
-                    //*AJAX Call for getting all rating and have the average
-                    $.ajax({
-                        url: getRatingMentorAvg,
-                        method: 'GET',
-                        dataType: 'json',
-                        success: function (result) {
-                            avgRating = result.rating;
-                        }
-                        })
+                    mentorProfile = "{{url('')}}/mentor/"+result[i][a].Id;
+                    applyToMentor = "{{url('')}}/mentor/apply/"+result[i][a].Id;
+                    Languages = "";
                     //* CLONE THE CARD
                     clone = elem.clone(true);
                     clone.find('#img').attr('src', imgUrl);
-                    clone.find('#mentorName').text(result[i][a].firstname+" "+result[i][a].lastname);
-                    clone.find('#skill').text(result[i][a].skill);
-                    clone.find('#mentroScore').text("Rating : "+avgRating+"/5");
-                    clone.find('#language').text(result[i][a].languages);
+                    clone.find('#mentorName').text(result[i][a].Name);
+                    // clone.find('#skill').text(result[i][a].skill);
+                    $.each(result[i][a].Skills, function(b, btem){
+                        // console.log(result[i][a].Skills[b]);
+                        clone.find('#skill').append("<span class=\"fontSize2 skill\">"+result[i][a].Skills[b].skill+"</span>");
+                    })
+                    clone.find('#mentroScore').text("Rating : "+result[i][a].Rating+"/5");
+                    $.each(result[i][a].Language, function(b, btem){
+                        console.log(result[i][a].Language[b].languages);
+                        clone.find('#language').append("<span>"+result[i][a].Language[b].languages+"</span>");
+                    })
                     clone.find('#goToMentorProfile').val(mentorProfile);
                     clone.find('#goToApply').val(applyToMentor);
                     //TODO : Add a remove class to unhide the card
                     clone.removeClass( "hide" );
                     clone.appendTo('#mentorList');
-                })
-            })
-        }
+                    })
+                });
+            }
         })
         $( "#loaderPart" ).addClass( "hide" );
         $( "#loaderPart" ).removeClass( "loader" );
