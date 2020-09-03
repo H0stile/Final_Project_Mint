@@ -193,7 +193,7 @@ $(document).ready(function () {
 
         $.ajax({
         url: routeUrlName,
-        method: 'POSt',
+        method: 'POST',
         data: {lang: initLanguageVal, skill: initSkillVal, name: initNameVal}, 
         dataType: 'json',
         success: function (result) {
@@ -217,7 +217,7 @@ $(document).ready(function () {
                     })
                     clone.find('#mentroScore').text("Rating : "+result[i][a].Rating+"/5");
                     $.each(result[i][a].Language, function(b, btem){
-                        console.log(result[i][a].Language[b].languages);
+                        // console.log(result[i][a].Language[b].languages);
                         clone.find('#language').append("<span>"+result[i][a].Language[b].languages+"</span>");
                     })
                     clone.find('#goToMentorProfile').val(mentorProfile);

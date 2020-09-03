@@ -107,13 +107,13 @@ class searchmentorController extends Controller
         $lang = $request->lang;
         $skill = $request->skill;
         $name = $request->name;
-        //TODO USE A WHERE CONDITION USING ARRAY TO FACILITATE THE QUERY >> https://stackoverflow.com/questions/30706603/can-i-do-model-whereid-array-multiple-where-conditions/61722255#61722255
+
         if ($lang != null || $skill != null || $name != null) {
             $conditions = array(
                 array('users.mentor_status', 'validate'),
                 array('users.type', 'mentor'),
                 array('users.availability', true),
-                // array('languages', 'like', '%'.$lang.'%'),
+                // array('users.languages', 'like', '%'.$lang.'%'),
                 // array('skill', 'like', '%'.$skill.'%'),
                 // array('lastname', 'like', '%'.$name.'%'),
             );
@@ -123,15 +123,16 @@ class searchmentorController extends Controller
                 $userData = array(
                     'Id' => $user->id,
                     'profile_image' => $user->profile_image,
-                    'Name' => $user->getFullName,
+                    'Name' => $user->firstname." ".$user->lastname,
                     'Language' => $user->languages,
-                    'Rating' => DB::table('ratings')->select('score')->where('target_id', $id)->avg('score'),
+                    'Rating' => intval(DB::table('ratings')->select('score')->where('target_id', $user->id)->avg('score')),
                     'Skills' => $user->skills,
                 );
                 array_push($mentorsData, $userData);
             }
             // dd($mentorsData);
-            return response()->json([$mentorsData]);
+            return response()->json([$users]);
+            // return response()->json([$mentorsData]);
         }else{
             $conditions = array(
                 array('users.mentor_status', 'validate'),
