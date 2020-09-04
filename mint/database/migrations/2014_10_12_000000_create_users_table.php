@@ -26,6 +26,11 @@ class CreateUsersTable extends Migration
             $table->string('profile_image')->nullable();
             $table->string('pitch', 600)->nullable();
             $table->boolean('availability')->nullable();
+            //? New parts in the tables to fill to be able to filter -- START
+            $table->string('user_fullName')->nullable();
+            $table->string('user_skills')->nullable();
+            $table->string('user_languages')->nullable();
+            //? New parts in the tables to fill to be able to filter -- END
             $table->timestamp('email_verified_at')->nullable();
             $table->rememberToken();
             $table->timestamps();

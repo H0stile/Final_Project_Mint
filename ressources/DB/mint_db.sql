@@ -2,10 +2,10 @@
 -- version 4.9.2
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1:3306
--- Generation Time: Sep 01, 2020 at 01:29 PM
--- Server version: 10.4.10-MariaDB
--- PHP Version: 7.4.0
+-- Hôte : 127.0.0.1:3306
+-- Généré le :  ven. 04 sep. 2020 à 15:21
+-- Version du serveur :  10.4.10-MariaDB
+-- Version de PHP :  7.4.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -19,13 +19,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `mint_db`
+-- Base de données :  `mint_db`
 --
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `collaboration`
+-- Structure de la table `collaboration`
 --
 
 DROP TABLE IF EXISTS `collaboration`;
@@ -41,7 +41,7 @@ CREATE TABLE IF NOT EXISTS `collaboration` (
 ) ENGINE=InnoDB AUTO_INCREMENT=92 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `collaboration`
+-- Déchargement des données de la table `collaboration`
 --
 
 INSERT INTO `collaboration` (`id`, `mentor_id`, `mentee_id`, `request_msg`, `status_rqs`) VALUES
@@ -140,7 +140,7 @@ INSERT INTO `collaboration` (`id`, `mentor_id`, `mentee_id`, `request_msg`, `sta
 -- --------------------------------------------------------
 
 --
--- Table structure for table `failed_jobs`
+-- Structure de la table `failed_jobs`
 --
 
 DROP TABLE IF EXISTS `failed_jobs`;
@@ -157,7 +157,7 @@ CREATE TABLE IF NOT EXISTS `failed_jobs` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `languages`
+-- Structure de la table `languages`
 --
 
 DROP TABLE IF EXISTS `languages`;
@@ -168,7 +168,7 @@ CREATE TABLE IF NOT EXISTS `languages` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `languages`
+-- Déchargement des données de la table `languages`
 --
 
 INSERT INTO `languages` (`id`, `languages`) VALUES
@@ -180,7 +180,7 @@ INSERT INTO `languages` (`id`, `languages`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `languages_intermediate`
+-- Structure de la table `languages_intermediate`
 --
 
 DROP TABLE IF EXISTS `languages_intermediate`;
@@ -192,7 +192,7 @@ CREATE TABLE IF NOT EXISTS `languages_intermediate` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `languages_intermediate`
+-- Déchargement des données de la table `languages_intermediate`
 --
 
 INSERT INTO `languages_intermediate` (`user_id`, `language_id`) VALUES
@@ -233,12 +233,13 @@ INSERT INTO `languages_intermediate` (`user_id`, `language_id`) VALUES
 (38, 2),
 (39, 3),
 (40, 4),
-(41, 1);
+(41, 1),
+(6, 1);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `messages`
+-- Structure de la table `messages`
 --
 
 DROP TABLE IF EXISTS `messages`;
@@ -255,7 +256,7 @@ CREATE TABLE IF NOT EXISTS `messages` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `migrations`
+-- Structure de la table `migrations`
 --
 
 DROP TABLE IF EXISTS `migrations`;
@@ -267,7 +268,7 @@ CREATE TABLE IF NOT EXISTS `migrations` (
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `migrations`
+-- Déchargement des données de la table `migrations`
 --
 
 INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
@@ -285,7 +286,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `password_resets`
+-- Structure de la table `password_resets`
 --
 
 DROP TABLE IF EXISTS `password_resets`;
@@ -299,7 +300,7 @@ CREATE TABLE IF NOT EXISTS `password_resets` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `ratings`
+-- Structure de la table `ratings`
 --
 
 DROP TABLE IF EXISTS `ratings`;
@@ -315,7 +316,7 @@ CREATE TABLE IF NOT EXISTS `ratings` (
 ) ENGINE=InnoDB AUTO_INCREMENT=63 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `ratings`
+-- Déchargement des données de la table `ratings`
 --
 
 INSERT INTO `ratings` (`id`, `writer_id`, `target_id`, `score`, `comment`) VALUES
@@ -380,7 +381,7 @@ INSERT INTO `ratings` (`id`, `writer_id`, `target_id`, `score`, `comment`) VALUE
 -- --------------------------------------------------------
 
 --
--- Table structure for table `skills`
+-- Structure de la table `skills`
 --
 
 DROP TABLE IF EXISTS `skills`;
@@ -391,7 +392,7 @@ CREATE TABLE IF NOT EXISTS `skills` (
 ) ENGINE=InnoDB AUTO_INCREMENT=33 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `skills`
+-- Déchargement des données de la table `skills`
 --
 
 INSERT INTO `skills` (`id`, `skill`) VALUES
@@ -431,7 +432,7 @@ INSERT INTO `skills` (`id`, `skill`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `skills_intermediate`
+-- Structure de la table `skills_intermediate`
 --
 
 DROP TABLE IF EXISTS `skills_intermediate`;
@@ -443,7 +444,7 @@ CREATE TABLE IF NOT EXISTS `skills_intermediate` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `skills_intermediate`
+-- Déchargement des données de la table `skills_intermediate`
 --
 
 INSERT INTO `skills_intermediate` (`user_id`, `skill_id`) VALUES
@@ -463,12 +464,13 @@ INSERT INTO `skills_intermediate` (`user_id`, `skill_id`) VALUES
 (17, 10),
 (18, 13),
 (19, 16),
-(20, 26);
+(20, 26),
+(6, 18);
 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `users`
+-- Structure de la table `users`
 --
 
 DROP TABLE IF EXISTS `users`;
@@ -488,88 +490,90 @@ CREATE TABLE IF NOT EXISTS `users` (
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
+  `user_skills` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `user_languages` varchar(256) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `users_email_unique` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
--- Dumping data for table `users`
+-- Déchargement des données de la table `users`
 --
 
-INSERT INTO `users` (`id`, `email`, `password`, `firstname`, `lastname`, `type`, `linkedin`, `mentor_status`, `profile_image`, `pitch`, `availability`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`) VALUES
-(2, 'loyce.senger@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Loyce', 'Senger', 'mentor', 'https://www.linkedin.com/in/john-doe', 'pending', 'mintlogo.png', 'Qui amet modi velit incidunt. Dicta est veniam facilis mollitia exercitationem maxime aut.', 1, NULL, NULL, '2020-04-04 22:38:31', NULL),
-(3, 'sarina.strosin@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Sarina', 'Strosin', 'mentor', 'https://www.linkedin.com/in/john-doe', 'pending', 'mintlogo.png', 'Architecto dolores et sapiente corporis sit.', 1, NULL, NULL, '2020-03-06 10:53:39', NULL),
-(6, 'johnson@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Michael', 'Johnson', 'mentor', 'https://www.linkedin.com/in/mjohnson/\r\n', 'validate', 'mintlogo.png', ' Happy to help if anyone has questions around mobile engineering and engineering\r\nmanagement best practices! I trained as an engineering physicist turned to software engineer,\r\nteacher, mentor, and consultant.\r\n', 1, NULL, NULL, '2019-12-30 17:31:05', NULL),
-(7, 'geovany.heaney@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Geovany', 'Heaney', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Enim quis officia sunt ut numquam.', 1, NULL, NULL, '2019-12-23 18:10:54', NULL),
-(8, 'arnaldo.berger@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Arnaldo', 'berger', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Iusto voluptate impedit excepturi nam necessitatibus accusamus vitae. Maiores harum dolores aut sed.', 1, NULL, NULL, '2020-08-27 07:28:29', NULL),
-(9, 'america.hackett@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'America', 'Hackett', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Iure quo at eius quos.', 1, NULL, NULL, '2020-01-12 14:45:50', NULL),
-(10, 'green.weimann@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Green', 'Weimann', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Eum et aliquid quos occaecati temporibus unde qui. Vel nisi voluptatem itaque dolorem velit.', 1, NULL, NULL, '2020-02-27 01:01:24', NULL),
-(11, 'preston.pouros@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Preston', 'Pouros', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Ut in fuga qui id perferendis veniam.', 0, NULL, NULL, '2020-04-01 07:40:32', NULL),
-(12, 'johan.terry@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Johan', 'Terry', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Nulla quo aut iste aliquam saepe.', 0, NULL, NULL, '2019-12-25 23:27:05', NULL),
-(13, 'anya.zulauf@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Anya', 'Zulauf', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Aut unde voluptatem sequi quaerat nulla. Labore veritatis numquam quaerat ratione a saepe repellendus.', 0, NULL, NULL, '2020-03-04 20:34:14', NULL),
-(14, 'isobel.bailey@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Isobel', 'Bailey', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Nesciunt fugit dicta et enim. Quia illum vel explicabo sed illum.', 0, NULL, NULL, '2019-12-09 12:18:16', NULL),
-(15, 'milton.smith@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Milton', 'Smith', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Temporibus inventore dolore et voluptas. Natus dolores delectus ut sed qui fuga.', 0, NULL, NULL, '2019-12-05 10:34:07', NULL),
-(16, 'brionna.mayer@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Brionna', 'Mayer', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Esse et qui est rerum veniam atque sed necessitatibus.', 1, NULL, NULL, '2020-04-12 00:57:29', NULL),
-(17, 'yesenia.larkin@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Yesenia', 'Larkin', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Consectetur provident aut aut.', 1, NULL, NULL, '2020-07-20 20:49:35', NULL),
-(18, 'emory.bins@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Emory', 'Bins', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Quidem inventore molestias eum placeat nemo iusto officia. Unde deserunt sit error dolores adipisci minima totam.', 1, NULL, NULL, '2020-07-02 08:19:08', NULL),
-(19, 'dolores.kerluke@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Dolores', 'Kerluke', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Ut ratione voluptatem consequuntur id nihil. Sit quod nobis est alias.', 1, NULL, NULL, '2020-08-09 12:03:27', NULL),
-(20, 'barney.reichert@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Barney', 'Reichert', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Ut natus nemo harum quae labore. Sunt et beatae error nihil non animi.', 1, NULL, NULL, '2020-02-11 11:09:05', NULL),
-(21, 'romaine.hessel@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Romaine', 'Hessel', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Corrupti quae dolorum ratione architecto et cupiditate. Quasi et quo mollitia cupiditate.', 1, NULL, NULL, '2019-12-02 10:15:17', NULL),
-(22, 'braxton.murazik@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Braxton', 'Murazik', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Eius officia commodi non dolorem nihil distinctio labore tempore.', 1, NULL, NULL, '2019-12-30 03:10:10', NULL),
-(23, 'camron.greenfelder@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Camron', 'Greenfelder', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Voluptates molestiae excepturi rerum qui alias et.', 1, NULL, NULL, '2020-04-22 07:39:52', NULL),
-(24, 'abraham.turcotte@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Abraham', 'Turcotte', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Aut corporis aut et mollitia esse. Unde corporis explicabo voluptatibus cum.', 1, NULL, NULL, '2020-08-16 12:27:33', NULL),
-(25, 'grover.klein@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Grover', 'Klein', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Accusantium sunt eos optio deleniti ipsa.', 1, NULL, NULL, '2020-04-28 04:24:02', NULL),
-(26, 'antone.kshlerin@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Antone', 'Kshlerin', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Pariatur architecto fugit qui laudantium necessitatibus debitis quae. Occaecati rerum itaque qui omnis et.', 1, NULL, NULL, '2020-01-28 14:56:05', NULL),
-(27, 'cassidy.oreilly@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Cassidy', 'O\'Reilly', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Quo rem eius est magni minus occaecati.', 1, NULL, NULL, '2020-01-14 01:23:28', NULL),
-(28, 'kristoffer.fahey@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Kristoffer', 'Fahey', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Nostrum quia quidem sint occaecati.', 1, NULL, NULL, '2020-01-22 13:42:36', NULL),
-(29, 'joshuah.langworth@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Joshuah', 'Langworth', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Ipsa eum facilis est debitis eum.', 1, NULL, NULL, '2020-04-06 07:20:35', NULL),
-(30, 'albin.mills@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Albin', 'Mills', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Nam similique nesciunt dolor dignissimos voluptatem et. Repellat porro voluptatem aut reprehenderit qui rerum.', 1, NULL, NULL, '2019-12-18 10:33:35', NULL),
-(31, 'timmy.gusikowski@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Timmy', 'Gusikowski', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Est reiciendis quo delectus libero fugiat enim.', 1, NULL, NULL, '2020-05-11 14:20:27', NULL),
-(32, 'jordan.hayes@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Jordan', 'Hayes', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Voluptate pariatur tempore perferendis facere. Ab totam natus ex velit eaque odio.', 1, NULL, NULL, '2020-02-06 01:52:52', NULL),
-(33, 'itzel.dubuque@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Itzel', 'DuBuque', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Officiis error illo recusandae tempora. Placeat nostrum accusantium possimus sunt fugit debitis.', 1, NULL, NULL, '2020-01-25 06:41:28', NULL),
-(34, 'keshawn.cruickshank@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Keshawn', 'Cruickshank', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'In eum aliquid unde voluptas iste sed ut rerum. Maiores nihil accusamus consequatur aut ut explicabo odio.', 1, NULL, NULL, '2020-04-27 17:30:08', NULL),
-(35, 'laurence.bailey@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Laurence', 'Bailey', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Eos rerum in dolores consectetur. Vel consectetur deserunt amet.', 1, NULL, NULL, '2020-05-18 13:35:44', NULL),
-(36, 'amparo.kunde@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Amparo', 'Kunde', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Ad veritatis in tempore labore illum impedit. Natus voluptatum dolorem sunt reiciendis.', 1, NULL, NULL, '2020-03-19 09:47:28', NULL),
-(37, 'chandler.johns@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Chandler', 'Johns', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Corrupti repudiandae ut numquam quod qui illo.', 1, NULL, NULL, '2020-06-06 05:50:36', NULL),
-(38, 'ruthe.rath@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Ruthe', 'Rath', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Aut dolor fugiat et omnis rem est.', 1, NULL, NULL, '2020-07-19 04:54:08', NULL),
-(39, 'donato.romaguera@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Donato', 'Romaguera', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Consequatur consequuntur qui et quasi et.', 1, NULL, NULL, '2019-11-20 02:03:12', NULL),
-(40, 'brown@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Linda', 'Brown', 'mentee', 'https://www.linkedin.com/in/lindabrown/\r\n', 'validate', 'mintlogo.png', 'My name is Linda Brown and I am a 2nd-year undergraduate student from\r\nLuxembourg. I am a self-motivated and resourceful individual.g work ethic and the ability\r\nto work within a group is something important to me. My excellent track of attendance\r\nduring my work experience and studies demonstrate that I am reliable and disciplined.\r\n', 1, NULL, NULL, '2020-04-02 15:41:50', NULL),
-(41, 'admint@mint.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Derrick', 'Carter', 'admin', NULL, 'validate', 'mintlogo.png', NULL, 1, NULL, NULL, '2020-04-02 15:41:50', NULL);
+INSERT INTO `users` (`id`, `email`, `password`, `firstname`, `lastname`, `type`, `linkedin`, `mentor_status`, `profile_image`, `pitch`, `availability`, `email_verified_at`, `remember_token`, `created_at`, `updated_at`, `user_skills`, `user_languages`) VALUES
+(2, 'loyce.senger@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Loyce', 'Senger', 'mentor', 'https://www.linkedin.com/in/john-doe', 'pending', 'mintlogo.png', 'Qui amet modi velit incidunt. Dicta est veniam facilis mollitia exercitationem maxime aut.', 1, NULL, NULL, '2020-04-04 22:38:31', NULL, NULL, NULL),
+(3, 'sarina.strosin@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Sarina', 'Strosin', 'mentor', 'https://www.linkedin.com/in/john-doe', 'pending', 'mintlogo.png', 'Architecto dolores et sapiente corporis sit.', 1, NULL, NULL, '2020-03-06 10:53:39', NULL, NULL, NULL),
+(6, 'johnson@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Michael', 'Johnson', 'mentor', 'https://www.linkedin.com/in/mjohnson/\r\n', 'validate', 'mintlogo.png', ' Happy to help if anyone has questions around mobile engineering and engineering\r\nmanagement best practices! I trained as an engineering physicist turned to software engineer,\r\nteacher, mentor, and consultant.\r\n', 1, NULL, NULL, '2019-12-30 17:31:05', NULL, 'Vue-Assembly', 'German-French'),
+(7, 'geovany.heaney@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Geovany', 'Heaney', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Enim quis officia sunt ut numquam.', 1, NULL, NULL, '2019-12-23 18:10:54', NULL, NULL, NULL),
+(8, 'arnaldo.berger@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Arnaldo', 'berger', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Iusto voluptate impedit excepturi nam necessitatibus accusamus vitae. Maiores harum dolores aut sed.', 1, NULL, NULL, '2020-08-27 07:28:29', NULL, NULL, NULL),
+(9, 'america.hackett@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'America', 'Hackett', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Iure quo at eius quos.', 1, NULL, NULL, '2020-01-12 14:45:50', NULL, NULL, NULL),
+(10, 'green.weimann@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Green', 'Weimann', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Eum et aliquid quos occaecati temporibus unde qui. Vel nisi voluptatem itaque dolorem velit.', 1, NULL, NULL, '2020-02-27 01:01:24', NULL, NULL, NULL),
+(11, 'preston.pouros@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Preston', 'Pouros', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Ut in fuga qui id perferendis veniam.', 0, NULL, NULL, '2020-04-01 07:40:32', NULL, NULL, NULL),
+(12, 'johan.terry@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Johan', 'Terry', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Nulla quo aut iste aliquam saepe.', 0, NULL, NULL, '2019-12-25 23:27:05', NULL, NULL, NULL),
+(13, 'anya.zulauf@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Anya', 'Zulauf', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Aut unde voluptatem sequi quaerat nulla. Labore veritatis numquam quaerat ratione a saepe repellendus.', 0, NULL, NULL, '2020-03-04 20:34:14', NULL, NULL, NULL),
+(14, 'isobel.bailey@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Isobel', 'Bailey', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Nesciunt fugit dicta et enim. Quia illum vel explicabo sed illum.', 0, NULL, NULL, '2019-12-09 12:18:16', NULL, NULL, NULL),
+(15, 'milton.smith@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Milton', 'Smith', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Temporibus inventore dolore et voluptas. Natus dolores delectus ut sed qui fuga.', 0, NULL, NULL, '2019-12-05 10:34:07', NULL, NULL, NULL),
+(16, 'brionna.mayer@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Brionna', 'Mayer', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Esse et qui est rerum veniam atque sed necessitatibus.', 1, NULL, NULL, '2020-04-12 00:57:29', NULL, NULL, NULL),
+(17, 'yesenia.larkin@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Yesenia', 'Larkin', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Consectetur provident aut aut.', 1, NULL, NULL, '2020-07-20 20:49:35', NULL, NULL, NULL),
+(18, 'emory.bins@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Emory', 'Bins', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Quidem inventore molestias eum placeat nemo iusto officia. Unde deserunt sit error dolores adipisci minima totam.', 1, NULL, NULL, '2020-07-02 08:19:08', NULL, NULL, NULL),
+(19, 'dolores.kerluke@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Dolores', 'Kerluke', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Ut ratione voluptatem consequuntur id nihil. Sit quod nobis est alias.', 1, NULL, NULL, '2020-08-09 12:03:27', NULL, NULL, NULL),
+(20, 'barney.reichert@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Barney', 'Reichert', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Ut natus nemo harum quae labore. Sunt et beatae error nihil non animi.', 1, NULL, NULL, '2020-02-11 11:09:05', NULL, NULL, NULL),
+(21, 'romaine.hessel@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Romaine', 'Hessel', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Corrupti quae dolorum ratione architecto et cupiditate. Quasi et quo mollitia cupiditate.', 1, NULL, NULL, '2019-12-02 10:15:17', NULL, NULL, NULL),
+(22, 'braxton.murazik@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Braxton', 'Murazik', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Eius officia commodi non dolorem nihil distinctio labore tempore.', 1, NULL, NULL, '2019-12-30 03:10:10', NULL, NULL, NULL),
+(23, 'camron.greenfelder@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Camron', 'Greenfelder', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Voluptates molestiae excepturi rerum qui alias et.', 1, NULL, NULL, '2020-04-22 07:39:52', NULL, NULL, NULL),
+(24, 'abraham.turcotte@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Abraham', 'Turcotte', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Aut corporis aut et mollitia esse. Unde corporis explicabo voluptatibus cum.', 1, NULL, NULL, '2020-08-16 12:27:33', NULL, NULL, NULL),
+(25, 'grover.klein@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Grover', 'Klein', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Accusantium sunt eos optio deleniti ipsa.', 1, NULL, NULL, '2020-04-28 04:24:02', NULL, NULL, NULL),
+(26, 'antone.kshlerin@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Antone', 'Kshlerin', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Pariatur architecto fugit qui laudantium necessitatibus debitis quae. Occaecati rerum itaque qui omnis et.', 1, NULL, NULL, '2020-01-28 14:56:05', NULL, NULL, NULL),
+(27, 'cassidy.oreilly@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Cassidy', 'O\'Reilly', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Quo rem eius est magni minus occaecati.', 1, NULL, NULL, '2020-01-14 01:23:28', NULL, NULL, NULL),
+(28, 'kristoffer.fahey@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Kristoffer', 'Fahey', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Nostrum quia quidem sint occaecati.', 1, NULL, NULL, '2020-01-22 13:42:36', NULL, NULL, NULL),
+(29, 'joshuah.langworth@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Joshuah', 'Langworth', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Ipsa eum facilis est debitis eum.', 1, NULL, NULL, '2020-04-06 07:20:35', NULL, NULL, NULL),
+(30, 'albin.mills@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Albin', 'Mills', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Nam similique nesciunt dolor dignissimos voluptatem et. Repellat porro voluptatem aut reprehenderit qui rerum.', 1, NULL, NULL, '2019-12-18 10:33:35', NULL, NULL, NULL),
+(31, 'timmy.gusikowski@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Timmy', 'Gusikowski', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Est reiciendis quo delectus libero fugiat enim.', 1, NULL, NULL, '2020-05-11 14:20:27', NULL, NULL, NULL),
+(32, 'jordan.hayes@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Jordan', 'Hayes', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Voluptate pariatur tempore perferendis facere. Ab totam natus ex velit eaque odio.', 1, NULL, NULL, '2020-02-06 01:52:52', NULL, NULL, NULL),
+(33, 'itzel.dubuque@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Itzel', 'DuBuque', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Officiis error illo recusandae tempora. Placeat nostrum accusantium possimus sunt fugit debitis.', 1, NULL, NULL, '2020-01-25 06:41:28', NULL, NULL, NULL),
+(34, 'keshawn.cruickshank@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Keshawn', 'Cruickshank', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'In eum aliquid unde voluptas iste sed ut rerum. Maiores nihil accusamus consequatur aut ut explicabo odio.', 1, NULL, NULL, '2020-04-27 17:30:08', NULL, NULL, NULL),
+(35, 'laurence.bailey@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Laurence', 'Bailey', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Eos rerum in dolores consectetur. Vel consectetur deserunt amet.', 1, NULL, NULL, '2020-05-18 13:35:44', NULL, NULL, NULL),
+(36, 'amparo.kunde@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Amparo', 'Kunde', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Ad veritatis in tempore labore illum impedit. Natus voluptatum dolorem sunt reiciendis.', 1, NULL, NULL, '2020-03-19 09:47:28', NULL, NULL, NULL),
+(37, 'chandler.johns@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Chandler', 'Johns', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Corrupti repudiandae ut numquam quod qui illo.', 1, NULL, NULL, '2020-06-06 05:50:36', NULL, NULL, NULL),
+(38, 'ruthe.rath@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Ruthe', 'Rath', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Aut dolor fugiat et omnis rem est.', 1, NULL, NULL, '2020-07-19 04:54:08', NULL, NULL, NULL),
+(39, 'donato.romaguera@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Donato', 'Romaguera', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Consequatur consequuntur qui et quasi et.', 1, NULL, NULL, '2019-11-20 02:03:12', NULL, NULL, NULL),
+(40, 'brown@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Linda', 'Brown', 'mentee', 'https://www.linkedin.com/in/lindabrown/\r\n', 'validate', 'mintlogo.png', 'My name is Linda Brown and I am a 2nd-year undergraduate student from\r\nLuxembourg. I am a self-motivated and resourceful individual.g work ethic and the ability\r\nto work within a group is something important to me. My excellent track of attendance\r\nduring my work experience and studies demonstrate that I am reliable and disciplined.\r\n', 1, NULL, NULL, '2020-04-02 15:41:50', NULL, NULL, NULL),
+(41, 'admint@mint.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Derrick', 'Carter', 'admin', NULL, 'validate', 'mintlogo.png', NULL, 1, NULL, NULL, '2020-04-02 15:41:50', NULL, NULL, NULL);
 
 --
--- Constraints for dumped tables
+-- Contraintes pour les tables déchargées
 --
 
 --
--- Constraints for table `collaboration`
+-- Contraintes pour la table `collaboration`
 --
 ALTER TABLE `collaboration`
   ADD CONSTRAINT `collaboration_mentee_id_foreign` FOREIGN KEY (`mentee_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `collaboration_mentor_id_foreign` FOREIGN KEY (`mentor_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `languages_intermediate`
+-- Contraintes pour la table `languages_intermediate`
 --
 ALTER TABLE `languages_intermediate`
   ADD CONSTRAINT `languages_intermediate_language_id_foreign` FOREIGN KEY (`language_id`) REFERENCES `languages` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `languages_intermediate_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `messages`
+-- Contraintes pour la table `messages`
 --
 ALTER TABLE `messages`
   ADD CONSTRAINT `messages_target_id_foreign` FOREIGN KEY (`target_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `messages_writer_id_foreign` FOREIGN KEY (`writer_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `ratings`
+-- Contraintes pour la table `ratings`
 --
 ALTER TABLE `ratings`
   ADD CONSTRAINT `ratings_target_id_foreign` FOREIGN KEY (`target_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `ratings_writer_id_foreign` FOREIGN KEY (`writer_id`) REFERENCES `users` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
--- Constraints for table `skills_intermediate`
+-- Contraintes pour la table `skills_intermediate`
 --
 ALTER TABLE `skills_intermediate`
   ADD CONSTRAINT `skills_intermediate_skill_id_foreign` FOREIGN KEY (`skill_id`) REFERENCES `skills` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,

@@ -113,9 +113,9 @@ class searchmentorController extends Controller
                 array('users.mentor_status', 'validate'),
                 array('users.type', 'mentor'),
                 array('users.availability', true),
-                // array('users.languages', 'like', '%'.$lang.'%'),
-                // array('skill', 'like', '%'.$skill.'%'),
-                // array('lastname', 'like', '%'.$name.'%'),
+                array('user_languages', 'like', '%'.$lang.'%'),
+                array('user_skills', 'like', '%'.$skill.'%'),
+                array('lastname', 'like', '%'.$name.'%'),
             );
             $users = user::where($conditions)->get();
             $mentorsData = array();
@@ -130,9 +130,7 @@ class searchmentorController extends Controller
                 );
                 array_push($mentorsData, $userData);
             }
-            // dd($mentorsData);
-            return response()->json([$users]);
-            // return response()->json([$mentorsData]);
+            return response()->json([$mentorsData]);
         }else{
             $conditions = array(
                 array('users.mentor_status', 'validate'),
