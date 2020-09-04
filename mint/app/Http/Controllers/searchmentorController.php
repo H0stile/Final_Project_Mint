@@ -115,7 +115,7 @@ class searchmentorController extends Controller
                 array('users.availability', true),
                 array('user_languages', 'like', '%'.$lang.'%'),
                 array('user_skills', 'like', '%'.$skill.'%'),
-                array('lastname', 'like', '%'.$name.'%'),
+                array('user_fullName', 'like', '%'.$name.'%'),
             );
             $users = user::where($conditions)->get();
             $mentorsData = array();
