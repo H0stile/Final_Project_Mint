@@ -92,10 +92,10 @@ class EditMenteeProfileController extends Controller
     {
         //
         DB::table('users')->where('id', $id)->update([
-            'firstname' => $request->firstname,
-            'lastname' => $request->lastname,
-            'linkedin' => $request->linkedin,
-            'pitch' => $request->pitch
+            'firstname' => strip_tags($request->firstname),
+            'lastname' => strip_tags($request->lastname),
+            'linkedin' => strip_tags($request->linkedin),
+            'pitch' => strip_tags($request->pitch)
         ]);
 
         DB::table('languages_intermediate')->where('user_id', $id)->delete();

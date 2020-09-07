@@ -29,7 +29,7 @@ class MessageController extends Controller
 
         $message->writer_id = $request->writer;
         $message->target_id = $request->target;
-        $message->message = htmlspecialchars(strip_tags($request->message), ENT_QUOTES, 'UTF-8');
+        $message->message = strip_tags($request->message);
         // $message->time_msg = "2020-05-11 10:05:20";
         $message->save();
         return redirect()->back();
