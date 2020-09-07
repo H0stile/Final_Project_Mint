@@ -107,17 +107,29 @@ class searchmentorController extends Controller
         $lang = $request->lang;
         $skill = $request->skill;
         $name = $request->name;
-        //TODO USE A WHERE CONDITION USING ARRAY TO FACILITATE THE QUERY >> https://stackoverflow.com/questions/30706603/can-i-do-model-whereid-array-multiple-where-conditions/61722255#61722255
+
         if ($lang != null || $skill != null || $name != null) {
             $conditions = array(
                 array('users.mentor_status', 'validate'),
                 array('users.type', 'mentor'),
                 array('users.availability', true),
-                array('languages', 'like', '%'.$lang.'%'),
-                array('skill', 'like', '%'.$skill.'%'),
-                array('lastname', 'like', '%'.$name.'%'),
+                array('user_languages', 'like', '%'.$lang.'%'),
+                array('user_skills', 'like', '%'.$skill.'%'),
+                array('user_fullName', 'like', '%'.$name.'%'),
             );
-            $mentorsData = DB::table('users')->join('skills_intermediate', 'skills_intermediate.user_id', '=', 'users.id')->join('skills', 'skills.id', '=', 'skills_intermediate.skill_id')->join('languages_intermediate', 'languages_intermediate.user_id', '=', 'users.id')->join('languages', 'languages.id', '=', 'languages_intermediate.language_id')->orderBy('lastname', 'asc')->where($conditions)->get();
+            $users = user::where($conditions)->orderBy('lastname', 'asc')->get();
+            $mentorsData = array();
+            foreach ($users as $user) {
+                $userData = array(
+                    'Id' => $user->id,
+                    'profile_image' => $user->profile_image,
+                    'Name' => $user->firstname." ".$user->lastname,
+                    'Language' => $user->languages,
+                    'Rating' => intval(DB::table('ratings')->select('score')->where('target_id', $user->id)->avg('score')),
+                    'Skills' => $user->skills,
+                );
+                array_push($mentorsData, $userData);
+            }
             return response()->json([$mentorsData]);
         }else{
             $conditions = array(
@@ -125,12 +137,20 @@ class searchmentorController extends Controller
                 array('users.type', 'mentor'),
                 array('users.availability', true),
             );
-            $mentorsData = DB::table('users')->join('skills_intermediate', 'skills_intermediate.user_id', '=', 'users.id')->join('skills', 'skills.id', '=', 'skills_intermediate.skill_id')->join('languages_intermediate', 'languages_intermediate.user_id', '=', 'users.id')->join('languages', 'languages.id', '=', 'languages_intermediate.language_id')->orderBy('lastname', 'asc')->where($conditions)->get();
+            $users = user::where($conditions)->orderBy('lastname', 'asc')->get();
+            $mentorsData = array();
+            foreach ($users as $user) {
+                $userData = array(
+                    'Id' => $user->id,
+                    'profile_image' => $user->profile_image,
+                    'Name' => $user->firstname." ".$user->lastname,
+                    'Language' => $user->languages,
+                    'Rating' => intVal(DB::table('ratings')->select('score')->where('target_id', $user->id)->avg('score')),
+                    'Skills' => $user->skills,
+                );
+                array_push($mentorsData, $userData);
+            }
             return response()->json([$mentorsData]);
         }
-    }
-    public function getAllRateByMentor($id){
-        $mentorRating = DB::table('ratings')->select('score')->where('target_id', $id)->avg('score');
-        return response()->json(['rating' => intVal($mentorRating)]);
     }
 }

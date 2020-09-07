@@ -14,6 +14,13 @@ body{
 #loaderContainer{
     position: relative;
 }
+#language{
+    display: flex;
+}
+.language{
+    margin: 3px;
+}
+
 .flex {
     display: flex;
 }
@@ -126,6 +133,9 @@ body{
     margin: 1em;
 }
 #skill{
+    display: flex;
+}
+.skill{
     background-color: #B9F3C0;
     padding: 5px;
     border-radius: 5px;
@@ -138,7 +148,7 @@ body{
 }
 .fontSize2{
     font-size: 0.8rem;
-    margin: 6px auto;
+    margin: 6px;
 }
 .fontSize3{
     font-size: 1rem;
