@@ -117,7 +117,7 @@ class searchmentorController extends Controller
                 array('user_skills', 'like', '%'.$skill.'%'),
                 array('user_fullName', 'like', '%'.$name.'%'),
             );
-            $users = user::where($conditions)->get();
+            $users = user::where($conditions)->orderBy('lastname', 'asc')->get();
             $mentorsData = array();
             foreach ($users as $user) {
                 $userData = array(
@@ -137,7 +137,7 @@ class searchmentorController extends Controller
                 array('users.type', 'mentor'),
                 array('users.availability', true),
             );
-            $users = user::where($conditions)->get();
+            $users = user::where($conditions)->orderBy('lastname', 'asc')->get();
             $mentorsData = array();
             foreach ($users as $user) {
                 $userData = array(
