@@ -129,12 +129,12 @@ class EditmentorprofileController extends Controller
             $availability = 0;
         }
         DB::table('users')->where('id', $id)->update([
-            'firstname' => $request->firstname,
-            'lastname' => $request->lastname,
-            'linkedin' => $request->linkedin,
-            'pitch' => $request->pitch,
+            'firstname' => strip_tags($request->firstname),
+            'lastname' => strip_tags($request->lastname),
+            'linkedin' => strip_tags($request->linkedin),
+            'pitch' => strip_tags($request->pitch),
             'availability' => $availability,
-            'user_fullName' => $request->firstname.' '.$request->lastname,
+            'user_fullName' => strip_tags($request->firstname).' '.strip_tags($request->lastname),
         ]);
 
         // dd($request->skillChkBox);
