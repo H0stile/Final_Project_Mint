@@ -148,7 +148,6 @@ $(document).ready(function () {
             $('#mentorList').html('');
             $.each(result, function(i, item) {
                 $.each(result[i], function(a, atem){
-                    // console.log(result[i][a].Language);
                     //*INIT VARIABLES
                     imgUrl = "{{asset('img/')}}/"+result[i][a].profile_image;
                     mentorProfile = "{{url('')}}/mentor/"+result[i][a].Id;
@@ -158,20 +157,15 @@ $(document).ready(function () {
                     clone = elem.clone(true);
                     clone.find('#img').attr('src', imgUrl);
                     clone.find('#mentorName').text(result[i][a].Name);
-                    // clone.find('#skill').text(result[i][a].skill);
                     $.each(result[i][a].Skills, function(b, btem){
-                        // console.log(result[i][a].Skills[b]);
                         clone.find('#skill').append("<span class=\"fontSize2 skill\">"+result[i][a].Skills[b].skill+"</span>");
                     })
                     clone.find('#mentroScore').text("Rating : "+result[i][a].Rating+"/5");
                     $.each(result[i][a].Language, function(b, btem){
-                        // console.log(result[i][a].Language[b].languages);
                         clone.find('#language').append("<span class=\"language\">"+result[i][a].Language[b].languages+"</span>");
                     })
-
                     clone.find('#goToMentorProfile').val(mentorProfile);
                     clone.find('#goToApply').val(applyToMentor);
-                    //TODO : Add a remove class to unhide the card
                     clone.removeClass( "hide" );
                     clone.appendTo('#mentorList');
                 })
@@ -210,19 +204,15 @@ $(document).ready(function () {
                     clone = elem.clone(true);
                     clone.find('#img').attr('src', imgUrl);
                     clone.find('#mentorName').text(result[i][a].Name);
-                    // clone.find('#skill').text(result[i][a].skill);
                     $.each(result[i][a].Skills, function(b, btem){
-                        // console.log(result[i][a].Skills[b]);
                         clone.find('#skill').append("<span class=\"fontSize2 skill\">"+result[i][a].Skills[b].skill+"</span>");
                     })
                     clone.find('#mentroScore').text("Rating : "+result[i][a].Rating+"/5");
                     $.each(result[i][a].Language, function(b, btem){
-                        // console.log(result[i][a].Language[b].languages);
                         clone.find('#language').append("<span class=\"language\">"+result[i][a].Language[b].languages+"</span>");
                     })
                     clone.find('#goToMentorProfile').val(mentorProfile);
                     clone.find('#goToApply').val(applyToMentor);
-                    //TODO : Add a remove class to unhide the card
                     clone.removeClass( "hide" );
                     clone.appendTo('#mentorList');
                     })
