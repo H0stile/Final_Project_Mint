@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le :  lun. 07 sep. 2020 à 14:11
+-- Généré le :  lun. 07 sep. 2020 à 16:37
 -- Version du serveur :  10.4.10-MariaDB
 -- Version de PHP :  7.4.0
 
@@ -211,7 +211,6 @@ INSERT INTO `languages_intermediate` (`user_id`, `language_id`) VALUES
 (17, 1),
 (18, 2),
 (19, 3),
-(20, 4),
 (21, 1),
 (22, 2),
 (23, 3),
@@ -234,7 +233,9 @@ INSERT INTO `languages_intermediate` (`user_id`, `language_id`) VALUES
 (40, 4),
 (41, 1),
 (6, 1),
-(6, 4);
+(6, 4),
+(20, 1),
+(20, 4);
 
 -- --------------------------------------------------------
 
@@ -251,7 +252,14 @@ CREATE TABLE IF NOT EXISTS `messages` (
   PRIMARY KEY (`id`),
   KEY `messages_writer_id_foreign` (`writer_id`),
   KEY `messages_target_id_foreign` (`target_id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Déchargement des données de la table `messages`
+--
+
+INSERT INTO `messages` (`id`, `message`, `writer_id`, `target_id`) VALUES
+(5, '\"Test\"', 40, 9);
 
 -- --------------------------------------------------------
 
@@ -463,11 +471,12 @@ INSERT INTO `skills_intermediate` (`user_id`, `skill_id`) VALUES
 (17, 10),
 (18, 13),
 (19, 16),
-(20, 26),
 (7, 17),
 (6, 1),
 (6, 9),
-(6, 10);
+(6, 10),
+(20, 26),
+(20, 31);
 
 -- --------------------------------------------------------
 
@@ -520,7 +529,7 @@ INSERT INTO `users` (`id`, `email`, `password`, `firstname`, `lastname`, `type`,
 (17, 'yesenia.larkin@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Yesenia', 'Larkin', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Consectetur provident aut aut.', 1, NULL, NULL, '2020-07-20 20:49:35', NULL, 'Laravel-', 'French-', 'Yesenia Larkin'),
 (18, 'emory.bins@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Emory', 'Bins', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Quidem inventore molestias eum placeat nemo iusto officia. Unde deserunt sit error dolores adipisci minima totam.', 1, NULL, NULL, '2020-07-02 08:19:08', NULL, 'Java-', 'German-', 'Emory Bins'),
 (19, 'dolores.kerluke@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Dolores', 'Kerluke', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Ut ratione voluptatem consequuntur id nihil. Sit quod nobis est alias.', 1, NULL, NULL, '2020-08-09 12:03:27', NULL, 'C#-', 'Luxembourgish-', 'Dolores Kerluke'),
-(20, 'barney.reichert@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Barney', 'Reichert', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Ut natus nemo harum quae labore. Sunt et beatae error nihil non animi.', 1, NULL, NULL, '2020-02-11 11:09:05', NULL, 'Cobol-', 'English-', 'Barney Reichert'),
+(20, 'barney.reichert@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Barney', 'Reichert', 'mentor', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Ut natus nemo harum quae labore. Sunt et beatae error nihil non animi.', 1, NULL, NULL, '2020-02-11 11:09:05', NULL, 'Cobol-Delphi/Object Pascal-', 'French-English-', 'Barney Reichert'),
 (21, 'romaine.hessel@hotmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Romaine', 'Hessel', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Corrupti quae dolorum ratione architecto et cupiditate. Quasi et quo mollitia cupiditate.', 1, NULL, NULL, '2019-12-02 10:15:17', NULL, NULL, NULL, NULL),
 (22, 'braxton.murazik@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Braxton', 'Murazik', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Eius officia commodi non dolorem nihil distinctio labore tempore.', 1, NULL, NULL, '2019-12-30 03:10:10', NULL, NULL, NULL, NULL),
 (23, 'camron.greenfelder@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Camron', 'Greenfelder', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Voluptates molestiae excepturi rerum qui alias et.', 1, NULL, NULL, '2020-04-22 07:39:52', NULL, NULL, NULL, NULL),
@@ -540,7 +549,7 @@ INSERT INTO `users` (`id`, `email`, `password`, `firstname`, `lastname`, `type`,
 (37, 'chandler.johns@yahoo.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Chandler', 'Johns', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Corrupti repudiandae ut numquam quod qui illo.', 1, NULL, NULL, '2020-06-06 05:50:36', NULL, NULL, NULL, NULL),
 (38, 'ruthe.rath@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Ruthe', 'Rath', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Aut dolor fugiat et omnis rem est.', 1, NULL, NULL, '2020-07-19 04:54:08', NULL, NULL, NULL, NULL),
 (39, 'donato.romaguera@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Donato', 'Romaguera', 'mentee', 'https://www.linkedin.com/in/john-doe', 'validate', 'mintlogo.png', 'Consequatur consequuntur qui et quasi et.', 1, NULL, NULL, '2019-11-20 02:03:12', NULL, NULL, NULL, NULL),
-(40, 'brown@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Linda', 'Brown', 'mentee', 'https://www.linkedin.com/in/lindabrown/\r\n', 'validate', 'mintlogo.png', 'My name is Linda Brown and I am a 2nd-year undergraduate student from\r\nLuxembourg. I am a self-motivated and resourceful individual.g work ethic and the ability\r\nto work within a group is something important to me. My excellent track of attendance\r\nduring my work experience and studies demonstrate that I am reliable and disciplined.\r\n', 1, NULL, 'gUaTSUe10jHTqtIHElOndCk760ehp5Jh6uFYsZQeWjIjaZVoBv8lZOqDmrFn', '2020-04-02 15:41:50', NULL, NULL, NULL, NULL),
+(40, 'brown@gmail.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Linda', 'Brown', 'mentee', 'https://www.linkedin.com/in/lindabrown/\r\n', 'validate', 'mintlogo.png', 'My name is Linda Brown and I am a 2nd-year undergraduate student from\r\nLuxembourg. I am a self-motivated and resourceful individual.g work ethic and the ability\r\nto work within a group is something important to me. My excellent track of attendance\r\nduring my work experience and studies demonstrate that I am reliable and disciplined.\r\n', 1, NULL, 'TyzjKYUtz5maqzJyOIzrS1GULa3TG8h2qKCQmHPp97tKYZvBOYAHp2xgcBA1', '2020-04-02 15:41:50', NULL, NULL, NULL, NULL),
 (41, 'admint@mint.com', '$2y$10$/m4aeO.VMWouT6z4bZXiz.ACnOasvQQiKbFJZrD52M3d1lWhcTCAu', 'Derrick', 'Carter', 'admin', NULL, 'validate', 'mintlogo.png', NULL, 1, NULL, NULL, '2020-04-02 15:41:50', NULL, NULL, NULL, NULL);
 
 --
