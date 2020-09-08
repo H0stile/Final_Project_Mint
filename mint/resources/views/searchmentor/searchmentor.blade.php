@@ -76,8 +76,35 @@ $(document).ready(function () {
         data: {
             _token: $('meta[name="csrf-token"]').attr('content')
         },
-        // async: false,
     });
+    //? Function to generate the cards
+    function cardGen(inputResult){
+        $('#mentorList').html('');
+            $.each(inputResult, function(i, item) {
+                $.each(inputResult[i], function(a, atem){
+                    //*INIT VARIABLES
+                    imgUrl = "{{asset('img/')}}/"+inputResult[i][a].profile_image;
+                    mentorProfile = "{{url('')}}/mentor/"+inputResult[i][a].Id;
+                    applyToMentor = "{{url('')}}/mentor/apply/"+inputResult[i][a].Id;
+                    Languages = "";
+                    //* CLONE THE CARD
+                    clone = elem.clone(true);
+                    clone.find('#img').attr('src', imgUrl);
+                    clone.find('#mentorName').text(inputResult[i][a].Name);
+                    $.each(inputResult[i][a].Skills, function(b, btem){
+                        clone.find('#skill').append("<span class=\"fontSize2 skill\">"+inputResult[i][a].Skills[b].skill+"</span>");
+                    })
+                    clone.find('#mentroScore').text("Rating : "+inputResult[i][a].Rating+"/5");
+                    $.each(inputResult[i][a].Language, function(b, btem){
+                        clone.find('#language').append("<span class=\"language\">"+inputResult[i][a].Language[b].languages+"</span>");
+                    })
+                    clone.find('#goToMentorProfile').val(mentorProfile);
+                    clone.find('#goToApply').val(applyToMentor);
+                    clone.removeClass( "hide" );
+                    clone.appendTo('#mentorList');
+                })
+            });
+    }
     //? Get and put the data for language
     routeUrlLanguages = "{{url('')}}/initSearchLanguages";
     $.ajax({
@@ -145,31 +172,7 @@ $(document).ready(function () {
         method: 'POST',
         dataType: 'json',
         success: function (result) {
-            $('#mentorList').html('');
-            $.each(result, function(i, item) {
-                $.each(result[i], function(a, atem){
-                    //*INIT VARIABLES
-                    imgUrl = "{{asset('img/')}}/"+result[i][a].profile_image;
-                    mentorProfile = "{{url('')}}/mentor/"+result[i][a].Id;
-                    applyToMentor = "{{url('')}}/mentor/apply/"+result[i][a].Id;
-                    Languages = "";
-                    //* CLONE THE CARD
-                    clone = elem.clone(true);
-                    clone.find('#img').attr('src', imgUrl);
-                    clone.find('#mentorName').text(result[i][a].Name);
-                    $.each(result[i][a].Skills, function(b, btem){
-                        clone.find('#skill').append("<span class=\"fontSize2 skill\">"+result[i][a].Skills[b].skill+"</span>");
-                    })
-                    clone.find('#mentroScore').text("Rating : "+result[i][a].Rating+"/5");
-                    $.each(result[i][a].Language, function(b, btem){
-                        clone.find('#language').append("<span class=\"language\">"+result[i][a].Language[b].languages+"</span>");
-                    })
-                    clone.find('#goToMentorProfile').val(mentorProfile);
-                    clone.find('#goToApply').val(applyToMentor);
-                    clone.removeClass( "hide" );
-                    clone.appendTo('#mentorList');
-                })
-            });
+            cardGen(result);
         }
     })
     $( "#loaderPart" ).addClass( "hide" );
@@ -191,32 +194,7 @@ $(document).ready(function () {
         data: {lang: initLanguageVal, skill: initSkillVal, name: initNameVal}, 
         dataType: 'json',
         success: function (result) {
-            console.log(result);
-            $('#mentorList').html('');
-            $.each(result, function(i, item) {
-                $.each(result[i], function(a, atem){
-                    //*INIT VARIABLES
-                    imgUrl = "{{asset('img/')}}/"+result[i][a].profile_image;
-                    mentorProfile = "{{url('')}}/mentor/"+result[i][a].Id;
-                    applyToMentor = "{{url('')}}/mentor/apply/"+result[i][a].Id;
-                    Languages = "";
-                    //* CLONE THE CARD
-                    clone = elem.clone(true);
-                    clone.find('#img').attr('src', imgUrl);
-                    clone.find('#mentorName').text(result[i][a].Name);
-                    $.each(result[i][a].Skills, function(b, btem){
-                        clone.find('#skill').append("<span class=\"fontSize2 skill\">"+result[i][a].Skills[b].skill+"</span>");
-                    })
-                    clone.find('#mentroScore').text("Rating : "+result[i][a].Rating+"/5");
-                    $.each(result[i][a].Language, function(b, btem){
-                        clone.find('#language').append("<span class=\"language\">"+result[i][a].Language[b].languages+"</span>");
-                    })
-                    clone.find('#goToMentorProfile').val(mentorProfile);
-                    clone.find('#goToApply').val(applyToMentor);
-                    clone.removeClass( "hide" );
-                    clone.appendTo('#mentorList');
-                    })
-                });
+            cardGen(result);
             }
         })
         $( "#loaderPart" ).addClass( "hide" );
