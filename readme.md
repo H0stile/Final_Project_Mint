@@ -18,4 +18,7 @@ and knowledge to guide people to achieve their goals.
 Our website is going to be a bridge between mentee and mentors in
 Luxembourg, a country which has a more diverse population.
 
-Check it live : https://mint-project.000webhostapp.com/ !
+Presentation video of the project :
+
+https://vimeo.com/509807419/ca366c1456
+
